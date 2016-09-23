@@ -66,10 +66,6 @@ Example [programmatic usage](doc/using_predpatt.py)
         ?a: cats	[cats-conj,i,o3]
 ```
 
-# Pretty-print output
-print P.pprint(track_rule=True, color=True)
-
-
 ### Citation
 
 If you use PredPatt please cite it as follows.
