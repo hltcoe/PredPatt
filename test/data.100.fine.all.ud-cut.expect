@@ -1,0 +1,1925 @@
+label:    wsj/00/wsj_0001.mrg_0
+sentence: Pierre Vinken , 61 years old , will join the board as a nonexecutive director Nov. 29 .
+
+ppatt:
+	?a is/are 61 years old	[old-amod,e,n1,n1]
+		?a: Pierre Vinken	[Vinken-nsubj,i,o1,o1,o1,o3,u]
+	?a will join ?b as ?c ?d	[join-root,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: Pierre Vinken , 61 years old	[Vinken-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,u]
+		?b: the board	[board-dobj,g1(dobj),o1]
+		?c: a nonexecutive director	[director-nmod,h1,o1,o1,o2]
+		?d: Nov. 29	[Nov.-nmod:tmod,h1,o1]
+	?a is/are nonexecutive	[nonexecutive-amod,e]
+		?a: a director	[director-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0001.mrg_1
+sentence: Mr. Vinken is chairman of Elsevier N.V. , the Dutch publishing group .
+
+ppatt:
+	?a is chairman of ?b	[chairman-root,c,n1,n1,n2,n2,n6,u]
+		?a: Mr. Vinken	[Vinken-nsubj,g1(nsubj),o1]
+		?b: Elsevier N.V.	[N.V.-nmod,h1,o1,o1,o2,o4,u]
+	?a is/are the Dutch publishing group	[group-appos,d,n1,n1,n1]
+		?a: Elsevier N.V.	[N.V.-nmod,j,o1,o1,o3,u]
+
+
+label:    wsj/00/wsj_0002.mrg_0
+sentence: Rudolph Agnew , 55 years old and former chairman of Consolidated Gold Fields PLC , was named a nonexecutive director of this British industrial conglomerate .
+
+ppatt:
+	?a is/are 55 years old	[old-amod,e,n1,n1,n3,n5]
+		?a: Rudolph Agnew	[Agnew-nsubjpass,i,o1,o1,o1,o3,u]
+	?a is/are former	[former-amod,e]
+		?a: chairman of Consolidated Gold Fields PLC	[chairman-conj,i,o1,o1,o1,o1,o1,o3]
+	?a former chairman of ?b	[chairman-conj,f,n1,n2,n6]
+		?a: Rudolph Agnew , 55 years old	[Agnew-nsubjpass,borrow-subj(chairman/8,old/5,conj),i,o1,o1,o1,o1,o1,o1,o1,o3,u]
+		?b: Consolidated Gold Fields PLC	[PLC-nmod,h1,o1,o1,o1,o2]
+	?a was named ?b	[named-root,c,c,n1,n1,n2,n2,u]
+		?a: Rudolph Agnew , 55 years old and former chairman of Consolidated Gold Fields PLC	[Agnew-nsubjpass,g1(nsubjpass),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,u]
+		?b: SOMETHING := a nonexecutive director of this British industrial conglomerate	[director-xcomp,k,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are nonexecutive	[nonexecutive-amod,e]
+		?a: a director of this British industrial conglomerate	[director-xcomp,i,o1,o1,o1,o1,o1,o1,o3]
+	?a is/are a nonexecutive director of ?b	[director-xcomp,a2,n1,n1,n2,n6]
+		?a: Rudolph Agnew , 55 years old and former chairman of Consolidated Gold Fields PLC	[Agnew-nsubjpass,cut_borrow_subj,g1(nsubjpass),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,u]
+		?b: this British industrial conglomerate	[conglomerate-nmod,h1,o1,o1,o1,o2]
+	?a is/are British	[British-amod,e]
+		?a: this industrial conglomerate	[conglomerate-nmod,i,o1,o1,o3]
+	?a is/are industrial	[industrial-amod,e]
+		?a: this British conglomerate	[conglomerate-nmod,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_0
+sentence: A form of asbestos once used to make Kent cigarette filters has caused a high percentage of cancer deaths among a group of workers exposed to it more than 30 years ago , researchers reported .
+
+ppatt:
+	?a once used ?b	[used-acl:relcl,b,n1,n2,pred_resolve_relcl]
+		?a: A form of asbestos	[form-nsubj,arg_resolve_relcl,o1,o1,o1,o3]
+		?b: SOMETHING := to make Kent cigarette filters	[make-xcomp,k,o1,o1,o1,o1]
+	?a make ?b	[make-xcomp,a2,n1,n2,u]
+		?a: A form of asbestos	[form-nsubj,arg_resolve_relcl,cut_borrow_subj,o1,o1,o1,o4]
+		?b: Kent cigarette filters	[filters-dobj,g1(dobj),o1,o1]
+	?a has caused ?b	[caused-ccomp,a1,c,c,n1,n2,n2]
+		?a: A form of asbestos	[form-nsubj,g1(nsubj),o1,o1,o1,o4]
+		?b: a high percentage of cancer deaths among a group of workers	[percentage-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+	?a is/are high	[high-amod,e]
+		?a: a percentage of cancer deaths among a group of workers	[percentage-dobj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4]
+	?a exposed to ?b more than 30 years ago	[exposed-acl:relcl,b,n1,n1,n1,n1,n1,n2,n6,pred_resolve_relcl]
+		?a: workers	[workers-nmod,arg_resolve_relcl,o3]
+		?b: it	[it-nmod,h1,o2]
+	?a ?b reported	[reported-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := A form of asbestos has caused a high percentage of cancer deaths among a group of workers	[caused-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,o4]
+		?b: researchers	[researchers-nsubj,g1(nsubj)]
+
+
+label:    wsj/00/wsj_0003.mrg_1
+sentence: The asbestos fiber , crocidolite , is unusually resilient once it enters the lungs , with even brief exposures to it causing symptoms that show up decades later , researchers said .
+
+ppatt:
+	?a is/are crocidolite	[crocidolite-appos,d]
+		?a: The asbestos fiber	[fiber-nsubj,j,o1,o1,o1,o1,o3,u]
+	?a is unusually resilient	[resilient-ccomp,a1,c,c,c,n1,n1,n1,n2,n3,n3,u]
+		?a: The asbestos fiber	[fiber-nsubj,g1(nsubj),o1,o1,o1,o1,o4,u]
+	?a enters ?b	[enters-advcl,b,n1,n2,n2,u]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: the lungs	[lungs-dobj,g1(dobj),o1]
+	?a is/are brief	[brief-amod,e]
+		?a: even exposures to it	[exposures-nsubj,i,o1,o1,o1,o3]
+	?a causing ?b	[causing-advcl,b,n1,n2,n2,u]
+		?a: even brief exposures to it	[exposures-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: symptoms	[symptoms-dobj,g1(dobj),o4]
+	?a show up ?b later	[show-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n1,n2,n2,pred_resolve_relcl]
+		?a: symptoms	[symptoms-dobj,arg_resolve_relcl,o3]
+		?b: decades	[decades-nmod:npmod,h2]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := The asbestos fiber , is unusually resilient	[resilient-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o4,o4,o4,u]
+		?b: researchers	[researchers-nsubj,g1(nsubj)]
+
+
+label:    wsj/00/wsj_0003.mrg_2
+sentence: Lorillard Inc. , the unit of New York-based Loews Corp. that makes Kent cigarettes , stopped using crocidolite in its Micronite cigarette filters in 1956 .
+
+ppatt:
+	?a is/are the unit of ?b	[unit-appos,d,n1,n2,n3,n6]
+		?a: Lorillard Inc.	[Inc.-nsubj,j,o1,o1,o1,o3,u]
+		?b: New York-based Loews Corp.	[Corp.-nmod,h1,o1,o1,o1,o2]
+	?a is/are New York-based	[York-based-amod,e,n1]
+		?a: Loews Corp.	[Corp.-nmod,i,o1,o3]
+	?a makes ?b	[makes-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: the unit of New York-based Loews Corp.	[unit-appos,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3]
+		?b: Kent cigarettes	[cigarettes-dobj,g1(dobj),o1]
+	?a stopped ?b	[stopped-root,c,c,n1,n2,n2,u]
+		?a: Lorillard Inc.	[Inc.-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: SOMETHING := using crocidolite in its Micronite cigarette filters in 1956	[using-xcomp,k,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a using ?b in ?c in ?d	[using-xcomp,a2,c,n2,n2,n2,n6,n6]
+		?a: Lorillard Inc.	[Inc.-nsubj,cut_borrow_subj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: crocidolite	[crocidolite-dobj,g1(dobj)]
+		?c: its Micronite cigarette filters	[filters-nmod,h1,o1,o1,o1,o2]
+		?d: 1956	[1956-nmod,h1,o2]
+	?a poss ?b	[its-nmod:poss,n6,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: Micronite cigarette filters	[filters-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0003.mrg_3
+sentence: Although preliminary findings were reported more than a year ago , the latest results appear in today 's New England Journal of Medicine , a forum likely to bring new attention to the problem .
+
+ppatt:
+	?a is/are preliminary	[preliminary-amod,e]
+		?a: findings	[findings-nsubjpass,i,o3]
+	?a were reported more than a year ago	[reported-advcl,b,n1,n1,n1,n1,n1,n1,n1,n2,u]
+		?a: preliminary findings	[findings-nsubjpass,g1(nsubjpass),o1]
+	?a is/are latest	[latest-amod,e]
+		?a: the results	[results-nsubj,i,o1,o3]
+	?a appear in ?b	[appear-root,c,c,n1,n1,n2,n2,n3,n6,u]
+		?a: the latest results	[results-nsubj,g1(nsubj),o1,o1]
+		?b: today 's New England Journal of Medicine	[Journal-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o4,u]
+	?a poss ?b	[today-nmod:poss,n1,n6,n6,v]
+		?a: today	[today-nmod:poss,o2,w2]
+		?b: New England Journal of Medicine	[Journal-nmod,o1,o1,o1,o1,o1,o2,o3,o4,u,w1]
+	?a is/are a forum likely	[forum-appos,d,n1,n1,n3]
+		?a: today 's New England Journal of Medicine	[Journal-nmod,j,o1,o1,o1,o1,o1,o1,o1,o3,u]
+	?a is/are likely ?b	[likely-amod,c,e,n2]
+		?a: a forum	[forum-appos,i,o1,o3]
+		?b: to bring new attention to the problem	[bring-xcomp,k,o1,o1,o1,o1,o1,o1]
+	?a bring ?b to ?c	[bring-xcomp,a2,c,n1,n2,n2,n6,u]
+		?a: a forum likely	[forum-appos,cut_borrow_other,o1,o1,o3]
+		?b: new attention	[attention-dobj,g1(dobj),o1]
+		?c: the problem	[problem-nmod,h1,o1,o2]
+	?a is/are new	[new-amod,e]
+		?a: attention	[attention-dobj,i,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_4
+sentence: A Lorillard spokewoman said , `` This is an old story .
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n1,n1,n2,n2,u]
+		?a: A Lorillard spokewoman	[spokewoman-nsubj,g1(nsubj),o1,o1]
+		?b: SOMETHING := This is an old story	[story-ccomp,k,o1,o1,o1,o1]
+	?a is/are old	[old-amod,e]
+		?a: an story	[story-ccomp,i,o1,o3,o4,o4]
+	?a is an old story	[story-ccomp,a1,c,n1,n1,n1,n2]
+		?a: This	[This-nsubj,g1(nsubj)]
+
+
+label:    wsj/00/wsj_0003.mrg_5
+sentence: We 're talking about years ago before anyone heard of asbestos having any questionable properties .
+
+ppatt:
+	?a 're talking	[talking-root,c,c,n1,n1,n2,n3,u]
+		?a: We	[We-nsubj,g1(nsubj)]
+	?a about years ago	[years-advcl,b,n1,n1,n3]
+		?a: We	[We-nsubj,borrow-subj(years/4,talking/2,advcl),g1(nsubj)]
+	?a heard	[heard-advcl,b,n1,n2,n3,u]
+		?a: anyone	[anyone-nsubj,g1(nsubj)]
+	?a having ?b	[having-advcl,b,n1,n2,n2,u]
+		?a: asbestos	[asbestos-nsubj,g1(nsubj)]
+		?b: any questionable properties	[properties-dobj,g1(dobj),o1,o1]
+	?a is/are questionable	[questionable-amod,e]
+		?a: any properties	[properties-dobj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_7
+sentence: Neither Lorillard nor the researchers who studied the workers were aware of any research on smokers of the Kent cigarettes .
+
+ppatt:
+	?a studied ?b	[studied-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: the researchers	[researchers-conj,arg_resolve_relcl,o1,o3]
+		?b: the workers	[workers-dobj,g1(dobj),o1]
+	?a were aware of ?b	[aware-root,c,n1,n1,n2,n2,n6,u]
+		?a: Lorillard	[Lorillard-nsubj,g1(nsubj),o5,o5,o6]
+		?b: any research on smokers of the Kent cigarettes	[research-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2]
+	?a were aware of ?b	[aware-root,c,n1,n1,n2,n2,n6,u]
+		?a: the researchers	[researchers-conj,m,o1,o4]
+		?b: any research on smokers of the Kent cigarettes	[research-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2]
+
+
+label:    wsj/00/wsj_0003.mrg_8
+sentence: `` We have no useful information on whether users are at risk , '' said James A. Talcott of Boston 's Dana-Farber Cancer Institute .
+
+ppatt:
+	?a have ?b	[have-ccomp,a1,c,c,n2,n2]
+		?a: We	[We-nsubj,g1(nsubj)]
+		?b: no useful information	[information-dobj,g1(dobj),o1,o1,o4]
+	?a is/are useful	[useful-amod,e]
+		?a: information	[information-dobj,i,o3,o4,o4]
+	?a ?b are at risk	[risk-acl,b,n1,n1,n1,n1,n2,pred_resolve_relcl,u]
+		?a: useful information	[information-dobj,arg_resolve_relcl,o1,o3,o4]
+		?b: users	[users-nsubj,g1(nsubj)]
+	?a said ?b	[said-root,c,c,n1,n1,n1,n1,n2,n2,u]
+		?a: SOMETHING := We have no useful information	[have-ccomp,k,o1,o1,o1,o1,o4]
+		?b: James A. Talcott of Boston 's Dana-Farber Cancer Institute	[Talcott-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[Boston-nmod:poss,n1,n6,n6,v]
+		?a: Boston	[Boston-nmod:poss,o2,w2]
+		?b: Dana-Farber Cancer Institute	[Institute-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0003.mrg_9
+sentence: Dr. Talcott led a team of researchers from the National Cancer Institute and the medical schools of Harvard University and Boston University .
+
+ppatt:
+	?a led ?b	[led-root,c,c,n1,n2,n2,u]
+		?a: Dr. Talcott	[Talcott-nsubj,g1(nsubj),o1]
+		?b: a team of researchers from the National Cancer Institute and the medical schools of Harvard University and Boston University	[team-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are medical	[medical-amod,e]
+		?a: the schools of Harvard University and Boston University	[schools-conj,i,o1,o1,o1,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_10
+sentence: The Lorillard spokeswoman said asbestos was used in `` very modest amounts '' in making paper for the filters in the early 1950s and replaced with a different type of filter in 1956 .
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: The Lorillard spokeswoman	[spokeswoman-nsubj,g1(nsubj),o1,o1]
+		?b: SOMETHING := asbestos was used in `` very modest amounts '' in the early 1950s	[used-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,o5,o6]
+	?a was used in ?b in ?c	[used-ccomp,a1,c,c,n1,n2,n2,n2,n3,n3,n5,n6,n6]
+		?a: asbestos	[asbestos-nsubjpass,g1(nsubjpass)]
+		?b: very modest amounts	[amounts-nmod,h1,o1,o1,o1,o1,o2,u]
+		?c: the early 1950s	[1950s-nmod,h1,o1,o1,o2]
+	?a is/are very modest	[modest-amod,e,n1]
+		?a: amounts	[amounts-nmod,i,o1,o1,o3,u]
+	?a making ?b	[making-advcl,b,n1,n2,u]
+		?a: asbestos	[asbestos-nsubjpass,borrow-subj(making/14,used/6,advcl),g1(nsubjpass)]
+		?b: paper for the filters	[paper-dobj,g1(dobj),o1,o1,o1]
+	?a is/are early	[early-amod,e]
+		?a: the 1950s	[1950s-nmod,i,o1,o3]
+	?a replaced with ?b in ?c	[replaced-conj,f,n2,n2,n6,n6]
+		?a: asbestos	[asbestos-nsubjpass,borrow-subj(replaced/24,used/6,conj),g1(nsubjpass)]
+		?b: a different type of filter	[type-nmod,h1,o1,o1,o1,o1,o2]
+		?c: 1956	[1956-nmod,h1,o2]
+	?a is/are different	[different-amod,e]
+		?a: a type of filter	[type-nmod,i,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_11
+sentence: From 1953 to 1955 , 9.8 billion Kent cigarettes with the filters were sold , the company said .
+
+ppatt:
+	From ?a , ?b were sold	[sold-ccomp,a1,c,n1,n1,n2,n2,n6]
+		?a: 1953 to 1955	[1953-nmod,h1,o1,o1,o2]
+		?b: 9.8 billion Kent cigarettes with the filters	[cigarettes-nsubjpass,g1(nsubjpass),o1,o1,o1,o1,o1,o1]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := From 1953 to 1955 , 9.8 billion Kent cigarettes with the filters were sold	[sold-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+		?b: the company	[company-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_12
+sentence: Among 33 men who worked closely with the substance , 28 have died -- more than three times the expected number .
+
+ppatt:
+	?a worked closely with ?b	[worked-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n2,n2,n6,pred_resolve_relcl]
+		?a: 33 men	[men-nmod,arg_resolve_relcl,o1,o3]
+		?b: the substance	[substance-nmod,h1,o1,o2]
+	Among ?a , ?b have died ?c	[died-root,c,c,n1,n1,n1,n1,n2,n2,n2,n6,u]
+		?a: 33 men	[men-nmod,h1,o1,o2,o4]
+		?b: 28	[28-nsubj,g1(nsubj)]
+		?c: more than three times the expected number	[number-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+
+
+label:    wsj/00/wsj_0003.mrg_13
+sentence: Four of the five surviving workers have asbestos-related diseases , including three with recently diagnosed cancer .
+
+ppatt:
+	?a have ?b , including ?c	[have-root,c,c,n1,n1,n2,n2,n2,n6,u]
+		?a: Four of the five surviving workers	[Four-nsubj,g1(nsubj),o1,o1,o1,o1,o1]
+		?b: asbestos-related diseases	[diseases-dobj,g1(dobj),o1]
+		?c: three with recently diagnosed cancer	[three-nmod,h1,o1,o1,o1,o1,o2]
+	?a is/are asbestos-related	[asbestos-related-amod,e]
+		?a: diseases	[diseases-dobj,i,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_14
+sentence: The total of 18 deaths from malignant mesothelioma , lung cancer and asbestosis was far higher than expected , the researchers said .
+
+ppatt:
+	?a is/are malignant	[malignant-amod,e]
+		?a: mesothelioma	[mesothelioma-nmod,i,o1,o3,o5,o6,o6,u]
+	?a was far higher ?b	[higher-ccomp,a1,c,c,n1,n1,n2,n2]
+		?a: The total of 18 deaths from malignant mesothelioma , lung cancer and asbestosis	[total-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+		?b: SOMETHING := than expected	[expected-ccomp,k,o1]
+	?a expected	[expected-ccomp,a1,n1,u]
+		?a: The total of 18 deaths from malignant mesothelioma , lung cancer and asbestosis	[total-nsubj,borrow-subj(expected/17,higher/15,ccomp),g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := The total of 18 deaths from malignant mesothelioma , lung cancer and asbestosis was far higher than expected	[higher-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+		?b: the researchers	[researchers-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_15
+sentence: `` The morbidity rate is a striking finding among those of us who study asbestos-related diseases , '' said Dr. Talcott .
+
+ppatt:
+	?a is/are striking	[striking-amod,e]
+		?a: a finding among those of us	[finding-ccomp,i,o1,o1,o1,o1,o1,o3,o4,o4,o4]
+	?a is a striking finding among ?b	[finding-ccomp,a1,c,n1,n1,n1,n2,n2,n6]
+		?a: The morbidity rate	[rate-nsubj,g1(nsubj),o1,o1]
+		?b: those of us	[those-nmod,h1,o1,o1,o2,o4]
+	?a study ?b	[study-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: those of us	[those-nmod,arg_resolve_relcl,o1,o1,o3]
+		?b: asbestos-related diseases	[diseases-dobj,g1(dobj),o1]
+	?a is/are asbestos-related	[asbestos-related-amod,e]
+		?a: diseases	[diseases-dobj,i,o3]
+	?a said ?b	[said-root,c,c,n1,n1,n1,n1,n2,n2,u]
+		?a: SOMETHING := The morbidity rate is a striking finding among those of us	[finding-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+		?b: Dr. Talcott	[Talcott-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_16
+sentence: The percentage of lung cancer deaths among the workers at the West Groton , Mass. , paper factory appears to be the highest for any asbestos workers studied in Western industrialized countries , he said .
+
+ppatt:
+	?a appears ?b	[appears-ccomp,a1,c,c,n2,n2]
+		?a: The percentage of lung cancer deaths among the workers at the paper factory	[percentage-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+		?b: SOMETHING := to be the highest for any asbestos workers	[highest-xcomp,k,o1,o1,o1,o1,o1,o1,o1,o4]
+	?a be the highest for ?b	[highest-xcomp,a2,n1,n1,n1,n2,n6,u]
+		?a: The percentage of lung cancer deaths among the workers at the paper factory	[percentage-nsubj,cut_borrow_subj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+		?b: any asbestos workers	[workers-nmod,h1,o1,o1,o2,o4]
+	?a studied in ?b	[studied-acl:relcl,b,n2,n6,pred_resolve_relcl]
+		?a: any asbestos workers	[workers-nmod,arg_resolve_relcl,o1,o1,o3]
+		?b: Western industrialized countries	[countries-nmod,h1,o1,o1,o2]
+	?a is/are Western	[Western-amod,e]
+		?a: industrialized countries	[countries-nmod,i,o1,o3]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := The percentage of lung cancer deaths among the workers at the paper factory appears to be the highest for any asbestos workers	[appears-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,o4]
+		?b: he	[he-nsubj,g1(nsubj)]
+
+
+label:    wsj/00/wsj_0003.mrg_17
+sentence: The plant , which is owned by Hollingsworth & Vose Co. , was under contract with Lorillard to make the cigarette filters .
+
+ppatt:
+	?a is owned by ?b	[owned-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n2,n2,n6,pred_resolve_relcl]
+		?a: The plant	[plant-nsubj,arg_resolve_relcl,o1,o1,o1,o3,u]
+		?b: Hollingsworth & Vose Co.	[Co.-nmod,h1,o1,o1,o1,o2]
+	?a was under contract with ?b	[contract-root,c,n1,n1,n1,n2,n2,n3,n6,u]
+		?a: The plant	[plant-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: Lorillard	[Lorillard-nmod,h1,o2]
+	?a make ?b	[make-acl,b,n1,n2,pred_resolve_relcl,u]
+		?a: contract with Lorillard	[contract-root,arg_resolve_relcl,o1,o1,o1,o3,o4,o4,u]
+		?b: the cigarette filters	[filters-dobj,g1(dobj),o1,o1]
+
+
+label:    wsj/00/wsj_0003.mrg_18
+sentence: The finding probably will support those who argue that the U.S. should regulate the class of asbestos including crocidolite more stringently than the common kind of asbestos , chrysotile , found in most schools and other buildings , Dr. Talcott said .
+
+ppatt:
+	?a probably will support ?b	[support-ccomp,a1,c,c,n1,n1,n2,n2]
+		?a: The finding	[finding-nsubj,g1(nsubj),o1]
+		?b: those	[those-dobj,g1(dobj),o4]
+	?a argue ?b	[argue-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: those	[those-dobj,arg_resolve_relcl,o3]
+		?b: SOMETHING := the U.S. should regulate the class of asbestos including crocidolite more stringently than the common kind of asbestos	[regulate-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,o4,u]
+	?a should regulate ?b more stringently than ?c	[regulate-ccomp,a1,c,c,n1,n1,n1,n1,n2,n2,n2,n6,u]
+		?a: the U.S.	[U.S.-nsubj,g1(nsubj),o1]
+		?b: the class of asbestos including crocidolite	[class-dobj,g1(dobj),o1,o1,o1,o1,o1]
+		?c: the common kind of asbestos	[kind-nmod,h2,o1,o1,o1,o1,o1,o1,o2,o4,o4,u]
+	?a is/are common	[common-amod,e]
+		?a: the kind of asbestos	[kind-nmod,i,o1,o1,o1,o1,o1,o3,o4,o4,u]
+	?a is/are chrysotile	[chrysotile-appos,d]
+		?a: the common kind of asbestos	[kind-nmod,j,o1,o1,o1,o1,o1,o1,o3,o4,u]
+	?a found in ?b	[found-acl,b,n2,n6,pred_resolve_relcl]
+		?a: the common kind of asbestos	[kind-nmod,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3,o4,u]
+		?b: most schools	[schools-nmod,h1,o1,o2,o5,o6]
+	?a found in ?b	[found-acl,b,n2,n6,pred_resolve_relcl]
+		?a: the common kind of asbestos	[kind-nmod,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3,o4,u]
+		?b: other buildings	[buildings-conj,m,o1]
+	?a is/are most	[most-amod,e]
+		?a: schools	[schools-nmod,i,o3,o5,o6]
+	?a is/are other	[other-amod,e]
+		?a: buildings	[buildings-conj,i,o3]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := The finding probably will support those	[support-ccomp,k,o1,o1,o1,o1,o1,o4]
+		?b: Dr. Talcott	[Talcott-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_19
+sentence: The U.S. is one of the few industrialized nations that does n't have a higher standard of regulation for the smooth , needle-like fibers such as crocidolite that are classified as amphobiles , according to Brooke T. Mossman , a professor of pathlogy at the University of Vermont College of Medicine .
+
+ppatt:
+	?a is one of ?b , according to ?c	[one-root,c,n1,n1,n1,n2,n2,n2,n6,n6,u]
+		?a: The U.S.	[U.S.-nsubj,g1(nsubj),o1]
+		?b: the few industrialized nations	[nations-nmod,h1,o1,o1,o1,o2,o4]
+		?c: Brooke T. Mossman	[Mossman-nmod,h1,o1,o1,o1,o2,o4,u]
+	?a is/are few	[few-amod,e]
+		?a: the industrialized nations	[nations-nmod,i,o1,o1,o3,o4]
+	?a does n't have ?b	[have-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n1,n2,n2,pred_resolve_relcl]
+		?a: the few industrialized nations	[nations-nmod,arg_resolve_relcl,o1,o1,o1,o3]
+		?b: a higher standard of regulation for the smooth , needle-like fibers such as crocidolite	[standard-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+	?a is/are higher	[higher-amod,e]
+		?a: a standard of regulation for the smooth , needle-like fibers such crocidolite	[standard-dobj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4,o4]
+	?a is/are smooth	[smooth-amod,e]
+		?a: the , needle-like fibers such crocidolite	[fibers-nmod,i,o1,o1,o1,o1,o1,o3,o4,o4]
+	?a is/are needle-like	[needle-like-amod,e]
+		?a: the smooth , fibers such crocidolite	[fibers-nmod,i,o1,o1,o1,o1,o1,o3,o4,o4]
+	?a are classified as ?b	[classified-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n2,n2,n6,pred_resolve_relcl]
+		?a: the smooth , needle-like fibers such crocidolite	[fibers-nmod,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3,o4]
+		?b: amphobiles	[amphobiles-nmod,h1,o2]
+	?a is/are a professor of ?b at ?c	[professor-appos,d,n1,n2,n2,n6,n6]
+		?a: Brooke T. Mossman	[Mossman-nmod,j,o1,o1,o1,o3,u]
+		?b: pathlogy	[pathlogy-nmod,h1,o2]
+		?c: the College of Medicine	[College-nmod,h1,o1,o1,o1,o2,o4]
+
+
+label:    wsj/00/wsj_0003.mrg_20
+sentence: More common chrysotile fibers are curly and are more easily rejected by the body , Dr. Mossman explained .
+
+ppatt:
+	?a is/are common	[common-amod,e]
+		?a: More chrysotile fibers	[fibers-nsubj,i,o1,o1,o3]
+	?a are curly	[curly-ccomp,a1,c,n1,n2,n3,n5]
+		?a: More common chrysotile fibers	[fibers-nsubj,g1(nsubj),o1,o1,o1]
+	?a are more easily rejected by ?b	[rejected-conj,f,n1,n1,n1,n2,n6]
+		?a: More common chrysotile fibers	[fibers-nsubj,borrow-subj(rejected/10,curly/5,conj),g1(nsubj),o1,o1,o1]
+		?b: the body	[body-nmod,h1,o1,o2]
+	?a ?b explained	[explained-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := More common chrysotile fibers are curly	[curly-ccomp,k,o1,o1,o1,o1,o1,o5,o6]
+		?b: Dr. Mossman	[Mossman-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_21
+sentence: In July , the Environmental Protection Agency imposed a gradual ban on virtually all uses of asbestos .
+
+ppatt:
+	In ?a , ?b imposed ?c on ?d	[imposed-root,c,c,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: July	[July-nmod,h1,o2]
+		?b: the Environmental Protection Agency	[Agency-nsubj,g1(nsubj),o1,o1,o1]
+		?c: a gradual ban	[ban-dobj,g1(dobj),o1,o1]
+		?d: virtually all uses of asbestos	[uses-nmod,h1,o1,o1,o1,o1,o2]
+	?a is/are gradual	[gradual-amod,e]
+		?a: a ban	[ban-dobj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_22
+sentence: By 1997 , almost all remaining uses of cancer-causing asbestos will be outlawed .
+
+ppatt:
+	?a is/are cancer-causing	[cancer-causing-amod,e]
+		?a: asbestos	[asbestos-nmod,i,o3]
+	By ?a , ?b will be outlawed	[outlawed-root,c,n1,n1,n1,n1,n2,n2,n6,u]
+		?a: 1997	[1997-nmod,h1,o2]
+		?b: almost all remaining uses of cancer-causing asbestos	[uses-nsubjpass,g1(nsubjpass),o1,o1,o1,o1,o1,o1]
+
+
+label:    wsj/00/wsj_0003.mrg_23
+sentence: About 160 workers at a factory that made paper for the Kent filters were exposed to asbestos in the 1950s .
+
+ppatt:
+	?a made ?b	[made-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: a factory	[factory-nmod,arg_resolve_relcl,o1,o3]
+		?b: paper for the Kent filters	[paper-dobj,g1(dobj),o1,o1,o1,o1]
+	?a were exposed to ?b in ?c	[exposed-root,c,n1,n1,n2,n2,n2,n6,n6,u]
+		?a: About 160 workers at a factory	[workers-nsubjpass,g1(nsubjpass),o1,o1,o1,o1,o1,o4]
+		?b: asbestos	[asbestos-nmod,h1,o2]
+		?c: the 1950s	[1950s-nmod,h1,o1,o2]
+
+
+label:    wsj/00/wsj_0003.mrg_24
+sentence: Areas of the factory were particularly dusty where the crocidolite was used .
+
+ppatt:
+	?a were particularly dusty	[dusty-root,c,c,n1,n1,n1,n2,n3,u]
+		?a: Areas of the factory	[Areas-nsubj,g1(nsubj),o1,o1,o1]
+	where ?a was used	[used-advcl,b,n1,n1,n2]
+		?a: the crocidolite	[crocidolite-nsubjpass,g1(nsubjpass),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_25
+sentence: Workers dumped large burlap sacks of the imported material into a huge bin , poured in cotton and acetate fibers and mechanically mixed the dry fibers in a process used to make filters .
+
+ppatt:
+	?a dumped ?b into ?c	[dumped-root,c,c,n1,n1,n2,n2,n2,n3,n3,n5,n6,u]
+		?a: Workers	[Workers-nsubj,g1(nsubj)]
+		?b: large burlap sacks of the imported material	[sacks-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+		?c: a huge bin	[bin-nmod,h1,o1,o1,o2]
+	?a is/are large	[large-amod,e]
+		?a: burlap sacks of the imported material	[sacks-dobj,i,o1,o1,o1,o1,o1,o3]
+	?a is/are huge	[huge-amod,e]
+		?a: a bin	[bin-nmod,i,o1,o3]
+	?a poured in ?b	[poured-conj,f,n1,n2]
+		?a: Workers	[Workers-nsubj,borrow-subj(poured/14,dumped/1,conj),g1(nsubj)]
+		?b: cotton and acetate fibers	[fibers-dobj,g1(dobj),o1,o1,o1]
+	?a mechanically mixed ?b in ?c	[mixed-conj,f,n1,n2,n2,n6]
+		?a: Workers	[Workers-nsubj,borrow-subj(mixed/22,dumped/1,conj),g1(nsubj)]
+		?b: the dry fibers	[fibers-dobj,g1(dobj),o1,o1]
+		?c: a process	[process-nmod,h1,o1,o2,o4]
+	?a is/are dry	[dry-amod,e]
+		?a: the fibers	[fibers-dobj,i,o1,o3]
+	?a used ?b	[used-acl:relcl,b,n2,pred_resolve_relcl]
+		?a: a process	[process-nmod,arg_resolve_relcl,o1,o3]
+		?b: SOMETHING := to make filters	[make-xcomp,k,o1,o1]
+	in ?a to make ?b	[make-xcomp,a2,n1,n2,n6]
+		?a: a process	[process-nmod,cut_borrow_other,o1,o2,o4]
+		?b: filters	[filters-dobj,g1(dobj)]
+
+
+label:    wsj/00/wsj_0003.mrg_26
+sentence: Workers described `` clouds of blue dust '' that hung over parts of the factory , even though exhaust fans ventilated the area .
+
+ppatt:
+	?a described ?b	[described-root,c,c,n1,n2,n2,u]
+		?a: Workers	[Workers-nsubj,g1(nsubj)]
+		?b: clouds of blue dust	[clouds-dobj,g1(dobj),o1,o1,o1,o1,o1,o4,u]
+	?a is/are blue	[blue-amod,e]
+		?a: dust	[dust-nmod,i,o3]
+	?a hung over ?b	[hung-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n2,n2,n3,n6,pred_resolve_relcl,u]
+		?a: clouds of blue dust	[clouds-dobj,arg_resolve_relcl,o1,o1,o1,o1,o1,o3,u]
+		?b: parts of the factory	[parts-nmod,h1,o1,o1,o1,o2]
+	even though ?a ventilated ?b	[ventilated-advcl,b,n1,n1,n2,n2]
+		?a: exhaust fans	[fans-nsubj,g1(nsubj),o1]
+		?b: the area	[area-dobj,g1(dobj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_27
+sentence: `` There 's no question that some of those workers and managers contracted asbestos-related diseases , '' said Darrell Phillips , vice president of human resources for Hollingsworth & Vose .
+
+ppatt:
+	There 's ?a	['s-ccomp,a1,c,n1,n2]
+		?a: no question	[question-nsubj,g1(nsubj),o1,o4]
+	?a is/are asbestos-related	[asbestos-related-amod,e]
+		?a: diseases	[diseases-dobj,i,o3]
+	?a said ?b	[said-root,c,c,n1,n1,n1,n1,n2,n2,u]
+		?a: SOMETHING := There 's no question	['s-ccomp,k,o1,o1,o1,o4]
+		?b: Darrell Phillips	[Phillips-nsubj,g1(nsubj),o1,o1,o4,u]
+	?a is/are vice president of ?b for ?c	[president-appos,d,n1,n2,n2,n6,n6]
+		?a: Darrell Phillips	[Phillips-nsubj,j,o1,o1,o3,u]
+		?b: human resources	[resources-nmod,h1,o1,o2]
+		?c: Hollingsworth	[Hollingsworth-nmod,h1,o2,o5,o6]
+	?a is/are vice president of ?b for ?c	[president-appos,d,n1,n2,n2,n6,n6]
+		?a: Darrell Phillips	[Phillips-nsubj,j,o1,o1,o3,u]
+		?b: human resources	[resources-nmod,h1,o1,o2]
+		?c: Vose	[Vose-conj,m]
+	?a is/are human	[human-amod,e]
+		?a: resources	[resources-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_28
+sentence: `` But you have to recognize that these events took place 35 years ago .
+
+ppatt:
+	?a have ?b	[have-root,c,c,n1,n1,n2,n2,n5,u]
+		?a: you	[you-nsubj,g1(nsubj)]
+		?b: SOMETHING := to recognize	[recognize-xcomp,k,o1,o4]
+	?a recognize ?b	[recognize-xcomp,a2,c,n1,n2,u]
+		?a: you	[you-nsubj,cut_borrow_subj,g1(nsubj)]
+		?b: SOMETHING := these events took place 35 years ago	[took-ccomp,k,o1,o1,o1,o1,o1,o1,o1,u]
+	?a took ?b 35 years ago	[took-ccomp,a1,c,c,n1,n1,n1,n1,n2,n2,u]
+		?a: these events	[events-nsubj,g1(nsubj),o1]
+		?b: place	[place-dobj,g1(dobj)]
+
+
+label:    wsj/00/wsj_0003.mrg_29
+sentence: It has no bearing on our work force today .
+
+ppatt:
+	?a has ?b	[has-root,c,c,n1,n2,n2,u]
+		?a: It	[It-nsubj,g1(nsubj)]
+		?b: no bearing on our work force today	[bearing-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[our-nmod:poss,n6,v]
+		?a: our	[our-nmod:poss,w2]
+		?b: work force today	[force-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0004.mrg_0
+sentence: Yields on money-market mutual funds continued to slide , amid signs that portfolio managers expect further declines in interest rates .
+
+ppatt:
+	?a is/are money-market	[money-market-amod,e]
+		?a: mutual funds	[funds-nmod,i,o1,o3]
+	?a is/are mutual	[mutual-amod,e]
+		?a: money-market funds	[funds-nmod,i,o1,o3]
+	?a continued ?b , amid ?c	[continued-root,c,c,n1,n1,n2,n2,n2,n6,u]
+		?a: Yields on money-market mutual funds	[Yields-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: SOMETHING := to slide	[slide-xcomp,k,o1]
+		?c: signs	[signs-nmod,h1,o2,o4]
+	?a slide	[slide-xcomp,a2,n1,u]
+		?a: Yields on money-market mutual funds	[Yields-nsubj,cut_borrow_subj,g1(nsubj),o1,o1,o1,o1]
+	?a expect ?b	[expect-ccomp,a1,c,c,n1,n2,n2,u]
+		?a: portfolio managers	[managers-nsubj,g1(nsubj),o1]
+		?b: further declines in interest rates	[declines-dobj,g1(dobj),o1,o1,o1,o1]
+	?a is/are further	[further-amod,e]
+		?a: declines in interest rates	[declines-dobj,i,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_1
+sentence: The average seven-day compound yield of the 400 taxable funds tracked by IBC 's Money Fund Report eased a fraction of a percentage point to 8.45 % from 8.47 % for the week ended Tuesday .
+
+ppatt:
+	?a is/are average	[average-amod,e]
+		?a: The seven-day compound yield of the 400 taxable funds	[yield-nsubj,i,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4]
+	?a is/are seven-day	[seven-day-amod,e]
+		?a: The average compound yield of the 400 taxable funds	[yield-nsubj,i,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4]
+	?a is/are taxable	[taxable-amod,e]
+		?a: the 400 funds	[funds-nmod,i,o1,o1,o3,o4]
+	?a tracked by ?b	[tracked-acl,b,n2,n6,pred_resolve_relcl]
+		?a: the 400 taxable funds	[funds-nmod,arg_resolve_relcl,o1,o1,o1,o3]
+		?b: IBC 's Money Fund Report	[Report-nmod,h1,o1,o1,o1,o1,o2]
+	?a poss ?b	[IBC-nmod:poss,n1,n6,n6,v]
+		?a: IBC	[IBC-nmod:poss,o2,w2]
+		?b: Money Fund Report	[Report-nmod,o1,o1,o2,o3,w1]
+	?a eased ?b to ?c from ?d for ?e	[eased-root,c,n1,n2,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: The average seven-day compound yield of the 400 taxable funds	[yield-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+		?b: a fraction of a percentage point	[fraction-nmod:npmod,h1,o1,o1,o1,o1,o1]
+		?c: 8.45 %	[%-nmod,h1,o1,o2]
+		?d: 8.47 %	[%-nmod,h1,o1,o2]
+		?e: the week	[week-nmod,h1,o1,o2,o4]
+	?a ended ?b	[ended-acl,b,n2,pred_resolve_relcl]
+		?a: the week	[week-nmod,arg_resolve_relcl,o1,o3]
+		?b: Tuesday	[Tuesday-nmod:tmod,h1]
+
+
+label:    wsj/00/wsj_0004.mrg_2
+sentence: Compound yields assume reinvestment of dividends and that the current yield continues for a year .
+
+ppatt:
+	?a assume ?b	[assume-root,c,c,n1,n2,n2,u]
+		?a: Compound yields	[yields-nsubj,g1(nsubj),o1]
+		?b: reinvestment of dividends	[reinvestment-dobj,g1(dobj),o1,o1,o5,o6]
+	?a assume ?b	[assume-root,c,c,n1,n2,n2,u]
+		?a: Compound yields	[yields-nsubj,g1(nsubj),o1]
+		?b: the current yield continues for a year	[continues-conj,m,o1,o1,o1,o1,o1,o1,o1,u]
+	?a is/are current	[current-amod,e]
+		?a: the yield	[yield-nsubj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_3
+sentence: Average maturity of the funds ' investments lengthened by a day to 41 days , the longest since early August , according to Donoghue 's .
+
+ppatt:
+	?a is/are Average	[Average-amod,e]
+		?a: maturity of the funds ' investments	[maturity-nsubj,i,o1,o1,o1,o1,o1,o3]
+	?a poss ?b	[funds-nmod:poss,n1,n1,n6,n6,v]
+		?a: the funds	[funds-nmod:poss,o1,o2,w2]
+		?b: investments	[investments-nmod,o2,o3,w1]
+	?a lengthened by ?b to ?c according to ?d 's	[lengthened-root,c,n1,n2,n2,n2,n2,n6,n6,n6,n6,u]
+		?a: Average maturity of the funds ' investments	[maturity-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?b: a day	[day-nmod,h1,o1,o2]
+		?c: 41 days	[days-nmod,h1,o1,o1,o1,o2,o4,u]
+		?d: Donoghue	[Donoghue-nmod,h1,o2,o2]
+	?a is/are the longest since ?b	[longest-appos,d,n1,n2,n6]
+		?a: 41 days	[days-nmod,j,o1,o1,o1,o3,u]
+		?b: early August	[August-nmod,h1,o1,o2]
+	?a is/are early	[early-amod,e]
+		?a: August	[August-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_4
+sentence: Longer maturities are thought to indicate declining interest rates because they permit portfolio managers to retain relatively higher rates for a longer period .
+
+ppatt:
+	?a is/are Longer	[Longer-amod,e]
+		?a: maturities	[maturities-nsubjpass,i,o3]
+	?a are thought ?b	[thought-root,c,c,n1,n1,n2,n2,u]
+		?a: Longer maturities	[maturities-nsubjpass,g1(nsubjpass),o1]
+		?b: SOMETHING := to indicate declining interest rates	[indicate-xcomp,k,o1,o1,o1,o1,o4]
+	?a indicate ?b	[indicate-xcomp,a2,c,c,n1,n2,n3,u]
+		?a: Longer maturities	[maturities-nsubjpass,cut_borrow_subj,g1(nsubjpass),o1]
+		?b: declining interest rates	[rates-dobj,g1(dobj),o1,o1]
+	?a permit ?b ?c	[permit-advcl,b,n1,n2,n2,n2,u]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: portfolio managers	[managers-dobj,g1(dobj),o1]
+		?c: SOMETHING := to retain relatively higher rates for a longer period	[retain-xcomp,k,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a ?b retain ?c for ?d	[retain-xcomp,a2,n1,n2,n2,n6,u]
+		?a: they	[they-nsubj,borrow-subj(retain/15,permit/11,xcomp),g1(nsubj)]
+		?b: portfolio managers	[managers-dobj,cut_borrow_obj,g1(dobj),o1]
+		?c: relatively higher rates	[rates-dobj,g1(dobj),o1,o1]
+		?d: a longer period	[period-nmod,h1,o1,o1,o2]
+	?a is/are higher	[higher-amod,e]
+		?a: relatively rates	[rates-dobj,i,o1,o3]
+	?a is/are longer	[longer-amod,e]
+		?a: a period	[period-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_5
+sentence: Shorter maturities are considered a sign of rising rates because portfolio managers can capture higher rates sooner .
+
+ppatt:
+	?a is/are Shorter	[Shorter-amod,e]
+		?a: maturities	[maturities-nsubjpass,i,o3]
+	?a are considered ?b	[considered-root,c,c,c,n1,n1,n2,n2,n3,u]
+		?a: Shorter maturities	[maturities-nsubjpass,g1(nsubjpass),o1]
+		?b: SOMETHING := a sign of rising rates	[sign-xcomp,k,o1,o1,o1,o1]
+	?a is/are a sign of ?b	[sign-xcomp,a2,n1,n2,n6]
+		?a: Shorter maturities	[maturities-nsubjpass,cut_borrow_subj,g1(nsubjpass),o1]
+		?b: rising rates	[rates-nmod,h1,o1,o2]
+	?a can capture ?b sooner	[capture-advcl,b,n1,n1,n1,n2,n2,u]
+		?a: portfolio managers	[managers-nsubj,g1(nsubj),o1]
+		?b: higher rates	[rates-dobj,g1(dobj),o1]
+	?a is/are higher	[higher-amod,e]
+		?a: rates	[rates-dobj,i,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_6
+sentence: The average maturity for funds open only to institutions , considered by some to be a stronger indicator because those managers watch the market closely , reached a high point for the year -- 33 days .
+
+ppatt:
+	?a is/are average	[average-amod,e]
+		?a: The maturity for funds open only to institutions	[maturity-nsubj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4,u]
+	?a is/are open only to institutions	[open-amod,e,n1,n1,n1]
+		?a: funds	[funds-nmod,i,o3]
+	?a considered by ?b ?c	[considered-acl:relcl,b,n2,n2,n6,pred_resolve_relcl]
+		?a: The average maturity for funds open only to institutions	[maturity-nsubj,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,u]
+		?b: some	[some-nmod,h1,o2]
+		?c: SOMETHING := to be a stronger indicator	[indicator-xcomp,k,o1,o1,o1,o1,o4]
+	?a is/are stronger	[stronger-amod,e]
+		?a: a indicator	[indicator-xcomp,i,o1,o3,o4,o4,o4]
+	?a is/are be a stronger indicator	[indicator-xcomp,a2,n1,n1,n1,n1,n3,u]
+		?a: The average maturity for funds open only to institutions	[maturity-nsubj,arg_resolve_relcl,cut_borrow_subj,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,u]
+	?a watch ?b closely	[watch-advcl,b,n1,n1,n2,n2,u]
+		?a: those managers	[managers-nsubj,g1(nsubj),o1]
+		?b: the market	[market-dobj,g1(dobj),o1]
+	?a reached ?b	[reached-root,c,c,n1,n2,n2,u]
+		?a: The average maturity for funds open only to institutions	[maturity-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,u]
+		?b: a high point for the year	[point-dobj,g1(dobj),o1,o1,o1,o1,o1,o4]
+	?a is/are high	[high-amod,e]
+		?a: a point for the year	[point-dobj,i,o1,o1,o1,o1,o3,o4]
+
+
+label:    wsj/00/wsj_0004.mrg_7
+sentence: Nevertheless , said Brenda Malizia Negus , editor of Money Fund Report , yields `` may blip up again before they blip down '' because of recent rises in short-term interest rates .
+
+ppatt:
+	said ?a	[said-parataxis,c,n1,n1,n2,u]
+		?a: Brenda Malizia Negus	[Negus-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+	?a is/are editor of ?b	[editor-appos,d,n2,n6]
+		?a: Brenda Malizia Negus	[Negus-nsubj,j,o1,o1,o1,o3,u]
+		?b: Money Fund Report	[Report-nmod,h1,o1,o1,o2]
+	Nevertheless ?a `` may blip up again '' because of ?b	[blip-root,c,c,n1,n1,n1,n1,n1,n1,n1,n2,n2,n3,n3,n6,u]
+		?a: yields	[yields-nsubj,g1(nsubj)]
+		?b: recent rises in short-term interest rates	[rises-nmod,h1,o1,o1,o1,o1,o1,o2]
+	?a blip down	[blip-advcl,b,n1,n1,n2,u]
+		?a: they	[they-nsubj,g1(nsubj)]
+	?a is/are recent	[recent-amod,e]
+		?a: rises in short-term interest rates	[rises-nmod,i,o1,o1,o1,o1,o3]
+	?a is/are short-term	[short-term-amod,e]
+		?a: interest rates	[rates-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_8
+sentence: The yield on six-month Treasury bills sold at Monday 's auction , for example , rose to 8.04 % from 7.90 % .
+
+ppatt:
+	?a is/are six-month	[six-month-amod,e]
+		?a: Treasury bills	[bills-nmod,i,o1,o3,o4]
+	?a sold at ?b	[sold-acl,b,n2,n6,pred_resolve_relcl]
+		?a: six-month Treasury bills	[bills-nmod,arg_resolve_relcl,o1,o1,o3]
+		?b: Monday 's auction	[auction-nmod,h1,o1,o1,o2]
+	?a poss ?b	[Monday-nmod:poss,n1,n6,n6,v]
+		?a: Monday	[Monday-nmod:poss,o2,w2]
+		?b: auction	[auction-nmod,o2,o3,w1]
+	?a for ?b , rose to ?c from ?d	[rose-root,c,n1,n1,n1,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: The yield on six-month Treasury bills	[yield-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o4]
+		?b: example	[example-nmod,h1,o2]
+		?c: 8.04 %	[%-nmod,h1,o1,o2]
+		?d: 7.90 %	[%-nmod,h1,o1,o2]
+
+
+label:    wsj/00/wsj_0004.mrg_9
+sentence: Despite recent declines in yields , investors continue to pour cash into money funds .
+
+ppatt:
+	?a is/are recent	[recent-amod,e]
+		?a: declines in yields	[declines-nmod,i,o1,o1,o3]
+	Despite ?a , ?b continue ?c	[continue-root,c,c,n1,n1,n2,n2,n2,n6,u]
+		?a: recent declines in yields	[declines-nmod,h1,o1,o1,o1,o2]
+		?b: investors	[investors-nsubj,g1(nsubj)]
+		?c: SOMETHING := to pour cash into money funds	[pour-xcomp,k,o1,o1,o1,o1,o1]
+	?a pour ?b into ?c	[pour-xcomp,a2,c,n1,n2,n2,n6,u]
+		?a: investors	[investors-nsubj,cut_borrow_subj,g1(nsubj)]
+		?b: cash	[cash-dobj,g1(dobj)]
+		?c: money funds	[funds-nmod,h1,o1,o2]
+
+
+label:    wsj/00/wsj_0004.mrg_10
+sentence: Assets of the 400 taxable funds grew by $ 1.5 billion during the latest week , to $ 352.7 billion .
+
+ppatt:
+	?a is/are taxable	[taxable-amod,e]
+		?a: the 400 funds	[funds-nmod,i,o1,o1,o3]
+	?a grew by ?b during ?c , to ?d	[grew-root,c,n1,n1,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: Assets of the 400 taxable funds	[Assets-nsubj,g1(nsubj),o1,o1,o1,o1,o1]
+		?b: $ 1.5 billion	[$-nmod,h1,o1,o1,o2]
+		?c: the latest week	[week-nmod,h1,o1,o1,o2]
+		?d: $ 352.7 billion	[$-nmod,h1,o1,o1,o2]
+	?a is/are latest	[latest-amod,e]
+		?a: the week	[week-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_11
+sentence: Typically , money-fund yields beat comparable short-term investments because portfolio managers can vary maturities and go after the highest rates .
+
+ppatt:
+	Typically , ?a beat ?b	[beat-root,c,c,c,n1,n1,n1,n2,n2,n3,u]
+		?a: money-fund yields	[yields-nsubj,g1(nsubj),o1]
+		?b: comparable short-term investments	[investments-dobj,g1(dobj),o1,o1]
+	?a is/are comparable	[comparable-amod,e]
+		?a: short-term investments	[investments-dobj,i,o1,o3]
+	?a is/are short-term	[short-term-amod,e]
+		?a: comparable investments	[investments-dobj,i,o1,o3]
+	?a can vary ?b	[vary-advcl,b,n1,n1,n2,n2,n3,n5,u]
+		?a: portfolio managers	[managers-nsubj,g1(nsubj),o1]
+		?b: maturities	[maturities-dobj,g1(dobj)]
+	?a can go after ?b	[go-conj,f,n2,n6,pred_conj_borrow_aux_neg]
+		?a: portfolio managers	[managers-nsubj,borrow-subj(go/15,vary/12,conj),g1(nsubj),o1]
+		?b: the highest rates	[rates-nmod,h1,o1,o1,o2]
+	?a is/are highest	[highest-amod,e]
+		?a: the rates	[rates-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_12
+sentence: The top money funds are currently yielding well over 9 % .
+
+ppatt:
+	?a is/are top	[top-amod,e]
+		?a: The money funds	[funds-nsubj,i,o1,o1,o3]
+	?a are currently yielding ?b	[yielding-root,c,c,n1,n1,n1,n2,n2,u]
+		?a: The top money funds	[funds-nsubj,g1(nsubj),o1,o1,o1]
+		?b: well over 9 %	[%-dobj,g1(dobj),o1,o1,o1]
+
+
+label:    wsj/00/wsj_0004.mrg_13
+sentence: Dreyfus World-Wide Dollar , the top-yielding fund , had a seven-day compound yield of 9.37 % during the latest week , down from 9.45 % a week earlier .
+
+ppatt:
+	?a is/are top-yielding	[top-yielding-amod,e]
+		?a: the fund	[fund-appos,i,o1,o3]
+	?a is/are the top-yielding fund	[fund-appos,d,n1,n1]
+		?a: Dreyfus World-Wide Dollar	[Dollar-nsubj,j,o1,o1,o1,o1,o3,u]
+	?a had ?b during ?c , down from ?d	[had-root,c,c,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: Dreyfus World-Wide Dollar	[Dollar-nsubj,g1(nsubj),o1,o1,o1,o1,o4,u]
+		?b: a seven-day compound yield of 9.37 %	[yield-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+		?c: the latest week	[week-nmod,h1,o1,o1,o2]
+		?d: 9.45 % a week earlier	[%-nmod,h2,o1,o1,o1,o1,o2]
+	?a is/are seven-day	[seven-day-amod,e]
+		?a: a compound yield of 9.37 %	[yield-dobj,i,o1,o1,o1,o1,o1,o3]
+	?a is/are latest	[latest-amod,e]
+		?a: the week	[week-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_14
+sentence: It invests heavily in dollar-denominated securities overseas and is currently waiving management fees , which boosts its yield .
+
+ppatt:
+	?a invests heavily in ?b overseas	[invests-root,c,n1,n1,n1,n2,n2,n3,n5,n6,u]
+		?a: It	[It-nsubj,g1(nsubj)]
+		?b: dollar-denominated securities	[securities-nmod,h1,o1,o2]
+	?a is/are dollar-denominated	[dollar-denominated-amod,e]
+		?a: securities	[securities-nmod,i,o3]
+	?a is currently waiving ?b ?c	[waiving-conj,f,n1,n1,n1,n2,n2,u]
+		?a: It	[It-nsubj,borrow-subj(waiving/10,invests/1,conj),g1(nsubj)]
+		?b: management fees	[fees-dobj,g1(dobj),o1]
+		?c: SOMETHING := which boosts its yield	[boosts-ccomp,k,o1,o1,o1]
+	?a boosts ?b	[boosts-ccomp,a1,c,c,n2,n2]
+		?a: which	[which-nsubj,g1(nsubj)]
+		?b: its yield	[yield-dobj,g1(dobj),o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: yield	[yield-dobj,o3,w1]
+
+
+label:    wsj/00/wsj_0004.mrg_16
+sentence: The 30-day simple yield fell to an average 8.19 % from 8.22 % ; the 30-day compound yield slid to an average 8.53 % from 8.56 % .
+
+ppatt:
+	?a is/are 30-day	[30-day-amod,e]
+		?a: The simple yield	[yield-nsubj,i,o1,o1,o3]
+	?a is/are simple	[simple-amod,e]
+		?a: The 30-day yield	[yield-nsubj,i,o1,o1,o3]
+	?a fell to ?b from ?c	[fell-root,c,n1,n1,n2,n2,n2,n3,n6,n6,u]
+		?a: The 30-day simple yield	[yield-nsubj,g1(nsubj),o1,o1,o1]
+		?b: an average 8.19 %	[%-nmod,h1,o1,o1,o1,o2]
+		?c: 8.22 %	[%-nmod,h1,o1,o2]
+	?a is/are average	[average-amod,e]
+		?a: an 8.19 %	[%-nmod,i,o1,o1,o3]
+	?a is/are 30-day	[30-day-amod,e]
+		?a: the compound yield	[yield-nsubj,i,o1,o1,o3]
+	?a slid to ?b from ?c	[slid-parataxis,c,n2,n2,n2,n6,n6]
+		?a: the 30-day compound yield	[yield-nsubj,g1(nsubj),o1,o1,o1]
+		?b: an average 8.53 %	[%-nmod,h1,o1,o1,o1,o2]
+		?c: 8.56 %	[%-nmod,h1,o1,o2]
+	?a is/are average	[average-amod,e]
+		?a: an 8.53 %	[%-nmod,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0005.mrg_0
+sentence: J.P. Bolduc , vice chairman of W.R. Grace & Co. , which holds a 83.4 % interest in this energy-services company , was elected a director .
+
+ppatt:
+	?a is/are vice chairman of ?b	[chairman-appos,d,n1,n2,n6]
+		?a: J.P. Bolduc	[Bolduc-nsubjpass,j,o1,o1,o1,o3,u]
+		?b: W.R. Grace	[Grace-nmod,h1,o1,o1,o2,o4,o5,o6,u]
+	?a is/are vice chairman of ?b	[chairman-appos,d,n1,n2,n6]
+		?a: J.P. Bolduc	[Bolduc-nsubjpass,j,o1,o1,o1,o3,u]
+		?b: Co.	[Co.-conj,m]
+	?a holds ?b	[holds-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: W.R. Grace	[Grace-nmod,arg_resolve_relcl,o1,o1,o3,o5,o6,u]
+		?b: a 83.4 % interest in this energy-services company	[interest-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1]
+	?a holds ?b	[holds-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: Co.	[Co.-conj,m]
+		?b: a 83.4 % interest in this energy-services company	[interest-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1]
+	?a is/are energy-services	[energy-services-amod,e]
+		?a: this company	[company-nmod,i,o1,o3]
+	?a was elected ?b	[elected-root,c,c,n1,n1,n2,n2,u]
+		?a: J.P. Bolduc	[Bolduc-nsubjpass,g1(nsubjpass),o1,o1,o1,o4,u]
+		?b: SOMETHING := a director	[director-xcomp,k,o1]
+	?a is/are a director	[director-xcomp,a2,n1]
+		?a: J.P. Bolduc	[Bolduc-nsubjpass,cut_borrow_subj,g1(nsubjpass),o1,o1,o1,o4,u]
+
+
+label:    wsj/00/wsj_0005.mrg_1
+sentence: He succeeds Terrence D. Daniels , formerly a W.R. Grace vice chairman , who resigned .
+
+ppatt:
+	?a succeeds ?b	[succeeds-root,c,c,n1,n2,n2,u]
+		?a: He	[He-nsubj,g1(nsubj)]
+		?b: Terrence D. Daniels	[Daniels-dobj,g1(dobj),o1,o1,o1,o1,o4,o4,u]
+	?a is/are formerly a W.R. Grace vice chairman	[chairman-appos,d,n1,n1,n1,n1,n1]
+		?a: Terrence D. Daniels	[Daniels-dobj,j,o1,o1,o1,o1,o3,o4,u]
+	?a resigned	[resigned-acl:relcl,b,en_relcl_dummy_arg_filter,n2,pred_resolve_relcl]
+		?a: Terrence D. Daniels	[Daniels-dobj,arg_resolve_relcl,o1,o1,o1,o1,o3,o4,u]
+
+
+label:    wsj/00/wsj_0005.mrg_2
+sentence: W.R. Grace holds three of Grace Energy 's seven board seats .
+
+ppatt:
+	?a holds ?b	[holds-root,c,c,n1,n2,n2,u]
+		?a: W.R. Grace	[Grace-nsubj,g1(nsubj),o1]
+		?b: three of Grace Energy 's seven board seats	[three-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[Energy-nmod:poss,n1,n1,n6,n6,v]
+		?a: Grace Energy	[Energy-nmod:poss,o1,o2,w2]
+		?b: seven board seats	[seats-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0006.mrg_0
+sentence: Pacific First Financial Corp. said shareholders approved its acquisition by Royal Trustco Ltd. of Toronto for $ 27 a share , or $ 212 million .
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: Pacific First Financial Corp.	[Corp.-nsubj,g1(nsubj),o1,o1,o1]
+		?b: SOMETHING := shareholders approved its acquisition by Royal Trustco Ltd. of Toronto for $ 27 a share , or $ 212 million	[approved-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a approved ?b	[approved-ccomp,a1,c,c,n2,n2]
+		?a: shareholders	[shareholders-nsubj,g1(nsubj)]
+		?b: its acquisition by Royal Trustco Ltd. of Toronto for $ 27 a share , or $ 212 million	[acquisition-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: acquisition by Royal Trustco Ltd. of Toronto for $ 27 a share , or $ 212 million	[acquisition-dobj,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,w1]
+
+
+label:    wsj/00/wsj_0006.mrg_1
+sentence: The thrift holding company said it expects to obtain regulatory approval and complete the transaction by year-end .
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: The thrift holding company	[company-nsubj,g1(nsubj),o1,o1,o1]
+		?b: SOMETHING := it expects to obtain regulatory approval and complete the transaction by year-end	[expects-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a expects ?b	[expects-ccomp,a1,c,c,n2,n2]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: SOMETHING := to obtain regulatory approval by year-end	[obtain-xcomp,k,o1,o1,o1,o1,o1,o5,o6]
+	?a expects ?b	[expects-ccomp,a1,c,c,n2,n2]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: complete the transaction	[complete-conj,m,o1,o1]
+	?a obtain ?b by ?c	[obtain-xcomp,a2,c,n1,n2,n2,n3,n5,n6,u]
+		?a: it	[it-nsubj,cut_borrow_subj,g1(nsubj)]
+		?b: regulatory approval	[approval-dobj,g1(dobj),o1]
+		?c: year-end	[year-end-nmod,h1,o2]
+	?a is/are regulatory	[regulatory-amod,e]
+		?a: approval	[approval-dobj,i,o3]
+	?a expects complete ?b	[complete-conj,f,n2,pred_conj_borrow_tokens_xcomp]
+		?a: it	[it-nsubj,borrow-subj(complete/12,expects/6,conj),g1(nsubj)]
+		?b: the transaction	[transaction-dobj,g1(dobj),o1]
+
+
+label:    wsj/00/wsj_0007.mrg_0
+sentence: McDermott International Inc. said its Babcock & Wilcox unit completed the sale of its Bailey Controls Operations to Finmeccanica S.p . A. for $ 295 million .
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: McDermott International Inc.	[Inc.-nsubj,g1(nsubj),o1,o1]
+		?b: SOMETHING := its Babcock & Wilcox unit completed the sale of its Bailey Controls Operations to Finmeccanica S.p . A. for $ 295 million	[completed-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: Babcock	[Babcock-nsubj,o3,o5,o6,w1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: Wilcox unit	[unit-conj,m,o1]
+	?a completed ?b	[completed-ccomp,a1,c,c,n2,n2]
+		?a: its Babcock	[Babcock-nsubj,g1(nsubj),o1,o5,o6]
+		?b: the sale of its Bailey Controls Operations to Finmeccanica S.p . A. for $ 295 million	[sale-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a completed ?b	[completed-ccomp,a1,c,c,n2,n2]
+		?a: Wilcox unit	[unit-conj,m,o1]
+		?b: the sale of its Bailey Controls Operations to Finmeccanica S.p . A. for $ 295 million	[sale-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,n6,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: Bailey Controls Operations	[Operations-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0007.mrg_1
+sentence: Finmeccanica is an Italian state-owned holding company with interests in the mechanical engineering industry .
+
+ppatt:
+	?a is/are Italian	[Italian-amod,e]
+		?a: an state-owned holding company with interests in the mechanical engineering industry	[company-root,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4,o4,u]
+	?a is/are state-owned	[state-owned-amod,e]
+		?a: an Italian holding company with interests in the mechanical engineering industry	[company-root,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4,o4,u]
+	?a is an Italian state-owned holding company with ?b	[company-root,c,n1,n1,n1,n1,n1,n1,n2,n2,n6,u]
+		?a: Finmeccanica	[Finmeccanica-nsubj,g1(nsubj)]
+		?b: interests in the mechanical engineering industry	[interests-nmod,h1,o1,o1,o1,o1,o1,o2]
+	?a is/are mechanical	[mechanical-amod,e]
+		?a: the engineering industry	[industry-nmod,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0007.mrg_2
+sentence: Bailey Controls , based in Wickliffe , Ohio , makes computerized industrial controls systems .
+
+ppatt:
+	?a based in ?b	[based-acl,b,n2,n6,pred_resolve_relcl]
+		?a: Bailey Controls	[Controls-nsubj,arg_resolve_relcl,o1,o1,o1,o3,u]
+		?b: Wickliffe	[Wickliffe-nmod,h1,o1,o2,o4,u]
+	?a is/are Ohio	[Ohio-appos,d]
+		?a: Wickliffe	[Wickliffe-nmod,j,o1,o3,u]
+	?a makes ?b	[makes-root,c,c,n1,n2,n2,u]
+		?a: Bailey Controls	[Controls-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: computerized industrial controls systems	[systems-dobj,g1(dobj),o1,o1,o1]
+	?a is/are computerized	[computerized-amod,e]
+		?a: industrial controls systems	[systems-dobj,i,o1,o1,o3]
+	?a is/are industrial	[industrial-amod,e]
+		?a: computerized controls systems	[systems-dobj,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0007.mrg_3
+sentence: It employs 2,700 people and has annual revenue of about $ 370 million .
+
+ppatt:
+	?a employs ?b	[employs-root,c,c,n1,n2,n2,n3,n5,u]
+		?a: It	[It-nsubj,g1(nsubj)]
+		?b: 2,700 people	[people-dobj,g1(dobj),o1]
+	?a has ?b	[has-conj,f,n2]
+		?a: It	[It-nsubj,borrow-subj(has/5,employs/1,conj),g1(nsubj)]
+		?b: annual revenue of about $ 370 million	[revenue-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+	?a is/are annual	[annual-amod,e]
+		?a: revenue of about $ 370 million	[revenue-dobj,i,o1,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0008.mrg_0
+sentence: The federal government suspended sales of U.S. savings bonds because Congress has n't lifted the ceiling on government debt .
+
+ppatt:
+	?a is/are federal	[federal-amod,e]
+		?a: The government	[government-nsubj,i,o1,o3]
+	?a suspended ?b	[suspended-root,c,c,c,n1,n2,n2,n3,u]
+		?a: The federal government	[government-nsubj,g1(nsubj),o1,o1]
+		?b: sales of U.S. savings bonds	[sales-dobj,g1(dobj),o1,o1,o1,o1]
+	?a has n't lifted ?b	[lifted-advcl,b,n1,n1,n1,n2,n2,u]
+		?a: Congress	[Congress-nsubj,g1(nsubj)]
+		?b: the ceiling on government debt	[ceiling-dobj,g1(dobj),o1,o1,o1,o1]
+
+
+label:    wsj/00/wsj_0008.mrg_1
+sentence: Until Congress acts , the government has n't any authority to issue new debt obligations of any kind , the Treasury said .
+
+ppatt:
+	?a acts	[acts-advcl,b,n1,n2,u]
+		?a: Congress	[Congress-nsubj,g1(nsubj)]
+	?a has n't ?b	[has-ccomp,a1,c,c,c,n1,n1,n2,n2,n3,u]
+		?a: the government	[government-nsubj,g1(nsubj),o1]
+		?b: any authority	[authority-dobj,g1(dobj),o1,o4]
+	?a issue ?b	[issue-acl,b,n1,n2,pred_resolve_relcl,u]
+		?a: any authority	[authority-dobj,arg_resolve_relcl,o1,o3]
+		?b: new debt obligations of any kind	[obligations-dobj,g1(dobj),o1,o1,o1,o1,o1]
+	?a is/are new	[new-amod,e]
+		?a: debt obligations of any kind	[obligations-dobj,i,o1,o1,o1,o1,o3]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := the government has n't any authority	[has-ccomp,k,o1,o1,o1,o1,o1,o1,o4,o4,u]
+		?b: the Treasury	[Treasury-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0008.mrg_2
+sentence: The government 's borrowing authority dropped at midnight Tuesday to $ 2.80 trillion from $ 2.87 trillion .
+
+ppatt:
+	?a poss ?b	[government-nmod:poss,n1,n1,n6,v]
+		?a: The government	[government-nmod:poss,o1,o2,w2]
+		?b: borrowing authority	[authority-nsubj,o1,o3,w1]
+	?a dropped at ?b ?c to ?d from ?e	[dropped-root,c,n1,n2,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: The government 's borrowing authority	[authority-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: midnight	[midnight-nmod,h1,o2]
+		?c: Tuesday	[Tuesday-nmod:tmod,h1]
+		?d: $ 2.80 trillion	[$-nmod,h1,o1,o1,o2]
+		?e: $ 2.87 trillion	[$-nmod,h1,o1,o1,o2]
+
+
+label:    wsj/00/wsj_0008.mrg_3
+sentence: Legislation to lift the debt ceiling is ensnarled in the fight over cutting capital-gains taxes .
+
+ppatt:
+	?a lift ?b	[lift-acl,b,n1,n2,pred_resolve_relcl,u]
+		?a: Legislation	[Legislation-nsubjpass,arg_resolve_relcl,o3]
+		?b: the debt ceiling	[ceiling-dobj,g1(dobj),o1,o1]
+	?a is ensnarled in ?b	[ensnarled-root,c,n1,n1,n2,n2,n6,u]
+		?a: Legislation	[Legislation-nsubjpass,g1(nsubjpass),o4]
+		?b: the fight	[fight-nmod,h1,o1,o2,o4]
+	?a cutting ?b	[cutting-acl,b,n1,n2,pred_resolve_relcl,u]
+		?a: the fight	[fight-nmod,arg_resolve_relcl,o1,o3]
+		?b: capital-gains taxes	[taxes-dobj,g1(dobj),o1]
+	?a is/are capital-gains	[capital-gains-amod,e]
+		?a: taxes	[taxes-dobj,i,o3]
+
+
+label:    wsj/00/wsj_0008.mrg_4
+sentence: The House has voted to raise the ceiling to $ 3.1 trillion , but the Senate is n't expected to act until next week at the earliest .
+
+ppatt:
+	?a has voted ?b	[voted-root,c,c,n1,n1,n1,n2,n2,n3,n5,u]
+		?a: The House	[House-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := to raise the ceiling to $ 3.1 trillion	[raise-xcomp,k,o1,o1,o1,o1,o1,o1,o1]
+	?a raise ?b to ?c	[raise-xcomp,a2,c,n1,n2,n2,n6,u]
+		?a: The House	[House-nsubj,cut_borrow_subj,g1(nsubj),o1]
+		?b: the ceiling	[ceiling-dobj,g1(dobj),o1]
+		?c: $ 3.1 trillion	[$-nmod,h1,o1,o1,o2]
+	has ?a is n't expected ?b	[expected-conj,f,n1,n1,n2,n2,pred_conj_borrow_aux_neg]
+		?a: the Senate	[Senate-nsubjpass,g1(nsubjpass),o1]
+		?b: SOMETHING := to act until next week at the earliest	[act-xcomp,k,o1,o1,o1,o1,o1,o1,o1]
+	?a act until ?b at ?c	[act-xcomp,a2,n1,n2,n2,n6,n6,u]
+		?a: the Senate	[Senate-nsubjpass,cut_borrow_subj,g1(nsubjpass),o1]
+		?b: next week	[week-nmod,h1,o1,o2]
+		?c: the earliest	[earliest-nmod,h1,o1,o2]
+	?a is/are next	[next-amod,e]
+		?a: week	[week-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0008.mrg_5
+sentence: The Treasury said the U.S. will default on Nov. 9 if Congress does n't act by then .
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: The Treasury	[Treasury-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := the U.S. will default on Nov. 9	[default-ccomp,k,o1,o1,o1,o1,o1,o1,o4]
+	?a will default on ?b	[default-ccomp,a1,c,c,n1,n2,n2,n3,n6]
+		?a: the U.S.	[U.S.-nsubj,g1(nsubj),o1]
+		?b: Nov. 9	[Nov.-nmod,h1,o1,o2]
+	?a does n't act by ?b	[act-advcl,b,n1,n1,n1,n2,n2,n6,u]
+		?a: Congress	[Congress-nsubj,g1(nsubj)]
+		?b: then	[then-nmod,h1,o2]
+
+
+label:    wsj/00/wsj_0009.mrg_0
+sentence: Clark J. Vitulli was named senior vice president and general manager of this U.S. sales and marketing arm of Japanese auto maker Mazda Motor Corp .
+
+ppatt:
+	?a was named ?b	[named-root,c,c,n1,n1,n2,n2,u]
+		?a: Clark J. Vitulli	[Vitulli-nsubjpass,g1(nsubjpass),o1,o1]
+		?b: SOMETHING := senior vice president of this U.S. sales and marketing arm of Japanese auto maker Mazda Motor Corp	[president-xcomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o5,o6]
+	?a was named ?b	[named-root,c,c,n1,n1,n2,n2,u]
+		?a: Clark J. Vitulli	[Vitulli-nsubjpass,g1(nsubjpass),o1,o1]
+		?b: general manager	[manager-conj,m,o1]
+	?a is/are senior	[senior-amod,e]
+		?a: vice president of this U.S. sales and marketing arm of Japanese auto maker Mazda Motor Corp	[president-xcomp,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o5,o6]
+	?a is/are senior vice president of ?b	[president-xcomp,a2,n1,n1,n2,n3,n5,n6]
+		?a: Clark J. Vitulli	[Vitulli-nsubjpass,cut_borrow_subj,g1(nsubjpass),o1,o1]
+		?b: this U.S. sales of Japanese auto maker Mazda Motor Corp	[sales-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+	?a is/are senior vice president of ?b	[president-xcomp,a2,n1,n1,n2,n3,n5,n6]
+		?a: Clark J. Vitulli	[Vitulli-nsubjpass,cut_borrow_subj,g1(nsubjpass),o1,o1]
+		?b: marketing arm	[arm-conj,m,o1]
+	?a is/are general	[general-amod,e]
+		?a: manager	[manager-conj,i,o3]
+	?a was named general manager	[manager-conj,f,n1,pred_conj_borrow_tokens_xcomp,pred_conj_borrow_tokens_xcomp]
+		?a: Clark J. Vitulli	[Vitulli-nsubjpass,borrow-subj(manager/10,named/4,conj),g1(nsubjpass),o1,o1]
+	?a is/are Japanese	[Japanese-amod,e]
+		?a: auto maker Mazda Motor Corp	[Corp-nmod,i,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0009.mrg_1
+sentence: In the new position he will oversee Mazda 's U.S. sales , service , parts and marketing operations .
+
+ppatt:
+	?a is/are new	[new-amod,e]
+		?a: the position	[position-nmod,i,o1,o3]
+	In ?a ?b will oversee ?c	[oversee-root,c,c,n1,n1,n2,n2,n2,n6,u]
+		?a: the new position	[position-nmod,h1,o1,o1,o2]
+		?b: he	[he-nsubj,g1(nsubj)]
+		?c: Mazda 's U.S. sales , parts	[parts-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o4,o5,o6,u]
+	In ?a ?b will oversee ?c	[oversee-root,c,c,n1,n1,n2,n2,n2,n6,u]
+		?a: the new position	[position-nmod,h1,o1,o1,o2]
+		?b: he	[he-nsubj,g1(nsubj)]
+		?c: marketing operations	[operations-conj,m,o1]
+	?a poss ?b	[Mazda-nmod:poss,n1,n6,v]
+		?a: Mazda	[Mazda-nmod:poss,o2,w2]
+		?b: U.S. sales , parts	[parts-dobj,o1,o1,o1,o1,o3,o4,o5,o6,u,w1]
+	?a poss ?b	[Mazda-nmod:poss,n1,n6,v]
+		?a: Mazda	[Mazda-nmod:poss,o2,w2]
+		?b: marketing operations	[operations-conj,m,o1]
+
+
+label:    wsj/00/wsj_0010.mrg_0
+sentence: When it 's time for their biannual powwow , the nation 's manufacturing titans typically jet off to the sunny confines of resort towns like Boca Raton and Hot Springs .
+
+ppatt:
+	When ?a 's time for ?b	[time-advcl,b,n1,n1,n2,n2,n6]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: their biannual powwow	[powwow-nmod,h1,o1,o1,o2]
+	?a poss ?b	[their-nmod:poss,n6,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: biannual powwow	[powwow-nmod,o1,o2,o3,w1]
+	?a is/are biannual	[biannual-amod,e]
+		?a: their powwow	[powwow-nmod,i,o1,o3]
+	?a poss ?b	[nation-nmod:poss,n1,n1,n6,v]
+		?a: the nation	[nation-nmod:poss,o1,o2,w2]
+		?b: manufacturing titans	[titans-nsubj,o1,o3,w1]
+	?a typically jet off to ?b	[jet-root,c,c,n1,n1,n1,n1,n2,n2,n3,n6,u]
+		?a: the nation 's manufacturing titans	[titans-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: the sunny confines of resort towns like Boca Raton and Hot Springs	[confines-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o2]
+	?a is/are sunny	[sunny-amod,e]
+		?a: the confines of resort towns like Boca Raton and Hot Springs	[confines-nmod,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_2
+sentence: The National Association of Manufacturers settled on the Hoosier capital of Indianapolis for its fall board meeting .
+
+ppatt:
+	?a settled on ?b for ?c	[settled-root,c,n1,n2,n2,n2,n6,n6,u]
+		?a: The National Association of Manufacturers	[Association-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: the Hoosier capital of Indianapolis	[capital-nmod,h1,o1,o1,o1,o1,o2]
+		?c: its fall board meeting	[meeting-nmod,h1,o1,o1,o1,o2]
+	?a poss ?b	[its-nmod:poss,n6,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: fall board meeting	[meeting-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0010.mrg_3
+sentence: And the city decided to treat its guests more like royalty or rock stars than factory owners .
+
+ppatt:
+	?a decided ?b	[decided-root,c,c,n1,n2,n2,n5,u]
+		?a: the city	[city-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := to treat its guests more like royalty or rock stars than factory owners	[treat-xcomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a treat ?b like ?c	[treat-xcomp,a2,c,n1,n2,n2,n6,u]
+		?a: the city	[city-nsubj,cut_borrow_subj,g1(nsubj),o1]
+		?b: its guests	[guests-dobj,g1(dobj),o1]
+		?c: more royalty than factory owners	[royalty-nmod,h1,o1,o1,o1,o1,o2,o5,o6]
+	?a treat ?b like ?c	[treat-xcomp,a2,c,n1,n2,n2,n6,u]
+		?a: the city	[city-nsubj,cut_borrow_subj,g1(nsubj),o1]
+		?b: its guests	[guests-dobj,g1(dobj),o1]
+		?c: rock stars	[stars-conj,m,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: guests	[guests-dobj,o3,w1]
+
+
+label:    wsj/00/wsj_0010.mrg_4
+sentence: The idea , of course : to prove to 125 corporate decision makers that the buckle on the Rust Belt is n't so rusty after all , that it 's a good place for a company to expand .
+
+ppatt:
+	?a is/are corporate	[corporate-amod,e]
+		?a: 125 decision makers	[makers-nmod,i,o1,o1,o3]
+	?a is/are good	[good-amod,e]
+		?a: a place	[place-dep,i,o1,o3,o4,o4,o4,o4]
+
+
+label:    wsj/00/wsj_0010.mrg_5
+sentence: On the receiving end of the message were officials from giants like Du Pont and Maytag , along with lesser knowns like Trojan Steel and the Valley Queen Cheese Factory .
+
+ppatt:
+	On ?a were ?b	[were-root,c,n1,n2,n2,n6,u]
+		?a: the receiving end of the message	[end-nmod,h1,o1,o1,o1,o1,o1,o2]
+		?b: officials from giants like Du Pont and Maytag , along lesser knowns like Trojan Steel and the Valley Queen Cheese Factory	[officials-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+	?a is/are lesser	[lesser-amod,e]
+		?a: knowns like Trojan Steel and the Valley Queen Cheese Factory	[knowns-conj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_6
+sentence: For starters , the executives joined Mayor William H. Hudnut III for an evening of the Indianapolis Symphony Orchestra and a guest pianist-comedian Victor Borge .
+
+ppatt:
+	For ?a , ?b joined ?c for ?d	[joined-root,c,c,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: starters	[starters-nmod,h1,o2]
+		?b: the executives	[executives-nsubj,g1(nsubj),o1]
+		?c: Mayor William H. Hudnut III	[III-dobj,g1(dobj),o1,o1,o1,o1]
+		?d: an evening of the Indianapolis Symphony Orchestra and a guest pianist-comedian Victor Borge	[evening-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o2]
+
+
+label:    wsj/00/wsj_0010.mrg_7
+sentence: Champagne and dessert followed .
+
+ppatt:
+	?a followed	[followed-root,c,n1,n2,u]
+		?a: Champagne	[Champagne-nsubj,g1(nsubj),o5,o6]
+	?a followed	[followed-root,c,n1,n2,u]
+		?a: dessert	[dessert-conj,m]
+
+
+label:    wsj/00/wsj_0010.mrg_8
+sentence: The next morning , with a police escort , busloads of executives and their wives raced to the Indianapolis Motor Speedway , unimpeded by traffic or red lights .
+
+ppatt:
+	?a is/are next	[next-amod,e]
+		?a: The morning	[morning-nmod:tmod,i,o1,o3]
+	?a poss ?b	[their-nmod:poss,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: wives	[wives-conj,o3,w1]
+	?a with ?b , ?c raced to ?d ?e	[raced-root,c,c,n1,n1,n1,n1,n2,n2,n2,n2,n2,n6,n6,u]
+		?a: The next morning	[morning-nmod:tmod,h1,o1,o1]
+		?b: a police escort	[escort-nmod,h1,o1,o1,o2]
+		?c: busloads of executives and their wives	[busloads-nsubj,g1(nsubj),o1,o1,o1,o1,o1]
+		?d: the Indianapolis Motor Speedway	[Speedway-nmod,h1,o1,o1,o1,o2]
+		?e: SOMETHING := unimpeded by traffic or red lights	[unimpeded-xcomp,k,o1,o1,o1,o1,o1]
+	?a unimpeded by ?b	[unimpeded-xcomp,a2,n2,n6]
+		?a: busloads of executives and their wives	[busloads-nsubj,cut_borrow_subj,g1(nsubj),o1,o1,o1,o1,o1]
+		?b: traffic	[traffic-nmod,h1,o2,o5,o6]
+	?a unimpeded by ?b	[unimpeded-xcomp,a2,n2,n6]
+		?a: busloads of executives and their wives	[busloads-nsubj,cut_borrow_subj,g1(nsubj),o1,o1,o1,o1,o1]
+		?b: red lights	[lights-conj,m,o1]
+	?a is/are red	[red-amod,e]
+		?a: lights	[lights-conj,i,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_9
+sentence: The governor could n't make it , so the lieutenant governor welcomed the special guests .
+
+ppatt:
+	?a could n't make ?b	[make-root,c,c,n1,n1,n1,n1,n2,n2,n3,n4,u]
+		?a: The governor	[governor-nsubj,g1(nsubj),o1]
+		?b: it	[it-dobj,g1(dobj)]
+	?a welcomed ?b	[welcomed-parataxis,c,c,n2,n2]
+		?a: the lieutenant governor	[governor-nsubj,g1(nsubj),o1,o1]
+		?b: the special guests	[guests-dobj,g1(dobj),o1,o1]
+	?a is/are special	[special-amod,e]
+		?a: the guests	[guests-dobj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_10
+sentence: A buffet breakfast was held in the museum , where food and drinks are banned to everyday visitors .
+
+ppatt:
+	?a was held in ?b	[held-root,c,c,n1,n1,n1,n2,n2,n3,n6,u]
+		?a: A buffet breakfast	[breakfast-nsubjpass,g1(nsubjpass),o1,o1]
+		?b: the museum	[museum-nmod,h1,o1,o2]
+	where ?a are banned to ?b	[banned-advcl,b,n1,n1,n2,n2,n6]
+		?a: food	[food-nsubjpass,g1(nsubjpass),o5,o6]
+		?b: everyday visitors	[visitors-nmod,h1,o1,o2]
+	where ?a are banned to ?b	[banned-advcl,b,n1,n1,n2,n2,n6]
+		?a: drinks	[drinks-conj,m]
+		?b: everyday visitors	[visitors-nmod,h1,o1,o2]
+	?a is/are everyday	[everyday-amod,e]
+		?a: visitors	[visitors-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_11
+sentence: Then , in the guests ' honor , the speedway hauled out four drivers , crews and even the official Indianapolis 500 announcer for a 10-lap exhibition race .
+
+ppatt:
+	?a poss ?b	[guests-nmod:poss,n1,n1,n6,n6,v]
+		?a: the guests	[guests-nmod:poss,o1,o2,w2]
+		?b: honor	[honor-nmod,o2,o3,w1]
+	Then , in ?a , ?b hauled out ?c for ?d	[hauled-root,c,c,n1,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: the guests ' honor	[honor-nmod,h1,o1,o1,o1,o2]
+		?b: the speedway	[speedway-nsubj,g1(nsubj),o1]
+		?c: four drivers	[drivers-dobj,g1(dobj),o1,o1,o5,o6,o6,u]
+		?d: a 10-lap exhibition race	[race-nmod,h1,o1,o1,o1,o2]
+	Then , in ?a , ?b hauled out ?c for ?d	[hauled-root,c,c,n1,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: the guests ' honor	[honor-nmod,h1,o1,o1,o1,o2]
+		?b: the speedway	[speedway-nsubj,g1(nsubj),o1]
+		?c: crews	[crews-conj,m]
+		?d: a 10-lap exhibition race	[race-nmod,h1,o1,o1,o1,o2]
+	Then , in ?a , ?b hauled out ?c for ?d	[hauled-root,c,c,n1,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: the guests ' honor	[honor-nmod,h1,o1,o1,o1,o2]
+		?b: the speedway	[speedway-nsubj,g1(nsubj),o1]
+		?c: even the official Indianapolis 500 announcer	[announcer-conj,m,o1,o1,o1,o1,o1]
+		?d: a 10-lap exhibition race	[race-nmod,h1,o1,o1,o1,o2]
+	?a is/are official	[official-amod,e]
+		?a: even the Indianapolis 500 announcer	[announcer-conj,i,o1,o1,o1,o1,o3]
+	?a is/are 10-lap	[10-lap-amod,e]
+		?a: a exhibition race	[race-nmod,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_12
+sentence: After the race , Fortune 500 executives drooled like schoolboys over the cars and drivers .
+
+ppatt:
+	After ?a , ?b drooled like ?c over ?d	[drooled-root,c,n1,n1,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: the race	[race-nmod,h1,o1,o2]
+		?b: Fortune 500 executives	[executives-nsubj,g1(nsubj),o1,o1]
+		?c: schoolboys	[schoolboys-nmod,h1,o2]
+		?d: the cars	[cars-nmod,h1,o1,o2,o5,o6]
+	After ?a , ?b drooled like ?c over ?d	[drooled-root,c,n1,n1,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: the race	[race-nmod,h1,o1,o2]
+		?b: Fortune 500 executives	[executives-nsubj,g1(nsubj),o1,o1]
+		?c: schoolboys	[schoolboys-nmod,h1,o2]
+		?d: drivers	[drivers-conj,m]
+
+
+label:    wsj/00/wsj_0010.mrg_13
+sentence: No dummies , the drivers pointed out they still had space on their machines for another sponsor 's name or two .
+
+ppatt:
+	No dummies ?a	[dummies-ccomp,a1,n1]
+		?a: the drivers	[drivers-nsubj,borrow-subj(dummies/1,pointed/5,ccomp),g1(nsubj),o1]
+	?a ?b pointed out ?c	[pointed-root,c,c,c,n1,n1,n1,n2,n2,n2,u]
+		?a: SOMETHING := No dummies	[dummies-ccomp,k,o1]
+		?b: the drivers	[drivers-nsubj,g1(nsubj),o1]
+		?c: SOMETHING := they still had space on their machines for another sponsor 's name or two	[had-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a still had ?b	[had-ccomp,a1,c,c,n1,n2,n2]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: space on their machines for another sponsor 's name or two	[space-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[their-nmod:poss,n6,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: machines	[machines-nmod,o2,o3,w1]
+	?a poss ?b	[sponsor-nmod:poss,n1,n1,n6,n6,v]
+		?a: another sponsor	[sponsor-nmod:poss,o1,o2,w2]
+		?b: name	[name-nmod,o2,o3,o5,o6,w1]
+	?a poss ?b	[sponsor-nmod:poss,n1,n1,n6,n6,v]
+		?a: another sponsor	[sponsor-nmod:poss,o1,o2,w2]
+		?b: two	[two-conj,m]
+
+
+label:    wsj/00/wsj_0010.mrg_14
+sentence: Back downtown , the execs squeezed in a few meetings at the hotel before boarding the buses again .
+
+ppatt:
+	Back , ?a squeezed in ?b	[squeezed-root,c,c,c,n1,n1,n1,n1,n2,n2,n3,n4,u]
+		?a: the execs	[execs-nsubj,g1(nsubj),o1]
+		?b: a few meetings at the hotel	[meetings-dobj,g1(dobj),o1,o1,o1,o1,o1]
+	?a is/are few	[few-amod,e]
+		?a: a meetings at the hotel	[meetings-dobj,i,o1,o1,o1,o1,o3]
+	?a boarding ?b again	[boarding-advcl,b,n1,n1,n2,u]
+		?a: the execs	[execs-nsubj,borrow-subj(boarding/14,squeezed/5,advcl),g1(nsubj),o1]
+		?b: the buses	[buses-dobj,g1(dobj),o1]
+
+
+label:    wsj/00/wsj_0010.mrg_16
+sentence: Under the stars and moons of the renovated Indiana Roof ballroom , nine of the hottest chefs in town fed them Indiana duckling mousseline , lobster consomme , veal mignon and chocolate terrine with a raspberry sauce .
+
+ppatt:
+	?a is/are hottest	[hottest-amod,e]
+		?a: the chefs in town	[chefs-nmod,i,o1,o1,o1,o3]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the stars of the renovated Indiana Roof ballroom	[stars-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: Indiana duckling mousseline	[mousseline-dobj,g1(dobj),o1,o1,o1,o1,o5,o6,o6,o6,u]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: moons	[moons-conj,m]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: Indiana duckling mousseline	[mousseline-dobj,g1(dobj),o1,o1,o1,o1,o5,o6,o6,o6,u]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the stars of the renovated Indiana Roof ballroom	[stars-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: lobster consomme	[consomme-conj,m,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: moons	[moons-conj,m]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: lobster consomme	[consomme-conj,m,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the stars of the renovated Indiana Roof ballroom	[stars-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: veal mignon	[mignon-conj,m,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: moons	[moons-conj,m]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: veal mignon	[mignon-conj,m,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the stars of the renovated Indiana Roof ballroom	[stars-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: chocolate terrine with a raspberry sauce	[terrine-conj,m,o1,o1,o1,o1,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: moons	[moons-conj,m]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: chocolate terrine with a raspberry sauce	[terrine-conj,m,o1,o1,o1,o1,o1]
+	?a is/are chocolate	[chocolate-amod,e]
+		?a: terrine with a raspberry sauce	[terrine-conj,i,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_17
+sentence: Knowing a tasty -- and free -- meal when they eat one , the executives gave the chefs a standing ovation .
+
+ppatt:
+	Knowing ?a ?b	[Knowing-advcl,b,n2,n3]
+		?a: a tasty meal	[meal-dobj,g1(dobj),o1,o1,o4]
+		?b: the executives	[executives-nsubj,borrow-subj(Knowing/0,gave/15,advcl),g1(nsubj),o1]
+	?a is/are tasty	[tasty-amod,e,n4]
+		?a: a meal	[meal-dobj,i,o1,o3]
+	when ?a eat ?b	[eat-advcl,b,n1,n2,n2]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: one	[one-dobj,g1(dobj)]
+	?a gave ?b ?c	[gave-root,c,c,c,c,n1,n1,n2,n2,n2,n3,u]
+		?a: the executives	[executives-nsubj,g1(nsubj),o1]
+		?b: the chefs	[chefs-iobj,g1(iobj),o1]
+		?c: a standing ovation	[ovation-dobj,g1(dobj),o1,o1]
+	?a is/are standing	[standing-amod,e]
+		?a: a ovation	[ovation-dobj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_18
+sentence: More than a few CEOs say the red-carpet treatment tempts them to return to a heartland city for future meetings .
+
+ppatt:
+	?a is/are few	[few-amod,e]
+		?a: a CEOs	[CEOs-nmod,i,o1,o3]
+	?a say ?b	[say-root,c,c,n1,n2,n2,u]
+		?a: More than a few CEOs	[More-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: SOMETHING := the red-carpet treatment tempts them to return to a heartland city for future meetings	[tempts-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are red-carpet	[red-carpet-amod,e]
+		?a: the treatment	[treatment-nsubj,i,o1,o3]
+	?a tempts ?b ?c	[tempts-ccomp,a1,c,c,c,n2,n2,n2]
+		?a: the red-carpet treatment	[treatment-nsubj,g1(nsubj),o1,o1]
+		?b: them	[them-dobj,g1(dobj)]
+		?c: SOMETHING := to return to a heartland city for future meetings	[return-xcomp,k,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a ?b return to ?c for ?d	[return-xcomp,a2,n1,n2,n2,n6,n6,u]
+		?a: the red-carpet treatment	[treatment-nsubj,borrow-subj(return/12,tempts/9,xcomp),g1(nsubj),o1,o1]
+		?b: them	[them-dobj,cut_borrow_obj,g1(dobj)]
+		?c: a heartland city	[city-nmod,h1,o1,o1,o2]
+		?d: future meetings	[meetings-nmod,h1,o1,o2]
+	?a is/are future	[future-amod,e]
+		?a: meetings	[meetings-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_19
+sentence: But for now , they 're looking forward to their winter meeting -- Boca in February .
+
+ppatt:
+	for now ?a	[now-advcl,b,n1]
+		?a: they	[they-nsubj,borrow-subj(now/2,looking/6,advcl),g1(nsubj)]
+	?a 're looking forward to ?b	[looking-root,c,c,n1,n1,n1,n1,n2,n2,n3,n5,n6,u]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: their winter meeting	[meeting-nmod,h1,o1,o1,o2,o4]
+	?a poss ?b	[their-nmod:poss,n6,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: winter meeting	[meeting-nmod,o1,o2,o3,o4,w1]
+
+
+label:    wsj/00/wsj_0011.mrg_0
+sentence: South Korea registered a trade deficit of $ 101 million in October , reflecting the country 's economic sluggishness , according to government figures released Wednesday .
+
+ppatt:
+	?a registered ?b in ?c , according to ?d	[registered-root,c,c,c,n1,n1,n1,n2,n2,n2,n2,n3,n6,n6,u]
+		?a: South Korea	[Korea-nsubj,g1(nsubj),o1]
+		?b: a trade deficit of $ 101 million	[deficit-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+		?c: October	[October-nmod,h1,o2]
+		?d: government figures	[figures-nmod,h1,o1,o2,o4]
+	?a reflecting ?b	[reflecting-advcl,b,n2]
+		?a: South Korea	[Korea-nsubj,borrow-subj(reflecting/13,registered/2,advcl),g1(nsubj),o1]
+		?b: the country 's economic sluggishness	[sluggishness-dobj,g1(dobj),o1,o1,o1,o1]
+	?a poss ?b	[country-nmod:poss,n1,n1,n6,v]
+		?a: the country	[country-nmod:poss,o1,o2,w2]
+		?b: economic sluggishness	[sluggishness-dobj,o1,o3,w1]
+	?a is/are economic	[economic-amod,e]
+		?a: the country 's sluggishness	[sluggishness-dobj,i,o1,o1,o1,o3]
+	?a released ?b	[released-acl,b,n2,pred_resolve_relcl]
+		?a: government figures	[figures-nmod,arg_resolve_relcl,o1,o3]
+		?b: Wednesday	[Wednesday-nmod:tmod,h1]
+
+
+label:    wsj/00/wsj_0011.mrg_1
+sentence: Preliminary tallies by the Trade and Industry Ministry showed another trade deficit in October , the fifth monthly setback this year , casting a cloud on South Korea 's export-oriented economy .
+
+ppatt:
+	?a is/are Preliminary	[Preliminary-amod,e]
+		?a: tallies by the Trade and Industry Ministry	[tallies-nsubj,i,o1,o1,o1,o1,o1,o1,o3]
+	?a showed ?b	[showed-root,c,c,c,n1,n1,n2,n2,n3,u]
+		?a: Preliminary tallies by the Trade and Industry Ministry	[tallies-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1]
+		?b: another trade deficit in October	[deficit-dobj,g1(dobj),o1,o1,o1,o1,o1,o4,u]
+	?a is/are fifth	[fifth-amod,e]
+		?a: the monthly setback this year	[setback-appos,i,o1,o1,o1,o1,o3]
+	?a is/are monthly	[monthly-amod,e]
+		?a: the fifth setback this year	[setback-appos,i,o1,o1,o1,o1,o3]
+	?a is/are the fifth monthly setback ?b	[setback-appos,d,n1,n1,n1,n2]
+		?a: another trade deficit in October	[deficit-dobj,j,o1,o1,o1,o1,o1,o3,u]
+		?b: this year	[year-nmod:tmod,h1,o1]
+	?a casting ?b on ?c	[casting-advcl,b,n2,n2,n6]
+		?a: Preliminary tallies by the Trade and Industry Ministry	[tallies-nsubj,borrow-subj(casting/22,showed/8,advcl),g1(nsubj),o1,o1,o1,o1,o1,o1,o1]
+		?b: a cloud	[cloud-dobj,g1(dobj),o1]
+		?c: South Korea 's export-oriented economy	[economy-nmod,h1,o1,o1,o1,o1,o2]
+	?a poss ?b	[Korea-nmod:poss,n1,n1,n6,n6,v]
+		?a: South Korea	[Korea-nmod:poss,o1,o2,w2]
+		?b: export-oriented economy	[economy-nmod,o1,o2,o3,w1]
+	?a is/are export-oriented	[export-oriented-amod,e]
+		?a: South Korea 's economy	[economy-nmod,i,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0011.mrg_2
+sentence: Exports in October stood at $ 5.29 billion , a mere 0.7 % increase from a year earlier , while imports increased sharply to $ 5.39 billion , up 20 % from last October .
+
+ppatt:
+	?a stood at ?b	[stood-root,c,c,n1,n2,n2,n3,n6,u]
+		?a: Exports in October	[Exports-nsubj,g1(nsubj),o1,o1]
+		?b: $ 5.29 billion	[$-nmod,h1,o1,o1,o1,o1,o2,o4,u]
+	?a is/are increase from ?b	[increase-appos,d,n2,n4,n6]
+		?a: $ 5.29 billion	[$-nmod,j,o1,o1,o1,o1,o3,u]
+		?b: a earlier	[earlier-nmod,h1,o1,o2,o4]
+	?a increased sharply to ?b	[increased-advcl,b,n1,n1,n2,n2,n6,u]
+		?a: imports	[imports-nsubj,g1(nsubj)]
+		?b: $ 5.39 billion , up 20 % from last October	[$-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o2]
+	?a is/are last	[last-amod,e]
+		?a: October	[October-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0011.mrg_3
+sentence: South Korea 's economic boom , which began in 1986 , stopped this year because of prolonged labor disputes , trade conflicts and sluggish exports .
+
+ppatt:
+	?a poss ?b	[Korea-nmod:poss,n1,n1,n6,v]
+		?a: South Korea	[Korea-nmod:poss,o1,o2,w2]
+		?b: economic boom	[boom-nsubj,o1,o1,o1,o3,o4,u,w1]
+	?a is/are economic	[economic-amod,e]
+		?a: South Korea 's boom	[boom-nsubj,i,o1,o1,o1,o1,o1,o3,o4,u]
+	?a began in ?b	[began-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,n6,pred_resolve_relcl]
+		?a: South Korea 's economic boom	[boom-nsubj,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3,u]
+		?b: 1986	[1986-nmod,h1,o2]
+	?a stopped ?b because of ?c	[stopped-root,c,n1,n2,n2,n2,n6,u]
+		?a: South Korea 's economic boom	[boom-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o4,u]
+		?b: this year	[year-nmod:tmod,h1,o1]
+		?c: prolonged labor disputes	[disputes-nmod,h1,o1,o1,o1,o2,o5,o6,o6,u]
+	?a stopped ?b because of ?c	[stopped-root,c,n1,n2,n2,n2,n6,u]
+		?a: South Korea 's economic boom	[boom-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o4,u]
+		?b: this year	[year-nmod:tmod,h1,o1]
+		?c: trade conflicts	[conflicts-conj,m,o1]
+	?a stopped ?b because of ?c	[stopped-root,c,n1,n2,n2,n2,n6,u]
+		?a: South Korea 's economic boom	[boom-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o4,u]
+		?b: this year	[year-nmod:tmod,h1,o1]
+		?c: sluggish exports	[exports-conj,m,o1]
+	?a is/are sluggish	[sluggish-amod,e]
+		?a: exports	[exports-conj,i,o3]
+
+
+label:    wsj/00/wsj_0011.mrg_4
+sentence: Government officials said exports at the end of the year would remain under a government target of $ 68 billion .
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: Government officials	[officials-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := exports at the end of the year would remain under a government target of $ 68 billion	[remain-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a would remain under ?b	[remain-ccomp,a1,c,n1,n2,n2,n6]
+		?a: exports at the end of the year	[exports-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?b: a government target of $ 68 billion	[target-nmod,h1,o1,o1,o1,o1,o1,o1,o2]
+
+
+label:    wsj/00/wsj_0011.mrg_5
+sentence: Despite the gloomy forecast , South Korea has recorded a trade surplus of $ 71 million so far this year .
+
+ppatt:
+	?a is/are gloomy	[gloomy-amod,e]
+		?a: the forecast	[forecast-nmod,i,o1,o3]
+	Despite ?a , ?b has recorded ?c so far ?d	[recorded-root,c,c,n1,n1,n1,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the gloomy forecast	[forecast-nmod,h1,o1,o1,o2]
+		?b: South Korea	[Korea-nsubj,g1(nsubj),o1]
+		?c: a trade surplus of $ 71 million	[surplus-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+		?d: this year	[year-nmod:tmod,h1,o1]
+
+
+label:    wsj/00/wsj_0011.mrg_6
+sentence: From January to October , the nation 's accumulated exports increased 4 % from the same period last year to $ 50.45 billion .
+
+ppatt:
+	?a poss ?b	[nation-nmod:poss,n1,n1,n6,v]
+		?a: the nation	[nation-nmod:poss,o1,o2,w2]
+		?b: accumulated exports	[exports-nsubj,o1,o3,w1]
+	From ?a , ?b increased ?c from ?d to ?e	[increased-root,c,c,n1,n1,n2,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: January to October	[January-nmod,h1,o1,o1,o2]
+		?b: the nation 's accumulated exports	[exports-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?c: 4 %	[%-dobj,g1(dobj),o1]
+		?d: the same period last year	[year-nmod,h1,o1,o1,o1,o1,o2]
+		?e: $ 50.45 billion	[$-nmod,h1,o1,o1,o2]
+	?a is/are same	[same-amod,e]
+		?a: the period last year	[year-nmod,i,o1,o1,o1,o3]
+	?a is/are last	[last-amod,e]
+		?a: the same period year	[year-nmod,i,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0012.mrg_0
+sentence: Newsweek , trying to keep pace with rival Time magazine , announced new advertising rates for 1990 and said it will introduce a new incentive plan for advertisers .
+
+ppatt:
+	?a trying ?b	[trying-advcl,b,n2]
+		?a: Newsweek	[Newsweek-nsubj,borrow-subj(trying/2,announced/11,advcl),g1(nsubj)]
+		?b: SOMETHING := to keep pace with rival	[keep-xcomp,k,o1,o1,o1,o1,o4]
+	?a keep ?b with ?c	[keep-xcomp,a2,n1,n2,n2,n6,u]
+		?a: Newsweek	[Newsweek-nsubj,borrow-subj(trying/2,announced/11,advcl),cut_borrow_subj,g1(nsubj)]
+		?b: pace	[pace-dobj,g1(dobj)]
+		?c: rival	[rival-nmod,h1,o2,o4]
+	?a announced ?b	[announced-root,c,c,c,n1,n1,n1,n2,n2,n3,n3,n5,u]
+		?a: Newsweek	[Newsweek-nsubj,g1(nsubj)]
+		?b: new advertising rates for 1990	[rates-dobj,g1(dobj),o1,o1,o1,o1]
+	?a is/are new	[new-amod,e]
+		?a: advertising rates for 1990	[rates-dobj,i,o1,o1,o1,o3]
+	?a said ?b	[said-conj,f,n2]
+		?a: Newsweek	[Newsweek-nsubj,borrow-subj(said/18,announced/11,conj),g1(nsubj)]
+		?b: SOMETHING := it will introduce a new incentive plan for advertisers	[introduce-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a will introduce ?b	[introduce-ccomp,a1,c,c,n1,n2,n2]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: a new incentive plan for advertisers	[plan-dobj,g1(dobj),o1,o1,o1,o1,o1]
+	?a is/are new	[new-amod,e]
+		?a: a incentive plan for advertisers	[plan-dobj,i,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0012.mrg_1
+sentence: The new ad plan from Newsweek , a unit of the Washington Post Co. , is the second incentive plan the magazine has offered advertisers in three years .
+
+ppatt:
+	?a is/are new	[new-amod,e]
+		?a: The ad plan from Newsweek	[plan-nsubj,i,o1,o1,o1,o1,o1,o1,o3,o4,u]
+	?a is/are a unit of ?b	[unit-appos,d,n1,n2,n6]
+		?a: Newsweek	[Newsweek-nmod,j,o1,o1,o3,u]
+		?b: the Washington Post Co.	[Co.-nmod,h1,o1,o1,o1,o2]
+	?a is/are second	[second-amod,e]
+		?a: the incentive plan	[plan-root,i,o1,o1,o1,o3,o4,o4,o4,u]
+	?a is the second incentive plan	[plan-root,c,n1,n1,n1,n1,n1,n2,n3,u]
+		?a: The new ad plan from Newsweek	[plan-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o4,u]
+	?a ?b has offered ?c in ?d	[offered-acl:relcl,b,n1,n2,n2,n2,n6,pred_resolve_relcl]
+		?a: the second incentive plan	[plan-root,arg_resolve_relcl,o1,o1,o1,o1,o3,o4,o4,u]
+		?b: the magazine	[magazine-nsubj,g1(nsubj),o1]
+		?c: advertisers	[advertisers-dobj,g1(dobj)]
+		?d: three years	[years-nmod,h1,o1,o2]
+
+
+label:    wsj/00/wsj_0012.mrg_2
+sentence: Plans that give advertisers discounts for maintaining or increasing ad spending have become permanent fixtures at the news weeklies and underscore the fierce competition between Newsweek , Time Warner Inc. 's Time magazine , and Mortimer B. Zuckerman 's U.S. News & World Report .
+
+ppatt:
+	?a give ?b ?c	[give-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,n2,pred_resolve_relcl]
+		?a: Plans	[Plans-nsubj,arg_resolve_relcl,o3]
+		?b: advertisers	[advertisers-iobj,g1(iobj)]
+		?c: discounts	[discounts-dobj,g1(dobj),o4]
+	?a maintaining ?b	[maintaining-acl,b,n1,n2,n3,n5,pred_resolve_relcl,u]
+		?a: discounts	[discounts-dobj,arg_resolve_relcl,o3]
+		?b: ad spending	[spending-dobj,g1(dobj),o1]
+	?a have become ?b	[become-root,c,c,n1,n1,n2,n2,n3,n5,u]
+		?a: Plans	[Plans-nsubj,g1(nsubj),o4]
+		?b: SOMETHING := permanent fixtures at the news weeklies	[fixtures-xcomp,k,o1,o1,o1,o1,o1]
+	?a is/are permanent	[permanent-amod,e]
+		?a: fixtures at the news weeklies	[fixtures-xcomp,i,o1,o1,o1,o1,o3]
+	?a is/are permanent fixtures at ?b	[fixtures-xcomp,a2,n1,n2,n6]
+		?a: Plans	[Plans-nsubj,cut_borrow_subj,g1(nsubj),o4]
+		?b: the news weeklies	[weeklies-nmod,h1,o1,o1,o2]
+	?a have underscore ?b	[underscore-conj,f,n2,pred_conj_borrow_aux_neg]
+		?a: Plans	[Plans-nsubj,borrow-subj(underscore/20,become/12,conj),g1(nsubj),o4]
+		?b: the fierce competition between Newsweek , Time Warner Inc. 's Time magazine , and Mortimer B. Zuckerman 's U.S. News & World Report	[competition-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are fierce	[fierce-amod,e]
+		?a: the competition between Newsweek , Time Warner Inc. 's Time magazine , and Mortimer B. Zuckerman 's U.S. News & World Report	[competition-dobj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3]
+	?a poss ?b	[Inc.-nmod:poss,n1,n1,n1,n6,v]
+		?a: Time Warner Inc.	[Inc.-nmod:poss,o1,o1,o2,w2]
+		?b: Time magazine	[magazine-conj,o1,o3,w1]
+	?a poss ?b	[Zuckerman-nmod:poss,n1,n1,n1,n6,v]
+		?a: Mortimer B. Zuckerman	[Zuckerman-nmod:poss,o1,o1,o2,w2]
+		?b: U.S. News	[News-conj,o1,o3,o5,o6,w1]
+	?a poss ?b	[Zuckerman-nmod:poss,n1,n1,n1,n6,v]
+		?a: Mortimer B. Zuckerman	[Zuckerman-nmod:poss,o1,o1,o2,w2]
+		?b: World Report	[Report-conj,m,o1]
+
+
+label:    wsj/00/wsj_0012.mrg_3
+sentence: Alan Spoon , recently named Newsweek president , said Newsweek 's ad rates would increase 5 % in January .
+
+ppatt:
+	?a recently named ?b	[named-acl:relcl,b,n1,n2,pred_resolve_relcl]
+		?a: Alan Spoon	[Spoon-nsubj,arg_resolve_relcl,o1,o1,o1,o3,u]
+		?b: SOMETHING := Newsweek president	[president-xcomp,k,o1]
+	?a is/are Newsweek president	[president-xcomp,a2,n1]
+		?a: Alan Spoon	[Spoon-nsubj,arg_resolve_relcl,cut_borrow_subj,o1,o1,o1,o4,u]
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: Alan Spoon	[Spoon-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: SOMETHING := Newsweek 's ad rates would increase 5 % in January	[increase-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[Newsweek-nmod:poss,n1,n6,v]
+		?a: Newsweek	[Newsweek-nmod:poss,o2,w2]
+		?b: ad rates	[rates-nsubj,o1,o3,w1]
+	?a would increase ?b in ?c	[increase-ccomp,a1,c,c,n1,n2,n2,n2,n6]
+		?a: Newsweek 's ad rates	[rates-nsubj,g1(nsubj),o1,o1,o1]
+		?b: 5 %	[%-dobj,g1(dobj),o1]
+		?c: January	[January-nmod,h1,o2]
+
+
+label:    wsj/00/wsj_0012.mrg_4
+sentence: A full , four-color page in Newsweek will cost $ 100,980 .
+
+ppatt:
+	?a is/are full	[full-amod,e]
+		?a: A , four-color page in Newsweek	[page-nsubj,i,o1,o1,o1,o1,o1,o3]
+	?a is/are four-color	[four-color-amod,e]
+		?a: A full , page in Newsweek	[page-nsubj,i,o1,o1,o1,o1,o1,o3]
+	?a will cost ?b	[cost-root,c,n1,n1,n2,n2,u]
+		?a: A full , four-color page in Newsweek	[page-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?b: $ 100,980	[$-dobj,g1(dobj),o1]
+
+
+label:    wsj/00/wsj_0012.mrg_5
+sentence: In mid-October , Time magazine lowered its guaranteed circulation rate base for 1990 while not increasing ad page rates ; with a lower circulation base , Time 's ad rate will be effectively 7.5 % higher per subscriber ; a full page in Time costs about $ 120,000 .
+
+ppatt:
+	In ?a , ?b lowered ?c	[lowered-root,c,c,c,n1,n1,n1,n1,n2,n2,n2,n3,n3,n3,n6,u]
+		?a: mid-October	[mid-October-nmod,h1,o2]
+		?b: Time magazine	[magazine-nsubj,g1(nsubj),o1]
+		?c: its guaranteed circulation rate base for 1990	[base-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: guaranteed circulation rate base for 1990	[base-dobj,o1,o1,o1,o1,o1,o3,w1]
+	?a not increasing ?b	[increasing-advcl,b,n1,n1,n2,u]
+		?a: Time magazine	[magazine-nsubj,borrow-subj(increasing/15,lowered/5,advcl),g1(nsubj),o1]
+		?b: ad page rates	[rates-dobj,g1(dobj),o1,o1]
+	?a is/are lower	[lower-amod,e]
+		?a: a circulation base	[base-nmod,i,o1,o1,o3]
+	?a poss ?b	[Time-nmod:poss,n1,n6,v]
+		?a: Time	[Time-nmod:poss,o2,w2]
+		?b: ad rate	[rate-nsubj,o1,o3,w1]
+	with ?a , ?b will be effectively ?c higher per ?d	[higher-parataxis,c,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6]
+		?a: a lower circulation base	[base-nmod,h1,o1,o1,o1,o2]
+		?b: Time 's ad rate	[rate-nsubj,g1(nsubj),o1,o1,o1]
+		?c: 7.5 %	[%-nmod:npmod,h1,o1]
+		?d: subscriber	[subscriber-nmod,h1,o2]
+	?a is/are full	[full-amod,e]
+		?a: a page in Time	[page-nsubj,i,o1,o1,o1,o3]
+	?a costs ?b	[costs-parataxis,c,n2,n2]
+		?a: a full page in Time	[page-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: about $ 120,000	[$-dobj,g1(dobj),o1,o1]
+
+
+label:    wsj/00/wsj_0012.mrg_6
+sentence: U.S. News has yet to announce its 1990 ad rates .
+
+ppatt:
+	?a has yet ?b	[has-root,c,c,n1,n1,n2,n2,u]
+		?a: U.S. News	[News-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := to announce its 1990 ad rates	[announce-xcomp,k,o1,o1,o1,o1,o1]
+	?a announce ?b	[announce-xcomp,a2,c,n1,n2,u]
+		?a: U.S. News	[News-nsubj,cut_borrow_subj,g1(nsubj),o1]
+		?b: its 1990 ad rates	[rates-dobj,g1(dobj),o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: 1990 ad rates	[rates-dobj,o1,o1,o3,w1]
+
+
+label:    wsj/00/wsj_0012.mrg_7
+sentence: Newsweek said it will introduce the Circulation Credit Plan , which awards space credits to advertisers on `` renewal advertising . ''
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: Newsweek	[Newsweek-nsubj,g1(nsubj)]
+		?b: SOMETHING := it will introduce the Circulation Credit Plan	[introduce-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o4,u]
+	?a will introduce ?b	[introduce-ccomp,a1,c,c,n1,n2,n2]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: the Circulation Credit Plan	[Plan-dobj,g1(dobj),o1,o1,o1,o1,o4,u]
+	?a awards ?b to ?c on ?d	[awards-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,n2,n2,n6,n6,pred_resolve_relcl]
+		?a: the Circulation Credit Plan	[Plan-dobj,arg_resolve_relcl,o1,o1,o1,o1,o3,u]
+		?b: space credits	[credits-dobj,g1(dobj),o1]
+		?c: advertisers	[advertisers-nmod,h1,o2]
+		?d: renewal advertising	[advertising-nmod,h1,o1,o1,o2,u]
+
+
+label:    wsj/00/wsj_0012.mrg_8
+sentence: The magazine will reward with `` page bonuses '' advertisers who in 1990 meet or exceed their 1989 spending , as long as they spent $ 325,000 in 1989 and $ 340,000 in 1990 .
+
+ppatt:
+	?a will reward with ?b ?c	[reward-root,c,c,n1,n1,n1,n2,n2,n2,n3,n6,u]
+		?a: The magazine	[magazine-nsubj,g1(nsubj),o1]
+		?b: page bonuses	[bonuses-nmod,h1,o1,o1,o1,o2,u]
+		?c: advertisers	[advertisers-dobj,g1(dobj),o4]
+	?a in ?b meet ?c	[meet-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,n2,n3,n5,n6,pred_resolve_relcl]
+		?a: advertisers	[advertisers-dobj,arg_resolve_relcl,o3]
+		?b: 1990	[1990-nmod,h1,o2]
+		?c: their 1989 spending	[spending-dobj,g1(dobj),o1,o1]
+	?a exceed	[exceed-conj,f]
+		?a: who	[who-nsubj,borrow-subj(exceed/15,meet/13,conj),g1(nsubj)]
+	?a poss ?b	[their-nmod:poss,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: 1989 spending	[spending-dobj,o1,o3,w1]
+	?a as long	[long-advmod,c,n1,n3]
+		?a: The magazine	[magazine-nsubj,borrow-subj(long/21,reward/3,advmod),g1(nsubj),o1]
+	?a spent ?b in ?c	[spent-advcl,b,n1,n2,n2,n2,n5,n5,n6,u]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: $ 325,000	[$-dobj,g1(dobj),o1]
+		?c: 1989	[1989-nmod,h1,o2]
+
+
+label:    wsj/00/wsj_0012.mrg_9
+sentence: Mr. Spoon said the plan is not an attempt to shore up a decline in ad pages in the first nine months of 1989 ; Newsweek 's ad pages totaled 1,620 , a drop of 3.2 % from last year , according to Publishers Information Bureau .
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n1,n2,n2,n3,u]
+		?a: Mr. Spoon	[Spoon-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := the plan is not an attempt	[attempt-ccomp,k,o1,o1,o1,o1,o1,o4]
+	?a is not an attempt	[attempt-ccomp,a1,c,n1,n1,n1,n2,n3]
+		?a: the plan	[plan-nsubj,g1(nsubj),o1]
+	?a shore up ?b	[shore-acl,b,n1,n1,n2,pred_resolve_relcl,u]
+		?a: an attempt	[attempt-ccomp,arg_resolve_relcl,o1,o3,o4,o4,o4]
+		?b: a decline in ad pages in the first nine months of 1989	[decline-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are first	[first-amod,e]
+		?a: the nine months of 1989	[months-nmod,i,o1,o1,o1,o1,o3]
+	?a poss ?b	[Newsweek-nmod:poss,n1,n6,v]
+		?a: Newsweek	[Newsweek-nmod:poss,o2,w2]
+		?b: ad pages	[pages-nsubj,o1,o3,w1]
+	?a totaled ?b , according to ?c	[totaled-parataxis,c,c,n1,n2,n2,n2,n6]
+		?a: Newsweek 's ad pages	[pages-nsubj,g1(nsubj),o1,o1,o1]
+		?b: 1,620	[1,620-dobj,g1(dobj),o1,o4,u]
+		?c: Publishers Information Bureau	[Bureau-nmod,h1,o1,o1,o2]
+	?a is/are a drop of ?b from ?c	[drop-appos,d,n1,n2,n2,n6,n6]
+		?a: 1,620	[1,620-dobj,j,o1,o3,u]
+		?b: 3.2 %	[%-nmod,h1,o1,o2]
+		?c: last year	[year-nmod,h1,o1,o2]
+	?a is/are last	[last-amod,e]
+		?a: year	[year-nmod,i,o3]
+
+

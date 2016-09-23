@@ -1,0 +1,2780 @@
+label:    wsj/00/wsj_0001.mrg_0
+sentence: Pierre Vinken , 61 years old , will join the board as a nonexecutive director Nov. 29 .
+
+tags: Pierre/NOUN Vinken/NOUN ,/. 61/NUM years/NOUN old/ADJ ,/. will/VERB join/VERB the/DET board/NOUN as/ADP a/DET nonexecutive/ADJ director/NOUN Nov./NOUN 29/NUM ./.
+
+compound(Pierre/0, Vinken/1)  nsubj(Vinken/1, join/8)             punct(,/2, Vinken/1)       nummod(61/3, years/4)
+nmod:npmod(years/4, old/5)    amod(old/5, Vinken/1)               punct(,/6, Vinken/1)       aux(will/7, join/8)
+root(join/8, ROOT/-1)         det(the/9, board/10)                dobj(board/10, join/8)     case(as/11, director/14)
+det(a/12, director/14)        amod(nonexecutive/13, director/14)  nmod(director/14, join/8)  nmod:tmod(Nov./15, join/8)
+nummod(29/16, Nov./15)        punct(./17, join/8)
+
+ppatt:
+	?a is/are 61 years old	[old-amod,e,n1,n1]
+		?a: Pierre Vinken	[Vinken-nsubj,i,o1,o1,o1,o3,u]
+	?a will join ?b as ?c ?d	[join-root,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: Pierre Vinken , 61 years old	[Vinken-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,u]
+		?b: the board	[board-dobj,g1(dobj),o1]
+		?c: a nonexecutive director	[director-nmod,h1,o1,o1,o2]
+		?d: Nov. 29	[Nov.-nmod:tmod,h1,o1]
+	?a is/are nonexecutive	[nonexecutive-amod,e]
+		?a: a director	[director-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0001.mrg_1
+sentence: Mr. Vinken is chairman of Elsevier N.V. , the Dutch publishing group .
+
+tags: Mr./NOUN Vinken/NOUN is/VERB chairman/NOUN of/ADP Elsevier/NOUN N.V./NOUN ,/. the/DET Dutch/NOUN publishing/VERB group/NOUN ./.
+
+compound(Mr./0, Vinken/1)  nsubj(Vinken/1, chairman/3)   cop(is/2, chairman/3)          root(chairman/3, ROOT/-1)
+case(of/4, N.V./6)         compound(Elsevier/5, N.V./6)  nmod(N.V./6, chairman/3)       punct(,/7, N.V./6)
+det(the/8, group/11)       compound(Dutch/9, group/11)   amod(publishing/10, group/11)  appos(group/11, N.V./6)
+punct(./12, chairman/3)
+
+ppatt:
+	?a is chairman of ?b	[chairman-root,c,n1,n1,n2,n2,n6,u]
+		?a: Mr. Vinken	[Vinken-nsubj,g1(nsubj),o1]
+		?b: Elsevier N.V.	[N.V.-nmod,h1,o1,o1,o2,o4,u]
+	?a is/are the Dutch publishing group	[group-appos,d,n1,n1,n1]
+		?a: Elsevier N.V.	[N.V.-nmod,j,o1,o1,o3,u]
+
+
+label:    wsj/00/wsj_0002.mrg_0
+sentence: Rudolph Agnew , 55 years old and former chairman of Consolidated Gold Fields PLC , was named a nonexecutive director of this British industrial conglomerate .
+
+tags: Rudolph/NOUN Agnew/NOUN ,/. 55/NUM years/NOUN old/ADJ and/CONJ former/ADJ chairman/NOUN of/ADP Consolidated/NOUN Gold/NOUN Fields/NOUN PLC/NOUN ,/. was/VERB named/VERB a/DET nonexecutive/ADJ director/NOUN of/ADP this/DET British/ADJ industrial/ADJ conglomerate/NOUN ./.
+
+compound(Rudolph/0, Agnew/1)        nsubjpass(Agnew/1, named/16)   punct(,/2, Agnew/1)                 nummod(55/3, years/4)
+nmod:npmod(years/4, old/5)          amod(old/5, Agnew/1)           cc(and/6, old/5)                    amod(former/7, chairman/8)
+conj(chairman/8, old/5)             case(of/9, PLC/13)             compound(Consolidated/10, PLC/13)   compound(Gold/11, PLC/13)
+compound(Fields/12, PLC/13)         nmod(PLC/13, chairman/8)       punct(,/14, Agnew/1)                auxpass(was/15, named/16)
+root(named/16, ROOT/-1)             det(a/17, director/19)         amod(nonexecutive/18, director/19)  xcomp(director/19, named/16)
+case(of/20, conglomerate/24)        det(this/21, conglomerate/24)  amod(British/22, conglomerate/24)   amod(industrial/23, conglomerate/24)
+nmod(conglomerate/24, director/19)  punct(./25, named/16)
+
+ppatt:
+	?a is/are 55 years old	[old-amod,e,n1,n1,n3,n5]
+		?a: Rudolph Agnew	[Agnew-nsubjpass,i,o1,o1,o1,o3,u]
+	?a is/are former	[former-amod,e]
+		?a: chairman of Consolidated Gold Fields PLC	[chairman-conj,i,o1,o1,o1,o1,o1,o3]
+	?a former chairman of ?b	[chairman-conj,f,n1,n2,n6]
+		?a: Rudolph Agnew , 55 years old	[Agnew-nsubjpass,borrow-subj(chairman/8,old/5,conj),i,o1,o1,o1,o1,o1,o1,o1,o3,u]
+		?b: Consolidated Gold Fields PLC	[PLC-nmod,h1,o1,o1,o1,o2]
+	?a was named a nonexecutive director of ?b	[named-root,c,c,l,n1,n1,n1,n1,n1,n2,n2,n6,u]
+		?a: Rudolph Agnew , 55 years old and former chairman of Consolidated Gold Fields PLC	[Agnew-nsubjpass,g1(nsubjpass),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,u]
+		?b: this British industrial conglomerate	[conglomerate-nmod,h1,l,o1,o1,o1,o2]
+	?a is/are nonexecutive	[nonexecutive-amod,e]
+		?a: a director of this British industrial conglomerate	[director-xcomp,i,o1,o1,o1,o1,o1,o1,o3]
+	?a is/are British	[British-amod,e]
+		?a: this industrial conglomerate	[conglomerate-nmod,i,o1,o1,o3]
+	?a is/are industrial	[industrial-amod,e]
+		?a: this British conglomerate	[conglomerate-nmod,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_0
+sentence: A form of asbestos once used to make Kent cigarette filters has caused a high percentage of cancer deaths among a group of workers exposed to it more than 30 years ago , researchers reported .
+
+tags: A/DET form/NOUN of/ADP asbestos/NOUN once/ADV used/VERB to/PRT make/VERB Kent/NOUN cigarette/NOUN filters/NOUN has/VERB caused/VERB a/DET high/ADJ percentage/NOUN of/ADP cancer/NOUN deaths/NOUN among/ADP a/DET group/NOUN of/ADP workers/NOUN exposed/VERB to/PRT it/PRON more/ADV than/ADP 30/NUM years/NOUN ago/ADP ,/. researchers/NOUN reported/VERB ./.
+
+det(A/0, form/1)                   nsubj(form/1, caused/12)            case(of/2, asbestos/3)          nmod(asbestos/3, form/1)
+advmod(once/4, used/5)             acl:relcl(used/5, form/1)           mark(to/6, make/7)              xcomp(make/7, used/5)
+compound(Kent/8, filters/10)       compound(cigarette/9, filters/10)   dobj(filters/10, make/7)        aux(has/11, caused/12)
+ccomp(caused/12, reported/34)      det(a/13, percentage/15)            amod(high/14, percentage/15)    dobj(percentage/15, caused/12)
+case(of/16, deaths/18)             compound(cancer/17, deaths/18)      nmod(deaths/18, percentage/15)  case(among/19, group/21)
+det(a/20, group/21)                nmod(group/21, percentage/15)       case(of/22, workers/23)         nmod(workers/23, group/21)
+acl:relcl(exposed/24, workers/23)  case(to/25, it/26)                  nmod(it/26, exposed/24)         advmod(more/27, 30/29)
+mwe(than/28, more/27)              nummod(30/29, years/30)             advmod(years/30, exposed/24)    case(ago/31, years/30)
+punct(,/32, reported/34)           nsubj(researchers/33, reported/34)  root(reported/34, ROOT/-1)      punct(./35, reported/34)
+
+ppatt:
+	?a once used to make ?b	[used-acl:relcl,b,l,n1,n1,n1,n2,pred_resolve_relcl]
+		?a: A form of asbestos	[form-nsubj,arg_resolve_relcl,o1,o1,o1,o3]
+		?b: Kent cigarette filters	[filters-dobj,g1(dobj),l,o1,o1]
+	?a has caused ?b	[caused-ccomp,a1,c,c,n1,n2,n2]
+		?a: A form of asbestos	[form-nsubj,g1(nsubj),o1,o1,o1,o4]
+		?b: a high percentage of cancer deaths among a group of workers	[percentage-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+	?a is/are high	[high-amod,e]
+		?a: a percentage of cancer deaths among a group of workers	[percentage-dobj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4]
+	?a exposed to ?b more than 30 years ago	[exposed-acl:relcl,b,n1,n1,n1,n1,n1,n2,n6,pred_resolve_relcl]
+		?a: workers	[workers-nmod,arg_resolve_relcl,o3]
+		?b: it	[it-nmod,h1,o2]
+	?a ?b reported	[reported-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := A form of asbestos has caused a high percentage of cancer deaths among a group of workers	[caused-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,o4]
+		?b: researchers	[researchers-nsubj,g1(nsubj)]
+
+
+label:    wsj/00/wsj_0003.mrg_1
+sentence: The asbestos fiber , crocidolite , is unusually resilient once it enters the lungs , with even brief exposures to it causing symptoms that show up decades later , researchers said .
+
+tags: The/DET asbestos/NOUN fiber/NOUN ,/. crocidolite/NOUN ,/. is/VERB unusually/ADV resilient/ADJ once/ADP it/PRON enters/VERB the/DET lungs/NOUN ,/. with/ADP even/ADV brief/ADJ exposures/NOUN to/PRT it/PRON causing/VERB symptoms/NOUN that/DET show/VERB up/PRT decades/NOUN later/ADJ ,/. researchers/NOUN said/VERB ./.
+
+det(The/0, fiber/2)              compound(asbestos/1, fiber/2)   nsubj(fiber/2, resilient/8)       punct(,/3, fiber/2)
+appos(crocidolite/4, fiber/2)    punct(,/5, fiber/2)             cop(is/6, resilient/8)            advmod(unusually/7, resilient/8)
+ccomp(resilient/8, said/30)      mark(once/9, enters/11)         nsubj(it/10, enters/11)           advcl(enters/11, resilient/8)
+det(the/12, lungs/13)            dobj(lungs/13, enters/11)       punct(,/14, resilient/8)          mark(with/15, causing/21)
+advmod(even/16, exposures/18)    amod(brief/17, exposures/18)    nsubj(exposures/18, causing/21)   case(to/19, it/20)
+nmod(it/20, exposures/18)        advcl(causing/21, resilient/8)  dobj(symptoms/22, causing/21)     nsubj(that/23, show/24)
+acl:relcl(show/24, symptoms/22)  compound:prt(up/25, show/24)    nmod:npmod(decades/26, later/27)  advmod(later/27, show/24)
+punct(,/28, said/30)             nsubj(researchers/29, said/30)  root(said/30, ROOT/-1)            punct(./31, said/30)
+
+ppatt:
+	?a is/are crocidolite	[crocidolite-appos,d]
+		?a: The asbestos fiber	[fiber-nsubj,j,o1,o1,o1,o1,o3,u]
+	?a is unusually resilient	[resilient-ccomp,a1,c,c,c,n1,n1,n1,n2,n3,n3,u]
+		?a: The asbestos fiber	[fiber-nsubj,g1(nsubj),o1,o1,o1,o1,o4,u]
+	?a enters ?b	[enters-advcl,b,n1,n2,n2,u]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: the lungs	[lungs-dobj,g1(dobj),o1]
+	?a is/are brief	[brief-amod,e]
+		?a: even exposures to it	[exposures-nsubj,i,o1,o1,o1,o3]
+	?a causing ?b	[causing-advcl,b,n1,n2,n2,u]
+		?a: even brief exposures to it	[exposures-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: symptoms	[symptoms-dobj,g1(dobj),o4]
+	?a show up ?b later	[show-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n1,n2,n2,pred_resolve_relcl]
+		?a: symptoms	[symptoms-dobj,arg_resolve_relcl,o3]
+		?b: decades	[decades-nmod:npmod,h2]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := The asbestos fiber , is unusually resilient	[resilient-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o4,o4,o4,u]
+		?b: researchers	[researchers-nsubj,g1(nsubj)]
+
+
+label:    wsj/00/wsj_0003.mrg_2
+sentence: Lorillard Inc. , the unit of New York-based Loews Corp. that makes Kent cigarettes , stopped using crocidolite in its Micronite cigarette filters in 1956 .
+
+tags: Lorillard/NOUN Inc./NOUN ,/. the/DET unit/NOUN of/ADP New/ADJ York-based/ADJ Loews/NOUN Corp./NOUN that/DET makes/VERB Kent/NOUN cigarettes/NOUN ,/. stopped/VERB using/VERB crocidolite/NOUN in/ADP its/PRON Micronite/NOUN cigarette/NOUN filters/NOUN in/ADP 1956/NUM ./.
+
+compound(Lorillard/0, Inc./1)       nsubj(Inc./1, stopped/15)           punct(,/2, Inc./1)          det(the/3, unit/4)
+appos(unit/4, Inc./1)               case(of/5, Corp./9)                 amod(New/6, York-based/7)   amod(York-based/7, Corp./9)
+compound(Loews/8, Corp./9)          nmod(Corp./9, unit/4)               nsubj(that/10, makes/11)    acl:relcl(makes/11, unit/4)
+compound(Kent/12, cigarettes/13)    dobj(cigarettes/13, makes/11)       punct(,/14, Inc./1)         root(stopped/15, ROOT/-1)
+xcomp(using/16, stopped/15)         dobj(crocidolite/17, using/16)      case(in/18, filters/22)     nmod:poss(its/19, filters/22)
+compound(Micronite/20, filters/22)  compound(cigarette/21, filters/22)  nmod(filters/22, using/16)  case(in/23, 1956/24)
+nmod(1956/24, using/16)             punct(./25, stopped/15)
+
+ppatt:
+	?a is/are the unit of ?b	[unit-appos,d,n1,n2,n3,n6]
+		?a: Lorillard Inc.	[Inc.-nsubj,j,o1,o1,o1,o3,u]
+		?b: New York-based Loews Corp.	[Corp.-nmod,h1,o1,o1,o1,o2]
+	?a is/are New York-based	[York-based-amod,e,n1]
+		?a: Loews Corp.	[Corp.-nmod,i,o1,o3]
+	?a makes ?b	[makes-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: the unit of New York-based Loews Corp.	[unit-appos,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3]
+		?b: Kent cigarettes	[cigarettes-dobj,g1(dobj),o1]
+	?a stopped using ?b in ?c in ?d	[stopped-root,c,c,l,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: Lorillard Inc.	[Inc.-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: crocidolite	[crocidolite-dobj,g1(dobj),l]
+		?c: its Micronite cigarette filters	[filters-nmod,h1,l,o1,o1,o1,o2]
+		?d: 1956	[1956-nmod,h1,l,o2]
+	?a poss ?b	[its-nmod:poss,n6,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: Micronite cigarette filters	[filters-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0003.mrg_3
+sentence: Although preliminary findings were reported more than a year ago , the latest results appear in today 's New England Journal of Medicine , a forum likely to bring new attention to the problem .
+
+tags: Although/ADP preliminary/ADJ findings/NOUN were/VERB reported/VERB more/ADV than/ADP a/DET year/NOUN ago/ADP ,/. the/DET latest/ADJ results/NOUN appear/VERB in/ADP today/NOUN 's/PRT New/NOUN England/NOUN Journal/NOUN of/ADP Medicine/NOUN ,/. a/DET forum/NOUN likely/ADJ to/PRT bring/VERB new/ADJ attention/NOUN to/PRT the/DET problem/NOUN ./.
+
+mark(Although/0, reported/4)     amod(preliminary/1, findings/2)  nsubjpass(findings/2, reported/4)  auxpass(were/3, reported/4)
+advcl(reported/4, appear/14)     advmod(more/5, a/7)              mwe(than/6, more/5)                nummod(a/7, year/8)
+advmod(year/8, reported/4)       case(ago/9, year/8)              punct(,/10, appear/14)             det(the/11, results/13)
+amod(latest/12, results/13)      nsubj(results/13, appear/14)     root(appear/14, ROOT/-1)           case(in/15, Journal/20)
+nmod:poss(today/16, Journal/20)  case('s/17, today/16)            compound(New/18, Journal/20)       compound(England/19, Journal/20)
+nmod(Journal/20, appear/14)      case(of/21, Medicine/22)         nmod(Medicine/22, Journal/20)      punct(,/23, Journal/20)
+det(a/24, forum/25)              appos(forum/25, Journal/20)      amod(likely/26, forum/25)          mark(to/27, bring/28)
+xcomp(bring/28, likely/26)       amod(new/29, attention/30)       dobj(attention/30, bring/28)       case(to/31, problem/33)
+det(the/32, problem/33)          nmod(problem/33, bring/28)       punct(./34, appear/14)
+
+ppatt:
+	?a is/are preliminary	[preliminary-amod,e]
+		?a: findings	[findings-nsubjpass,i,o3]
+	?a were reported more than a year ago	[reported-advcl,b,n1,n1,n1,n1,n1,n1,n1,n2,u]
+		?a: preliminary findings	[findings-nsubjpass,g1(nsubjpass),o1]
+	?a is/are latest	[latest-amod,e]
+		?a: the results	[results-nsubj,i,o1,o3]
+	?a appear in ?b	[appear-root,c,c,n1,n1,n2,n2,n3,n6,u]
+		?a: the latest results	[results-nsubj,g1(nsubj),o1,o1]
+		?b: today 's New England Journal of Medicine	[Journal-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o4,u]
+	?a poss ?b	[today-nmod:poss,n1,n6,n6,v]
+		?a: today	[today-nmod:poss,o2,w2]
+		?b: New England Journal of Medicine	[Journal-nmod,o1,o1,o1,o1,o1,o2,o3,o4,u,w1]
+	?a is/are a forum likely to bring new attention to the problem	[forum-appos,d,n1,n1,n1,n1,n1,n1,n1,n1,n1]
+		?a: today 's New England Journal of Medicine	[Journal-nmod,j,o1,o1,o1,o1,o1,o1,o1,o3,u]
+	?a is/are likely to bring ?b to ?c	[likely-amod,c,e,l,n1,n1,n2,n2,n6]
+		?a: a forum	[forum-appos,i,o1,o3]
+		?b: new attention	[attention-dobj,g1(dobj),l,o1]
+		?c: the problem	[problem-nmod,h1,l,o1,o2]
+	?a is/are new	[new-amod,e]
+		?a: attention	[attention-dobj,i,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_4
+sentence: A Lorillard spokewoman said , `` This is an old story .
+
+tags: A/DET Lorillard/NOUN spokewoman/NOUN said/VERB ,/. ``/. This/DET is/VERB an/DET old/ADJ story/NOUN ./.
+
+det(A/0, spokewoman/2)  compound(Lorillard/1, spokewoman/2)  nsubj(spokewoman/2, said/3)  root(said/3, ROOT/-1)
+punct(,/4, said/3)      punct(``/5, said/3)                  nsubj(This/6, story/10)      cop(is/7, story/10)
+det(an/8, story/10)     amod(old/9, story/10)                ccomp(story/10, said/3)      punct(./11, said/3)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n1,n1,n2,n2,u]
+		?a: A Lorillard spokewoman	[spokewoman-nsubj,g1(nsubj),o1,o1]
+		?b: SOMETHING := This is an old story	[story-ccomp,k,o1,o1,o1,o1]
+	?a is/are old	[old-amod,e]
+		?a: an story	[story-ccomp,i,o1,o3,o4,o4]
+	?a is an old story	[story-ccomp,a1,c,n1,n1,n1,n2]
+		?a: This	[This-nsubj,g1(nsubj)]
+
+
+label:    wsj/00/wsj_0003.mrg_5
+sentence: We 're talking about years ago before anyone heard of asbestos having any questionable properties .
+
+tags: We/PRON 're/VERB talking/VERB about/ADP years/NOUN ago/ADP before/ADP anyone/NOUN heard/VERB of/ADP asbestos/NOUN having/VERB any/DET questionable/ADJ properties/NOUN ./.
+
+nsubj(We/0, talking/2)      aux('re/1, talking/2)                 root(talking/2, ROOT/-1)        case(about/3, years/4)
+advcl(years/4, talking/2)   case(ago/5, years/4)                  mark(before/6, heard/8)         nsubj(anyone/7, heard/8)
+advcl(heard/8, years/4)     mark(of/9, having/11)                 nsubj(asbestos/10, having/11)   advcl(having/11, heard/8)
+det(any/12, properties/14)  amod(questionable/13, properties/14)  dobj(properties/14, having/11)  punct(./15, talking/2)
+
+ppatt:
+	?a 're talking	[talking-root,c,c,n1,n1,n2,n3,u]
+		?a: We	[We-nsubj,g1(nsubj)]
+	?a about years ago	[years-advcl,b,n1,n1,n3]
+		?a: We	[We-nsubj,borrow-subj(years/4,talking/2,advcl),g1(nsubj)]
+	?a heard	[heard-advcl,b,n1,n2,n3,u]
+		?a: anyone	[anyone-nsubj,g1(nsubj)]
+	?a having ?b	[having-advcl,b,n1,n2,n2,u]
+		?a: asbestos	[asbestos-nsubj,g1(nsubj)]
+		?b: any questionable properties	[properties-dobj,g1(dobj),o1,o1]
+	?a is/are questionable	[questionable-amod,e]
+		?a: any properties	[properties-dobj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_7
+sentence: Neither Lorillard nor the researchers who studied the workers were aware of any research on smokers of the Kent cigarettes .
+
+tags: Neither/DET Lorillard/NOUN nor/CONJ the/DET researchers/NOUN who/PRON studied/VERB the/DET workers/NOUN were/VERB aware/ADJ of/ADP any/DET research/NOUN on/ADP smokers/NOUN of/ADP the/DET Kent/NOUN cigarettes/NOUN ./.
+
+cc:preconj(Neither/0, Lorillard/1)  nsubj(Lorillard/1, aware/10)  cc(nor/2, Lorillard/1)               det(the/3, researchers/4)
+conj(researchers/4, Lorillard/1)    nsubj(who/5, studied/6)       acl:relcl(studied/6, researchers/4)  det(the/7, workers/8)
+dobj(workers/8, studied/6)          cop(were/9, aware/10)         root(aware/10, ROOT/-1)              case(of/11, research/13)
+det(any/12, research/13)            nmod(research/13, aware/10)   case(on/14, smokers/15)              nmod(smokers/15, research/13)
+case(of/16, cigarettes/19)          det(the/17, cigarettes/19)    compound(Kent/18, cigarettes/19)     nmod(cigarettes/19, smokers/15)
+punct(./20, aware/10)
+
+ppatt:
+	?a studied ?b	[studied-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: the researchers	[researchers-conj,arg_resolve_relcl,o1,o3]
+		?b: the workers	[workers-dobj,g1(dobj),o1]
+	?a were aware of ?b	[aware-root,c,n1,n1,n2,n2,n6,u]
+		?a: Lorillard	[Lorillard-nsubj,g1(nsubj),o5,o5,o6]
+		?b: any research on smokers of the Kent cigarettes	[research-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2]
+	?a were aware of ?b	[aware-root,c,n1,n1,n2,n2,n6,u]
+		?a: the researchers	[researchers-conj,m,o1,o4]
+		?b: any research on smokers of the Kent cigarettes	[research-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2]
+
+
+label:    wsj/00/wsj_0003.mrg_8
+sentence: `` We have no useful information on whether users are at risk , '' said James A. Talcott of Boston 's Dana-Farber Cancer Institute .
+
+tags: ``/. We/PRON have/VERB no/DET useful/ADJ information/NOUN on/ADP whether/ADP users/NOUN are/VERB at/ADP risk/NOUN ,/. ''/. said/VERB James/NOUN A./NOUN Talcott/NOUN of/ADP Boston/NOUN 's/PRT Dana-Farber/NOUN Cancer/NOUN Institute/NOUN ./.
+
+punct(``/0, said/14)           nsubj(We/1, have/2)                     ccomp(have/2, said/14)             neg(no/3, information/5)
+amod(useful/4, information/5)  dobj(information/5, have/2)             mark(on/6, risk/11)                mark(whether/7, risk/11)
+nsubj(users/8, risk/11)        cop(are/9, risk/11)                     case(at/10, risk/11)               acl(risk/11, information/5)
+punct(,/12, said/14)           punct(''/13, said/14)                   root(said/14, ROOT/-1)             compound(James/15, Talcott/17)
+compound(A./16, Talcott/17)    nsubj(Talcott/17, said/14)              case(of/18, Institute/23)          nmod:poss(Boston/19, Institute/23)
+case('s/20, Boston/19)         compound(Dana-Farber/21, Institute/23)  compound(Cancer/22, Institute/23)  nmod(Institute/23, Talcott/17)
+punct(./24, said/14)
+
+ppatt:
+	?a have ?b	[have-ccomp,a1,c,c,n2,n2]
+		?a: We	[We-nsubj,g1(nsubj)]
+		?b: no useful information	[information-dobj,g1(dobj),o1,o1,o4]
+	?a is/are useful	[useful-amod,e]
+		?a: information	[information-dobj,i,o3,o4,o4]
+	?a ?b are at risk	[risk-acl,b,n1,n1,n1,n1,n2,pred_resolve_relcl,u]
+		?a: useful information	[information-dobj,arg_resolve_relcl,o1,o3,o4]
+		?b: users	[users-nsubj,g1(nsubj)]
+	?a said ?b	[said-root,c,c,n1,n1,n1,n1,n2,n2,u]
+		?a: SOMETHING := We have no useful information	[have-ccomp,k,o1,o1,o1,o1,o4]
+		?b: James A. Talcott of Boston 's Dana-Farber Cancer Institute	[Talcott-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[Boston-nmod:poss,n1,n6,n6,v]
+		?a: Boston	[Boston-nmod:poss,o2,w2]
+		?b: Dana-Farber Cancer Institute	[Institute-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0003.mrg_9
+sentence: Dr. Talcott led a team of researchers from the National Cancer Institute and the medical schools of Harvard University and Boston University .
+
+tags: Dr./NOUN Talcott/NOUN led/VERB a/DET team/NOUN of/ADP researchers/NOUN from/ADP the/DET National/NOUN Cancer/NOUN Institute/NOUN and/CONJ the/DET medical/ADJ schools/NOUN of/ADP Harvard/NOUN University/NOUN and/CONJ Boston/NOUN University/NOUN ./.
+
+compound(Dr./0, Talcott/1)          nsubj(Talcott/1, led/2)              root(led/2, ROOT/-1)               det(a/3, team/4)
+dobj(team/4, led/2)                 case(of/5, researchers/6)            nmod(researchers/6, team/4)        case(from/7, Institute/11)
+det(the/8, Institute/11)            compound(National/9, Institute/11)   compound(Cancer/10, Institute/11)  nmod(Institute/11, researchers/6)
+cc(and/12, Institute/11)            det(the/13, schools/15)              amod(medical/14, schools/15)       conj(schools/15, Institute/11)
+case(of/16, University/18)          compound(Harvard/17, University/18)  nmod(University/18, schools/15)    cc(and/19, University/18)
+compound(Boston/20, University/21)  conj(University/21, University/18)   punct(./22, led/2)
+
+ppatt:
+	?a led ?b	[led-root,c,c,n1,n2,n2,u]
+		?a: Dr. Talcott	[Talcott-nsubj,g1(nsubj),o1]
+		?b: a team of researchers from the National Cancer Institute and the medical schools of Harvard University and Boston University	[team-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are medical	[medical-amod,e]
+		?a: the schools of Harvard University and Boston University	[schools-conj,i,o1,o1,o1,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_10
+sentence: The Lorillard spokeswoman said asbestos was used in `` very modest amounts '' in making paper for the filters in the early 1950s and replaced with a different type of filter in 1956 .
+
+tags: The/DET Lorillard/NOUN spokeswoman/NOUN said/VERB asbestos/NOUN was/VERB used/VERB in/ADP ``/. very/ADV modest/ADJ amounts/NOUN ''/. in/ADP making/VERB paper/NOUN for/ADP the/DET filters/NOUN in/ADP the/DET early/ADJ 1950s/NUM and/CONJ replaced/VERB with/ADP a/DET different/ADJ type/NOUN of/ADP filter/NOUN in/ADP 1956/NUM ./.
+
+det(The/0, spokeswoman/2)      compound(Lorillard/1, spokeswoman/2)  nsubj(spokeswoman/2, said/3)  root(said/3, ROOT/-1)
+nsubjpass(asbestos/4, used/6)  auxpass(was/5, used/6)                ccomp(used/6, said/3)         case(in/7, amounts/11)
+punct(``/8, amounts/11)        advmod(very/9, modest/10)             amod(modest/10, amounts/11)   nmod(amounts/11, used/6)
+punct(''/12, amounts/11)       mark(in/13, making/14)                advcl(making/14, used/6)      dobj(paper/15, making/14)
+case(for/16, filters/18)       det(the/17, filters/18)               nmod(filters/18, paper/15)    case(in/19, 1950s/22)
+det(the/20, 1950s/22)          amod(early/21, 1950s/22)              nmod(1950s/22, used/6)        cc(and/23, used/6)
+conj(replaced/24, used/6)      case(with/25, type/28)                det(a/26, type/28)            amod(different/27, type/28)
+nmod(type/28, replaced/24)     case(of/29, filter/30)                nmod(filter/30, type/28)      case(in/31, 1956/32)
+nmod(1956/32, replaced/24)     punct(./33, said/3)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: The Lorillard spokeswoman	[spokeswoman-nsubj,g1(nsubj),o1,o1]
+		?b: SOMETHING := asbestos was used in `` very modest amounts '' in the early 1950s	[used-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,o5,o6]
+	?a was used in ?b in ?c	[used-ccomp,a1,c,c,n1,n2,n2,n2,n3,n3,n5,n6,n6]
+		?a: asbestos	[asbestos-nsubjpass,g1(nsubjpass)]
+		?b: very modest amounts	[amounts-nmod,h1,o1,o1,o1,o1,o2,u]
+		?c: the early 1950s	[1950s-nmod,h1,o1,o1,o2]
+	?a is/are very modest	[modest-amod,e,n1]
+		?a: amounts	[amounts-nmod,i,o1,o1,o3,u]
+	?a making ?b	[making-advcl,b,n1,n2,u]
+		?a: asbestos	[asbestos-nsubjpass,borrow-subj(making/14,used/6,advcl),g1(nsubjpass)]
+		?b: paper for the filters	[paper-dobj,g1(dobj),o1,o1,o1]
+	?a is/are early	[early-amod,e]
+		?a: the 1950s	[1950s-nmod,i,o1,o3]
+	?a replaced with ?b in ?c	[replaced-conj,f,n2,n2,n6,n6]
+		?a: asbestos	[asbestos-nsubjpass,borrow-subj(replaced/24,used/6,conj),g1(nsubjpass)]
+		?b: a different type of filter	[type-nmod,h1,o1,o1,o1,o1,o2]
+		?c: 1956	[1956-nmod,h1,o2]
+	?a is/are different	[different-amod,e]
+		?a: a type of filter	[type-nmod,i,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_11
+sentence: From 1953 to 1955 , 9.8 billion Kent cigarettes with the filters were sold , the company said .
+
+tags: From/ADP 1953/NUM to/PRT 1955/NUM ,/. 9.8/NUM billion/NUM Kent/NOUN cigarettes/NOUN with/ADP the/DET filters/NOUN were/VERB sold/VERB ,/. the/DET company/NOUN said/VERB ./.
+
+case(From/0, 1953/1)              nmod(1953/1, sold/13)       case(to/2, 1955/3)               nmod(1955/3, 1953/1)
+punct(,/4, sold/13)               compound(9.8/5, billion/6)  nummod(billion/6, cigarettes/8)  compound(Kent/7, cigarettes/8)
+nsubjpass(cigarettes/8, sold/13)  case(with/9, filters/11)    det(the/10, filters/11)          nmod(filters/11, cigarettes/8)
+auxpass(were/12, sold/13)         ccomp(sold/13, said/17)     punct(,/14, said/17)             det(the/15, company/16)
+nsubj(company/16, said/17)        root(said/17, ROOT/-1)      punct(./18, said/17)
+
+ppatt:
+	From ?a , ?b were sold	[sold-ccomp,a1,c,n1,n1,n2,n2,n6]
+		?a: 1953 to 1955	[1953-nmod,h1,o1,o1,o2]
+		?b: 9.8 billion Kent cigarettes with the filters	[cigarettes-nsubjpass,g1(nsubjpass),o1,o1,o1,o1,o1,o1]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := From 1953 to 1955 , 9.8 billion Kent cigarettes with the filters were sold	[sold-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+		?b: the company	[company-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_12
+sentence: Among 33 men who worked closely with the substance , 28 have died -- more than three times the expected number .
+
+tags: Among/ADP 33/NUM men/NOUN who/PRON worked/VERB closely/ADV with/ADP the/DET substance/NOUN ,/. 28/NUM have/VERB died/VERB --/. more/ADJ than/ADP three/NUM times/NOUN the/DET expected/VERB number/NOUN ./.
+
+case(Among/0, men/2)          nummod(33/1, men/2)          nmod(men/2, died/12)       nsubj(who/3, worked/4)
+acl:relcl(worked/4, men/2)    advmod(closely/5, worked/4)  case(with/6, substance/8)  det(the/7, substance/8)
+nmod(substance/8, worked/4)   punct(,/9, died/12)          nsubj(28/10, died/12)      aux(have/11, died/12)
+root(died/12, ROOT/-1)        punct(--/13, died/12)        advmod(more/14, times/17)  advmod(than/15, times/17)
+compound(three/16, times/17)  nummod(times/17, number/20)  det(the/18, number/20)     amod(expected/19, number/20)
+dobj(number/20, died/12)      punct(./21, died/12)
+
+ppatt:
+	?a worked closely with ?b	[worked-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n2,n2,n6,pred_resolve_relcl]
+		?a: 33 men	[men-nmod,arg_resolve_relcl,o1,o3]
+		?b: the substance	[substance-nmod,h1,o1,o2]
+	Among ?a , ?b have died ?c	[died-root,c,c,n1,n1,n1,n1,n2,n2,n2,n6,u]
+		?a: 33 men	[men-nmod,h1,o1,o2,o4]
+		?b: 28	[28-nsubj,g1(nsubj)]
+		?c: more than three times the expected number	[number-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+
+
+label:    wsj/00/wsj_0003.mrg_13
+sentence: Four of the five surviving workers have asbestos-related diseases , including three with recently diagnosed cancer .
+
+tags: Four/NUM of/ADP the/DET five/NUM surviving/VERB workers/NOUN have/VERB asbestos-related/ADJ diseases/NOUN ,/. including/VERB three/NUM with/ADP recently/ADV diagnosed/VERB cancer/NOUN ./.
+
+nsubj(Four/0, have/6)         case(of/1, workers/5)              det(the/2, workers/5)          nummod(five/3, workers/5)
+amod(surviving/4, workers/5)  nmod(workers/5, Four/0)            root(have/6, ROOT/-1)          amod(asbestos-related/7, diseases/8)
+dobj(diseases/8, have/6)      punct(,/9, have/6)                 case(including/10, three/11)   nmod(three/11, have/6)
+case(with/12, cancer/15)      advmod(recently/13, diagnosed/14)  amod(diagnosed/14, cancer/15)  nmod(cancer/15, three/11)
+punct(./16, have/6)
+
+ppatt:
+	?a have ?b , including ?c	[have-root,c,c,n1,n1,n2,n2,n2,n6,u]
+		?a: Four of the five surviving workers	[Four-nsubj,g1(nsubj),o1,o1,o1,o1,o1]
+		?b: asbestos-related diseases	[diseases-dobj,g1(dobj),o1]
+		?c: three with recently diagnosed cancer	[three-nmod,h1,o1,o1,o1,o1,o2]
+	?a is/are asbestos-related	[asbestos-related-amod,e]
+		?a: diseases	[diseases-dobj,i,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_14
+sentence: The total of 18 deaths from malignant mesothelioma , lung cancer and asbestosis was far higher than expected , the researchers said .
+
+tags: The/DET total/NOUN of/ADP 18/NUM deaths/NOUN from/ADP malignant/ADJ mesothelioma/NOUN ,/. lung/NOUN cancer/NOUN and/CONJ asbestosis/NOUN was/VERB far/ADV higher/ADJ than/ADP expected/VERB ,/. the/DET researchers/NOUN said/VERB ./.
+
+det(The/0, total/1)                  nsubj(total/1, higher/15)      case(of/2, deaths/4)               nummod(18/3, deaths/4)
+nmod(deaths/4, total/1)              case(from/5, mesothelioma/7)   amod(malignant/6, mesothelioma/7)  nmod(mesothelioma/7, deaths/4)
+punct(,/8, mesothelioma/7)           compound(lung/9, cancer/10)    conj(cancer/10, mesothelioma/7)    cc(and/11, mesothelioma/7)
+conj(asbestosis/12, mesothelioma/7)  cop(was/13, higher/15)         advmod(far/14, higher/15)          ccomp(higher/15, said/21)
+mark(than/16, expected/17)           ccomp(expected/17, higher/15)  punct(,/18, said/21)               det(the/19, researchers/20)
+nsubj(researchers/20, said/21)       root(said/21, ROOT/-1)         punct(./22, said/21)
+
+ppatt:
+	?a is/are malignant	[malignant-amod,e]
+		?a: mesothelioma	[mesothelioma-nmod,i,o1,o3,o5,o6,o6,u]
+	?a was far higher ?b	[higher-ccomp,a1,c,c,n1,n1,n2,n2]
+		?a: The total of 18 deaths from malignant mesothelioma , lung cancer and asbestosis	[total-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+		?b: SOMETHING := than expected	[expected-ccomp,k,o1]
+	?a expected	[expected-ccomp,a1,n1,u]
+		?a: The total of 18 deaths from malignant mesothelioma , lung cancer and asbestosis	[total-nsubj,borrow-subj(expected/17,higher/15,ccomp),g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := The total of 18 deaths from malignant mesothelioma , lung cancer and asbestosis was far higher than expected	[higher-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+		?b: the researchers	[researchers-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_15
+sentence: `` The morbidity rate is a striking finding among those of us who study asbestos-related diseases , '' said Dr. Talcott .
+
+tags: ``/. The/DET morbidity/NOUN rate/NOUN is/VERB a/DET striking/ADJ finding/NOUN among/ADP those/DET of/ADP us/PRON who/PRON study/VERB asbestos-related/ADJ diseases/NOUN ,/. ''/. said/VERB Dr./NOUN Talcott/NOUN ./.
+
+punct(``/0, said/18)        det(The/1, rate/3)            compound(morbidity/2, rate/3)           nsubj(rate/3, finding/7)
+cop(is/4, finding/7)        det(a/5, finding/7)           amod(striking/6, finding/7)             ccomp(finding/7, said/18)
+case(among/8, those/9)      nmod(those/9, finding/7)      case(of/10, us/11)                      nmod(us/11, those/9)
+nsubj(who/12, study/13)     acl:relcl(study/13, those/9)  amod(asbestos-related/14, diseases/15)  dobj(diseases/15, study/13)
+punct(,/16, said/18)        punct(''/17, said/18)         root(said/18, ROOT/-1)                  compound(Dr./19, Talcott/20)
+nsubj(Talcott/20, said/18)  punct(./21, said/18)
+
+ppatt:
+	?a is/are striking	[striking-amod,e]
+		?a: a finding among those of us	[finding-ccomp,i,o1,o1,o1,o1,o1,o3,o4,o4,o4]
+	?a is a striking finding among ?b	[finding-ccomp,a1,c,n1,n1,n1,n2,n2,n6]
+		?a: The morbidity rate	[rate-nsubj,g1(nsubj),o1,o1]
+		?b: those of us	[those-nmod,h1,o1,o1,o2,o4]
+	?a study ?b	[study-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: those of us	[those-nmod,arg_resolve_relcl,o1,o1,o3]
+		?b: asbestos-related diseases	[diseases-dobj,g1(dobj),o1]
+	?a is/are asbestos-related	[asbestos-related-amod,e]
+		?a: diseases	[diseases-dobj,i,o3]
+	?a said ?b	[said-root,c,c,n1,n1,n1,n1,n2,n2,u]
+		?a: SOMETHING := The morbidity rate is a striking finding among those of us	[finding-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+		?b: Dr. Talcott	[Talcott-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_16
+sentence: The percentage of lung cancer deaths among the workers at the West Groton , Mass. , paper factory appears to be the highest for any asbestos workers studied in Western industrialized countries , he said .
+
+tags: The/DET percentage/NOUN of/ADP lung/NOUN cancer/NOUN deaths/NOUN among/ADP the/DET workers/NOUN at/ADP the/DET West/NOUN Groton/NOUN ,/. Mass./NOUN ,/. paper/NOUN factory/NOUN appears/VERB to/PRT be/VERB the/DET highest/ADJ for/ADP any/DET asbestos/NOUN workers/NOUN studied/VERB in/ADP Western/ADJ industrialized/VERB countries/NOUN ,/. he/PRON said/VERB ./.
+
+det(The/0, percentage/1)        nsubj(percentage/1, appears/18)    case(of/2, deaths/5)                   compound(lung/3, deaths/5)
+compound(cancer/4, deaths/5)    nmod(deaths/5, percentage/1)       case(among/6, workers/8)               det(the/7, workers/8)
+nmod(workers/8, percentage/1)   case(at/9, factory/17)             det(the/10, factory/17)                dep(West/11, factory/17)
+compound(Groton/12, West/11)    punct(,/13, West/11)               dep(Mass./14, West/11)                 punct(,/15, West/11)
+compound(paper/16, factory/17)  nmod(factory/17, workers/8)        ccomp(appears/18, said/34)             mark(to/19, highest/22)
+cop(be/20, highest/22)          det(the/21, highest/22)            xcomp(highest/22, appears/18)          case(for/23, workers/26)
+det(any/24, workers/26)         compound(asbestos/25, workers/26)  nmod(workers/26, highest/22)           acl:relcl(studied/27, workers/26)
+case(in/28, countries/31)       amod(Western/29, countries/31)     amod(industrialized/30, countries/31)  nmod(countries/31, studied/27)
+punct(,/32, said/34)            nsubj(he/33, said/34)              root(said/34, ROOT/-1)                 punct(./35, said/34)
+
+ppatt:
+	?a appears to be the highest for ?b	[appears-ccomp,a1,c,c,l,n1,n1,n1,n1,n2,n2,n6]
+		?a: The percentage of lung cancer deaths among the workers at the paper factory	[percentage-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+		?b: any asbestos workers	[workers-nmod,h1,l,o1,o1,o2,o4]
+	?a studied in ?b	[studied-acl:relcl,b,n2,n6,pred_resolve_relcl]
+		?a: any asbestos workers	[workers-nmod,arg_resolve_relcl,o1,o1,o3]
+		?b: Western industrialized countries	[countries-nmod,h1,o1,o1,o2]
+	?a is/are Western	[Western-amod,e]
+		?a: industrialized countries	[countries-nmod,i,o1,o3]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := The percentage of lung cancer deaths among the workers at the paper factory appears to be the highest for any asbestos workers	[appears-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,o4]
+		?b: he	[he-nsubj,g1(nsubj)]
+
+
+label:    wsj/00/wsj_0003.mrg_17
+sentence: The plant , which is owned by Hollingsworth & Vose Co. , was under contract with Lorillard to make the cigarette filters .
+
+tags: The/DET plant/NOUN ,/. which/DET is/VERB owned/VERB by/ADP Hollingsworth/NOUN &/CONJ Vose/NOUN Co./NOUN ,/. was/VERB under/ADP contract/NOUN with/ADP Lorillard/NOUN to/PRT make/VERB the/DET cigarette/NOUN filters/NOUN ./.
+
+det(The/0, plant/1)                 nsubj(plant/1, contract/14)    punct(,/2, plant/1)         nsubjpass(which/3, owned/5)
+auxpass(is/4, owned/5)              acl:relcl(owned/5, plant/1)    case(by/6, Co./10)          compound(Hollingsworth/7, Co./10)
+cc(&/8, Hollingsworth/7)            conj(Vose/9, Hollingsworth/7)  nmod(Co./10, owned/5)       punct(,/11, plant/1)
+cop(was/12, contract/14)            case(under/13, contract/14)    root(contract/14, ROOT/-1)  case(with/15, Lorillard/16)
+nmod(Lorillard/16, contract/14)     mark(to/17, make/18)           acl(make/18, contract/14)   det(the/19, filters/21)
+compound(cigarette/20, filters/21)  dobj(filters/21, make/18)      punct(./22, contract/14)
+
+ppatt:
+	?a is owned by ?b	[owned-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n2,n2,n6,pred_resolve_relcl]
+		?a: The plant	[plant-nsubj,arg_resolve_relcl,o1,o1,o1,o3,u]
+		?b: Hollingsworth & Vose Co.	[Co.-nmod,h1,o1,o1,o1,o2]
+	?a was under contract with ?b	[contract-root,c,n1,n1,n1,n2,n2,n3,n6,u]
+		?a: The plant	[plant-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: Lorillard	[Lorillard-nmod,h1,o2]
+	?a make ?b	[make-acl,b,n1,n2,pred_resolve_relcl,u]
+		?a: contract with Lorillard	[contract-root,arg_resolve_relcl,o1,o1,o1,o3,o4,o4,u]
+		?b: the cigarette filters	[filters-dobj,g1(dobj),o1,o1]
+
+
+label:    wsj/00/wsj_0003.mrg_18
+sentence: The finding probably will support those who argue that the U.S. should regulate the class of asbestos including crocidolite more stringently than the common kind of asbestos , chrysotile , found in most schools and other buildings , Dr. Talcott said .
+
+tags: The/DET finding/NOUN probably/ADV will/VERB support/VERB those/DET who/PRON argue/VERB that/ADP the/DET U.S./NOUN should/VERB regulate/VERB the/DET class/NOUN of/ADP asbestos/NOUN including/VERB crocidolite/NOUN more/ADV stringently/ADV than/ADP the/DET common/ADJ kind/NOUN of/ADP asbestos/NOUN ,/. chrysotile/NOUN ,/. found/VERB in/ADP most/ADJ schools/NOUN and/CONJ other/ADJ buildings/NOUN ,/. Dr./NOUN Talcott/NOUN said/VERB ./.
+
+det(The/0, finding/1)                nsubj(finding/1, support/4)         advmod(probably/2, support/4)   aux(will/3, support/4)
+ccomp(support/4, said/40)            dobj(those/5, support/4)            nsubj(who/6, argue/7)           acl:relcl(argue/7, those/5)
+mark(that/8, regulate/12)            det(the/9, U.S./10)                 nsubj(U.S./10, regulate/12)     aux(should/11, regulate/12)
+ccomp(regulate/12, argue/7)          det(the/13, class/14)               dobj(class/14, regulate/12)     case(of/15, asbestos/16)
+nmod(asbestos/16, class/14)          case(including/17, crocidolite/18)  nmod(crocidolite/18, class/14)  advmod(more/19, stringently/20)
+advmod(stringently/20, regulate/12)  case(than/21, kind/24)              det(the/22, kind/24)            amod(common/23, kind/24)
+nmod(kind/24, stringently/20)        case(of/25, asbestos/26)            nmod(asbestos/26, kind/24)      punct(,/27, kind/24)
+appos(chrysotile/28, kind/24)        punct(,/29, kind/24)                acl(found/30, kind/24)          case(in/31, schools/33)
+amod(most/32, schools/33)            nmod(schools/33, found/30)          cc(and/34, schools/33)          amod(other/35, buildings/36)
+conj(buildings/36, schools/33)       punct(,/37, said/40)                compound(Dr./38, Talcott/39)    nsubj(Talcott/39, said/40)
+root(said/40, ROOT/-1)               punct(./41, said/40)
+
+ppatt:
+	?a probably will support ?b	[support-ccomp,a1,c,c,n1,n1,n2,n2]
+		?a: The finding	[finding-nsubj,g1(nsubj),o1]
+		?b: those	[those-dobj,g1(dobj),o4]
+	?a argue ?b	[argue-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: those	[those-dobj,arg_resolve_relcl,o3]
+		?b: SOMETHING := the U.S. should regulate the class of asbestos including crocidolite more stringently than the common kind of asbestos	[regulate-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,o4,u]
+	?a should regulate ?b more stringently than ?c	[regulate-ccomp,a1,c,c,n1,n1,n1,n1,n2,n2,n2,n6,u]
+		?a: the U.S.	[U.S.-nsubj,g1(nsubj),o1]
+		?b: the class of asbestos including crocidolite	[class-dobj,g1(dobj),o1,o1,o1,o1,o1]
+		?c: the common kind of asbestos	[kind-nmod,h2,o1,o1,o1,o1,o1,o1,o2,o4,o4,u]
+	?a is/are common	[common-amod,e]
+		?a: the kind of asbestos	[kind-nmod,i,o1,o1,o1,o1,o1,o3,o4,o4,u]
+	?a is/are chrysotile	[chrysotile-appos,d]
+		?a: the common kind of asbestos	[kind-nmod,j,o1,o1,o1,o1,o1,o1,o3,o4,u]
+	?a found in ?b	[found-acl,b,n2,n6,pred_resolve_relcl]
+		?a: the common kind of asbestos	[kind-nmod,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3,o4,u]
+		?b: most schools	[schools-nmod,h1,o1,o2,o5,o6]
+	?a found in ?b	[found-acl,b,n2,n6,pred_resolve_relcl]
+		?a: the common kind of asbestos	[kind-nmod,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3,o4,u]
+		?b: other buildings	[buildings-conj,m,o1]
+	?a is/are most	[most-amod,e]
+		?a: schools	[schools-nmod,i,o3,o5,o6]
+	?a is/are other	[other-amod,e]
+		?a: buildings	[buildings-conj,i,o3]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := The finding probably will support those	[support-ccomp,k,o1,o1,o1,o1,o1,o4]
+		?b: Dr. Talcott	[Talcott-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_19
+sentence: The U.S. is one of the few industrialized nations that does n't have a higher standard of regulation for the smooth , needle-like fibers such as crocidolite that are classified as amphobiles , according to Brooke T. Mossman , a professor of pathlogy at the University of Vermont College of Medicine .
+
+tags: The/DET U.S./NOUN is/VERB one/NUM of/ADP the/DET few/ADJ industrialized/VERB nations/NOUN that/DET does/VERB n't/ADV have/VERB a/DET higher/ADJ standard/NOUN of/ADP regulation/NOUN for/ADP the/DET smooth/ADJ ,/. needle-like/ADJ fibers/NOUN such/ADJ as/ADP crocidolite/NOUN that/DET are/VERB classified/VERB as/ADP amphobiles/NOUN ,/. according/VERB to/PRT Brooke/NOUN T./NOUN Mossman/NOUN ,/. a/DET professor/NOUN of/ADP pathlogy/NOUN at/ADP the/DET University/NOUN of/ADP Vermont/NOUN College/NOUN of/ADP Medicine/NOUN ./.
+
+det(The/0, U.S./1)               nsubj(U.S./1, one/3)                 cop(is/2, one/3)                 root(one/3, ROOT/-1)
+case(of/4, nations/8)            det(the/5, nations/8)                amod(few/6, nations/8)           amod(industrialized/7, nations/8)
+nmod(nations/8, one/3)           nsubj(that/9, have/12)               aux(does/10, have/12)            neg(n't/11, have/12)
+acl:relcl(have/12, nations/8)    det(a/13, standard/15)               amod(higher/14, standard/15)     dobj(standard/15, have/12)
+case(of/16, regulation/17)       nmod(regulation/17, standard/15)     case(for/18, fibers/23)          det(the/19, fibers/23)
+amod(smooth/20, fibers/23)       punct(,/21, fibers/23)               amod(needle-like/22, fibers/23)  nmod(fibers/23, standard/15)
+case(such/24, crocidolite/26)    mwe(as/25, such/24)                  nmod(crocidolite/26, fibers/23)  nsubjpass(that/27, classified/29)
+auxpass(are/28, classified/29)   acl:relcl(classified/29, fibers/23)  case(as/30, amphobiles/31)       nmod(amphobiles/31, classified/29)
+punct(,/32, one/3)               case(according/33, Mossman/37)       mwe(to/34, according/33)         compound(Brooke/35, Mossman/37)
+compound(T./36, Mossman/37)      nmod(Mossman/37, one/3)              punct(,/38, Mossman/37)          det(a/39, professor/40)
+appos(professor/40, Mossman/37)  case(of/41, pathlogy/42)             nmod(pathlogy/42, professor/40)  case(at/43, College/48)
+det(the/44, College/48)          dep(University/45, College/48)       case(of/46, Vermont/47)          nmod(Vermont/47, University/45)
+nmod(College/48, professor/40)   case(of/49, Medicine/50)             nmod(Medicine/50, College/48)    punct(./51, one/3)
+
+ppatt:
+	?a is one of ?b , according to ?c	[one-root,c,n1,n1,n1,n2,n2,n2,n6,n6,u]
+		?a: The U.S.	[U.S.-nsubj,g1(nsubj),o1]
+		?b: the few industrialized nations	[nations-nmod,h1,o1,o1,o1,o2,o4]
+		?c: Brooke T. Mossman	[Mossman-nmod,h1,o1,o1,o1,o2,o4,u]
+	?a is/are few	[few-amod,e]
+		?a: the industrialized nations	[nations-nmod,i,o1,o1,o3,o4]
+	?a does n't have ?b	[have-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n1,n2,n2,pred_resolve_relcl]
+		?a: the few industrialized nations	[nations-nmod,arg_resolve_relcl,o1,o1,o1,o3]
+		?b: a higher standard of regulation for the smooth , needle-like fibers such as crocidolite	[standard-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+	?a is/are higher	[higher-amod,e]
+		?a: a standard of regulation for the smooth , needle-like fibers such crocidolite	[standard-dobj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4,o4]
+	?a is/are smooth	[smooth-amod,e]
+		?a: the , needle-like fibers such crocidolite	[fibers-nmod,i,o1,o1,o1,o1,o1,o3,o4,o4]
+	?a is/are needle-like	[needle-like-amod,e]
+		?a: the smooth , fibers such crocidolite	[fibers-nmod,i,o1,o1,o1,o1,o1,o3,o4,o4]
+	?a are classified as ?b	[classified-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n2,n2,n6,pred_resolve_relcl]
+		?a: the smooth , needle-like fibers such crocidolite	[fibers-nmod,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3,o4]
+		?b: amphobiles	[amphobiles-nmod,h1,o2]
+	?a is/are a professor of ?b at ?c	[professor-appos,d,n1,n2,n2,n6,n6]
+		?a: Brooke T. Mossman	[Mossman-nmod,j,o1,o1,o1,o3,u]
+		?b: pathlogy	[pathlogy-nmod,h1,o2]
+		?c: the College of Medicine	[College-nmod,h1,o1,o1,o1,o2,o4]
+
+
+label:    wsj/00/wsj_0003.mrg_20
+sentence: More common chrysotile fibers are curly and are more easily rejected by the body , Dr. Mossman explained .
+
+tags: More/ADV common/ADJ chrysotile/NOUN fibers/NOUN are/VERB curly/ADJ and/CONJ are/VERB more/ADV easily/ADV rejected/VERB by/ADP the/DET body/NOUN ,/. Dr./NOUN Mossman/NOUN explained/VERB ./.
+
+advmod(More/0, fibers/3)         amod(common/1, fibers/3)       compound(chrysotile/2, fibers/3)  nsubj(fibers/3, curly/5)
+cop(are/4, curly/5)              ccomp(curly/5, explained/17)   cc(and/6, curly/5)                auxpass(are/7, rejected/10)
+advmod(more/8, easily/9)         advmod(easily/9, rejected/10)  conj(rejected/10, curly/5)        case(by/11, body/13)
+det(the/12, body/13)             nmod(body/13, rejected/10)     punct(,/14, explained/17)         compound(Dr./15, Mossman/16)
+nsubj(Mossman/16, explained/17)  root(explained/17, ROOT/-1)    punct(./18, explained/17)
+
+ppatt:
+	?a is/are common	[common-amod,e]
+		?a: More chrysotile fibers	[fibers-nsubj,i,o1,o1,o3]
+	?a are curly	[curly-ccomp,a1,c,n1,n2,n3,n5]
+		?a: More common chrysotile fibers	[fibers-nsubj,g1(nsubj),o1,o1,o1]
+	?a are more easily rejected by ?b	[rejected-conj,f,n1,n1,n1,n2,n6]
+		?a: More common chrysotile fibers	[fibers-nsubj,borrow-subj(rejected/10,curly/5,conj),g1(nsubj),o1,o1,o1]
+		?b: the body	[body-nmod,h1,o1,o2]
+	?a ?b explained	[explained-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := More common chrysotile fibers are curly	[curly-ccomp,k,o1,o1,o1,o1,o1,o5,o6]
+		?b: Dr. Mossman	[Mossman-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_21
+sentence: In July , the Environmental Protection Agency imposed a gradual ban on virtually all uses of asbestos .
+
+tags: In/ADP July/NOUN ,/. the/DET Environmental/NOUN Protection/NOUN Agency/NOUN imposed/VERB a/DET gradual/ADJ ban/NOUN on/ADP virtually/ADV all/DET uses/NOUN of/ADP asbestos/NOUN ./.
+
+case(In/0, July/1)                   nmod(July/1, imposed/7)           punct(,/2, imposed/7)       det(the/3, Agency/6)
+compound(Environmental/4, Agency/6)  compound(Protection/5, Agency/6)  nsubj(Agency/6, imposed/7)  root(imposed/7, ROOT/-1)
+det(a/8, ban/10)                     amod(gradual/9, ban/10)           dobj(ban/10, imposed/7)     case(on/11, uses/14)
+advmod(virtually/12, all/13)         amod(all/13, uses/14)             nmod(uses/14, imposed/7)    case(of/15, asbestos/16)
+nmod(asbestos/16, uses/14)           punct(./17, imposed/7)
+
+ppatt:
+	In ?a , ?b imposed ?c on ?d	[imposed-root,c,c,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: July	[July-nmod,h1,o2]
+		?b: the Environmental Protection Agency	[Agency-nsubj,g1(nsubj),o1,o1,o1]
+		?c: a gradual ban	[ban-dobj,g1(dobj),o1,o1]
+		?d: virtually all uses of asbestos	[uses-nmod,h1,o1,o1,o1,o1,o2]
+	?a is/are gradual	[gradual-amod,e]
+		?a: a ban	[ban-dobj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_22
+sentence: By 1997 , almost all remaining uses of cancer-causing asbestos will be outlawed .
+
+tags: By/ADP 1997/NUM ,/. almost/ADV all/DET remaining/VERB uses/NOUN of/ADP cancer-causing/ADJ asbestos/NOUN will/VERB be/VERB outlawed/VERB ./.
+
+case(By/0, 1997/1)                  nmod(1997/1, outlawed/12)  punct(,/2, outlawed/12)         advmod(almost/3, all/4)
+amod(all/4, uses/6)                 amod(remaining/5, uses/6)  nsubjpass(uses/6, outlawed/12)  case(of/7, asbestos/9)
+amod(cancer-causing/8, asbestos/9)  nmod(asbestos/9, uses/6)   aux(will/10, outlawed/12)       auxpass(be/11, outlawed/12)
+root(outlawed/12, ROOT/-1)          punct(./13, outlawed/12)
+
+ppatt:
+	?a is/are cancer-causing	[cancer-causing-amod,e]
+		?a: asbestos	[asbestos-nmod,i,o3]
+	By ?a , ?b will be outlawed	[outlawed-root,c,n1,n1,n1,n1,n2,n2,n6,u]
+		?a: 1997	[1997-nmod,h1,o2]
+		?b: almost all remaining uses of cancer-causing asbestos	[uses-nsubjpass,g1(nsubjpass),o1,o1,o1,o1,o1,o1]
+
+
+label:    wsj/00/wsj_0003.mrg_23
+sentence: About 160 workers at a factory that made paper for the Kent filters were exposed to asbestos in the 1950s .
+
+tags: About/ADP 160/NUM workers/NOUN at/ADP a/DET factory/NOUN that/DET made/VERB paper/NOUN for/ADP the/DET Kent/NOUN filters/NOUN were/VERB exposed/VERB to/PRT asbestos/NOUN in/ADP the/DET 1950s/NUM ./.
+
+advmod(About/0, 160/1)         nummod(160/1, workers/2)      nsubjpass(workers/2, exposed/14)  case(at/3, factory/5)
+det(a/4, factory/5)            nmod(factory/5, workers/2)    nsubj(that/6, made/7)             acl:relcl(made/7, factory/5)
+dobj(paper/8, made/7)          case(for/9, filters/12)       det(the/10, filters/12)           compound(Kent/11, filters/12)
+nmod(filters/12, paper/8)      auxpass(were/13, exposed/14)  root(exposed/14, ROOT/-1)         case(to/15, asbestos/16)
+nmod(asbestos/16, exposed/14)  case(in/17, 1950s/19)         det(the/18, 1950s/19)             nmod(1950s/19, exposed/14)
+punct(./20, exposed/14)
+
+ppatt:
+	?a made ?b	[made-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: a factory	[factory-nmod,arg_resolve_relcl,o1,o3]
+		?b: paper for the Kent filters	[paper-dobj,g1(dobj),o1,o1,o1,o1]
+	?a were exposed to ?b in ?c	[exposed-root,c,n1,n1,n2,n2,n2,n6,n6,u]
+		?a: About 160 workers at a factory	[workers-nsubjpass,g1(nsubjpass),o1,o1,o1,o1,o1,o4]
+		?b: asbestos	[asbestos-nmod,h1,o2]
+		?c: the 1950s	[1950s-nmod,h1,o1,o2]
+
+
+label:    wsj/00/wsj_0003.mrg_24
+sentence: Areas of the factory were particularly dusty where the crocidolite was used .
+
+tags: Areas/NOUN of/ADP the/DET factory/NOUN were/VERB particularly/ADV dusty/ADJ where/ADV the/DET crocidolite/NOUN was/VERB used/VERB ./.
+
+nsubj(Areas/0, dusty/6)    case(of/1, factory/3)              det(the/2, factory/3)     nmod(factory/3, Areas/0)
+cop(were/4, dusty/6)       advmod(particularly/5, dusty/6)    root(dusty/6, ROOT/-1)    advmod(where/7, used/11)
+det(the/8, crocidolite/9)  nsubjpass(crocidolite/9, used/11)  auxpass(was/10, used/11)  advcl(used/11, dusty/6)
+punct(./12, dusty/6)
+
+ppatt:
+	?a were particularly dusty	[dusty-root,c,c,n1,n1,n1,n2,n3,u]
+		?a: Areas of the factory	[Areas-nsubj,g1(nsubj),o1,o1,o1]
+	where ?a was used	[used-advcl,b,n1,n1,n2]
+		?a: the crocidolite	[crocidolite-nsubjpass,g1(nsubjpass),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_25
+sentence: Workers dumped large burlap sacks of the imported material into a huge bin , poured in cotton and acetate fibers and mechanically mixed the dry fibers in a process used to make filters .
+
+tags: Workers/NOUN dumped/VERB large/ADJ burlap/NOUN sacks/NOUN of/ADP the/DET imported/VERB material/NOUN into/ADP a/DET huge/ADJ bin/NOUN ,/. poured/VERB in/PRT cotton/NOUN and/CONJ acetate/NOUN fibers/NOUN and/CONJ mechanically/ADV mixed/VERB the/DET dry/ADJ fibers/NOUN in/ADP a/DET process/NOUN used/VERB to/PRT make/VERB filters/NOUN ./.
+
+nsubj(Workers/0, dumped/1)      root(dumped/1, ROOT/-1)            amod(large/2, sacks/4)       compound(burlap/3, sacks/4)
+dobj(sacks/4, dumped/1)         case(of/5, material/8)             det(the/6, material/8)       amod(imported/7, material/8)
+nmod(material/8, sacks/4)       case(into/9, bin/12)               det(a/10, bin/12)            amod(huge/11, bin/12)
+nmod(bin/12, dumped/1)          punct(,/13, dumped/1)              conj(poured/14, dumped/1)    compound:prt(in/15, poured/14)
+compound(cotton/16, fibers/19)  cc(and/17, cotton/16)              conj(acetate/18, cotton/16)  dobj(fibers/19, poured/14)
+cc(and/20, dumped/1)            advmod(mechanically/21, mixed/22)  conj(mixed/22, dumped/1)     det(the/23, fibers/25)
+amod(dry/24, fibers/25)         dobj(fibers/25, mixed/22)          case(in/26, process/28)      det(a/27, process/28)
+nmod(process/28, mixed/22)      acl:relcl(used/29, process/28)     mark(to/30, make/31)         xcomp(make/31, used/29)
+dobj(filters/32, make/31)       punct(./33, dumped/1)
+
+ppatt:
+	?a dumped ?b into ?c	[dumped-root,c,c,n1,n1,n2,n2,n2,n3,n3,n5,n6,u]
+		?a: Workers	[Workers-nsubj,g1(nsubj)]
+		?b: large burlap sacks of the imported material	[sacks-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+		?c: a huge bin	[bin-nmod,h1,o1,o1,o2]
+	?a is/are large	[large-amod,e]
+		?a: burlap sacks of the imported material	[sacks-dobj,i,o1,o1,o1,o1,o1,o3]
+	?a is/are huge	[huge-amod,e]
+		?a: a bin	[bin-nmod,i,o1,o3]
+	?a poured in ?b	[poured-conj,f,n1,n2]
+		?a: Workers	[Workers-nsubj,borrow-subj(poured/14,dumped/1,conj),g1(nsubj)]
+		?b: cotton and acetate fibers	[fibers-dobj,g1(dobj),o1,o1,o1]
+	?a mechanically mixed ?b in ?c	[mixed-conj,f,n1,n2,n2,n6]
+		?a: Workers	[Workers-nsubj,borrow-subj(mixed/22,dumped/1,conj),g1(nsubj)]
+		?b: the dry fibers	[fibers-dobj,g1(dobj),o1,o1]
+		?c: a process	[process-nmod,h1,o1,o2,o4]
+	?a is/are dry	[dry-amod,e]
+		?a: the fibers	[fibers-dobj,i,o1,o3]
+	?a used to make ?b	[used-acl:relcl,b,l,n1,n1,n2,pred_resolve_relcl]
+		?a: a process	[process-nmod,arg_resolve_relcl,o1,o3]
+		?b: filters	[filters-dobj,g1(dobj),l]
+
+
+label:    wsj/00/wsj_0003.mrg_26
+sentence: Workers described `` clouds of blue dust '' that hung over parts of the factory , even though exhaust fans ventilated the area .
+
+tags: Workers/NOUN described/VERB ``/. clouds/NOUN of/ADP blue/ADJ dust/NOUN ''/. that/DET hung/VERB over/ADP parts/NOUN of/ADP the/DET factory/NOUN ,/. even/ADV though/ADP exhaust/NOUN fans/NOUN ventilated/VERB the/DET area/NOUN ./.
+
+nsubj(Workers/0, described/1)   root(described/1, ROOT/-1)      punct(``/2, clouds/3)          dobj(clouds/3, described/1)
+case(of/4, dust/6)              amod(blue/5, dust/6)            nmod(dust/6, clouds/3)         punct(''/7, clouds/3)
+nsubj(that/8, hung/9)           acl:relcl(hung/9, clouds/3)     case(over/10, parts/11)        nmod(parts/11, hung/9)
+case(of/12, factory/14)         det(the/13, factory/14)         nmod(factory/14, parts/11)     punct(,/15, hung/9)
+advmod(even/16, ventilated/20)  mark(though/17, ventilated/20)  compound(exhaust/18, fans/19)  nsubj(fans/19, ventilated/20)
+advcl(ventilated/20, hung/9)    det(the/21, area/22)            dobj(area/22, ventilated/20)   punct(./23, described/1)
+
+ppatt:
+	?a described ?b	[described-root,c,c,n1,n2,n2,u]
+		?a: Workers	[Workers-nsubj,g1(nsubj)]
+		?b: clouds of blue dust	[clouds-dobj,g1(dobj),o1,o1,o1,o1,o1,o4,u]
+	?a is/are blue	[blue-amod,e]
+		?a: dust	[dust-nmod,i,o3]
+	?a hung over ?b	[hung-acl:relcl,b,en_relcl_dummy_arg_filter,n1,n2,n2,n3,n6,pred_resolve_relcl,u]
+		?a: clouds of blue dust	[clouds-dobj,arg_resolve_relcl,o1,o1,o1,o1,o1,o3,u]
+		?b: parts of the factory	[parts-nmod,h1,o1,o1,o1,o2]
+	even though ?a ventilated ?b	[ventilated-advcl,b,n1,n1,n2,n2]
+		?a: exhaust fans	[fans-nsubj,g1(nsubj),o1]
+		?b: the area	[area-dobj,g1(dobj),o1]
+
+
+label:    wsj/00/wsj_0003.mrg_27
+sentence: `` There 's no question that some of those workers and managers contracted asbestos-related diseases , '' said Darrell Phillips , vice president of human resources for Hollingsworth & Vose .
+
+tags: ``/. There/DET 's/VERB no/DET question/NOUN that/ADP some/DET of/ADP those/DET workers/NOUN and/CONJ managers/NOUN contracted/VERB asbestos-related/ADJ diseases/NOUN ,/. ''/. said/VERB Darrell/NOUN Phillips/NOUN ,/. vice/NOUN president/NOUN of/ADP human/ADJ resources/NOUN for/ADP Hollingsworth/NOUN &/CONJ Vose/NOUN ./.
+
+punct(``/0, said/17)            expl(There/1, 's/2)                     ccomp('s/2, said/17)               neg(no/3, question/4)
+nsubj(question/4, 's/2)         mark(that/5, contracted/12)             nsubj(some/6, contracted/12)       case(of/7, workers/9)
+det(those/8, workers/9)         nmod(workers/9, some/6)                 cc(and/10, workers/9)              conj(managers/11, workers/9)
+dep(contracted/12, question/4)  amod(asbestos-related/13, diseases/14)  dobj(diseases/14, contracted/12)   punct(,/15, said/17)
+punct(''/16, said/17)           root(said/17, ROOT/-1)                  compound(Darrell/18, Phillips/19)  nsubj(Phillips/19, said/17)
+punct(,/20, Phillips/19)        compound(vice/21, president/22)         appos(president/22, Phillips/19)   case(of/23, resources/25)
+amod(human/24, resources/25)    nmod(resources/25, president/22)        case(for/26, Hollingsworth/27)     nmod(Hollingsworth/27, president/22)
+cc(&/28, Hollingsworth/27)      conj(Vose/29, Hollingsworth/27)         punct(./30, said/17)
+
+ppatt:
+	There 's ?a	['s-ccomp,a1,c,n1,n2]
+		?a: no question	[question-nsubj,g1(nsubj),o1,o4]
+	?a is/are asbestos-related	[asbestos-related-amod,e]
+		?a: diseases	[diseases-dobj,i,o3]
+	?a said ?b	[said-root,c,c,n1,n1,n1,n1,n2,n2,u]
+		?a: SOMETHING := There 's no question	['s-ccomp,k,o1,o1,o1,o4]
+		?b: Darrell Phillips	[Phillips-nsubj,g1(nsubj),o1,o1,o4,u]
+	?a is/are vice president of ?b for ?c	[president-appos,d,n1,n2,n2,n6,n6]
+		?a: Darrell Phillips	[Phillips-nsubj,j,o1,o1,o3,u]
+		?b: human resources	[resources-nmod,h1,o1,o2]
+		?c: Hollingsworth	[Hollingsworth-nmod,h1,o2,o5,o6]
+	?a is/are vice president of ?b for ?c	[president-appos,d,n1,n2,n2,n6,n6]
+		?a: Darrell Phillips	[Phillips-nsubj,j,o1,o1,o3,u]
+		?b: human resources	[resources-nmod,h1,o1,o2]
+		?c: Vose	[Vose-conj,m]
+	?a is/are human	[human-amod,e]
+		?a: resources	[resources-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0003.mrg_28
+sentence: `` But you have to recognize that these events took place 35 years ago .
+
+tags: ``/. But/CONJ you/PRON have/VERB to/PRT recognize/VERB that/ADP these/DET events/NOUN took/VERB place/NOUN 35/NUM years/NOUN ago/ADP ./.
+
+punct(``/0, have/3)       cc(But/1, have/3)           nsubj(you/2, have/3)    root(have/3, ROOT/-1)
+mark(to/4, recognize/5)   xcomp(recognize/5, have/3)  mark(that/6, took/9)    det(these/7, events/8)
+nsubj(events/8, took/9)   ccomp(took/9, recognize/5)  dobj(place/10, took/9)  nummod(35/11, years/12)
+advmod(years/12, took/9)  case(ago/13, years/12)      punct(./14, have/3)
+
+ppatt:
+	?a have to recognize ?b	[have-root,c,c,l,n1,n1,n1,n1,n2,n2,n5,u]
+		?a: you	[you-nsubj,g1(nsubj)]
+		?b: SOMETHING := these events took place 35 years ago	[took-ccomp,k,l,o1,o1,o1,o1,o1,o1,o1,u]
+	?a took ?b 35 years ago	[took-ccomp,a1,c,c,n1,n1,n1,n1,n2,n2,u]
+		?a: these events	[events-nsubj,g1(nsubj),o1]
+		?b: place	[place-dobj,g1(dobj)]
+
+
+label:    wsj/00/wsj_0003.mrg_29
+sentence: It has no bearing on our work force today .
+
+tags: It/PRON has/VERB no/DET bearing/NOUN on/ADP our/PRON work/NOUN force/NOUN today/NOUN ./.
+
+nsubj(It/0, has/1)           root(has/1, ROOT/-1)       neg(no/2, bearing/3)       dobj(bearing/3, has/1)
+case(on/4, force/7)          nmod:poss(our/5, force/7)  compound(work/6, force/7)  nmod(force/7, bearing/3)
+nmod:tmod(today/8, force/7)  punct(./9, has/1)
+
+ppatt:
+	?a has ?b	[has-root,c,c,n1,n2,n2,u]
+		?a: It	[It-nsubj,g1(nsubj)]
+		?b: no bearing on our work force today	[bearing-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[our-nmod:poss,n6,v]
+		?a: our	[our-nmod:poss,w2]
+		?b: work force today	[force-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0004.mrg_0
+sentence: Yields on money-market mutual funds continued to slide , amid signs that portfolio managers expect further declines in interest rates .
+
+tags: Yields/NOUN on/ADP money-market/ADJ mutual/ADJ funds/NOUN continued/VERB to/PRT slide/VERB ,/. amid/ADP signs/NOUN that/ADP portfolio/NOUN managers/NOUN expect/VERB further/ADJ declines/NOUN in/ADP interest/NOUN rates/NOUN ./.
+
+nsubj(Yields/0, continued/5)         case(on/1, funds/4)            amod(money-market/2, funds/4)    amod(mutual/3, funds/4)
+nmod(funds/4, Yields/0)              root(continued/5, ROOT/-1)     mark(to/6, slide/7)              xcomp(slide/7, continued/5)
+punct(,/8, continued/5)              case(amid/9, signs/10)         nmod(signs/10, continued/5)      mark(that/11, expect/14)
+compound(portfolio/12, managers/13)  nsubj(managers/13, expect/14)  ccomp(expect/14, signs/10)       amod(further/15, declines/16)
+dobj(declines/16, expect/14)         case(in/17, rates/19)          compound(interest/18, rates/19)  nmod(rates/19, declines/16)
+punct(./20, continued/5)
+
+ppatt:
+	?a is/are money-market	[money-market-amod,e]
+		?a: mutual funds	[funds-nmod,i,o1,o3]
+	?a is/are mutual	[mutual-amod,e]
+		?a: money-market funds	[funds-nmod,i,o1,o3]
+	?a continued to slide , amid ?b	[continued-root,c,c,l,n1,n1,n1,n1,n2,n2,n6,u]
+		?a: Yields on money-market mutual funds	[Yields-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: signs	[signs-nmod,h1,o2,o4]
+	?a expect ?b	[expect-ccomp,a1,c,c,n1,n2,n2,u]
+		?a: portfolio managers	[managers-nsubj,g1(nsubj),o1]
+		?b: further declines in interest rates	[declines-dobj,g1(dobj),o1,o1,o1,o1]
+	?a is/are further	[further-amod,e]
+		?a: declines in interest rates	[declines-dobj,i,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_1
+sentence: The average seven-day compound yield of the 400 taxable funds tracked by IBC 's Money Fund Report eased a fraction of a percentage point to 8.45 % from 8.47 % for the week ended Tuesday .
+
+tags: The/DET average/ADJ seven-day/ADJ compound/NOUN yield/NOUN of/ADP the/DET 400/NUM taxable/ADJ funds/NOUN tracked/VERB by/ADP IBC/NOUN 's/PRT Money/NOUN Fund/NOUN Report/NOUN eased/VERB a/DET fraction/NOUN of/ADP a/DET percentage/NOUN point/NOUN to/PRT 8.45/NUM %/NOUN from/ADP 8.47/NUM %/NOUN for/ADP the/DET week/NOUN ended/VERB Tuesday/NOUN ./.
+
+det(The/0, yield/4)           amod(average/1, yield/4)  amod(seven-day/2, yield/4)         compound(compound/3, yield/4)
+nsubj(yield/4, eased/17)      case(of/5, funds/9)       det(the/6, funds/9)                nummod(400/7, funds/9)
+amod(taxable/8, funds/9)      nmod(funds/9, yield/4)    acl(tracked/10, funds/9)           case(by/11, Report/16)
+nmod:poss(IBC/12, Report/16)  case('s/13, IBC/12)       compound(Money/14, Report/16)      compound(Fund/15, Report/16)
+nmod(Report/16, tracked/10)   root(eased/17, ROOT/-1)   det(a/18, fraction/19)             nmod:npmod(fraction/19, eased/17)
+case(of/20, point/23)         det(a/21, point/23)       compound(percentage/22, point/23)  nmod(point/23, fraction/19)
+case(to/24, %/26)             nummod(8.45/25, %/26)     nmod(%/26, eased/17)               case(from/27, %/29)
+nummod(8.47/28, %/29)         nmod(%/29, eased/17)      case(for/30, week/32)              det(the/31, week/32)
+nmod(week/32, eased/17)       acl(ended/33, week/32)    nmod:tmod(Tuesday/34, ended/33)    punct(./35, eased/17)
+
+ppatt:
+	?a is/are average	[average-amod,e]
+		?a: The seven-day compound yield of the 400 taxable funds	[yield-nsubj,i,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4]
+	?a is/are seven-day	[seven-day-amod,e]
+		?a: The average compound yield of the 400 taxable funds	[yield-nsubj,i,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4]
+	?a is/are taxable	[taxable-amod,e]
+		?a: the 400 funds	[funds-nmod,i,o1,o1,o3,o4]
+	?a tracked by ?b	[tracked-acl,b,n2,n6,pred_resolve_relcl]
+		?a: the 400 taxable funds	[funds-nmod,arg_resolve_relcl,o1,o1,o1,o3]
+		?b: IBC 's Money Fund Report	[Report-nmod,h1,o1,o1,o1,o1,o2]
+	?a poss ?b	[IBC-nmod:poss,n1,n6,n6,v]
+		?a: IBC	[IBC-nmod:poss,o2,w2]
+		?b: Money Fund Report	[Report-nmod,o1,o1,o2,o3,w1]
+	?a eased ?b to ?c from ?d for ?e	[eased-root,c,n1,n2,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: The average seven-day compound yield of the 400 taxable funds	[yield-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+		?b: a fraction of a percentage point	[fraction-nmod:npmod,h1,o1,o1,o1,o1,o1]
+		?c: 8.45 %	[%-nmod,h1,o1,o2]
+		?d: 8.47 %	[%-nmod,h1,o1,o2]
+		?e: the week	[week-nmod,h1,o1,o2,o4]
+	?a ended ?b	[ended-acl,b,n2,pred_resolve_relcl]
+		?a: the week	[week-nmod,arg_resolve_relcl,o1,o3]
+		?b: Tuesday	[Tuesday-nmod:tmod,h1]
+
+
+label:    wsj/00/wsj_0004.mrg_2
+sentence: Compound yields assume reinvestment of dividends and that the current yield continues for a year .
+
+tags: Compound/NOUN yields/NOUN assume/VERB reinvestment/NOUN of/ADP dividends/NOUN and/CONJ that/ADP the/DET current/ADJ yield/NOUN continues/VERB for/ADP a/DET year/NOUN ./.
+
+compound(Compound/0, yields/1)  nsubj(yields/1, assume/2)          root(assume/2, ROOT/-1)        dobj(reinvestment/3, assume/2)
+case(of/4, dividends/5)         nmod(dividends/5, reinvestment/3)  cc(and/6, reinvestment/3)      mark(that/7, continues/11)
+det(the/8, yield/10)            amod(current/9, yield/10)          nsubj(yield/10, continues/11)  conj(continues/11, reinvestment/3)
+case(for/12, year/14)           det(a/13, year/14)                 nmod(year/14, continues/11)    punct(./15, assume/2)
+
+ppatt:
+	?a assume ?b	[assume-root,c,c,n1,n2,n2,u]
+		?a: Compound yields	[yields-nsubj,g1(nsubj),o1]
+		?b: reinvestment of dividends	[reinvestment-dobj,g1(dobj),o1,o1,o5,o6]
+	?a assume ?b	[assume-root,c,c,n1,n2,n2,u]
+		?a: Compound yields	[yields-nsubj,g1(nsubj),o1]
+		?b: the current yield continues for a year	[continues-conj,m,o1,o1,o1,o1,o1,o1,o1,u]
+	?a is/are current	[current-amod,e]
+		?a: the yield	[yield-nsubj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_3
+sentence: Average maturity of the funds ' investments lengthened by a day to 41 days , the longest since early August , according to Donoghue 's .
+
+tags: Average/ADJ maturity/NOUN of/ADP the/DET funds/NOUN '/PRT investments/NOUN lengthened/VERB by/ADP a/DET day/NOUN to/PRT 41/NUM days/NOUN ,/. the/DET longest/ADJ since/ADP early/ADJ August/NOUN ,/. according/VERB to/PRT Donoghue/NOUN 's/PRT ./.
+
+amod(Average/0, maturity/1)        nsubj(maturity/1, lengthened/7)  case(of/2, investments/6)        det(the/3, funds/4)
+nmod:poss(funds/4, investments/6)  case('/5, funds/4)               nmod(investments/6, maturity/1)  root(lengthened/7, ROOT/-1)
+case(by/8, day/10)                 det(a/9, day/10)                 nmod(day/10, lengthened/7)       case(to/11, days/13)
+nummod(41/12, days/13)             nmod(days/13, lengthened/7)      punct(,/14, days/13)             det(the/15, longest/16)
+appos(longest/16, days/13)         case(since/17, August/19)        amod(early/18, August/19)        nmod(August/19, longest/16)
+punct(,/20, days/13)               case(according/21, Donoghue/23)  mwe(to/22, according/21)         nmod(Donoghue/23, lengthened/7)
+case('s/24, Donoghue/23)           punct(./25, lengthened/7)
+
+ppatt:
+	?a is/are Average	[Average-amod,e]
+		?a: maturity of the funds ' investments	[maturity-nsubj,i,o1,o1,o1,o1,o1,o3]
+	?a poss ?b	[funds-nmod:poss,n1,n1,n6,n6,v]
+		?a: the funds	[funds-nmod:poss,o1,o2,w2]
+		?b: investments	[investments-nmod,o2,o3,w1]
+	?a lengthened by ?b to ?c according to ?d 's	[lengthened-root,c,n1,n2,n2,n2,n2,n6,n6,n6,n6,u]
+		?a: Average maturity of the funds ' investments	[maturity-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?b: a day	[day-nmod,h1,o1,o2]
+		?c: 41 days	[days-nmod,h1,o1,o1,o1,o2,o4,u]
+		?d: Donoghue	[Donoghue-nmod,h1,o2,o2]
+	?a is/are the longest since ?b	[longest-appos,d,n1,n2,n6]
+		?a: 41 days	[days-nmod,j,o1,o1,o1,o3,u]
+		?b: early August	[August-nmod,h1,o1,o2]
+	?a is/are early	[early-amod,e]
+		?a: August	[August-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_4
+sentence: Longer maturities are thought to indicate declining interest rates because they permit portfolio managers to retain relatively higher rates for a longer period .
+
+tags: Longer/ADJ maturities/NOUN are/VERB thought/VERB to/PRT indicate/VERB declining/VERB interest/NOUN rates/NOUN because/ADP they/PRON permit/VERB portfolio/NOUN managers/NOUN to/PRT retain/VERB relatively/ADV higher/ADJ rates/NOUN for/ADP a/DET longer/ADJ period/NOUN ./.
+
+amod(Longer/0, maturities/1)         nsubjpass(maturities/1, thought/3)  auxpass(are/2, thought/3)   root(thought/3, ROOT/-1)
+mark(to/4, indicate/5)               xcomp(indicate/5, thought/3)        amod(declining/6, rates/8)  compound(interest/7, rates/8)
+dobj(rates/8, indicate/5)            mark(because/9, permit/11)          nsubj(they/10, permit/11)   advcl(permit/11, indicate/5)
+compound(portfolio/12, managers/13)  dobj(managers/13, permit/11)        mark(to/14, retain/15)      xcomp(retain/15, permit/11)
+advmod(relatively/16, rates/18)      amod(higher/17, rates/18)           dobj(rates/18, retain/15)   case(for/19, period/22)
+det(a/20, period/22)                 amod(longer/21, period/22)          nmod(period/22, retain/15)  punct(./23, thought/3)
+
+ppatt:
+	?a is/are Longer	[Longer-amod,e]
+		?a: maturities	[maturities-nsubjpass,i,o3]
+	?a are thought to indicate ?b	[thought-root,c,c,l,n1,n1,n1,n1,n2,n2,n3,u]
+		?a: Longer maturities	[maturities-nsubjpass,g1(nsubjpass),o1]
+		?b: declining interest rates	[rates-dobj,g1(dobj),l,o1,o1]
+	?a permit ?b to retain ?c for ?d	[permit-advcl,b,l,n1,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: portfolio managers	[managers-dobj,g1(dobj),o1]
+		?c: relatively higher rates	[rates-dobj,g1(dobj),l,o1,o1]
+		?d: a longer period	[period-nmod,h1,l,o1,o1,o2]
+	?a is/are higher	[higher-amod,e]
+		?a: relatively rates	[rates-dobj,i,o1,o3]
+	?a is/are longer	[longer-amod,e]
+		?a: a period	[period-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_5
+sentence: Shorter maturities are considered a sign of rising rates because portfolio managers can capture higher rates sooner .
+
+tags: Shorter/ADJ maturities/NOUN are/VERB considered/VERB a/DET sign/NOUN of/ADP rising/VERB rates/NOUN because/ADP portfolio/NOUN managers/NOUN can/VERB capture/VERB higher/ADJ rates/NOUN sooner/ADV ./.
+
+amod(Shorter/0, maturities/1)  nsubjpass(maturities/1, considered/3)  auxpass(are/2, considered/3)         root(considered/3, ROOT/-1)
+det(a/4, sign/5)               xcomp(sign/5, considered/3)            case(of/6, rates/8)                  amod(rising/7, rates/8)
+nmod(rates/8, sign/5)          mark(because/9, capture/13)            compound(portfolio/10, managers/11)  nsubj(managers/11, capture/13)
+aux(can/12, capture/13)        advcl(capture/13, considered/3)        amod(higher/14, rates/15)            dobj(rates/15, capture/13)
+advmod(sooner/16, capture/13)  punct(./17, considered/3)
+
+ppatt:
+	?a is/are Shorter	[Shorter-amod,e]
+		?a: maturities	[maturities-nsubjpass,i,o3]
+	?a are considered a sign of ?b	[considered-root,c,c,c,l,n1,n1,n1,n1,n2,n2,n3,n6,u]
+		?a: Shorter maturities	[maturities-nsubjpass,g1(nsubjpass),o1]
+		?b: rising rates	[rates-nmod,h1,l,o1,o2]
+	?a can capture ?b sooner	[capture-advcl,b,n1,n1,n1,n2,n2,u]
+		?a: portfolio managers	[managers-nsubj,g1(nsubj),o1]
+		?b: higher rates	[rates-dobj,g1(dobj),o1]
+	?a is/are higher	[higher-amod,e]
+		?a: rates	[rates-dobj,i,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_6
+sentence: The average maturity for funds open only to institutions , considered by some to be a stronger indicator because those managers watch the market closely , reached a high point for the year -- 33 days .
+
+tags: The/DET average/ADJ maturity/NOUN for/ADP funds/NOUN open/ADJ only/ADV to/PRT institutions/NOUN ,/. considered/VERB by/ADP some/DET to/PRT be/VERB a/DET stronger/ADJ indicator/NOUN because/ADP those/DET managers/NOUN watch/VERB the/DET market/NOUN closely/ADV ,/. reached/VERB a/DET high/ADJ point/NOUN for/ADP the/DET year/NOUN --/. 33/NUM days/NOUN ./.
+
+det(The/0, maturity/2)           amod(average/1, maturity/2)         nsubj(maturity/2, reached/26)         case(for/3, funds/4)
+nmod(funds/4, maturity/2)        amod(open/5, funds/4)               advmod(only/6, institutions/8)        case(to/7, institutions/8)
+nmod(institutions/8, open/5)     punct(,/9, maturity/2)              acl:relcl(considered/10, maturity/2)  case(by/11, some/12)
+nmod(some/12, considered/10)     mark(to/13, indicator/17)           cop(be/14, indicator/17)              det(a/15, indicator/17)
+amod(stronger/16, indicator/17)  xcomp(indicator/17, considered/10)  mark(because/18, watch/21)            det(those/19, managers/20)
+nsubj(managers/20, watch/21)     advcl(watch/21, indicator/17)       det(the/22, market/23)                dobj(market/23, watch/21)
+advmod(closely/24, watch/21)     punct(,/25, maturity/2)             root(reached/26, ROOT/-1)             det(a/27, point/29)
+amod(high/28, point/29)          dobj(point/29, reached/26)          case(for/30, year/32)                 det(the/31, year/32)
+nmod(year/32, point/29)          punct(--/33, days/35)               nummod(33/34, days/35)                dep(days/35, point/29)
+punct(./36, reached/26)
+
+ppatt:
+	?a is/are average	[average-amod,e]
+		?a: The maturity for funds open only to institutions	[maturity-nsubj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4,u]
+	?a is/are open only to institutions	[open-amod,e,n1,n1,n1]
+		?a: funds	[funds-nmod,i,o3]
+	?a considered by ?b to be a stronger indicator	[considered-acl:relcl,b,l,n1,n1,n1,n1,n1,n2,n3,n6,pred_resolve_relcl]
+		?a: The average maturity for funds open only to institutions	[maturity-nsubj,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,u]
+		?b: some	[some-nmod,h1,o2]
+	?a is/are stronger	[stronger-amod,e]
+		?a: a indicator	[indicator-xcomp,i,o1,o3,o4,o4,o4]
+	?a watch ?b closely	[watch-advcl,b,n1,n1,n2,n2,u]
+		?a: those managers	[managers-nsubj,g1(nsubj),o1]
+		?b: the market	[market-dobj,g1(dobj),o1]
+	?a reached ?b	[reached-root,c,c,n1,n2,n2,u]
+		?a: The average maturity for funds open only to institutions	[maturity-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4,u]
+		?b: a high point for the year	[point-dobj,g1(dobj),o1,o1,o1,o1,o1,o4]
+	?a is/are high	[high-amod,e]
+		?a: a point for the year	[point-dobj,i,o1,o1,o1,o1,o3,o4]
+
+
+label:    wsj/00/wsj_0004.mrg_7
+sentence: Nevertheless , said Brenda Malizia Negus , editor of Money Fund Report , yields `` may blip up again before they blip down '' because of recent rises in short-term interest rates .
+
+tags: Nevertheless/ADV ,/. said/VERB Brenda/NOUN Malizia/NOUN Negus/NOUN ,/. editor/NOUN of/ADP Money/NOUN Fund/NOUN Report/NOUN ,/. yields/NOUN ``/. may/VERB blip/VERB up/PRT again/ADV before/ADP they/PRON blip/VERB down/PRT ''/. because/ADP of/ADP recent/ADJ rises/NOUN in/ADP short-term/ADJ interest/NOUN rates/NOUN ./.
+
+advmod(Nevertheless/0, blip/16)  punct(,/1, said/2)             parataxis(said/2, blip/16)       compound(Brenda/3, Negus/5)
+compound(Malizia/4, Negus/5)     nsubj(Negus/5, said/2)         punct(,/6, Negus/5)              appos(editor/7, Negus/5)
+case(of/8, Report/11)            compound(Money/9, Report/11)   compound(Fund/10, Report/11)     nmod(Report/11, editor/7)
+punct(,/12, said/2)              nsubj(yields/13, blip/16)      punct(``/14, blip/16)            aux(may/15, blip/16)
+root(blip/16, ROOT/-1)           advmod(up/17, blip/16)         advmod(again/18, blip/16)        mark(before/19, blip/21)
+nsubj(they/20, blip/21)          advcl(blip/21, blip/16)        advmod(down/22, blip/21)         punct(''/23, blip/16)
+case(because/24, rises/27)       mwe(of/25, because/24)         amod(recent/26, rises/27)        nmod(rises/27, blip/16)
+case(in/28, rates/31)            amod(short-term/29, rates/31)  compound(interest/30, rates/31)  nmod(rates/31, rises/27)
+punct(./32, blip/16)
+
+ppatt:
+	said ?a	[said-parataxis,c,n1,n1,n2,u]
+		?a: Brenda Malizia Negus	[Negus-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+	?a is/are editor of ?b	[editor-appos,d,n2,n6]
+		?a: Brenda Malizia Negus	[Negus-nsubj,j,o1,o1,o1,o3,u]
+		?b: Money Fund Report	[Report-nmod,h1,o1,o1,o2]
+	Nevertheless ?a `` may blip up again '' because of ?b	[blip-root,c,c,n1,n1,n1,n1,n1,n1,n1,n2,n2,n3,n3,n6,u]
+		?a: yields	[yields-nsubj,g1(nsubj)]
+		?b: recent rises in short-term interest rates	[rises-nmod,h1,o1,o1,o1,o1,o1,o2]
+	?a blip down	[blip-advcl,b,n1,n1,n2,u]
+		?a: they	[they-nsubj,g1(nsubj)]
+	?a is/are recent	[recent-amod,e]
+		?a: rises in short-term interest rates	[rises-nmod,i,o1,o1,o1,o1,o3]
+	?a is/are short-term	[short-term-amod,e]
+		?a: interest rates	[rates-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_8
+sentence: The yield on six-month Treasury bills sold at Monday 's auction , for example , rose to 8.04 % from 7.90 % .
+
+tags: The/DET yield/NOUN on/ADP six-month/ADJ Treasury/NOUN bills/NOUN sold/VERB at/ADP Monday/NOUN 's/PRT auction/NOUN ,/. for/ADP example/NOUN ,/. rose/VERB to/PRT 8.04/NUM %/NOUN from/ADP 7.90/NUM %/NOUN ./.
+
+det(The/0, yield/1)              nsubj(yield/1, rose/15)    case(on/2, bills/5)       amod(six-month/3, bills/5)
+compound(Treasury/4, bills/5)    nmod(bills/5, yield/1)     acl(sold/6, bills/5)      case(at/7, auction/10)
+nmod:poss(Monday/8, auction/10)  case('s/9, Monday/8)       nmod(auction/10, sold/6)  punct(,/11, rose/15)
+case(for/12, example/13)         nmod(example/13, rose/15)  punct(,/14, rose/15)      root(rose/15, ROOT/-1)
+case(to/16, %/18)                nummod(8.04/17, %/18)      nmod(%/18, rose/15)       case(from/19, %/21)
+nummod(7.90/20, %/21)            nmod(%/21, rose/15)        punct(./22, rose/15)
+
+ppatt:
+	?a is/are six-month	[six-month-amod,e]
+		?a: Treasury bills	[bills-nmod,i,o1,o3,o4]
+	?a sold at ?b	[sold-acl,b,n2,n6,pred_resolve_relcl]
+		?a: six-month Treasury bills	[bills-nmod,arg_resolve_relcl,o1,o1,o3]
+		?b: Monday 's auction	[auction-nmod,h1,o1,o1,o2]
+	?a poss ?b	[Monday-nmod:poss,n1,n6,n6,v]
+		?a: Monday	[Monday-nmod:poss,o2,w2]
+		?b: auction	[auction-nmod,o2,o3,w1]
+	?a for ?b , rose to ?c from ?d	[rose-root,c,n1,n1,n1,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: The yield on six-month Treasury bills	[yield-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o4]
+		?b: example	[example-nmod,h1,o2]
+		?c: 8.04 %	[%-nmod,h1,o1,o2]
+		?d: 7.90 %	[%-nmod,h1,o1,o2]
+
+
+label:    wsj/00/wsj_0004.mrg_9
+sentence: Despite recent declines in yields , investors continue to pour cash into money funds .
+
+tags: Despite/ADP recent/ADJ declines/NOUN in/ADP yields/NOUN ,/. investors/NOUN continue/VERB to/PRT pour/VERB cash/NOUN into/ADP money/NOUN funds/NOUN ./.
+
+case(Despite/0, declines/2)   amod(recent/1, declines/2)  nmod(declines/2, continue/7)    case(in/3, yields/4)
+nmod(yields/4, declines/2)    punct(,/5, continue/7)      nsubj(investors/6, continue/7)  root(continue/7, ROOT/-1)
+mark(to/8, pour/9)            xcomp(pour/9, continue/7)   dobj(cash/10, pour/9)           case(into/11, funds/13)
+compound(money/12, funds/13)  nmod(funds/13, pour/9)      punct(./14, continue/7)
+
+ppatt:
+	?a is/are recent	[recent-amod,e]
+		?a: declines in yields	[declines-nmod,i,o1,o1,o3]
+	Despite ?a , ?b continue to pour ?c into ?d	[continue-root,c,c,l,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: recent declines in yields	[declines-nmod,h1,o1,o1,o1,o2]
+		?b: investors	[investors-nsubj,g1(nsubj)]
+		?c: cash	[cash-dobj,g1(dobj),l]
+		?d: money funds	[funds-nmod,h1,l,o1,o2]
+
+
+label:    wsj/00/wsj_0004.mrg_10
+sentence: Assets of the 400 taxable funds grew by $ 1.5 billion during the latest week , to $ 352.7 billion .
+
+tags: Assets/NOUN of/ADP the/DET 400/NUM taxable/ADJ funds/NOUN grew/VERB by/ADP $/. 1.5/NUM billion/NUM during/ADP the/DET latest/ADJ week/NOUN ,/. to/PRT $/. 352.7/NUM billion/NUM ./.
+
+nsubj(Assets/0, grew/6)   case(of/1, funds/5)          det(the/2, funds/5)             nummod(400/3, funds/5)
+amod(taxable/4, funds/5)  nmod(funds/5, Assets/0)      root(grew/6, ROOT/-1)           case(by/7, $/8)
+nmod($/8, grew/6)         compound(1.5/9, billion/10)  nummod(billion/10, $/8)         case(during/11, week/14)
+det(the/12, week/14)      amod(latest/13, week/14)     nmod(week/14, grew/6)           punct(,/15, grew/6)
+case(to/16, $/17)         nmod($/17, grew/6)           compound(352.7/18, billion/19)  nummod(billion/19, $/17)
+punct(./20, grew/6)
+
+ppatt:
+	?a is/are taxable	[taxable-amod,e]
+		?a: the 400 funds	[funds-nmod,i,o1,o1,o3]
+	?a grew by ?b during ?c , to ?d	[grew-root,c,n1,n1,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: Assets of the 400 taxable funds	[Assets-nsubj,g1(nsubj),o1,o1,o1,o1,o1]
+		?b: $ 1.5 billion	[$-nmod,h1,o1,o1,o2]
+		?c: the latest week	[week-nmod,h1,o1,o1,o2]
+		?d: $ 352.7 billion	[$-nmod,h1,o1,o1,o2]
+	?a is/are latest	[latest-amod,e]
+		?a: the week	[week-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_11
+sentence: Typically , money-fund yields beat comparable short-term investments because portfolio managers can vary maturities and go after the highest rates .
+
+tags: Typically/ADV ,/. money-fund/NOUN yields/NOUN beat/VERB comparable/ADJ short-term/ADJ investments/NOUN because/ADP portfolio/NOUN managers/NOUN can/VERB vary/VERB maturities/NOUN and/CONJ go/VERB after/ADP the/DET highest/ADJ rates/NOUN ./.
+
+advmod(Typically/0, beat/4)  punct(,/1, beat/4)                  compound(money-fund/2, yields/3)   nsubj(yields/3, beat/4)
+root(beat/4, ROOT/-1)        amod(comparable/5, investments/7)   amod(short-term/6, investments/7)  dobj(investments/7, beat/4)
+mark(because/8, vary/12)     compound(portfolio/9, managers/10)  nsubj(managers/10, vary/12)        aux(can/11, vary/12)
+advcl(vary/12, beat/4)       dobj(maturities/13, vary/12)        cc(and/14, vary/12)                conj(go/15, vary/12)
+case(after/16, rates/19)     det(the/17, rates/19)               amod(highest/18, rates/19)         nmod(rates/19, go/15)
+punct(./20, beat/4)
+
+ppatt:
+	Typically , ?a beat ?b	[beat-root,c,c,c,n1,n1,n1,n2,n2,n3,u]
+		?a: money-fund yields	[yields-nsubj,g1(nsubj),o1]
+		?b: comparable short-term investments	[investments-dobj,g1(dobj),o1,o1]
+	?a is/are comparable	[comparable-amod,e]
+		?a: short-term investments	[investments-dobj,i,o1,o3]
+	?a is/are short-term	[short-term-amod,e]
+		?a: comparable investments	[investments-dobj,i,o1,o3]
+	?a can vary ?b	[vary-advcl,b,n1,n1,n2,n2,n3,n5,u]
+		?a: portfolio managers	[managers-nsubj,g1(nsubj),o1]
+		?b: maturities	[maturities-dobj,g1(dobj)]
+	?a can go after ?b	[go-conj,f,n2,n6,pred_conj_borrow_aux_neg]
+		?a: portfolio managers	[managers-nsubj,borrow-subj(go/15,vary/12,conj),g1(nsubj),o1]
+		?b: the highest rates	[rates-nmod,h1,o1,o1,o2]
+	?a is/are highest	[highest-amod,e]
+		?a: the rates	[rates-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_12
+sentence: The top money funds are currently yielding well over 9 % .
+
+tags: The/DET top/ADJ money/NOUN funds/NOUN are/VERB currently/ADV yielding/VERB well/ADV over/ADP 9/NUM %/NOUN ./.
+
+det(The/0, funds/3)     amod(top/1, funds/3)             compound(money/2, funds/3)  nsubj(funds/3, yielding/6)
+aux(are/4, yielding/6)  advmod(currently/5, yielding/6)  root(yielding/6, ROOT/-1)   advmod(well/7, 9/9)
+advmod(over/8, 9/9)     nummod(9/9, %/10)                dobj(%/10, yielding/6)      punct(./11, yielding/6)
+
+ppatt:
+	?a is/are top	[top-amod,e]
+		?a: The money funds	[funds-nsubj,i,o1,o1,o3]
+	?a are currently yielding ?b	[yielding-root,c,c,n1,n1,n1,n2,n2,u]
+		?a: The top money funds	[funds-nsubj,g1(nsubj),o1,o1,o1]
+		?b: well over 9 %	[%-dobj,g1(dobj),o1,o1,o1]
+
+
+label:    wsj/00/wsj_0004.mrg_13
+sentence: Dreyfus World-Wide Dollar , the top-yielding fund , had a seven-day compound yield of 9.37 % during the latest week , down from 9.45 % a week earlier .
+
+tags: Dreyfus/NOUN World-Wide/NOUN Dollar/NOUN ,/. the/DET top-yielding/ADJ fund/NOUN ,/. had/VERB a/DET seven-day/ADJ compound/NOUN yield/NOUN of/ADP 9.37/NUM %/NOUN during/ADP the/DET latest/ADJ week/NOUN ,/. down/ADV from/ADP 9.45/NUM %/NOUN a/DET week/NOUN earlier/ADJ ./.
+
+compound(Dreyfus/0, Dollar/2)  compound(World-Wide/1, Dollar/2)  nsubj(Dollar/2, had/8)           punct(,/3, Dollar/2)
+det(the/4, fund/6)             amod(top-yielding/5, fund/6)      appos(fund/6, Dollar/2)          punct(,/7, Dollar/2)
+root(had/8, ROOT/-1)           det(a/9, yield/12)                amod(seven-day/10, yield/12)     compound(compound/11, yield/12)
+dobj(yield/12, had/8)          case(of/13, %/15)                 nummod(9.37/14, %/15)            nmod(%/15, yield/12)
+case(during/16, week/19)       det(the/17, week/19)              amod(latest/18, week/19)         nmod(week/19, had/8)
+punct(,/20, had/8)             advmod(down/21, had/8)            case(from/22, %/24)              nummod(9.45/23, %/24)
+nmod(%/24, down/21)            det(a/25, week/26)                nmod:npmod(week/26, earlier/27)  advmod(earlier/27, %/24)
+punct(./28, had/8)
+
+ppatt:
+	?a is/are top-yielding	[top-yielding-amod,e]
+		?a: the fund	[fund-appos,i,o1,o3]
+	?a is/are the top-yielding fund	[fund-appos,d,n1,n1]
+		?a: Dreyfus World-Wide Dollar	[Dollar-nsubj,j,o1,o1,o1,o1,o3,u]
+	?a had ?b during ?c , down from ?d	[had-root,c,c,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: Dreyfus World-Wide Dollar	[Dollar-nsubj,g1(nsubj),o1,o1,o1,o1,o4,u]
+		?b: a seven-day compound yield of 9.37 %	[yield-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+		?c: the latest week	[week-nmod,h1,o1,o1,o2]
+		?d: 9.45 % a week earlier	[%-nmod,h2,o1,o1,o1,o1,o2]
+	?a is/are seven-day	[seven-day-amod,e]
+		?a: a compound yield of 9.37 %	[yield-dobj,i,o1,o1,o1,o1,o1,o3]
+	?a is/are latest	[latest-amod,e]
+		?a: the week	[week-nmod,i,o1,o3]
+
+
+label:    wsj/00/wsj_0004.mrg_14
+sentence: It invests heavily in dollar-denominated securities overseas and is currently waiving management fees , which boosts its yield .
+
+tags: It/PRON invests/VERB heavily/ADV in/ADP dollar-denominated/ADJ securities/NOUN overseas/ADV and/CONJ is/VERB currently/ADV waiving/VERB management/NOUN fees/NOUN ,/. which/DET boosts/VERB its/PRON yield/NOUN ./.
+
+nsubj(It/0, invests/1)                    root(invests/1, ROOT/-1)         advmod(heavily/2, invests/1)   case(in/3, securities/5)
+amod(dollar-denominated/4, securities/5)  nmod(securities/5, invests/1)    advmod(overseas/6, invests/1)  cc(and/7, invests/1)
+aux(is/8, waiving/10)                     advmod(currently/9, waiving/10)  conj(waiving/10, invests/1)    compound(management/11, fees/12)
+dobj(fees/12, waiving/10)                 punct(,/13, waiving/10)          nsubj(which/14, boosts/15)     ccomp(boosts/15, waiving/10)
+nmod:poss(its/16, yield/17)               dobj(yield/17, boosts/15)        punct(./18, invests/1)
+
+ppatt:
+	?a invests heavily in ?b overseas	[invests-root,c,n1,n1,n1,n2,n2,n3,n5,n6,u]
+		?a: It	[It-nsubj,g1(nsubj)]
+		?b: dollar-denominated securities	[securities-nmod,h1,o1,o2]
+	?a is/are dollar-denominated	[dollar-denominated-amod,e]
+		?a: securities	[securities-nmod,i,o3]
+	?a is currently waiving ?b ?c	[waiving-conj,f,n1,n1,n1,n2,n2,u]
+		?a: It	[It-nsubj,borrow-subj(waiving/10,invests/1,conj),g1(nsubj)]
+		?b: management fees	[fees-dobj,g1(dobj),o1]
+		?c: SOMETHING := which boosts its yield	[boosts-ccomp,k,o1,o1,o1]
+	?a boosts ?b	[boosts-ccomp,a1,c,c,n2,n2]
+		?a: which	[which-nsubj,g1(nsubj)]
+		?b: its yield	[yield-dobj,g1(dobj),o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: yield	[yield-dobj,o3,w1]
+
+
+label:    wsj/00/wsj_0004.mrg_16
+sentence: The 30-day simple yield fell to an average 8.19 % from 8.22 % ; the 30-day compound yield slid to an average 8.53 % from 8.56 % .
+
+tags: The/DET 30-day/ADJ simple/ADJ yield/NOUN fell/VERB to/PRT an/DET average/ADJ 8.19/NUM %/NOUN from/ADP 8.22/NUM %/NOUN ;/. the/DET 30-day/ADJ compound/NOUN yield/NOUN slid/VERB to/PRT an/DET average/ADJ 8.53/NUM %/NOUN from/ADP 8.56/NUM %/NOUN ./.
+
+det(The/0, yield/3)              amod(30-day/1, yield/3)   amod(simple/2, yield/3)     nsubj(yield/3, fell/4)
+root(fell/4, ROOT/-1)            case(to/5, %/9)           det(an/6, %/9)              amod(average/7, %/9)
+nummod(8.19/8, %/9)              nmod(%/9, fell/4)         case(from/10, %/12)         nummod(8.22/11, %/12)
+nmod(%/12, fell/4)               punct(;/13, fell/4)       det(the/14, yield/17)       amod(30-day/15, yield/17)
+compound(compound/16, yield/17)  nsubj(yield/17, slid/18)  parataxis(slid/18, fell/4)  case(to/19, %/23)
+det(an/20, %/23)                 amod(average/21, %/23)    nummod(8.53/22, %/23)       nmod(%/23, slid/18)
+case(from/24, %/26)              nummod(8.56/25, %/26)     nmod(%/26, slid/18)         punct(./27, fell/4)
+
+ppatt:
+	?a is/are 30-day	[30-day-amod,e]
+		?a: The simple yield	[yield-nsubj,i,o1,o1,o3]
+	?a is/are simple	[simple-amod,e]
+		?a: The 30-day yield	[yield-nsubj,i,o1,o1,o3]
+	?a fell to ?b from ?c	[fell-root,c,n1,n1,n2,n2,n2,n3,n6,n6,u]
+		?a: The 30-day simple yield	[yield-nsubj,g1(nsubj),o1,o1,o1]
+		?b: an average 8.19 %	[%-nmod,h1,o1,o1,o1,o2]
+		?c: 8.22 %	[%-nmod,h1,o1,o2]
+	?a is/are average	[average-amod,e]
+		?a: an 8.19 %	[%-nmod,i,o1,o1,o3]
+	?a is/are 30-day	[30-day-amod,e]
+		?a: the compound yield	[yield-nsubj,i,o1,o1,o3]
+	?a slid to ?b from ?c	[slid-parataxis,c,n2,n2,n2,n6,n6]
+		?a: the 30-day compound yield	[yield-nsubj,g1(nsubj),o1,o1,o1]
+		?b: an average 8.53 %	[%-nmod,h1,o1,o1,o1,o2]
+		?c: 8.56 %	[%-nmod,h1,o1,o2]
+	?a is/are average	[average-amod,e]
+		?a: an 8.53 %	[%-nmod,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0005.mrg_0
+sentence: J.P. Bolduc , vice chairman of W.R. Grace & Co. , which holds a 83.4 % interest in this energy-services company , was elected a director .
+
+tags: J.P./NOUN Bolduc/NOUN ,/. vice/NOUN chairman/NOUN of/ADP W.R./NOUN Grace/NOUN &/CONJ Co./NOUN ,/. which/DET holds/VERB a/DET 83.4/NUM %/NOUN interest/NOUN in/ADP this/DET energy-services/ADJ company/NOUN ,/. was/VERB elected/VERB a/DET director/NOUN ./.
+
+compound(J.P./0, Bolduc/1)     nsubjpass(Bolduc/1, elected/23)  punct(,/2, Bolduc/1)         compound(vice/3, chairman/4)
+appos(chairman/4, Bolduc/1)    case(of/5, Grace/7)              compound(W.R./6, Grace/7)    nmod(Grace/7, chairman/4)
+cc(&/8, Grace/7)               conj(Co./9, Grace/7)             punct(,/10, Grace/7)         nsubj(which/11, holds/12)
+acl:relcl(holds/12, Grace/7)   det(a/13, interest/16)           compound(83.4/14, %/15)      amod(%/15, interest/16)
+dobj(interest/16, holds/12)    case(in/17, company/20)          det(this/18, company/20)     amod(energy-services/19, company/20)
+nmod(company/20, interest/16)  punct(,/21, Bolduc/1)            auxpass(was/22, elected/23)  root(elected/23, ROOT/-1)
+det(a/24, director/25)         xcomp(director/25, elected/23)   punct(./26, elected/23)
+
+ppatt:
+	?a is/are vice chairman of ?b	[chairman-appos,d,n1,n2,n6]
+		?a: J.P. Bolduc	[Bolduc-nsubjpass,j,o1,o1,o1,o3,u]
+		?b: W.R. Grace	[Grace-nmod,h1,o1,o1,o2,o4,o5,o6,u]
+	?a is/are vice chairman of ?b	[chairman-appos,d,n1,n2,n6]
+		?a: J.P. Bolduc	[Bolduc-nsubjpass,j,o1,o1,o1,o3,u]
+		?b: Co.	[Co.-conj,m]
+	?a holds ?b	[holds-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: W.R. Grace	[Grace-nmod,arg_resolve_relcl,o1,o1,o3,o5,o6,u]
+		?b: a 83.4 % interest in this energy-services company	[interest-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1]
+	?a holds ?b	[holds-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,pred_resolve_relcl]
+		?a: Co.	[Co.-conj,m]
+		?b: a 83.4 % interest in this energy-services company	[interest-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1]
+	?a is/are energy-services	[energy-services-amod,e]
+		?a: this company	[company-nmod,i,o1,o3]
+	?a was elected a director	[elected-root,c,c,l,n1,n1,n1,n1,n2,u]
+		?a: J.P. Bolduc	[Bolduc-nsubjpass,g1(nsubjpass),o1,o1,o1,o4,u]
+
+
+label:    wsj/00/wsj_0005.mrg_1
+sentence: He succeeds Terrence D. Daniels , formerly a W.R. Grace vice chairman , who resigned .
+
+tags: He/PRON succeeds/VERB Terrence/NOUN D./NOUN Daniels/NOUN ,/. formerly/ADV a/DET W.R./NOUN Grace/NOUN vice/NOUN chairman/NOUN ,/. who/PRON resigned/VERB ./.
+
+nsubj(He/0, succeeds/1)        root(succeeds/1, ROOT/-1)       compound(Terrence/2, Daniels/4)    compound(D./3, Daniels/4)
+dobj(Daniels/4, succeeds/1)    punct(,/5, Daniels/4)           advmod(formerly/6, chairman/11)    det(a/7, chairman/11)
+compound(W.R./8, chairman/11)  compound(Grace/9, chairman/11)  compound(vice/10, chairman/11)     appos(chairman/11, Daniels/4)
+punct(,/12, Daniels/4)         nsubj(who/13, resigned/14)      acl:relcl(resigned/14, Daniels/4)  punct(./15, succeeds/1)
+
+ppatt:
+	?a succeeds ?b	[succeeds-root,c,c,n1,n2,n2,u]
+		?a: He	[He-nsubj,g1(nsubj)]
+		?b: Terrence D. Daniels	[Daniels-dobj,g1(dobj),o1,o1,o1,o1,o4,o4,u]
+	?a is/are formerly a W.R. Grace vice chairman	[chairman-appos,d,n1,n1,n1,n1,n1]
+		?a: Terrence D. Daniels	[Daniels-dobj,j,o1,o1,o1,o1,o3,o4,u]
+	?a resigned	[resigned-acl:relcl,b,en_relcl_dummy_arg_filter,n2,pred_resolve_relcl]
+		?a: Terrence D. Daniels	[Daniels-dobj,arg_resolve_relcl,o1,o1,o1,o1,o3,o4,u]
+
+
+label:    wsj/00/wsj_0005.mrg_2
+sentence: W.R. Grace holds three of Grace Energy 's seven board seats .
+
+tags: W.R./NOUN Grace/NOUN holds/VERB three/NUM of/ADP Grace/NOUN Energy/NOUN 's/PRT seven/NUM board/NOUN seats/NOUN ./.
+
+compound(W.R./0, Grace/1)  nsubj(Grace/1, holds/2)      root(holds/2, ROOT/-1)         dobj(three/3, holds/2)
+case(of/4, seats/10)       compound(Grace/5, Energy/6)  nmod:poss(Energy/6, seats/10)  case('s/7, Energy/6)
+nummod(seven/8, seats/10)  compound(board/9, seats/10)  nmod(seats/10, three/3)        punct(./11, holds/2)
+
+ppatt:
+	?a holds ?b	[holds-root,c,c,n1,n2,n2,u]
+		?a: W.R. Grace	[Grace-nsubj,g1(nsubj),o1]
+		?b: three of Grace Energy 's seven board seats	[three-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[Energy-nmod:poss,n1,n1,n6,n6,v]
+		?a: Grace Energy	[Energy-nmod:poss,o1,o2,w2]
+		?b: seven board seats	[seats-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0006.mrg_0
+sentence: Pacific First Financial Corp. said shareholders approved its acquisition by Royal Trustco Ltd. of Toronto for $ 27 a share , or $ 212 million .
+
+tags: Pacific/NOUN First/NOUN Financial/NOUN Corp./NOUN said/VERB shareholders/NOUN approved/VERB its/PRON acquisition/NOUN by/ADP Royal/NOUN Trustco/NOUN Ltd./NOUN of/ADP Toronto/NOUN for/ADP $/. 27/NUM a/DET share/NOUN ,/. or/CONJ $/. 212/NUM million/NUM ./.
+
+compound(Pacific/0, Corp./3)     compound(First/1, Corp./3)         compound(Financial/2, Corp./3)  nsubj(Corp./3, said/4)
+root(said/4, ROOT/-1)            nsubj(shareholders/5, approved/6)  ccomp(approved/6, said/4)       nmod:poss(its/7, acquisition/8)
+dobj(acquisition/8, approved/6)  case(by/9, Ltd./12)                compound(Royal/10, Ltd./12)     compound(Trustco/11, Ltd./12)
+nmod(Ltd./12, acquisition/8)     case(of/13, Toronto/14)            nmod(Toronto/14, Ltd./12)       case(for/15, $/16)
+nmod($/16, acquisition/8)        nummod(27/17, $/16)                det(a/18, share/19)             nmod:npmod(share/19, $/16)
+punct(,/20, $/16)                cc(or/21, $/16)                    conj($/22, $/16)                compound(212/23, million/24)
+nummod(million/24, $/22)         punct(./25, said/4)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: Pacific First Financial Corp.	[Corp.-nsubj,g1(nsubj),o1,o1,o1]
+		?b: SOMETHING := shareholders approved its acquisition by Royal Trustco Ltd. of Toronto for $ 27 a share , or $ 212 million	[approved-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a approved ?b	[approved-ccomp,a1,c,c,n2,n2]
+		?a: shareholders	[shareholders-nsubj,g1(nsubj)]
+		?b: its acquisition by Royal Trustco Ltd. of Toronto for $ 27 a share , or $ 212 million	[acquisition-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: acquisition by Royal Trustco Ltd. of Toronto for $ 27 a share , or $ 212 million	[acquisition-dobj,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,w1]
+
+
+label:    wsj/00/wsj_0006.mrg_1
+sentence: The thrift holding company said it expects to obtain regulatory approval and complete the transaction by year-end .
+
+tags: The/DET thrift/NOUN holding/VERB company/NOUN said/VERB it/PRON expects/VERB to/PRT obtain/VERB regulatory/ADJ approval/NOUN and/CONJ complete/VERB the/DET transaction/NOUN by/ADP year-end/NOUN ./.
+
+det(The/0, company/3)        compound(thrift/1, company/3)    amod(holding/2, company/3)         nsubj(company/3, said/4)
+root(said/4, ROOT/-1)        nsubj(it/5, expects/6)           ccomp(expects/6, said/4)           mark(to/7, obtain/8)
+xcomp(obtain/8, expects/6)   amod(regulatory/9, approval/10)  dobj(approval/10, obtain/8)        cc(and/11, obtain/8)
+conj(complete/12, obtain/8)  det(the/13, transaction/14)      dobj(transaction/14, complete/12)  case(by/15, year-end/16)
+nmod(year-end/16, obtain/8)  punct(./17, said/4)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: The thrift holding company	[company-nsubj,g1(nsubj),o1,o1,o1]
+		?b: SOMETHING := it expects to obtain regulatory approval and complete the transaction by year-end	[expects-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a expects to obtain ?b by ?c	[expects-ccomp,a1,c,c,l,n1,n1,n2,n2,n2,n3,n5,n6]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: regulatory approval	[approval-dobj,g1(dobj),l,o1]
+		?c: year-end	[year-end-nmod,h1,l,o2]
+	?a is/are regulatory	[regulatory-amod,e]
+		?a: approval	[approval-dobj,i,o3]
+	?a expects to complete ?b	[complete-conj,f,n2,pred_conj_borrow_tokens_xcomp,pred_conj_borrow_tokens_xcomp]
+		?a: it	[it-nsubj,borrow-subj(complete/12,expects/6,conj),g1(nsubj)]
+		?b: the transaction	[transaction-dobj,g1(dobj),o1]
+
+
+label:    wsj/00/wsj_0007.mrg_0
+sentence: McDermott International Inc. said its Babcock & Wilcox unit completed the sale of its Bailey Controls Operations to Finmeccanica S.p . A. for $ 295 million .
+
+tags: McDermott/NOUN International/NOUN Inc./NOUN said/VERB its/PRON Babcock/NOUN &/CONJ Wilcox/NOUN unit/NOUN completed/VERB the/DET sale/NOUN of/ADP its/PRON Bailey/NOUN Controls/NOUN Operations/NOUN to/PRT Finmeccanica/NOUN S.p/NOUN ./. A./NOUN for/ADP $/. 295/NUM million/NUM ./.
+
+compound(McDermott/0, Inc./2)  compound(International/1, Inc./2)  nsubj(Inc./2, said/3)               root(said/3, ROOT/-1)
+nmod:poss(its/4, Babcock/5)    nsubj(Babcock/5, completed/9)      cc(&/6, Babcock/5)                  compound(Wilcox/7, unit/8)
+conj(unit/8, Babcock/5)        ccomp(completed/9, said/3)         det(the/10, sale/11)                dobj(sale/11, completed/9)
+case(of/12, Operations/16)     nmod:poss(its/13, Operations/16)   compound(Bailey/14, Operations/16)  compound(Controls/15, Operations/16)
+nmod(Operations/16, sale/11)   case(to/17, A./21)                 compound(Finmeccanica/18, A./21)    compound(S.p/19, A./21)
+punct(./20, A./21)             nmod(A./21, sale/11)               case(for/22, $/23)                  nmod($/23, sale/11)
+compound(295/24, million/25)   nummod(million/25, $/23)           punct(./26, said/3)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: McDermott International Inc.	[Inc.-nsubj,g1(nsubj),o1,o1]
+		?b: SOMETHING := its Babcock & Wilcox unit completed the sale of its Bailey Controls Operations to Finmeccanica S.p . A. for $ 295 million	[completed-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: Babcock	[Babcock-nsubj,o3,o5,o6,w1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: Wilcox unit	[unit-conj,m,o1]
+	?a completed ?b	[completed-ccomp,a1,c,c,n2,n2]
+		?a: its Babcock	[Babcock-nsubj,g1(nsubj),o1,o5,o6]
+		?b: the sale of its Bailey Controls Operations to Finmeccanica S.p . A. for $ 295 million	[sale-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a completed ?b	[completed-ccomp,a1,c,c,n2,n2]
+		?a: Wilcox unit	[unit-conj,m,o1]
+		?b: the sale of its Bailey Controls Operations to Finmeccanica S.p . A. for $ 295 million	[sale-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,n6,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: Bailey Controls Operations	[Operations-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0007.mrg_1
+sentence: Finmeccanica is an Italian state-owned holding company with interests in the mechanical engineering industry .
+
+tags: Finmeccanica/NOUN is/VERB an/DET Italian/ADJ state-owned/ADJ holding/VERB company/NOUN with/ADP interests/NOUN in/ADP the/DET mechanical/ADJ engineering/NOUN industry/NOUN ./.
+
+nsubj(Finmeccanica/0, company/6)       cop(is/1, company/6)            det(an/2, company/6)      amod(Italian/3, company/6)
+amod(state-owned/4, company/6)         amod(holding/5, company/6)      root(company/6, ROOT/-1)  case(with/7, interests/8)
+nmod(interests/8, company/6)           case(in/9, industry/13)         det(the/10, industry/13)  amod(mechanical/11, industry/13)
+compound(engineering/12, industry/13)  nmod(industry/13, interests/8)  punct(./14, company/6)
+
+ppatt:
+	?a is/are Italian	[Italian-amod,e]
+		?a: an state-owned holding company with interests in the mechanical engineering industry	[company-root,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4,o4,u]
+	?a is/are state-owned	[state-owned-amod,e]
+		?a: an Italian holding company with interests in the mechanical engineering industry	[company-root,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o4,o4,u]
+	?a is an Italian state-owned holding company with ?b	[company-root,c,n1,n1,n1,n1,n1,n1,n2,n2,n6,u]
+		?a: Finmeccanica	[Finmeccanica-nsubj,g1(nsubj)]
+		?b: interests in the mechanical engineering industry	[interests-nmod,h1,o1,o1,o1,o1,o1,o2]
+	?a is/are mechanical	[mechanical-amod,e]
+		?a: the engineering industry	[industry-nmod,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0007.mrg_2
+sentence: Bailey Controls , based in Wickliffe , Ohio , makes computerized industrial controls systems .
+
+tags: Bailey/NOUN Controls/NOUN ,/. based/VERB in/ADP Wickliffe/NOUN ,/. Ohio/NOUN ,/. makes/VERB computerized/ADJ industrial/ADJ controls/NOUN systems/NOUN ./.
+
+compound(Bailey/0, Controls/1)     nsubj(Controls/1, makes/9)  punct(,/2, Controls/1)             acl(based/3, Controls/1)
+case(in/4, Wickliffe/5)            nmod(Wickliffe/5, based/3)  punct(,/6, Wickliffe/5)            appos(Ohio/7, Wickliffe/5)
+punct(,/8, Controls/1)             root(makes/9, ROOT/-1)      amod(computerized/10, systems/13)  amod(industrial/11, systems/13)
+compound(controls/12, systems/13)  dobj(systems/13, makes/9)   punct(./14, makes/9)
+
+ppatt:
+	?a based in ?b	[based-acl,b,n2,n6,pred_resolve_relcl]
+		?a: Bailey Controls	[Controls-nsubj,arg_resolve_relcl,o1,o1,o1,o3,u]
+		?b: Wickliffe	[Wickliffe-nmod,h1,o1,o2,o4,u]
+	?a is/are Ohio	[Ohio-appos,d]
+		?a: Wickliffe	[Wickliffe-nmod,j,o1,o3,u]
+	?a makes ?b	[makes-root,c,c,n1,n2,n2,u]
+		?a: Bailey Controls	[Controls-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: computerized industrial controls systems	[systems-dobj,g1(dobj),o1,o1,o1]
+	?a is/are computerized	[computerized-amod,e]
+		?a: industrial controls systems	[systems-dobj,i,o1,o1,o3]
+	?a is/are industrial	[industrial-amod,e]
+		?a: computerized controls systems	[systems-dobj,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0007.mrg_3
+sentence: It employs 2,700 people and has annual revenue of about $ 370 million .
+
+tags: It/PRON employs/VERB 2,700/NUM people/NOUN and/CONJ has/VERB annual/ADJ revenue/NOUN of/ADP about/ADP $/. 370/NUM million/NUM ./.
+
+nsubj(It/0, employs/1)    root(employs/1, ROOT/-1)  nummod(2,700/2, people/3)  dobj(people/3, employs/1)
+cc(and/4, employs/1)      conj(has/5, employs/1)    amod(annual/6, revenue/7)  dobj(revenue/7, has/5)
+case(of/8, $/10)          advmod(about/9, $/10)     nmod($/10, revenue/7)      compound(370/11, million/12)
+nummod(million/12, $/10)  punct(./13, employs/1)
+
+ppatt:
+	?a employs ?b	[employs-root,c,c,n1,n2,n2,n3,n5,u]
+		?a: It	[It-nsubj,g1(nsubj)]
+		?b: 2,700 people	[people-dobj,g1(dobj),o1]
+	?a has ?b	[has-conj,f,n2]
+		?a: It	[It-nsubj,borrow-subj(has/5,employs/1,conj),g1(nsubj)]
+		?b: annual revenue of about $ 370 million	[revenue-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+	?a is/are annual	[annual-amod,e]
+		?a: revenue of about $ 370 million	[revenue-dobj,i,o1,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0008.mrg_0
+sentence: The federal government suspended sales of U.S. savings bonds because Congress has n't lifted the ceiling on government debt .
+
+tags: The/DET federal/ADJ government/NOUN suspended/VERB sales/NOUN of/ADP U.S./NOUN savings/NOUN bonds/NOUN because/ADP Congress/NOUN has/VERB n't/ADV lifted/VERB the/DET ceiling/NOUN on/ADP government/NOUN debt/NOUN ./.
+
+det(The/0, government/2)    amod(federal/1, government/2)     nsubj(government/2, suspended/3)  root(suspended/3, ROOT/-1)
+dobj(sales/4, suspended/3)  case(of/5, bonds/8)               compound(U.S./6, bonds/8)         compound(savings/7, bonds/8)
+nmod(bonds/8, sales/4)      mark(because/9, lifted/13)        nsubj(Congress/10, lifted/13)     aux(has/11, lifted/13)
+neg(n't/12, lifted/13)      advcl(lifted/13, suspended/3)     det(the/14, ceiling/15)           dobj(ceiling/15, lifted/13)
+case(on/16, debt/18)        compound(government/17, debt/18)  nmod(debt/18, ceiling/15)         punct(./19, suspended/3)
+
+ppatt:
+	?a is/are federal	[federal-amod,e]
+		?a: The government	[government-nsubj,i,o1,o3]
+	?a suspended ?b	[suspended-root,c,c,c,n1,n2,n2,n3,u]
+		?a: The federal government	[government-nsubj,g1(nsubj),o1,o1]
+		?b: sales of U.S. savings bonds	[sales-dobj,g1(dobj),o1,o1,o1,o1]
+	?a has n't lifted ?b	[lifted-advcl,b,n1,n1,n1,n2,n2,u]
+		?a: Congress	[Congress-nsubj,g1(nsubj)]
+		?b: the ceiling on government debt	[ceiling-dobj,g1(dobj),o1,o1,o1,o1]
+
+
+label:    wsj/00/wsj_0008.mrg_1
+sentence: Until Congress acts , the government has n't any authority to issue new debt obligations of any kind , the Treasury said .
+
+tags: Until/ADP Congress/NOUN acts/VERB ,/. the/DET government/NOUN has/VERB n't/ADV any/DET authority/NOUN to/PRT issue/VERB new/ADJ debt/NOUN obligations/NOUN of/ADP any/DET kind/NOUN ,/. the/DET Treasury/NOUN said/VERB ./.
+
+mark(Until/0, acts/2)         nsubj(Congress/1, acts/2)          advcl(acts/2, has/6)            punct(,/3, has/6)
+det(the/4, government/5)      nsubj(government/5, has/6)         ccomp(has/6, said/21)           neg(n't/7, has/6)
+det(any/8, authority/9)       dobj(authority/9, has/6)           mark(to/10, issue/11)           acl(issue/11, authority/9)
+amod(new/12, obligations/14)  compound(debt/13, obligations/14)  dobj(obligations/14, issue/11)  case(of/15, kind/17)
+det(any/16, kind/17)          nmod(kind/17, obligations/14)      punct(,/18, said/21)            det(the/19, Treasury/20)
+nsubj(Treasury/20, said/21)   root(said/21, ROOT/-1)             punct(./22, said/21)
+
+ppatt:
+	?a acts	[acts-advcl,b,n1,n2,u]
+		?a: Congress	[Congress-nsubj,g1(nsubj)]
+	?a has n't ?b	[has-ccomp,a1,c,c,c,n1,n1,n2,n2,n3,u]
+		?a: the government	[government-nsubj,g1(nsubj),o1]
+		?b: any authority	[authority-dobj,g1(dobj),o1,o4]
+	?a issue ?b	[issue-acl,b,n1,n2,pred_resolve_relcl,u]
+		?a: any authority	[authority-dobj,arg_resolve_relcl,o1,o3]
+		?b: new debt obligations of any kind	[obligations-dobj,g1(dobj),o1,o1,o1,o1,o1]
+	?a is/are new	[new-amod,e]
+		?a: debt obligations of any kind	[obligations-dobj,i,o1,o1,o1,o1,o3]
+	?a ?b said	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: SOMETHING := the government has n't any authority	[has-ccomp,k,o1,o1,o1,o1,o1,o1,o4,o4,u]
+		?b: the Treasury	[Treasury-nsubj,g1(nsubj),o1]
+
+
+label:    wsj/00/wsj_0008.mrg_2
+sentence: The government 's borrowing authority dropped at midnight Tuesday to $ 2.80 trillion from $ 2.87 trillion .
+
+tags: The/DET government/NOUN 's/PRT borrowing/NOUN authority/NOUN dropped/VERB at/ADP midnight/NOUN Tuesday/NOUN to/PRT $/. 2.80/NUM trillion/NUM from/ADP $/. 2.87/NUM trillion/NUM ./.
+
+det(The/0, government/1)         nmod:poss(government/1, authority/4)  case('s/2, government/1)  compound(borrowing/3, authority/4)
+nsubj(authority/4, dropped/5)    root(dropped/5, ROOT/-1)              case(at/6, midnight/7)    nmod(midnight/7, dropped/5)
+nmod:tmod(Tuesday/8, dropped/5)  case(to/9, $/10)                      nmod($/10, dropped/5)     compound(2.80/11, trillion/12)
+nummod(trillion/12, $/10)        case(from/13, $/14)                   nmod($/14, dropped/5)     compound(2.87/15, trillion/16)
+nummod(trillion/16, $/14)        punct(./17, dropped/5)
+
+ppatt:
+	?a poss ?b	[government-nmod:poss,n1,n1,n6,v]
+		?a: The government	[government-nmod:poss,o1,o2,w2]
+		?b: borrowing authority	[authority-nsubj,o1,o3,w1]
+	?a dropped at ?b ?c to ?d from ?e	[dropped-root,c,n1,n2,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: The government 's borrowing authority	[authority-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: midnight	[midnight-nmod,h1,o2]
+		?c: Tuesday	[Tuesday-nmod:tmod,h1]
+		?d: $ 2.80 trillion	[$-nmod,h1,o1,o1,o2]
+		?e: $ 2.87 trillion	[$-nmod,h1,o1,o1,o2]
+
+
+label:    wsj/00/wsj_0008.mrg_3
+sentence: Legislation to lift the debt ceiling is ensnarled in the fight over cutting capital-gains taxes .
+
+tags: Legislation/NOUN to/PRT lift/VERB the/DET debt/NOUN ceiling/NOUN is/VERB ensnarled/VERB in/ADP the/DET fight/NOUN over/ADP cutting/VERB capital-gains/ADJ taxes/NOUN ./.
+
+nsubjpass(Legislation/0, ensnarled/7)  mark(to/1, lift/2)                acl(lift/2, Legislation/0)   det(the/3, ceiling/5)
+compound(debt/4, ceiling/5)            dobj(ceiling/5, lift/2)           auxpass(is/6, ensnarled/7)   root(ensnarled/7, ROOT/-1)
+case(in/8, fight/10)                   det(the/9, fight/10)              nmod(fight/10, ensnarled/7)  mark(over/11, cutting/12)
+acl(cutting/12, fight/10)              amod(capital-gains/13, taxes/14)  dobj(taxes/14, cutting/12)   punct(./15, ensnarled/7)
+
+ppatt:
+	?a lift ?b	[lift-acl,b,n1,n2,pred_resolve_relcl,u]
+		?a: Legislation	[Legislation-nsubjpass,arg_resolve_relcl,o3]
+		?b: the debt ceiling	[ceiling-dobj,g1(dobj),o1,o1]
+	?a is ensnarled in ?b	[ensnarled-root,c,n1,n1,n2,n2,n6,u]
+		?a: Legislation	[Legislation-nsubjpass,g1(nsubjpass),o4]
+		?b: the fight	[fight-nmod,h1,o1,o2,o4]
+	?a cutting ?b	[cutting-acl,b,n1,n2,pred_resolve_relcl,u]
+		?a: the fight	[fight-nmod,arg_resolve_relcl,o1,o3]
+		?b: capital-gains taxes	[taxes-dobj,g1(dobj),o1]
+	?a is/are capital-gains	[capital-gains-amod,e]
+		?a: taxes	[taxes-dobj,i,o3]
+
+
+label:    wsj/00/wsj_0008.mrg_4
+sentence: The House has voted to raise the ceiling to $ 3.1 trillion , but the Senate is n't expected to act until next week at the earliest .
+
+tags: The/DET House/NOUN has/VERB voted/VERB to/PRT raise/VERB the/DET ceiling/NOUN to/PRT $/. 3.1/NUM trillion/NUM ,/. but/CONJ the/DET Senate/NOUN is/VERB n't/ADV expected/VERB to/PRT act/VERB until/ADP next/ADJ week/NOUN at/ADP the/DET earliest/ADJ ./.
+
+det(The/0, House/1)          nsubj(House/1, voted/3)   aux(has/2, voted/3)            root(voted/3, ROOT/-1)
+mark(to/4, raise/5)          xcomp(raise/5, voted/3)   det(the/6, ceiling/7)          dobj(ceiling/7, raise/5)
+case(to/8, $/9)              nmod($/9, raise/5)        compound(3.1/10, trillion/11)  nummod(trillion/11, $/9)
+punct(,/12, voted/3)         cc(but/13, voted/3)       det(the/14, Senate/15)         nsubjpass(Senate/15, expected/18)
+auxpass(is/16, expected/18)  neg(n't/17, expected/18)  conj(expected/18, voted/3)     mark(to/19, act/20)
+xcomp(act/20, expected/18)   case(until/21, week/23)   amod(next/22, week/23)         nmod(week/23, act/20)
+case(at/24, earliest/26)     det(the/25, earliest/26)  nmod(earliest/26, act/20)      punct(./27, voted/3)
+
+ppatt:
+	?a has voted to raise ?b to ?c	[voted-root,c,c,l,n1,n1,n1,n1,n1,n2,n2,n2,n3,n5,n6,u]
+		?a: The House	[House-nsubj,g1(nsubj),o1]
+		?b: the ceiling	[ceiling-dobj,g1(dobj),l,o1]
+		?c: $ 3.1 trillion	[$-nmod,h1,l,o1,o1,o2]
+	has ?a is n't expected to act until ?b at ?c	[expected-conj,f,l,n1,n1,n1,n1,n2,n2,n2,n6,n6,pred_conj_borrow_aux_neg]
+		?a: the Senate	[Senate-nsubjpass,g1(nsubjpass),o1]
+		?b: next week	[week-nmod,h1,l,o1,o2]
+		?c: the earliest	[earliest-nmod,h1,l,o1,o2]
+	?a is/are next	[next-amod,e]
+		?a: week	[week-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0008.mrg_5
+sentence: The Treasury said the U.S. will default on Nov. 9 if Congress does n't act by then .
+
+tags: The/DET Treasury/NOUN said/VERB the/DET U.S./NOUN will/VERB default/VERB on/ADP Nov./NOUN 9/NUM if/ADP Congress/NOUN does/VERB n't/ADV act/VERB by/ADP then/ADV ./.
+
+det(The/0, Treasury/1)    nsubj(Treasury/1, said/2)  root(said/2, ROOT/-1)     det(the/3, U.S./4)
+nsubj(U.S./4, default/6)  aux(will/5, default/6)     ccomp(default/6, said/2)  case(on/7, Nov./8)
+nmod(Nov./8, default/6)   nummod(9/9, Nov./8)        mark(if/10, act/14)       nsubj(Congress/11, act/14)
+aux(does/12, act/14)      neg(n't/13, act/14)        advcl(act/14, default/6)  case(by/15, then/16)
+nmod(then/16, act/14)     punct(./17, said/2)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: The Treasury	[Treasury-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := the U.S. will default on Nov. 9	[default-ccomp,k,o1,o1,o1,o1,o1,o1,o4]
+	?a will default on ?b	[default-ccomp,a1,c,c,n1,n2,n2,n3,n6]
+		?a: the U.S.	[U.S.-nsubj,g1(nsubj),o1]
+		?b: Nov. 9	[Nov.-nmod,h1,o1,o2]
+	?a does n't act by ?b	[act-advcl,b,n1,n1,n1,n2,n2,n6,u]
+		?a: Congress	[Congress-nsubj,g1(nsubj)]
+		?b: then	[then-nmod,h1,o2]
+
+
+label:    wsj/00/wsj_0009.mrg_0
+sentence: Clark J. Vitulli was named senior vice president and general manager of this U.S. sales and marketing arm of Japanese auto maker Mazda Motor Corp .
+
+tags: Clark/NOUN J./NOUN Vitulli/NOUN was/VERB named/VERB senior/ADJ vice/NOUN president/NOUN and/CONJ general/ADJ manager/NOUN of/ADP this/DET U.S./NOUN sales/NOUN and/CONJ marketing/NOUN arm/NOUN of/ADP Japanese/ADJ auto/NOUN maker/NOUN Mazda/NOUN Motor/NOUN Corp/NOUN ./.
+
+compound(Clark/0, Vitulli/2)    compound(J./1, Vitulli/2)    nsubjpass(Vitulli/2, named/4)  auxpass(was/3, named/4)
+root(named/4, ROOT/-1)          amod(senior/5, president/7)  compound(vice/6, president/7)  xcomp(president/7, named/4)
+cc(and/8, president/7)          amod(general/9, manager/10)  conj(manager/10, president/7)  case(of/11, sales/14)
+det(this/12, sales/14)          compound(U.S./13, sales/14)  nmod(sales/14, president/7)    cc(and/15, sales/14)
+compound(marketing/16, arm/17)  conj(arm/17, sales/14)       case(of/18, Corp/24)           amod(Japanese/19, Corp/24)
+compound(auto/20, Corp/24)      compound(maker/21, Corp/24)  compound(Mazda/22, Corp/24)    compound(Motor/23, Corp/24)
+nmod(Corp/24, sales/14)         punct(./25, named/4)
+
+ppatt:
+	?a was named senior vice president of ?b	[named-root,c,c,l,n1,n1,n1,n1,n1,n2,n2,n3,n5,n6,u]
+		?a: Clark J. Vitulli	[Vitulli-nsubjpass,g1(nsubjpass),o1,o1]
+		?b: this U.S. sales of Japanese auto maker Mazda Motor Corp	[sales-nmod,h1,l,o1,o1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+	?a was named senior vice president of ?b	[named-root,c,c,l,n1,n1,n1,n1,n1,n2,n2,n3,n5,n6,u]
+		?a: Clark J. Vitulli	[Vitulli-nsubjpass,g1(nsubjpass),o1,o1]
+		?b: marketing arm	[arm-conj,m,o1]
+	?a is/are senior	[senior-amod,e]
+		?a: vice president of this U.S. sales and marketing arm of Japanese auto maker Mazda Motor Corp	[president-xcomp,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3,o5,o6]
+	?a is/are general	[general-amod,e]
+		?a: manager	[manager-conj,i,o3]
+	?a was named senior vice general manager	[manager-conj,f,n1,pred_conj_borrow_tokens_xcomp,pred_conj_borrow_tokens_xcomp,pred_conj_borrow_tokens_xcomp,pred_conj_borrow_tokens_xcomp]
+		?a: Clark J. Vitulli	[Vitulli-nsubjpass,borrow-subj(manager/10,named/4,conj),g1(nsubjpass),o1,o1]
+	?a is/are Japanese	[Japanese-amod,e]
+		?a: auto maker Mazda Motor Corp	[Corp-nmod,i,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0009.mrg_1
+sentence: In the new position he will oversee Mazda 's U.S. sales , service , parts and marketing operations .
+
+tags: In/ADP the/DET new/ADJ position/NOUN he/PRON will/VERB oversee/VERB Mazda/NOUN 's/PRT U.S./NOUN sales/NOUN ,/. service/NOUN ,/. parts/NOUN and/CONJ marketing/NOUN operations/NOUN ./.
+
+case(In/0, position/3)                 det(the/1, position/3)         amod(new/2, position/3)       nmod(position/3, oversee/6)
+nsubj(he/4, oversee/6)                 aux(will/5, oversee/6)         root(oversee/6, ROOT/-1)      nmod:poss(Mazda/7, parts/14)
+case('s/8, Mazda/7)                    compound(U.S./9, parts/14)     compound(sales/10, parts/14)  punct(,/11, parts/14)
+dep(service/12, parts/14)              punct(,/13, parts/14)          dobj(parts/14, oversee/6)     cc(and/15, parts/14)
+compound(marketing/16, operations/17)  conj(operations/17, parts/14)  punct(./18, oversee/6)
+
+ppatt:
+	?a is/are new	[new-amod,e]
+		?a: the position	[position-nmod,i,o1,o3]
+	In ?a ?b will oversee ?c	[oversee-root,c,c,n1,n1,n2,n2,n2,n6,u]
+		?a: the new position	[position-nmod,h1,o1,o1,o2]
+		?b: he	[he-nsubj,g1(nsubj)]
+		?c: Mazda 's U.S. sales , parts	[parts-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o4,o5,o6,u]
+	In ?a ?b will oversee ?c	[oversee-root,c,c,n1,n1,n2,n2,n2,n6,u]
+		?a: the new position	[position-nmod,h1,o1,o1,o2]
+		?b: he	[he-nsubj,g1(nsubj)]
+		?c: marketing operations	[operations-conj,m,o1]
+	?a poss ?b	[Mazda-nmod:poss,n1,n6,v]
+		?a: Mazda	[Mazda-nmod:poss,o2,w2]
+		?b: U.S. sales , parts	[parts-dobj,o1,o1,o1,o1,o3,o4,o5,o6,u,w1]
+	?a poss ?b	[Mazda-nmod:poss,n1,n6,v]
+		?a: Mazda	[Mazda-nmod:poss,o2,w2]
+		?b: marketing operations	[operations-conj,m,o1]
+
+
+label:    wsj/00/wsj_0010.mrg_0
+sentence: When it 's time for their biannual powwow , the nation 's manufacturing titans typically jet off to the sunny confines of resort towns like Boca Raton and Hot Springs .
+
+tags: When/ADV it/PRON 's/VERB time/NOUN for/ADP their/PRON biannual/ADJ powwow/NOUN ,/. the/DET nation/NOUN 's/PRT manufacturing/VERB titans/NOUN typically/ADV jet/VERB off/PRT to/PRT the/DET sunny/ADJ confines/NOUN of/ADP resort/NOUN towns/NOUN like/ADP Boca/NOUN Raton/NOUN and/CONJ Hot/NOUN Springs/NOUN ./.
+
+advmod(When/0, time/3)             nsubj(it/1, time/3)           cop('s/2, time/3)                advcl(time/3, jet/15)
+case(for/4, powwow/7)              nmod:poss(their/5, powwow/7)  amod(biannual/6, powwow/7)       nmod(powwow/7, time/3)
+punct(,/8, jet/15)                 det(the/9, nation/10)         nmod:poss(nation/10, titans/13)  case('s/11, nation/10)
+amod(manufacturing/12, titans/13)  nsubj(titans/13, jet/15)      advmod(typically/14, jet/15)     root(jet/15, ROOT/-1)
+compound:prt(off/16, jet/15)       case(to/17, confines/20)      det(the/18, confines/20)         amod(sunny/19, confines/20)
+nmod(confines/20, jet/15)          case(of/21, towns/23)         compound(resort/22, towns/23)    nmod(towns/23, confines/20)
+case(like/24, Raton/26)            compound(Boca/25, Raton/26)   nmod(Raton/26, towns/23)         cc(and/27, Raton/26)
+compound(Hot/28, Springs/29)       conj(Springs/29, Raton/26)    punct(./30, jet/15)
+
+ppatt:
+	When ?a 's time for ?b	[time-advcl,b,n1,n1,n2,n2,n6]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: their biannual powwow	[powwow-nmod,h1,o1,o1,o2]
+	?a poss ?b	[their-nmod:poss,n6,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: biannual powwow	[powwow-nmod,o1,o2,o3,w1]
+	?a is/are biannual	[biannual-amod,e]
+		?a: their powwow	[powwow-nmod,i,o1,o3]
+	?a poss ?b	[nation-nmod:poss,n1,n1,n6,v]
+		?a: the nation	[nation-nmod:poss,o1,o2,w2]
+		?b: manufacturing titans	[titans-nsubj,o1,o3,w1]
+	?a typically jet off to ?b	[jet-root,c,c,n1,n1,n1,n1,n2,n2,n3,n6,u]
+		?a: the nation 's manufacturing titans	[titans-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: the sunny confines of resort towns like Boca Raton and Hot Springs	[confines-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o2]
+	?a is/are sunny	[sunny-amod,e]
+		?a: the confines of resort towns like Boca Raton and Hot Springs	[confines-nmod,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_2
+sentence: The National Association of Manufacturers settled on the Hoosier capital of Indianapolis for its fall board meeting .
+
+tags: The/DET National/NOUN Association/NOUN of/ADP Manufacturers/NOUN settled/VERB on/ADP the/DET Hoosier/NOUN capital/NOUN of/ADP Indianapolis/NOUN for/ADP its/PRON fall/NOUN board/NOUN meeting/NOUN ./.
+
+det(The/0, Association/2)             compound(National/1, Association/2)  nsubj(Association/2, settled/5)  case(of/3, Manufacturers/4)
+nmod(Manufacturers/4, Association/2)  root(settled/5, ROOT/-1)             case(on/6, capital/9)            det(the/7, capital/9)
+compound(Hoosier/8, capital/9)        nmod(capital/9, settled/5)           case(of/10, Indianapolis/11)     nmod(Indianapolis/11, capital/9)
+case(for/12, meeting/16)              nmod:poss(its/13, meeting/16)        compound(fall/14, meeting/16)    compound(board/15, meeting/16)
+nmod(meeting/16, settled/5)           punct(./17, settled/5)
+
+ppatt:
+	?a settled on ?b for ?c	[settled-root,c,n1,n2,n2,n2,n6,n6,u]
+		?a: The National Association of Manufacturers	[Association-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: the Hoosier capital of Indianapolis	[capital-nmod,h1,o1,o1,o1,o1,o2]
+		?c: its fall board meeting	[meeting-nmod,h1,o1,o1,o1,o2]
+	?a poss ?b	[its-nmod:poss,n6,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: fall board meeting	[meeting-nmod,o1,o1,o2,o3,w1]
+
+
+label:    wsj/00/wsj_0010.mrg_3
+sentence: And the city decided to treat its guests more like royalty or rock stars than factory owners .
+
+tags: And/CONJ the/DET city/NOUN decided/VERB to/PRT treat/VERB its/PRON guests/NOUN more/ADJ like/ADP royalty/NOUN or/CONJ rock/NOUN stars/NOUN than/ADP factory/NOUN owners/NOUN ./.
+
+cc(And/0, decided/3)         det(the/1, city/2)          nsubj(city/2, decided/3)    root(decided/3, ROOT/-1)
+mark(to/4, treat/5)          xcomp(treat/5, decided/3)   nmod:poss(its/6, guests/7)  dobj(guests/7, treat/5)
+advmod(more/8, royalty/10)   case(like/9, royalty/10)    nmod(royalty/10, treat/5)   cc(or/11, royalty/10)
+compound(rock/12, stars/13)  conj(stars/13, royalty/10)  case(than/14, owners/16)    compound(factory/15, owners/16)
+nmod(owners/16, royalty/10)  punct(./17, decided/3)
+
+ppatt:
+	?a decided to treat ?b like ?c	[decided-root,c,c,l,n1,n1,n1,n2,n2,n2,n5,n6,u]
+		?a: the city	[city-nsubj,g1(nsubj),o1]
+		?b: its guests	[guests-dobj,g1(dobj),l,o1]
+		?c: more royalty than factory owners	[royalty-nmod,h1,l,o1,o1,o1,o1,o2,o5,o6]
+	?a decided to treat ?b like ?c	[decided-root,c,c,l,n1,n1,n1,n2,n2,n2,n5,n6,u]
+		?a: the city	[city-nsubj,g1(nsubj),o1]
+		?b: its guests	[guests-dobj,g1(dobj),l,o1]
+		?c: rock stars	[stars-conj,m,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: guests	[guests-dobj,o3,w1]
+
+
+label:    wsj/00/wsj_0010.mrg_4
+sentence: The idea , of course : to prove to 125 corporate decision makers that the buckle on the Rust Belt is n't so rusty after all , that it 's a good place for a company to expand .
+
+tags: The/DET idea/NOUN ,/. of/ADP course/NOUN :/. to/PRT prove/VERB to/PRT 125/NUM corporate/ADJ decision/NOUN makers/NOUN that/ADP the/DET buckle/NOUN on/ADP the/DET Rust/NOUN Belt/NOUN is/VERB n't/ADV so/ADV rusty/ADJ after/ADP all/DET ,/. that/ADP it/PRON 's/VERB a/DET good/ADJ place/NOUN for/ADP a/DET company/NOUN to/PRT expand/VERB ./.
+
+det(The/0, idea/1)        root(idea/1, ROOT/-1)     punct(,/2, idea/1)             case(of/3, course/4)
+nmod(course/4, idea/1)    punct(:/5, idea/1)        mark(to/6, prove/7)            parataxis(prove/7, idea/1)
+case(to/8, makers/12)     nummod(125/9, makers/12)  amod(corporate/10, makers/12)  compound(decision/11, makers/12)
+nmod(makers/12, prove/7)  mark(that/13, rusty/23)   det(the/14, buckle/15)         nsubj(buckle/15, rusty/23)
+case(on/16, Belt/19)      det(the/17, Belt/19)      compound(Rust/18, Belt/19)     nmod(Belt/19, buckle/15)
+cop(is/20, rusty/23)      neg(n't/21, rusty/23)     advmod(so/22, rusty/23)        dep(rusty/23, prove/7)
+case(after/24, all/25)    nmod(all/25, rusty/23)    punct(,/26, rusty/23)          mark(that/27, place/32)
+nsubj(it/28, place/32)    cop('s/29, place/32)      det(a/30, place/32)            amod(good/31, place/32)
+dep(place/32, rusty/23)   mark(for/33, expand/37)   det(a/34, company/35)          nsubj(company/35, expand/37)
+mark(to/36, expand/37)    acl(expand/37, place/32)  punct(./38, idea/1)
+
+ppatt:
+	?a is/are corporate	[corporate-amod,e]
+		?a: 125 decision makers	[makers-nmod,i,o1,o1,o3]
+	?a is/are good	[good-amod,e]
+		?a: a place	[place-dep,i,o1,o3,o4,o4,o4,o4]
+
+
+label:    wsj/00/wsj_0010.mrg_5
+sentence: On the receiving end of the message were officials from giants like Du Pont and Maytag , along with lesser knowns like Trojan Steel and the Valley Queen Cheese Factory .
+
+tags: On/ADP the/DET receiving/VERB end/NOUN of/ADP the/DET message/NOUN were/VERB officials/NOUN from/ADP giants/NOUN like/ADP Du/NOUN Pont/NOUN and/CONJ Maytag/NOUN ,/. along/ADP with/ADP lesser/ADJ knowns/NOUN like/ADP Trojan/NOUN Steel/NOUN and/CONJ the/DET Valley/NOUN Queen/NOUN Cheese/NOUN Factory/NOUN ./.
+
+case(On/0, end/3)                det(the/1, end/3)           amod(receiving/2, end/3)         nmod(end/3, were/7)
+case(of/4, message/6)            det(the/5, message/6)       nmod(message/6, end/3)           root(were/7, ROOT/-1)
+nsubj(officials/8, were/7)       case(from/9, giants/10)     nmod(giants/10, officials/8)     case(like/11, Pont/13)
+compound(Du/12, Pont/13)         nmod(Pont/13, giants/10)    cc(and/14, Pont/13)              conj(Maytag/15, Pont/13)
+punct(,/16, giants/10)           cc(along/17, giants/10)     dep(with/18, along/17)           amod(lesser/19, knowns/20)
+conj(knowns/20, giants/10)       case(like/21, Steel/23)     compound(Trojan/22, Steel/23)    nmod(Steel/23, knowns/20)
+cc(and/24, Steel/23)             det(the/25, Factory/29)     compound(Valley/26, Factory/29)  compound(Queen/27, Factory/29)
+compound(Cheese/28, Factory/29)  conj(Factory/29, Steel/23)  punct(./30, were/7)
+
+ppatt:
+	On ?a were ?b	[were-root,c,n1,n2,n2,n6,u]
+		?a: the receiving end of the message	[end-nmod,h1,o1,o1,o1,o1,o1,o2]
+		?b: officials from giants like Du Pont and Maytag , along lesser knowns like Trojan Steel and the Valley Queen Cheese Factory	[officials-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o4]
+	?a is/are lesser	[lesser-amod,e]
+		?a: knowns like Trojan Steel and the Valley Queen Cheese Factory	[knowns-conj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_6
+sentence: For starters , the executives joined Mayor William H. Hudnut III for an evening of the Indianapolis Symphony Orchestra and a guest pianist-comedian Victor Borge .
+
+tags: For/ADP starters/NOUN ,/. the/DET executives/NOUN joined/VERB Mayor/NOUN William/NOUN H./NOUN Hudnut/NOUN III/NOUN for/ADP an/DET evening/NOUN of/ADP the/DET Indianapolis/NOUN Symphony/NOUN Orchestra/NOUN and/CONJ a/DET guest/NOUN pianist-comedian/NOUN Victor/NOUN Borge/NOUN ./.
+
+case(For/0, starters/1)                  nmod(starters/1, joined/5)           punct(,/2, joined/5)                     det(the/3, executives/4)
+nsubj(executives/4, joined/5)            root(joined/5, ROOT/-1)              compound(Mayor/6, III/10)                compound(William/7, III/10)
+compound(H./8, III/10)                   compound(Hudnut/9, III/10)           dobj(III/10, joined/5)                   case(for/11, evening/13)
+det(an/12, evening/13)                   nmod(evening/13, joined/5)           case(of/14, Orchestra/18)                det(the/15, Orchestra/18)
+compound(Indianapolis/16, Orchestra/18)  compound(Symphony/17, Orchestra/18)  nmod(Orchestra/18, evening/13)           cc(and/19, Orchestra/18)
+det(a/20, Borge/24)                      compound(guest/21, Borge/24)         compound(pianist-comedian/22, Borge/24)  compound(Victor/23, Borge/24)
+conj(Borge/24, Orchestra/18)             punct(./25, joined/5)
+
+ppatt:
+	For ?a , ?b joined ?c for ?d	[joined-root,c,c,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: starters	[starters-nmod,h1,o2]
+		?b: the executives	[executives-nsubj,g1(nsubj),o1]
+		?c: Mayor William H. Hudnut III	[III-dobj,g1(dobj),o1,o1,o1,o1]
+		?d: an evening of the Indianapolis Symphony Orchestra and a guest pianist-comedian Victor Borge	[evening-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o2]
+
+
+label:    wsj/00/wsj_0010.mrg_7
+sentence: Champagne and dessert followed .
+
+tags: Champagne/NOUN and/CONJ dessert/NOUN followed/VERB ./.
+
+nsubj(Champagne/0, followed/3)  cc(and/1, Champagne/0)  conj(dessert/2, Champagne/0)  root(followed/3, ROOT/-1)
+punct(./4, followed/3)
+
+ppatt:
+	?a followed	[followed-root,c,n1,n2,u]
+		?a: Champagne	[Champagne-nsubj,g1(nsubj),o5,o6]
+	?a followed	[followed-root,c,n1,n2,u]
+		?a: dessert	[dessert-conj,m]
+
+
+label:    wsj/00/wsj_0010.mrg_8
+sentence: The next morning , with a police escort , busloads of executives and their wives raced to the Indianapolis Motor Speedway , unimpeded by traffic or red lights .
+
+tags: The/DET next/ADJ morning/NOUN ,/. with/ADP a/DET police/NOUN escort/NOUN ,/. busloads/NOUN of/ADP executives/NOUN and/CONJ their/PRON wives/NOUN raced/VERB to/PRT the/DET Indianapolis/NOUN Motor/NOUN Speedway/NOUN ,/. unimpeded/ADJ by/ADP traffic/NOUN or/CONJ red/ADJ lights/NOUN ./.
+
+det(The/0, morning/2)           amod(next/1, morning/2)        nmod:tmod(morning/2, raced/15)          punct(,/3, raced/15)
+case(with/4, escort/7)          det(a/5, escort/7)             compound(police/6, escort/7)            nmod(escort/7, raced/15)
+punct(,/8, raced/15)            nsubj(busloads/9, raced/15)    case(of/10, executives/11)              nmod(executives/11, busloads/9)
+cc(and/12, executives/11)       nmod:poss(their/13, wives/14)  conj(wives/14, executives/11)           root(raced/15, ROOT/-1)
+case(to/16, Speedway/20)        det(the/17, Speedway/20)       compound(Indianapolis/18, Speedway/20)  compound(Motor/19, Speedway/20)
+nmod(Speedway/20, raced/15)     punct(,/21, raced/15)          xcomp(unimpeded/22, raced/15)           case(by/23, traffic/24)
+nmod(traffic/24, unimpeded/22)  cc(or/25, traffic/24)          amod(red/26, lights/27)                 conj(lights/27, traffic/24)
+punct(./28, raced/15)
+
+ppatt:
+	?a is/are next	[next-amod,e]
+		?a: The morning	[morning-nmod:tmod,i,o1,o3]
+	?a poss ?b	[their-nmod:poss,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: wives	[wives-conj,o3,w1]
+	?a with ?b , ?c raced to ?d , unimpeded by ?e	[raced-root,c,c,l,n1,n1,n1,n1,n1,n2,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: The next morning	[morning-nmod:tmod,h1,o1,o1]
+		?b: a police escort	[escort-nmod,h1,o1,o1,o2]
+		?c: busloads of executives and their wives	[busloads-nsubj,g1(nsubj),o1,o1,o1,o1,o1]
+		?d: the Indianapolis Motor Speedway	[Speedway-nmod,h1,o1,o1,o1,o2]
+		?e: traffic	[traffic-nmod,h1,l,o2,o5,o6]
+	?a with ?b , ?c raced to ?d , unimpeded by ?e	[raced-root,c,c,l,n1,n1,n1,n1,n1,n2,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: The next morning	[morning-nmod:tmod,h1,o1,o1]
+		?b: a police escort	[escort-nmod,h1,o1,o1,o2]
+		?c: busloads of executives and their wives	[busloads-nsubj,g1(nsubj),o1,o1,o1,o1,o1]
+		?d: the Indianapolis Motor Speedway	[Speedway-nmod,h1,o1,o1,o1,o2]
+		?e: red lights	[lights-conj,m,o1]
+	?a is/are red	[red-amod,e]
+		?a: lights	[lights-conj,i,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_9
+sentence: The governor could n't make it , so the lieutenant governor welcomed the special guests .
+
+tags: The/DET governor/NOUN could/VERB n't/ADV make/VERB it/PRON ,/. so/ADP the/DET lieutenant/NOUN governor/NOUN welcomed/VERB the/DET special/ADJ guests/NOUN ./.
+
+det(The/0, governor/1)   nsubj(governor/1, make/4)            aux(could/2, make/4)             neg(n't/3, make/4)
+root(make/4, ROOT/-1)    dobj(it/5, make/4)                   punct(,/6, make/4)               dep(so/7, make/4)
+det(the/8, governor/10)  compound(lieutenant/9, governor/10)  nsubj(governor/10, welcomed/11)  parataxis(welcomed/11, make/4)
+det(the/12, guests/14)   amod(special/13, guests/14)          dobj(guests/14, welcomed/11)     punct(./15, make/4)
+
+ppatt:
+	?a could n't make ?b	[make-root,c,c,n1,n1,n1,n1,n2,n2,n3,n4,u]
+		?a: The governor	[governor-nsubj,g1(nsubj),o1]
+		?b: it	[it-dobj,g1(dobj)]
+	?a welcomed ?b	[welcomed-parataxis,c,c,n2,n2]
+		?a: the lieutenant governor	[governor-nsubj,g1(nsubj),o1,o1]
+		?b: the special guests	[guests-dobj,g1(dobj),o1,o1]
+	?a is/are special	[special-amod,e]
+		?a: the guests	[guests-dobj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_10
+sentence: A buffet breakfast was held in the museum , where food and drinks are banned to everyday visitors .
+
+tags: A/DET buffet/NOUN breakfast/NOUN was/VERB held/VERB in/ADP the/DET museum/NOUN ,/. where/ADV food/NOUN and/CONJ drinks/NOUN are/VERB banned/VERB to/PRT everyday/ADJ visitors/NOUN ./.
+
+det(A/0, breakfast/2)           compound(buffet/1, breakfast/2)  nsubjpass(breakfast/2, held/4)  auxpass(was/3, held/4)
+root(held/4, ROOT/-1)           case(in/5, museum/7)             det(the/6, museum/7)            nmod(museum/7, held/4)
+punct(,/8, held/4)              advmod(where/9, banned/14)       nsubjpass(food/10, banned/14)   cc(and/11, food/10)
+conj(drinks/12, food/10)        auxpass(are/13, banned/14)       advcl(banned/14, held/4)        case(to/15, visitors/17)
+amod(everyday/16, visitors/17)  nmod(visitors/17, banned/14)     punct(./18, held/4)
+
+ppatt:
+	?a was held in ?b	[held-root,c,c,n1,n1,n1,n2,n2,n3,n6,u]
+		?a: A buffet breakfast	[breakfast-nsubjpass,g1(nsubjpass),o1,o1]
+		?b: the museum	[museum-nmod,h1,o1,o2]
+	where ?a are banned to ?b	[banned-advcl,b,n1,n1,n2,n2,n6]
+		?a: food	[food-nsubjpass,g1(nsubjpass),o5,o6]
+		?b: everyday visitors	[visitors-nmod,h1,o1,o2]
+	where ?a are banned to ?b	[banned-advcl,b,n1,n1,n2,n2,n6]
+		?a: drinks	[drinks-conj,m]
+		?b: everyday visitors	[visitors-nmod,h1,o1,o2]
+	?a is/are everyday	[everyday-amod,e]
+		?a: visitors	[visitors-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_11
+sentence: Then , in the guests ' honor , the speedway hauled out four drivers , crews and even the official Indianapolis 500 announcer for a 10-lap exhibition race .
+
+tags: Then/ADV ,/. in/ADP the/DET guests/NOUN '/PRT honor/NOUN ,/. the/DET speedway/NOUN hauled/VERB out/PRT four/NUM drivers/NOUN ,/. crews/NOUN and/CONJ even/ADV the/DET official/ADJ Indianapolis/NOUN 500/NUM announcer/NOUN for/ADP a/DET 10-lap/ADJ exhibition/NOUN race/NOUN ./.
+
+advmod(Then/0, hauled/10)                punct(,/1, hauled/10)          case(in/2, honor/6)               det(the/3, guests/4)
+nmod:poss(guests/4, honor/6)             case('/5, guests/4)            nmod(honor/6, hauled/10)          punct(,/7, hauled/10)
+det(the/8, speedway/9)                   nsubj(speedway/9, hauled/10)   root(hauled/10, ROOT/-1)          compound:prt(out/11, hauled/10)
+nummod(four/12, drivers/13)              dobj(drivers/13, hauled/10)    punct(,/14, drivers/13)           conj(crews/15, drivers/13)
+cc(and/16, drivers/13)                   advmod(even/17, announcer/22)  det(the/18, announcer/22)         amod(official/19, announcer/22)
+compound(Indianapolis/20, announcer/22)  nummod(500/21, announcer/22)   conj(announcer/22, drivers/13)    case(for/23, race/27)
+det(a/24, race/27)                       amod(10-lap/25, race/27)       compound(exhibition/26, race/27)  nmod(race/27, hauled/10)
+punct(./28, hauled/10)
+
+ppatt:
+	?a poss ?b	[guests-nmod:poss,n1,n1,n6,n6,v]
+		?a: the guests	[guests-nmod:poss,o1,o2,w2]
+		?b: honor	[honor-nmod,o2,o3,w1]
+	Then , in ?a , ?b hauled out ?c for ?d	[hauled-root,c,c,n1,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: the guests ' honor	[honor-nmod,h1,o1,o1,o1,o2]
+		?b: the speedway	[speedway-nsubj,g1(nsubj),o1]
+		?c: four drivers	[drivers-dobj,g1(dobj),o1,o1,o5,o6,o6,u]
+		?d: a 10-lap exhibition race	[race-nmod,h1,o1,o1,o1,o2]
+	Then , in ?a , ?b hauled out ?c for ?d	[hauled-root,c,c,n1,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: the guests ' honor	[honor-nmod,h1,o1,o1,o1,o2]
+		?b: the speedway	[speedway-nsubj,g1(nsubj),o1]
+		?c: crews	[crews-conj,m]
+		?d: a 10-lap exhibition race	[race-nmod,h1,o1,o1,o1,o2]
+	Then , in ?a , ?b hauled out ?c for ?d	[hauled-root,c,c,n1,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6,u]
+		?a: the guests ' honor	[honor-nmod,h1,o1,o1,o1,o2]
+		?b: the speedway	[speedway-nsubj,g1(nsubj),o1]
+		?c: even the official Indianapolis 500 announcer	[announcer-conj,m,o1,o1,o1,o1,o1]
+		?d: a 10-lap exhibition race	[race-nmod,h1,o1,o1,o1,o2]
+	?a is/are official	[official-amod,e]
+		?a: even the Indianapolis 500 announcer	[announcer-conj,i,o1,o1,o1,o1,o3]
+	?a is/are 10-lap	[10-lap-amod,e]
+		?a: a exhibition race	[race-nmod,i,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_12
+sentence: After the race , Fortune 500 executives drooled like schoolboys over the cars and drivers .
+
+tags: After/ADP the/DET race/NOUN ,/. Fortune/NOUN 500/NUM executives/NOUN drooled/VERB like/ADP schoolboys/NOUN over/ADP the/DET cars/NOUN and/CONJ drivers/NOUN ./.
+
+case(After/0, race/2)              det(the/1, race/2)             nmod(race/2, drooled/7)         punct(,/3, drooled/7)
+compound(Fortune/4, executives/6)  nummod(500/5, executives/6)    nsubj(executives/6, drooled/7)  root(drooled/7, ROOT/-1)
+case(like/8, schoolboys/9)         nmod(schoolboys/9, drooled/7)  case(over/10, cars/12)          det(the/11, cars/12)
+nmod(cars/12, drooled/7)           cc(and/13, cars/12)            conj(drivers/14, cars/12)       punct(./15, drooled/7)
+
+ppatt:
+	After ?a , ?b drooled like ?c over ?d	[drooled-root,c,n1,n1,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: the race	[race-nmod,h1,o1,o2]
+		?b: Fortune 500 executives	[executives-nsubj,g1(nsubj),o1,o1]
+		?c: schoolboys	[schoolboys-nmod,h1,o2]
+		?d: the cars	[cars-nmod,h1,o1,o2,o5,o6]
+	After ?a , ?b drooled like ?c over ?d	[drooled-root,c,n1,n1,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: the race	[race-nmod,h1,o1,o2]
+		?b: Fortune 500 executives	[executives-nsubj,g1(nsubj),o1,o1]
+		?c: schoolboys	[schoolboys-nmod,h1,o2]
+		?d: drivers	[drivers-conj,m]
+
+
+label:    wsj/00/wsj_0010.mrg_13
+sentence: No dummies , the drivers pointed out they still had space on their machines for another sponsor 's name or two .
+
+tags: No/DET dummies/NOUN ,/. the/DET drivers/NOUN pointed/VERB out/PRT they/PRON still/ADV had/VERB space/NOUN on/ADP their/PRON machines/NOUN for/ADP another/DET sponsor/NOUN 's/PRT name/NOUN or/CONJ two/NUM ./.
+
+neg(No/0, dummies/1)              ccomp(dummies/1, pointed/5)  punct(,/2, pointed/5)           det(the/3, drivers/4)
+nsubj(drivers/4, pointed/5)       root(pointed/5, ROOT/-1)     compound:prt(out/6, pointed/5)  nsubj(they/7, had/9)
+advmod(still/8, had/9)            ccomp(had/9, pointed/5)      dobj(space/10, had/9)           case(on/11, machines/13)
+nmod:poss(their/12, machines/13)  nmod(machines/13, space/10)  case(for/14, name/18)           det(another/15, sponsor/16)
+nmod:poss(sponsor/16, name/18)    case('s/17, sponsor/16)      nmod(name/18, space/10)         cc(or/19, name/18)
+conj(two/20, name/18)             punct(./21, pointed/5)
+
+ppatt:
+	No dummies ?a	[dummies-ccomp,a1,n1]
+		?a: the drivers	[drivers-nsubj,borrow-subj(dummies/1,pointed/5,ccomp),g1(nsubj),o1]
+	?a ?b pointed out ?c	[pointed-root,c,c,c,n1,n1,n1,n2,n2,n2,u]
+		?a: SOMETHING := No dummies	[dummies-ccomp,k,o1]
+		?b: the drivers	[drivers-nsubj,g1(nsubj),o1]
+		?c: SOMETHING := they still had space on their machines for another sponsor 's name or two	[had-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a still had ?b	[had-ccomp,a1,c,c,n1,n2,n2]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: space on their machines for another sponsor 's name or two	[space-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[their-nmod:poss,n6,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: machines	[machines-nmod,o2,o3,w1]
+	?a poss ?b	[sponsor-nmod:poss,n1,n1,n6,n6,v]
+		?a: another sponsor	[sponsor-nmod:poss,o1,o2,w2]
+		?b: name	[name-nmod,o2,o3,o5,o6,w1]
+	?a poss ?b	[sponsor-nmod:poss,n1,n1,n6,n6,v]
+		?a: another sponsor	[sponsor-nmod:poss,o1,o2,w2]
+		?b: two	[two-conj,m]
+
+
+label:    wsj/00/wsj_0010.mrg_14
+sentence: Back downtown , the execs squeezed in a few meetings at the hotel before boarding the buses again .
+
+tags: Back/ADV downtown/NOUN ,/. the/DET execs/NOUN squeezed/VERB in/PRT a/DET few/ADJ meetings/NOUN at/ADP the/DET hotel/NOUN before/ADP boarding/VERB the/DET buses/NOUN again/ADV ./.
+
+advmod(Back/0, squeezed/5)   dep(downtown/1, Back/0)        punct(,/2, squeezed/5)          det(the/3, execs/4)
+nsubj(execs/4, squeezed/5)   root(squeezed/5, ROOT/-1)      compound:prt(in/6, squeezed/5)  det(a/7, meetings/9)
+amod(few/8, meetings/9)      dobj(meetings/9, squeezed/5)   case(at/10, hotel/12)           det(the/11, hotel/12)
+nmod(hotel/12, meetings/9)   mark(before/13, boarding/14)   advcl(boarding/14, squeezed/5)  det(the/15, buses/16)
+dobj(buses/16, boarding/14)  advmod(again/17, boarding/14)  punct(./18, squeezed/5)
+
+ppatt:
+	Back , ?a squeezed in ?b	[squeezed-root,c,c,c,n1,n1,n1,n1,n2,n2,n3,n4,u]
+		?a: the execs	[execs-nsubj,g1(nsubj),o1]
+		?b: a few meetings at the hotel	[meetings-dobj,g1(dobj),o1,o1,o1,o1,o1]
+	?a is/are few	[few-amod,e]
+		?a: a meetings at the hotel	[meetings-dobj,i,o1,o1,o1,o1,o3]
+	?a boarding ?b again	[boarding-advcl,b,n1,n1,n2,u]
+		?a: the execs	[execs-nsubj,borrow-subj(boarding/14,squeezed/5,advcl),g1(nsubj),o1]
+		?b: the buses	[buses-dobj,g1(dobj),o1]
+
+
+label:    wsj/00/wsj_0010.mrg_16
+sentence: Under the stars and moons of the renovated Indiana Roof ballroom , nine of the hottest chefs in town fed them Indiana duckling mousseline , lobster consomme , veal mignon and chocolate terrine with a raspberry sauce .
+
+tags: Under/ADP the/DET stars/NOUN and/CONJ moons/NOUN of/ADP the/DET renovated/VERB Indiana/NOUN Roof/NOUN ballroom/NOUN ,/. nine/NUM of/ADP the/DET hottest/ADJ chefs/NOUN in/ADP town/NOUN fed/VERB them/PRON Indiana/NOUN duckling/NOUN mousseline/NOUN ,/. lobster/NOUN consomme/NOUN ,/. veal/NOUN mignon/NOUN and/CONJ chocolate/ADJ terrine/NOUN with/ADP a/DET raspberry/NOUN sauce/NOUN ./.
+
+case(Under/0, stars/2)            det(the/1, stars/2)                  nmod(stars/2, fed/19)                 cc(and/3, stars/2)
+conj(moons/4, stars/2)            case(of/5, ballroom/10)              det(the/6, ballroom/10)               amod(renovated/7, ballroom/10)
+compound(Indiana/8, ballroom/10)  compound(Roof/9, ballroom/10)        nmod(ballroom/10, stars/2)            punct(,/11, fed/19)
+nsubj(nine/12, fed/19)            case(of/13, chefs/16)                det(the/14, chefs/16)                 amod(hottest/15, chefs/16)
+nmod(chefs/16, nine/12)           case(in/17, town/18)                 nmod(town/18, chefs/16)               root(fed/19, ROOT/-1)
+iobj(them/20, fed/19)             compound(Indiana/21, mousseline/23)  compound(duckling/22, mousseline/23)  dobj(mousseline/23, fed/19)
+punct(,/24, mousseline/23)        compound(lobster/25, consomme/26)    conj(consomme/26, mousseline/23)      punct(,/27, mousseline/23)
+compound(veal/28, mignon/29)      conj(mignon/29, mousseline/23)       cc(and/30, mousseline/23)             amod(chocolate/31, terrine/32)
+conj(terrine/32, mousseline/23)   case(with/33, sauce/36)              det(a/34, sauce/36)                   compound(raspberry/35, sauce/36)
+nmod(sauce/36, terrine/32)        punct(./37, fed/19)
+
+ppatt:
+	?a is/are hottest	[hottest-amod,e]
+		?a: the chefs in town	[chefs-nmod,i,o1,o1,o1,o3]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the stars of the renovated Indiana Roof ballroom	[stars-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: Indiana duckling mousseline	[mousseline-dobj,g1(dobj),o1,o1,o1,o1,o5,o6,o6,o6,u]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: moons	[moons-conj,m]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: Indiana duckling mousseline	[mousseline-dobj,g1(dobj),o1,o1,o1,o1,o5,o6,o6,o6,u]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the stars of the renovated Indiana Roof ballroom	[stars-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: lobster consomme	[consomme-conj,m,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: moons	[moons-conj,m]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: lobster consomme	[consomme-conj,m,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the stars of the renovated Indiana Roof ballroom	[stars-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: veal mignon	[mignon-conj,m,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: moons	[moons-conj,m]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: veal mignon	[mignon-conj,m,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the stars of the renovated Indiana Roof ballroom	[stars-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o2,o5,o6]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: chocolate terrine with a raspberry sauce	[terrine-conj,m,o1,o1,o1,o1,o1]
+	Under ?a , ?b fed ?c ?d	[fed-root,c,c,c,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: moons	[moons-conj,m]
+		?b: nine of the hottest chefs in town	[nine-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?c: them	[them-iobj,g1(iobj)]
+		?d: chocolate terrine with a raspberry sauce	[terrine-conj,m,o1,o1,o1,o1,o1]
+	?a is/are chocolate	[chocolate-amod,e]
+		?a: terrine with a raspberry sauce	[terrine-conj,i,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_17
+sentence: Knowing a tasty -- and free -- meal when they eat one , the executives gave the chefs a standing ovation .
+
+tags: Knowing/VERB a/DET tasty/ADJ --/. and/CONJ free/ADJ --/. meal/NOUN when/ADV they/PRON eat/VERB one/NUM ,/. the/DET executives/NOUN gave/VERB the/DET chefs/NOUN a/DET standing/ADJ ovation/NOUN ./.
+
+advcl(Knowing/0, gave/15)  det(a/1, meal/7)            amod(tasty/2, meal/7)          punct(--/3, free/5)
+cc(and/4, free/5)          dep(free/5, tasty/2)        punct(--/6, free/5)            dobj(meal/7, Knowing/0)
+advmod(when/8, eat/10)     nsubj(they/9, eat/10)       advcl(eat/10, Knowing/0)       dobj(one/11, eat/10)
+punct(,/12, gave/15)       det(the/13, executives/14)  nsubj(executives/14, gave/15)  root(gave/15, ROOT/-1)
+det(the/16, chefs/17)      iobj(chefs/17, gave/15)     det(a/18, ovation/20)          amod(standing/19, ovation/20)
+dobj(ovation/20, gave/15)  punct(./21, gave/15)
+
+ppatt:
+	Knowing ?a ?b	[Knowing-advcl,b,n2,n3]
+		?a: a tasty meal	[meal-dobj,g1(dobj),o1,o1,o4]
+		?b: the executives	[executives-nsubj,borrow-subj(Knowing/0,gave/15,advcl),g1(nsubj),o1]
+	?a is/are tasty	[tasty-amod,e,n4]
+		?a: a meal	[meal-dobj,i,o1,o3]
+	when ?a eat ?b	[eat-advcl,b,n1,n2,n2]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: one	[one-dobj,g1(dobj)]
+	?a gave ?b ?c	[gave-root,c,c,c,c,n1,n1,n2,n2,n2,n3,u]
+		?a: the executives	[executives-nsubj,g1(nsubj),o1]
+		?b: the chefs	[chefs-iobj,g1(iobj),o1]
+		?c: a standing ovation	[ovation-dobj,g1(dobj),o1,o1]
+	?a is/are standing	[standing-amod,e]
+		?a: a ovation	[ovation-dobj,i,o1,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_18
+sentence: More than a few CEOs say the red-carpet treatment tempts them to return to a heartland city for future meetings .
+
+tags: More/ADJ than/ADP a/DET few/ADJ CEOs/NOUN say/VERB the/DET red-carpet/ADJ treatment/NOUN tempts/VERB them/PRON to/PRT return/VERB to/PRT a/DET heartland/NOUN city/NOUN for/ADP future/ADJ meetings/NOUN ./.
+
+nsubj(More/0, say/5)          case(than/1, CEOs/4)       det(a/2, CEOs/4)              amod(few/3, CEOs/4)
+nmod(CEOs/4, More/0)          root(say/5, ROOT/-1)       det(the/6, treatment/8)       amod(red-carpet/7, treatment/8)
+nsubj(treatment/8, tempts/9)  ccomp(tempts/9, say/5)     dobj(them/10, tempts/9)       mark(to/11, return/12)
+xcomp(return/12, tempts/9)    case(to/13, city/16)       det(a/14, city/16)            compound(heartland/15, city/16)
+nmod(city/16, return/12)      case(for/17, meetings/19)  amod(future/18, meetings/19)  nmod(meetings/19, return/12)
+punct(./20, say/5)
+
+ppatt:
+	?a is/are few	[few-amod,e]
+		?a: a CEOs	[CEOs-nmod,i,o1,o3]
+	?a say ?b	[say-root,c,c,n1,n2,n2,u]
+		?a: More than a few CEOs	[More-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: SOMETHING := the red-carpet treatment tempts them to return to a heartland city for future meetings	[tempts-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are red-carpet	[red-carpet-amod,e]
+		?a: the treatment	[treatment-nsubj,i,o1,o3]
+	?a tempts ?b to return to ?c for ?d	[tempts-ccomp,a1,c,c,c,l,n1,n1,n2,n2,n2,n2,n6,n6]
+		?a: the red-carpet treatment	[treatment-nsubj,g1(nsubj),o1,o1]
+		?b: them	[them-dobj,g1(dobj)]
+		?c: a heartland city	[city-nmod,h1,l,o1,o1,o2]
+		?d: future meetings	[meetings-nmod,h1,l,o1,o2]
+	?a is/are future	[future-amod,e]
+		?a: meetings	[meetings-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0010.mrg_19
+sentence: But for now , they 're looking forward to their winter meeting -- Boca in February .
+
+tags: But/CONJ for/ADP now/ADV ,/. they/PRON 're/VERB looking/VERB forward/ADV to/PRT their/PRON winter/NOUN meeting/NOUN --/. Boca/NOUN in/ADP February/NOUN ./.
+
+cc(But/0, looking/6)      case(for/1, now/2)              advcl(now/2, looking/6)          punct(,/3, looking/6)
+nsubj(they/4, looking/6)  aux('re/5, looking/6)           root(looking/6, ROOT/-1)         advmod(forward/7, looking/6)
+case(to/8, meeting/11)    nmod:poss(their/9, meeting/11)  compound(winter/10, meeting/11)  nmod(meeting/11, looking/6)
+punct(--/12, Boca/13)     dep(Boca/13, meeting/11)        case(in/14, February/15)         nmod(February/15, Boca/13)
+punct(./16, looking/6)
+
+ppatt:
+	for now ?a	[now-advcl,b,n1]
+		?a: they	[they-nsubj,borrow-subj(now/2,looking/6,advcl),g1(nsubj)]
+	?a 're looking forward to ?b	[looking-root,c,c,n1,n1,n1,n1,n2,n2,n3,n5,n6,u]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: their winter meeting	[meeting-nmod,h1,o1,o1,o2,o4]
+	?a poss ?b	[their-nmod:poss,n6,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: winter meeting	[meeting-nmod,o1,o2,o3,o4,w1]
+
+
+label:    wsj/00/wsj_0011.mrg_0
+sentence: South Korea registered a trade deficit of $ 101 million in October , reflecting the country 's economic sluggishness , according to government figures released Wednesday .
+
+tags: South/NOUN Korea/NOUN registered/VERB a/DET trade/NOUN deficit/NOUN of/ADP $/. 101/NUM million/NUM in/ADP October/NOUN ,/. reflecting/VERB the/DET country/NOUN 's/PRT economic/ADJ sluggishness/NOUN ,/. according/VERB to/PRT government/NOUN figures/NOUN released/VERB Wednesday/NOUN ./.
+
+compound(South/0, Korea/1)      nsubj(Korea/1, registered/2)          root(registered/2, ROOT/-1)           det(a/3, deficit/5)
+compound(trade/4, deficit/5)    dobj(deficit/5, registered/2)         case(of/6, $/7)                       nmod($/7, deficit/5)
+compound(101/8, million/9)      nummod(million/9, $/7)                case(in/10, October/11)               nmod(October/11, registered/2)
+punct(,/12, registered/2)       advcl(reflecting/13, registered/2)    det(the/14, country/15)               nmod:poss(country/15, sluggishness/18)
+case('s/16, country/15)         amod(economic/17, sluggishness/18)    dobj(sluggishness/18, reflecting/13)  punct(,/19, registered/2)
+case(according/20, figures/23)  mwe(to/21, according/20)              compound(government/22, figures/23)   nmod(figures/23, registered/2)
+acl(released/24, figures/23)    nmod:tmod(Wednesday/25, released/24)  punct(./26, registered/2)
+
+ppatt:
+	?a registered ?b in ?c , according to ?d	[registered-root,c,c,c,n1,n1,n1,n2,n2,n2,n2,n3,n6,n6,u]
+		?a: South Korea	[Korea-nsubj,g1(nsubj),o1]
+		?b: a trade deficit of $ 101 million	[deficit-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+		?c: October	[October-nmod,h1,o2]
+		?d: government figures	[figures-nmod,h1,o1,o2,o4]
+	?a reflecting ?b	[reflecting-advcl,b,n2]
+		?a: South Korea	[Korea-nsubj,borrow-subj(reflecting/13,registered/2,advcl),g1(nsubj),o1]
+		?b: the country 's economic sluggishness	[sluggishness-dobj,g1(dobj),o1,o1,o1,o1]
+	?a poss ?b	[country-nmod:poss,n1,n1,n6,v]
+		?a: the country	[country-nmod:poss,o1,o2,w2]
+		?b: economic sluggishness	[sluggishness-dobj,o1,o3,w1]
+	?a is/are economic	[economic-amod,e]
+		?a: the country 's sluggishness	[sluggishness-dobj,i,o1,o1,o1,o3]
+	?a released ?b	[released-acl,b,n2,pred_resolve_relcl]
+		?a: government figures	[figures-nmod,arg_resolve_relcl,o1,o3]
+		?b: Wednesday	[Wednesday-nmod:tmod,h1]
+
+
+label:    wsj/00/wsj_0011.mrg_1
+sentence: Preliminary tallies by the Trade and Industry Ministry showed another trade deficit in October , the fifth monthly setback this year , casting a cloud on South Korea 's export-oriented economy .
+
+tags: Preliminary/ADJ tallies/NOUN by/ADP the/DET Trade/NOUN and/CONJ Industry/NOUN Ministry/NOUN showed/VERB another/DET trade/NOUN deficit/NOUN in/ADP October/NOUN ,/. the/DET fifth/ADJ monthly/ADJ setback/NOUN this/DET year/NOUN ,/. casting/VERB a/DET cloud/NOUN on/ADP South/NOUN Korea/NOUN 's/PRT export-oriented/ADJ economy/NOUN ./.
+
+amod(Preliminary/0, tallies/1)  nsubj(tallies/1, showed/8)            case(by/2, Ministry/7)          det(the/3, Ministry/7)
+compound(Trade/4, Ministry/7)   cc(and/5, Trade/4)                    conj(Industry/6, Trade/4)       nmod(Ministry/7, tallies/1)
+root(showed/8, ROOT/-1)         det(another/9, deficit/11)            compound(trade/10, deficit/11)  dobj(deficit/11, showed/8)
+case(in/12, October/13)         nmod(October/13, deficit/11)          punct(,/14, deficit/11)         det(the/15, setback/18)
+amod(fifth/16, setback/18)      amod(monthly/17, setback/18)          appos(setback/18, deficit/11)   det(this/19, year/20)
+nmod:tmod(year/20, setback/18)  punct(,/21, showed/8)                 advcl(casting/22, showed/8)     det(a/23, cloud/24)
+dobj(cloud/24, casting/22)      case(on/25, economy/30)               compound(South/26, Korea/27)    nmod:poss(Korea/27, economy/30)
+case('s/28, Korea/27)           amod(export-oriented/29, economy/30)  nmod(economy/30, casting/22)    punct(./31, showed/8)
+
+ppatt:
+	?a is/are Preliminary	[Preliminary-amod,e]
+		?a: tallies by the Trade and Industry Ministry	[tallies-nsubj,i,o1,o1,o1,o1,o1,o1,o3]
+	?a showed ?b	[showed-root,c,c,c,n1,n1,n2,n2,n3,u]
+		?a: Preliminary tallies by the Trade and Industry Ministry	[tallies-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1]
+		?b: another trade deficit in October	[deficit-dobj,g1(dobj),o1,o1,o1,o1,o1,o4,u]
+	?a is/are fifth	[fifth-amod,e]
+		?a: the monthly setback this year	[setback-appos,i,o1,o1,o1,o1,o3]
+	?a is/are monthly	[monthly-amod,e]
+		?a: the fifth setback this year	[setback-appos,i,o1,o1,o1,o1,o3]
+	?a is/are the fifth monthly setback ?b	[setback-appos,d,n1,n1,n1,n2]
+		?a: another trade deficit in October	[deficit-dobj,j,o1,o1,o1,o1,o1,o3,u]
+		?b: this year	[year-nmod:tmod,h1,o1]
+	?a casting ?b on ?c	[casting-advcl,b,n2,n2,n6]
+		?a: Preliminary tallies by the Trade and Industry Ministry	[tallies-nsubj,borrow-subj(casting/22,showed/8,advcl),g1(nsubj),o1,o1,o1,o1,o1,o1,o1]
+		?b: a cloud	[cloud-dobj,g1(dobj),o1]
+		?c: South Korea 's export-oriented economy	[economy-nmod,h1,o1,o1,o1,o1,o2]
+	?a poss ?b	[Korea-nmod:poss,n1,n1,n6,n6,v]
+		?a: South Korea	[Korea-nmod:poss,o1,o2,w2]
+		?b: export-oriented economy	[economy-nmod,o1,o2,o3,w1]
+	?a is/are export-oriented	[export-oriented-amod,e]
+		?a: South Korea 's economy	[economy-nmod,i,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0011.mrg_2
+sentence: Exports in October stood at $ 5.29 billion , a mere 0.7 % increase from a year earlier , while imports increased sharply to $ 5.39 billion , up 20 % from last October .
+
+tags: Exports/NOUN in/ADP October/NOUN stood/VERB at/ADP $/. 5.29/NUM billion/NUM ,/. a/DET mere/ADJ 0.7/NUM %/NOUN increase/NOUN from/ADP a/DET year/NOUN earlier/ADJ ,/. while/ADP imports/NOUN increased/VERB sharply/ADV to/PRT $/. 5.39/NUM billion/NUM ,/. up/ADV 20/NUM %/NOUN from/ADP last/ADJ October/NOUN ./.
+
+nsubj(Exports/0, stood/3)        case(in/1, October/2)          nmod(October/2, Exports/0)        root(stood/3, ROOT/-1)
+case(at/4, $/5)                  nmod($/5, stood/3)             compound(5.29/6, billion/7)       nummod(billion/7, $/5)
+punct(,/8, $/5)                  advmod(a/9, 0.7/11)            advmod(mere/10, 0.7/11)           dep(0.7/11, %/12)
+dep(%/12, increase/13)           appos(increase/13, $/5)        case(from/14, earlier/17)         det(a/15, earlier/17)
+dep(year/16, earlier/17)         nmod(earlier/17, increase/13)  punct(,/18, $/5)                  mark(while/19, increased/21)
+nsubj(imports/20, increased/21)  advcl(increased/21, stood/3)   advmod(sharply/22, increased/21)  case(to/23, $/24)
+nmod($/24, increased/21)         compound(5.39/25, billion/26)  nummod(billion/26, $/24)          punct(,/27, $/24)
+advmod(up/28, $/24)              nummod(20/29, %/30)            nmod:npmod(%/30, up/28)           case(from/31, October/33)
+amod(last/32, October/33)        nmod(October/33, up/28)        punct(./34, stood/3)
+
+ppatt:
+	?a stood at ?b	[stood-root,c,c,n1,n2,n2,n3,n6,u]
+		?a: Exports in October	[Exports-nsubj,g1(nsubj),o1,o1]
+		?b: $ 5.29 billion	[$-nmod,h1,o1,o1,o1,o1,o2,o4,u]
+	?a is/are increase from ?b	[increase-appos,d,n2,n4,n6]
+		?a: $ 5.29 billion	[$-nmod,j,o1,o1,o1,o1,o3,u]
+		?b: a earlier	[earlier-nmod,h1,o1,o2,o4]
+	?a increased sharply to ?b	[increased-advcl,b,n1,n1,n2,n2,n6,u]
+		?a: imports	[imports-nsubj,g1(nsubj)]
+		?b: $ 5.39 billion , up 20 % from last October	[$-nmod,h1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o2]
+	?a is/are last	[last-amod,e]
+		?a: October	[October-nmod,i,o3]
+
+
+label:    wsj/00/wsj_0011.mrg_3
+sentence: South Korea 's economic boom , which began in 1986 , stopped this year because of prolonged labor disputes , trade conflicts and sluggish exports .
+
+tags: South/NOUN Korea/NOUN 's/PRT economic/ADJ boom/NOUN ,/. which/DET began/VERB in/ADP 1986/NUM ,/. stopped/VERB this/DET year/NOUN because/ADP of/ADP prolonged/VERB labor/NOUN disputes/NOUN ,/. trade/NOUN conflicts/NOUN and/CONJ sluggish/ADJ exports/NOUN ./.
+
+compound(South/0, Korea/1)        nmod:poss(Korea/1, boom/4)       case('s/2, Korea/1)            amod(economic/3, boom/4)
+nsubj(boom/4, stopped/11)         punct(,/5, boom/4)               nsubj(which/6, began/7)        acl:relcl(began/7, boom/4)
+case(in/8, 1986/9)                nmod(1986/9, began/7)            punct(,/10, boom/4)            root(stopped/11, ROOT/-1)
+det(this/12, year/13)             nmod:tmod(year/13, stopped/11)   case(because/14, disputes/18)  mwe(of/15, because/14)
+amod(prolonged/16, disputes/18)   compound(labor/17, disputes/18)  nmod(disputes/18, stopped/11)  punct(,/19, disputes/18)
+compound(trade/20, conflicts/21)  conj(conflicts/21, disputes/18)  cc(and/22, disputes/18)        amod(sluggish/23, exports/24)
+conj(exports/24, disputes/18)     punct(./25, stopped/11)
+
+ppatt:
+	?a poss ?b	[Korea-nmod:poss,n1,n1,n6,v]
+		?a: South Korea	[Korea-nmod:poss,o1,o2,w2]
+		?b: economic boom	[boom-nsubj,o1,o1,o1,o3,o4,u,w1]
+	?a is/are economic	[economic-amod,e]
+		?a: South Korea 's boom	[boom-nsubj,i,o1,o1,o1,o1,o1,o3,o4,u]
+	?a began in ?b	[began-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,n6,pred_resolve_relcl]
+		?a: South Korea 's economic boom	[boom-nsubj,arg_resolve_relcl,o1,o1,o1,o1,o1,o1,o3,u]
+		?b: 1986	[1986-nmod,h1,o2]
+	?a stopped ?b because of ?c	[stopped-root,c,n1,n2,n2,n2,n6,u]
+		?a: South Korea 's economic boom	[boom-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o4,u]
+		?b: this year	[year-nmod:tmod,h1,o1]
+		?c: prolonged labor disputes	[disputes-nmod,h1,o1,o1,o1,o2,o5,o6,o6,u]
+	?a stopped ?b because of ?c	[stopped-root,c,n1,n2,n2,n2,n6,u]
+		?a: South Korea 's economic boom	[boom-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o4,u]
+		?b: this year	[year-nmod:tmod,h1,o1]
+		?c: trade conflicts	[conflicts-conj,m,o1]
+	?a stopped ?b because of ?c	[stopped-root,c,n1,n2,n2,n2,n6,u]
+		?a: South Korea 's economic boom	[boom-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o4,u]
+		?b: this year	[year-nmod:tmod,h1,o1]
+		?c: sluggish exports	[exports-conj,m,o1]
+	?a is/are sluggish	[sluggish-amod,e]
+		?a: exports	[exports-conj,i,o3]
+
+
+label:    wsj/00/wsj_0011.mrg_4
+sentence: Government officials said exports at the end of the year would remain under a government target of $ 68 billion .
+
+tags: Government/NOUN officials/NOUN said/VERB exports/NOUN at/ADP the/DET end/NOUN of/ADP the/DET year/NOUN would/VERB remain/VERB under/ADP a/DET government/NOUN target/NOUN of/ADP $/. 68/NUM billion/NUM ./.
+
+compound(Government/0, officials/1)  nsubj(officials/1, said/2)  root(said/2, ROOT/-1)               nsubj(exports/3, remain/11)
+case(at/4, end/6)                    det(the/5, end/6)           nmod(end/6, exports/3)              case(of/7, year/9)
+det(the/8, year/9)                   nmod(year/9, end/6)         aux(would/10, remain/11)            ccomp(remain/11, said/2)
+case(under/12, target/15)            det(a/13, target/15)        compound(government/14, target/15)  nmod(target/15, remain/11)
+case(of/16, $/17)                    nmod($/17, target/15)       compound(68/18, billion/19)         nummod(billion/19, $/17)
+punct(./20, said/2)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: Government officials	[officials-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := exports at the end of the year would remain under a government target of $ 68 billion	[remain-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a would remain under ?b	[remain-ccomp,a1,c,n1,n2,n2,n6]
+		?a: exports at the end of the year	[exports-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?b: a government target of $ 68 billion	[target-nmod,h1,o1,o1,o1,o1,o1,o1,o2]
+
+
+label:    wsj/00/wsj_0011.mrg_5
+sentence: Despite the gloomy forecast , South Korea has recorded a trade surplus of $ 71 million so far this year .
+
+tags: Despite/ADP the/DET gloomy/ADJ forecast/NOUN ,/. South/NOUN Korea/NOUN has/VERB recorded/VERB a/DET trade/NOUN surplus/NOUN of/ADP $/. 71/NUM million/NUM so/ADP far/ADP this/DET year/NOUN ./.
+
+case(Despite/0, forecast/3)  det(the/1, forecast/3)      amod(gloomy/2, forecast/3)      nmod(forecast/3, recorded/8)
+punct(,/4, recorded/8)       compound(South/5, Korea/6)  nsubj(Korea/6, recorded/8)      aux(has/7, recorded/8)
+root(recorded/8, ROOT/-1)    det(a/9, surplus/11)        compound(trade/10, surplus/11)  dobj(surplus/11, recorded/8)
+case(of/12, $/13)            nmod($/13, surplus/11)      compound(71/14, million/15)     nummod(million/15, $/13)
+advmod(so/16, recorded/8)    case(far/17, so/16)         det(this/18, year/19)           nmod:tmod(year/19, recorded/8)
+punct(./20, recorded/8)
+
+ppatt:
+	?a is/are gloomy	[gloomy-amod,e]
+		?a: the forecast	[forecast-nmod,i,o1,o3]
+	Despite ?a , ?b has recorded ?c so far ?d	[recorded-root,c,c,n1,n1,n1,n1,n1,n2,n2,n2,n2,n6,u]
+		?a: the gloomy forecast	[forecast-nmod,h1,o1,o1,o2]
+		?b: South Korea	[Korea-nsubj,g1(nsubj),o1]
+		?c: a trade surplus of $ 71 million	[surplus-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+		?d: this year	[year-nmod:tmod,h1,o1]
+
+
+label:    wsj/00/wsj_0011.mrg_6
+sentence: From January to October , the nation 's accumulated exports increased 4 % from the same period last year to $ 50.45 billion .
+
+tags: From/ADP January/NOUN to/PRT October/NOUN ,/. the/DET nation/NOUN 's/PRT accumulated/VERB exports/NOUN increased/VERB 4/NUM %/NOUN from/ADP the/DET same/ADJ period/NOUN last/ADJ year/NOUN to/PRT $/. 50.45/NUM billion/NUM ./.
+
+case(From/0, January/1)         nmod(January/1, increased/10)   case(to/2, October/3)           nmod(October/3, January/1)
+punct(,/4, increased/10)        det(the/5, nation/6)            nmod:poss(nation/6, exports/9)  case('s/7, nation/6)
+amod(accumulated/8, exports/9)  nsubj(exports/9, increased/10)  root(increased/10, ROOT/-1)     nummod(4/11, %/12)
+dobj(%/12, increased/10)        case(from/13, year/18)          det(the/14, year/18)            amod(same/15, year/18)
+compound(period/16, year/18)    amod(last/17, year/18)          nmod(year/18, increased/10)     case(to/19, $/20)
+nmod($/20, increased/10)        compound(50.45/21, billion/22)  nummod(billion/22, $/20)        punct(./23, increased/10)
+
+ppatt:
+	?a poss ?b	[nation-nmod:poss,n1,n1,n6,v]
+		?a: the nation	[nation-nmod:poss,o1,o2,w2]
+		?b: accumulated exports	[exports-nsubj,o1,o3,w1]
+	From ?a , ?b increased ?c from ?d to ?e	[increased-root,c,c,n1,n1,n2,n2,n2,n2,n2,n6,n6,n6,u]
+		?a: January to October	[January-nmod,h1,o1,o1,o2]
+		?b: the nation 's accumulated exports	[exports-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?c: 4 %	[%-dobj,g1(dobj),o1]
+		?d: the same period last year	[year-nmod,h1,o1,o1,o1,o1,o2]
+		?e: $ 50.45 billion	[$-nmod,h1,o1,o1,o2]
+	?a is/are same	[same-amod,e]
+		?a: the period last year	[year-nmod,i,o1,o1,o1,o3]
+	?a is/are last	[last-amod,e]
+		?a: the same period year	[year-nmod,i,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0012.mrg_0
+sentence: Newsweek , trying to keep pace with rival Time magazine , announced new advertising rates for 1990 and said it will introduce a new incentive plan for advertisers .
+
+tags: Newsweek/NOUN ,/. trying/VERB to/PRT keep/VERB pace/NOUN with/ADP rival/ADJ Time/NOUN magazine/NOUN ,/. announced/VERB new/ADJ advertising/NOUN rates/NOUN for/ADP 1990/NUM and/CONJ said/VERB it/PRON will/VERB introduce/VERB a/DET new/ADJ incentive/NOUN plan/NOUN for/ADP advertisers/NOUN ./.
+
+nsubj(Newsweek/0, announced/11)  punct(,/1, announced/11)            advcl(trying/2, announced/11)  mark(to/3, keep/4)
+xcomp(keep/4, trying/2)          dobj(pace/5, keep/4)                case(with/6, rival/7)          nmod(rival/7, keep/4)
+compound(Time/8, magazine/9)     dep(magazine/9, rival/7)            punct(,/10, announced/11)      root(announced/11, ROOT/-1)
+amod(new/12, rates/14)           compound(advertising/13, rates/14)  dobj(rates/14, announced/11)   case(for/15, 1990/16)
+nmod(1990/16, rates/14)          cc(and/17, announced/11)            conj(said/18, announced/11)    nsubj(it/19, introduce/21)
+aux(will/20, introduce/21)       ccomp(introduce/21, said/18)        det(a/22, plan/25)             amod(new/23, plan/25)
+compound(incentive/24, plan/25)  dobj(plan/25, introduce/21)         case(for/26, advertisers/27)   nmod(advertisers/27, plan/25)
+punct(./28, announced/11)
+
+ppatt:
+	?a trying to keep ?b with ?c	[trying-advcl,b,l,n1,n1,n2,n2,n6]
+		?a: Newsweek	[Newsweek-nsubj,borrow-subj(trying/2,announced/11,advcl),g1(nsubj)]
+		?b: pace	[pace-dobj,g1(dobj),l]
+		?c: rival	[rival-nmod,h1,l,o2,o4]
+	?a announced ?b	[announced-root,c,c,c,n1,n1,n1,n2,n2,n3,n3,n5,u]
+		?a: Newsweek	[Newsweek-nsubj,g1(nsubj)]
+		?b: new advertising rates for 1990	[rates-dobj,g1(dobj),o1,o1,o1,o1]
+	?a is/are new	[new-amod,e]
+		?a: advertising rates for 1990	[rates-dobj,i,o1,o1,o1,o3]
+	?a said ?b	[said-conj,f,n2]
+		?a: Newsweek	[Newsweek-nsubj,borrow-subj(said/18,announced/11,conj),g1(nsubj)]
+		?b: SOMETHING := it will introduce a new incentive plan for advertisers	[introduce-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a will introduce ?b	[introduce-ccomp,a1,c,c,n1,n2,n2]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: a new incentive plan for advertisers	[plan-dobj,g1(dobj),o1,o1,o1,o1,o1]
+	?a is/are new	[new-amod,e]
+		?a: a incentive plan for advertisers	[plan-dobj,i,o1,o1,o1,o1,o3]
+
+
+label:    wsj/00/wsj_0012.mrg_1
+sentence: The new ad plan from Newsweek , a unit of the Washington Post Co. , is the second incentive plan the magazine has offered advertisers in three years .
+
+tags: The/DET new/ADJ ad/NOUN plan/NOUN from/ADP Newsweek/NOUN ,/. a/DET unit/NOUN of/ADP the/DET Washington/NOUN Post/NOUN Co./NOUN ,/. is/VERB the/DET second/ADJ incentive/NOUN plan/NOUN the/DET magazine/NOUN has/VERB offered/VERB advertisers/NOUN in/ADP three/NUM years/NOUN ./.
+
+det(The/0, plan/3)                amod(new/1, plan/3)             compound(ad/2, plan/3)           nsubj(plan/3, plan/19)
+case(from/4, Newsweek/5)          nmod(Newsweek/5, plan/3)        punct(,/6, Newsweek/5)           det(a/7, unit/8)
+appos(unit/8, Newsweek/5)         case(of/9, Co./13)              det(the/10, Co./13)              compound(Washington/11, Co./13)
+compound(Post/12, Co./13)         nmod(Co./13, unit/8)            punct(,/14, Newsweek/5)          cop(is/15, plan/19)
+det(the/16, plan/19)              amod(second/17, plan/19)        compound(incentive/18, plan/19)  root(plan/19, ROOT/-1)
+det(the/20, magazine/21)          nsubj(magazine/21, offered/23)  aux(has/22, offered/23)          acl:relcl(offered/23, plan/19)
+dobj(advertisers/24, offered/23)  case(in/25, years/27)           nummod(three/26, years/27)       nmod(years/27, offered/23)
+punct(./28, plan/19)
+
+ppatt:
+	?a is/are new	[new-amod,e]
+		?a: The ad plan from Newsweek	[plan-nsubj,i,o1,o1,o1,o1,o1,o1,o3,o4,u]
+	?a is/are a unit of ?b	[unit-appos,d,n1,n2,n6]
+		?a: Newsweek	[Newsweek-nmod,j,o1,o1,o3,u]
+		?b: the Washington Post Co.	[Co.-nmod,h1,o1,o1,o1,o2]
+	?a is/are second	[second-amod,e]
+		?a: the incentive plan	[plan-root,i,o1,o1,o1,o3,o4,o4,o4,u]
+	?a is the second incentive plan	[plan-root,c,n1,n1,n1,n1,n1,n2,n3,u]
+		?a: The new ad plan from Newsweek	[plan-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1,o1,o4,u]
+	?a ?b has offered ?c in ?d	[offered-acl:relcl,b,n1,n2,n2,n2,n6,pred_resolve_relcl]
+		?a: the second incentive plan	[plan-root,arg_resolve_relcl,o1,o1,o1,o1,o3,o4,o4,u]
+		?b: the magazine	[magazine-nsubj,g1(nsubj),o1]
+		?c: advertisers	[advertisers-dobj,g1(dobj)]
+		?d: three years	[years-nmod,h1,o1,o2]
+
+
+label:    wsj/00/wsj_0012.mrg_2
+sentence: Plans that give advertisers discounts for maintaining or increasing ad spending have become permanent fixtures at the news weeklies and underscore the fierce competition between Newsweek , Time Warner Inc. 's Time magazine , and Mortimer B. Zuckerman 's U.S. News & World Report .
+
+tags: Plans/NOUN that/DET give/VERB advertisers/NOUN discounts/NOUN for/ADP maintaining/VERB or/CONJ increasing/VERB ad/NOUN spending/NOUN have/VERB become/VERB permanent/ADJ fixtures/NOUN at/ADP the/DET news/NOUN weeklies/NOUN and/CONJ underscore/VERB the/DET fierce/ADJ competition/NOUN between/ADP Newsweek/NOUN ,/. Time/NOUN Warner/NOUN Inc./NOUN 's/PRT Time/NOUN magazine/NOUN ,/. and/CONJ Mortimer/NOUN B./NOUN Zuckerman/NOUN 's/PRT U.S./NOUN News/NOUN &/CONJ World/NOUN Report/NOUN ./.
+
+nsubj(Plans/0, become/12)          nsubj(that/1, give/2)              acl:relcl(give/2, Plans/0)        iobj(advertisers/3, give/2)
+dobj(discounts/4, give/2)          mark(for/5, maintaining/6)         acl(maintaining/6, discounts/4)   cc(or/7, maintaining/6)
+conj(increasing/8, maintaining/6)  compound(ad/9, spending/10)        dobj(spending/10, maintaining/6)  aux(have/11, become/12)
+root(become/12, ROOT/-1)           amod(permanent/13, fixtures/14)    xcomp(fixtures/14, become/12)     case(at/15, weeklies/18)
+det(the/16, weeklies/18)           compound(news/17, weeklies/18)     nmod(weeklies/18, fixtures/14)    cc(and/19, become/12)
+conj(underscore/20, become/12)     det(the/21, competition/23)        amod(fierce/22, competition/23)   dobj(competition/23, underscore/20)
+case(between/24, Newsweek/25)      nmod(Newsweek/25, competition/23)  punct(,/26, Newsweek/25)          compound(Time/27, Inc./29)
+compound(Warner/28, Inc./29)       nmod:poss(Inc./29, magazine/32)    case('s/30, Inc./29)              compound(Time/31, magazine/32)
+conj(magazine/32, Newsweek/25)     punct(,/33, Newsweek/25)           cc(and/34, Newsweek/25)           compound(Mortimer/35, Zuckerman/37)
+compound(B./36, Zuckerman/37)      nmod:poss(Zuckerman/37, News/40)   case('s/38, Zuckerman/37)         compound(U.S./39, News/40)
+conj(News/40, Newsweek/25)         cc(&/41, News/40)                  compound(World/42, Report/43)     conj(Report/43, News/40)
+punct(./44, become/12)
+
+ppatt:
+	?a give ?b ?c	[give-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,n2,pred_resolve_relcl]
+		?a: Plans	[Plans-nsubj,arg_resolve_relcl,o3]
+		?b: advertisers	[advertisers-iobj,g1(iobj)]
+		?c: discounts	[discounts-dobj,g1(dobj),o4]
+	?a maintaining ?b	[maintaining-acl,b,n1,n2,n3,n5,pred_resolve_relcl,u]
+		?a: discounts	[discounts-dobj,arg_resolve_relcl,o3]
+		?b: ad spending	[spending-dobj,g1(dobj),o1]
+	?a have become permanent fixtures at ?b	[become-root,c,c,l,n1,n1,n1,n1,n2,n2,n3,n5,n6,u]
+		?a: Plans	[Plans-nsubj,g1(nsubj),o4]
+		?b: the news weeklies	[weeklies-nmod,h1,l,o1,o1,o2]
+	?a is/are permanent	[permanent-amod,e]
+		?a: fixtures at the news weeklies	[fixtures-xcomp,i,o1,o1,o1,o1,o3]
+	?a have underscore ?b	[underscore-conj,f,n2,pred_conj_borrow_aux_neg]
+		?a: Plans	[Plans-nsubj,borrow-subj(underscore/20,become/12,conj),g1(nsubj),o4]
+		?b: the fierce competition between Newsweek , Time Warner Inc. 's Time magazine , and Mortimer B. Zuckerman 's U.S. News & World Report	[competition-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are fierce	[fierce-amod,e]
+		?a: the competition between Newsweek , Time Warner Inc. 's Time magazine , and Mortimer B. Zuckerman 's U.S. News & World Report	[competition-dobj,i,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o3]
+	?a poss ?b	[Inc.-nmod:poss,n1,n1,n1,n6,v]
+		?a: Time Warner Inc.	[Inc.-nmod:poss,o1,o1,o2,w2]
+		?b: Time magazine	[magazine-conj,o1,o3,w1]
+	?a poss ?b	[Zuckerman-nmod:poss,n1,n1,n1,n6,v]
+		?a: Mortimer B. Zuckerman	[Zuckerman-nmod:poss,o1,o1,o2,w2]
+		?b: U.S. News	[News-conj,o1,o3,o5,o6,w1]
+	?a poss ?b	[Zuckerman-nmod:poss,n1,n1,n1,n6,v]
+		?a: Mortimer B. Zuckerman	[Zuckerman-nmod:poss,o1,o1,o2,w2]
+		?b: World Report	[Report-conj,m,o1]
+
+
+label:    wsj/00/wsj_0012.mrg_3
+sentence: Alan Spoon , recently named Newsweek president , said Newsweek 's ad rates would increase 5 % in January .
+
+tags: Alan/NOUN Spoon/NOUN ,/. recently/ADV named/VERB Newsweek/NOUN president/NOUN ,/. said/VERB Newsweek/NOUN 's/PRT ad/NOUN rates/NOUN would/VERB increase/VERB 5/NUM %/NOUN in/ADP January/NOUN ./.
+
+compound(Alan/0, Spoon/1)     nsubj(Spoon/1, said/8)             punct(,/2, Spoon/1)            advmod(recently/3, named/4)
+acl:relcl(named/4, Spoon/1)   compound(Newsweek/5, president/6)  xcomp(president/6, named/4)    punct(,/7, Spoon/1)
+root(said/8, ROOT/-1)         nmod:poss(Newsweek/9, rates/12)    case('s/10, Newsweek/9)        compound(ad/11, rates/12)
+nsubj(rates/12, increase/14)  aux(would/13, increase/14)         ccomp(increase/14, said/8)     nummod(5/15, %/16)
+dobj(%/16, increase/14)       case(in/17, January/18)            nmod(January/18, increase/14)  punct(./19, said/8)
+
+ppatt:
+	?a recently named Newsweek president	[named-acl:relcl,b,l,n1,n1,n1,pred_resolve_relcl]
+		?a: Alan Spoon	[Spoon-nsubj,arg_resolve_relcl,o1,o1,o1,o3,u]
+	?a said ?b	[said-root,c,c,n1,n2,n2,u]
+		?a: Alan Spoon	[Spoon-nsubj,g1(nsubj),o1,o1,o1,o4,u]
+		?b: SOMETHING := Newsweek 's ad rates would increase 5 % in January	[increase-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[Newsweek-nmod:poss,n1,n6,v]
+		?a: Newsweek	[Newsweek-nmod:poss,o2,w2]
+		?b: ad rates	[rates-nsubj,o1,o3,w1]
+	?a would increase ?b in ?c	[increase-ccomp,a1,c,c,n1,n2,n2,n2,n6]
+		?a: Newsweek 's ad rates	[rates-nsubj,g1(nsubj),o1,o1,o1]
+		?b: 5 %	[%-dobj,g1(dobj),o1]
+		?c: January	[January-nmod,h1,o2]
+
+
+label:    wsj/00/wsj_0012.mrg_4
+sentence: A full , four-color page in Newsweek will cost $ 100,980 .
+
+tags: A/DET full/ADJ ,/. four-color/ADJ page/NOUN in/ADP Newsweek/NOUN will/VERB cost/VERB $/. 100,980/NUM ./.
+
+det(A/0, page/4)       amod(full/1, page/4)    punct(,/2, page/4)        amod(four-color/3, page/4)
+nsubj(page/4, cost/8)  case(in/5, Newsweek/6)  nmod(Newsweek/6, page/4)  aux(will/7, cost/8)
+root(cost/8, ROOT/-1)  dobj($/9, cost/8)       nummod(100,980/10, $/9)   punct(./11, cost/8)
+
+ppatt:
+	?a is/are full	[full-amod,e]
+		?a: A , four-color page in Newsweek	[page-nsubj,i,o1,o1,o1,o1,o1,o3]
+	?a is/are four-color	[four-color-amod,e]
+		?a: A full , page in Newsweek	[page-nsubj,i,o1,o1,o1,o1,o1,o3]
+	?a will cost ?b	[cost-root,c,n1,n1,n2,n2,u]
+		?a: A full , four-color page in Newsweek	[page-nsubj,g1(nsubj),o1,o1,o1,o1,o1,o1]
+		?b: $ 100,980	[$-dobj,g1(dobj),o1]
+
+
+label:    wsj/00/wsj_0012.mrg_5
+sentence: In mid-October , Time magazine lowered its guaranteed circulation rate base for 1990 while not increasing ad page rates ; with a lower circulation base , Time 's ad rate will be effectively 7.5 % higher per subscriber ; a full page in Time costs about $ 120,000 .
+
+tags: In/ADP mid-October/NOUN ,/. Time/NOUN magazine/NOUN lowered/VERB its/PRON guaranteed/VERB circulation/NOUN rate/NOUN base/NOUN for/ADP 1990/NUM while/ADP not/ADV increasing/VERB ad/NOUN page/NOUN rates/NOUN ;/. with/ADP a/DET lower/ADJ circulation/NOUN base/NOUN ,/. Time/NOUN 's/PRT ad/NOUN rate/NOUN will/VERB be/VERB effectively/ADV 7.5/NUM %/NOUN higher/ADJ per/ADP subscriber/NOUN ;/. a/DET full/ADJ page/NOUN in/ADP Time/NOUN costs/VERB about/ADP $/. 120,000/NUM ./.
+
+case(In/0, mid-October/1)          nmod(mid-October/1, lowered/5)  punct(,/2, lowered/5)          compound(Time/3, magazine/4)
+nsubj(magazine/4, lowered/5)       root(lowered/5, ROOT/-1)        nmod:poss(its/6, base/10)      amod(guaranteed/7, base/10)
+compound(circulation/8, base/10)   compound(rate/9, base/10)       dobj(base/10, lowered/5)       case(for/11, 1990/12)
+nmod(1990/12, base/10)             mark(while/13, increasing/15)   neg(not/14, increasing/15)     advcl(increasing/15, lowered/5)
+compound(ad/16, rates/18)          compound(page/17, rates/18)     dobj(rates/18, increasing/15)  punct(;/19, lowered/5)
+case(with/20, base/24)             det(a/21, base/24)              amod(lower/22, base/24)        compound(circulation/23, base/24)
+nmod(base/24, higher/35)           punct(,/25, higher/35)          nmod:poss(Time/26, rate/29)    case('s/27, Time/26)
+compound(ad/28, rate/29)           nsubj(rate/29, higher/35)       aux(will/30, higher/35)        cop(be/31, higher/35)
+advmod(effectively/32, higher/35)  nummod(7.5/33, %/34)            nmod:npmod(%/34, higher/35)    parataxis(higher/35, lowered/5)
+case(per/36, subscriber/37)        nmod(subscriber/37, higher/35)  punct(;/38, lowered/5)         det(a/39, page/41)
+amod(full/40, page/41)             nsubj(page/41, costs/44)        case(in/42, Time/43)           nmod(Time/43, page/41)
+parataxis(costs/44, lowered/5)     advmod(about/45, $/46)          dobj($/46, costs/44)           nummod(120,000/47, $/46)
+punct(./48, lowered/5)
+
+ppatt:
+	In ?a , ?b lowered ?c	[lowered-root,c,c,c,n1,n1,n1,n1,n2,n2,n2,n3,n3,n3,n6,u]
+		?a: mid-October	[mid-October-nmod,h1,o2]
+		?b: Time magazine	[magazine-nsubj,g1(nsubj),o1]
+		?c: its guaranteed circulation rate base for 1990	[base-dobj,g1(dobj),o1,o1,o1,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: guaranteed circulation rate base for 1990	[base-dobj,o1,o1,o1,o1,o1,o3,w1]
+	?a not increasing ?b	[increasing-advcl,b,n1,n1,n2,u]
+		?a: Time magazine	[magazine-nsubj,borrow-subj(increasing/15,lowered/5,advcl),g1(nsubj),o1]
+		?b: ad page rates	[rates-dobj,g1(dobj),o1,o1]
+	?a is/are lower	[lower-amod,e]
+		?a: a circulation base	[base-nmod,i,o1,o1,o3]
+	?a poss ?b	[Time-nmod:poss,n1,n6,v]
+		?a: Time	[Time-nmod:poss,o2,w2]
+		?b: ad rate	[rate-nsubj,o1,o3,w1]
+	with ?a , ?b will be effectively ?c higher per ?d	[higher-parataxis,c,n1,n1,n1,n1,n2,n2,n2,n2,n6,n6]
+		?a: a lower circulation base	[base-nmod,h1,o1,o1,o1,o2]
+		?b: Time 's ad rate	[rate-nsubj,g1(nsubj),o1,o1,o1]
+		?c: 7.5 %	[%-nmod:npmod,h1,o1]
+		?d: subscriber	[subscriber-nmod,h1,o2]
+	?a is/are full	[full-amod,e]
+		?a: a page in Time	[page-nsubj,i,o1,o1,o1,o3]
+	?a costs ?b	[costs-parataxis,c,n2,n2]
+		?a: a full page in Time	[page-nsubj,g1(nsubj),o1,o1,o1,o1]
+		?b: about $ 120,000	[$-dobj,g1(dobj),o1,o1]
+
+
+label:    wsj/00/wsj_0012.mrg_6
+sentence: U.S. News has yet to announce its 1990 ad rates .
+
+tags: U.S./NOUN News/NOUN has/VERB yet/ADV to/PRT announce/VERB its/PRON 1990/NUM ad/NOUN rates/NOUN ./.
+
+compound(U.S./0, News/1)  nsubj(News/1, has/2)       root(has/2, ROOT/-1)       advmod(yet/3, has/2)
+mark(to/4, announce/5)    xcomp(announce/5, has/2)   nmod:poss(its/6, rates/9)  nummod(1990/7, rates/9)
+compound(ad/8, rates/9)   dobj(rates/9, announce/5)  punct(./10, has/2)
+
+ppatt:
+	?a has yet to announce ?b	[has-root,c,c,l,n1,n1,n1,n1,n2,n2,u]
+		?a: U.S. News	[News-nsubj,g1(nsubj),o1]
+		?b: its 1990 ad rates	[rates-dobj,g1(dobj),l,o1,o1,o1]
+	?a poss ?b	[its-nmod:poss,v]
+		?a: its	[its-nmod:poss,w2]
+		?b: 1990 ad rates	[rates-dobj,o1,o1,o3,w1]
+
+
+label:    wsj/00/wsj_0012.mrg_7
+sentence: Newsweek said it will introduce the Circulation Credit Plan , which awards space credits to advertisers on `` renewal advertising . ''
+
+tags: Newsweek/NOUN said/VERB it/PRON will/VERB introduce/VERB the/DET Circulation/NOUN Credit/NOUN Plan/NOUN ,/. which/DET awards/VERB space/NOUN credits/NOUN to/PRT advertisers/NOUN on/ADP ``/. renewal/NOUN advertising/NOUN ./. ''/.
+
+nsubj(Newsweek/0, said/1)       root(said/1, ROOT/-1)         nsubj(it/2, introduce/4)              aux(will/3, introduce/4)
+ccomp(introduce/4, said/1)      det(the/5, Plan/8)            compound(Circulation/6, Plan/8)       compound(Credit/7, Plan/8)
+dobj(Plan/8, introduce/4)       punct(,/9, Plan/8)            nsubj(which/10, awards/11)            acl:relcl(awards/11, Plan/8)
+compound(space/12, credits/13)  dobj(credits/13, awards/11)   case(to/14, advertisers/15)           nmod(advertisers/15, awards/11)
+case(on/16, advertising/19)     punct(``/17, advertising/19)  compound(renewal/18, advertising/19)  nmod(advertising/19, awards/11)
+punct(./20, said/1)             punct(''/21, said/1)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n1,n2,n2,u]
+		?a: Newsweek	[Newsweek-nsubj,g1(nsubj)]
+		?b: SOMETHING := it will introduce the Circulation Credit Plan	[introduce-ccomp,k,o1,o1,o1,o1,o1,o1,o1,o4,u]
+	?a will introduce ?b	[introduce-ccomp,a1,c,c,n1,n2,n2]
+		?a: it	[it-nsubj,g1(nsubj)]
+		?b: the Circulation Credit Plan	[Plan-dobj,g1(dobj),o1,o1,o1,o1,o4,u]
+	?a awards ?b to ?c on ?d	[awards-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,n2,n2,n6,n6,pred_resolve_relcl]
+		?a: the Circulation Credit Plan	[Plan-dobj,arg_resolve_relcl,o1,o1,o1,o1,o3,u]
+		?b: space credits	[credits-dobj,g1(dobj),o1]
+		?c: advertisers	[advertisers-nmod,h1,o2]
+		?d: renewal advertising	[advertising-nmod,h1,o1,o1,o2,u]
+
+
+label:    wsj/00/wsj_0012.mrg_8
+sentence: The magazine will reward with `` page bonuses '' advertisers who in 1990 meet or exceed their 1989 spending , as long as they spent $ 325,000 in 1989 and $ 340,000 in 1990 .
+
+tags: The/DET magazine/NOUN will/VERB reward/VERB with/ADP ``/. page/NOUN bonuses/NOUN ''/. advertisers/NOUN who/PRON in/ADP 1990/NUM meet/VERB or/CONJ exceed/VERB their/PRON 1989/NUM spending/NOUN ,/. as/ADV long/ADV as/ADP they/PRON spent/VERB $/. 325,000/NUM in/ADP 1989/NUM and/CONJ $/. 340,000/NUM in/ADP 1990/NUM ./.
+
+det(The/0, magazine/1)            nsubj(magazine/1, reward/3)        aux(will/2, reward/3)        root(reward/3, ROOT/-1)
+case(with/4, bonuses/7)           punct(``/5, bonuses/7)             compound(page/6, bonuses/7)  nmod(bonuses/7, reward/3)
+punct(''/8, bonuses/7)            dobj(advertisers/9, reward/3)      nsubj(who/10, meet/13)       case(in/11, 1990/12)
+nmod(1990/12, meet/13)            acl:relcl(meet/13, advertisers/9)  cc(or/14, meet/13)           conj(exceed/15, meet/13)
+nmod:poss(their/16, spending/18)  nummod(1989/17, spending/18)       dobj(spending/18, meet/13)   punct(,/19, reward/3)
+advmod(as/20, long/21)            advmod(long/21, reward/3)          mark(as/22, spent/24)        nsubj(they/23, spent/24)
+advcl(spent/24, long/21)          dobj($/25, spent/24)               nummod(325,000/26, $/25)     case(in/27, 1989/28)
+nmod(1989/28, spent/24)           cc(and/29, spent/24)               conj($/30, spent/24)         nummod(340,000/31, $/30)
+case(in/32, 1990/33)              nmod(1990/33, $/30)                punct(./34, reward/3)
+
+ppatt:
+	?a will reward with ?b ?c	[reward-root,c,c,n1,n1,n1,n2,n2,n2,n3,n6,u]
+		?a: The magazine	[magazine-nsubj,g1(nsubj),o1]
+		?b: page bonuses	[bonuses-nmod,h1,o1,o1,o1,o2,u]
+		?c: advertisers	[advertisers-dobj,g1(dobj),o4]
+	?a in ?b meet ?c	[meet-acl:relcl,b,en_relcl_dummy_arg_filter,n2,n2,n2,n3,n5,n6,pred_resolve_relcl]
+		?a: advertisers	[advertisers-dobj,arg_resolve_relcl,o3]
+		?b: 1990	[1990-nmod,h1,o2]
+		?c: their 1989 spending	[spending-dobj,g1(dobj),o1,o1]
+	?a exceed	[exceed-conj,f]
+		?a: who	[who-nsubj,borrow-subj(exceed/15,meet/13,conj),g1(nsubj)]
+	?a poss ?b	[their-nmod:poss,v]
+		?a: their	[their-nmod:poss,w2]
+		?b: 1989 spending	[spending-dobj,o1,o3,w1]
+	?a as long	[long-advmod,c,n1,n3]
+		?a: The magazine	[magazine-nsubj,borrow-subj(long/21,reward/3,advmod),g1(nsubj),o1]
+	?a spent ?b in ?c	[spent-advcl,b,n1,n2,n2,n2,n5,n5,n6,u]
+		?a: they	[they-nsubj,g1(nsubj)]
+		?b: $ 325,000	[$-dobj,g1(dobj),o1]
+		?c: 1989	[1989-nmod,h1,o2]
+
+
+label:    wsj/00/wsj_0012.mrg_9
+sentence: Mr. Spoon said the plan is not an attempt to shore up a decline in ad pages in the first nine months of 1989 ; Newsweek 's ad pages totaled 1,620 , a drop of 3.2 % from last year , according to Publishers Information Bureau .
+
+tags: Mr./NOUN Spoon/NOUN said/VERB the/DET plan/NOUN is/VERB not/ADV an/DET attempt/NOUN to/PRT shore/VERB up/PRT a/DET decline/NOUN in/ADP ad/NOUN pages/NOUN in/ADP the/DET first/ADJ nine/NUM months/NOUN of/ADP 1989/NUM ;/. Newsweek/NOUN 's/PRT ad/NOUN pages/NOUN totaled/VERB 1,620/NUM ,/. a/DET drop/NOUN of/ADP 3.2/NUM %/NOUN from/ADP last/ADJ year/NOUN ,/. according/VERB to/PRT Publishers/NOUN Information/NOUN Bureau/NOUN ./.
+
+compound(Mr./0, Spoon/1)             nsubj(Spoon/1, said/2)            root(said/2, ROOT/-1)       det(the/3, plan/4)
+nsubj(plan/4, attempt/8)             cop(is/5, attempt/8)              neg(not/6, attempt/8)       det(an/7, attempt/8)
+ccomp(attempt/8, said/2)             mark(to/9, shore/10)              acl(shore/10, attempt/8)    compound:prt(up/11, shore/10)
+det(a/12, decline/13)                dobj(decline/13, shore/10)        case(in/14, pages/16)       compound(ad/15, pages/16)
+nmod(pages/16, decline/13)           case(in/17, months/21)            det(the/18, months/21)      amod(first/19, months/21)
+nummod(nine/20, months/21)           nmod(months/21, decline/13)       case(of/22, 1989/23)        nmod(1989/23, months/21)
+punct(;/24, said/2)                  nmod:poss(Newsweek/25, pages/28)  case('s/26, Newsweek/25)    compound(ad/27, pages/28)
+nsubj(pages/28, totaled/29)          parataxis(totaled/29, said/2)     dobj(1,620/30, totaled/29)  punct(,/31, 1,620/30)
+det(a/32, drop/33)                   appos(drop/33, 1,620/30)          case(of/34, %/36)           nummod(3.2/35, %/36)
+nmod(%/36, drop/33)                  case(from/37, year/39)            amod(last/38, year/39)      nmod(year/39, drop/33)
+punct(,/40, totaled/29)              case(according/41, Bureau/45)     mwe(to/42, according/41)    compound(Publishers/43, Bureau/45)
+compound(Information/44, Bureau/45)  nmod(Bureau/45, totaled/29)       punct(./46, said/2)
+
+ppatt:
+	?a said ?b	[said-root,c,c,n1,n1,n2,n2,n3,u]
+		?a: Mr. Spoon	[Spoon-nsubj,g1(nsubj),o1]
+		?b: SOMETHING := the plan is not an attempt	[attempt-ccomp,k,o1,o1,o1,o1,o1,o4]
+	?a is not an attempt	[attempt-ccomp,a1,c,n1,n1,n1,n2,n3]
+		?a: the plan	[plan-nsubj,g1(nsubj),o1]
+	?a shore up ?b	[shore-acl,b,n1,n1,n2,pred_resolve_relcl,u]
+		?a: an attempt	[attempt-ccomp,arg_resolve_relcl,o1,o3,o4,o4,o4]
+		?b: a decline in ad pages in the first nine months of 1989	[decline-dobj,g1(dobj),o1,o1,o1,o1,o1,o1,o1,o1,o1,o1,o1]
+	?a is/are first	[first-amod,e]
+		?a: the nine months of 1989	[months-nmod,i,o1,o1,o1,o1,o3]
+	?a poss ?b	[Newsweek-nmod:poss,n1,n6,v]
+		?a: Newsweek	[Newsweek-nmod:poss,o2,w2]
+		?b: ad pages	[pages-nsubj,o1,o3,w1]
+	?a totaled ?b , according to ?c	[totaled-parataxis,c,c,n1,n2,n2,n2,n6]
+		?a: Newsweek 's ad pages	[pages-nsubj,g1(nsubj),o1,o1,o1]
+		?b: 1,620	[1,620-dobj,g1(dobj),o1,o4,u]
+		?c: Publishers Information Bureau	[Bureau-nmod,h1,o1,o1,o2]
+	?a is/are a drop of ?b from ?c	[drop-appos,d,n1,n2,n2,n6,n6]
+		?a: 1,620	[1,620-dobj,j,o1,o3,u]
+		?b: 3.2 %	[%-nmod,h1,o1,o2]
+		?c: last year	[year-nmod,h1,o1,o2]
+	?a is/are last	[last-amod,e]
+		?a: year	[year-nmod,i,o3]
+
+
