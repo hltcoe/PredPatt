@@ -1,3 +1,108 @@
+PredPatt's Rules
+================
+
+Predicate root identification
+-----------------------------
+
+At this stage, PredPatt identifies predicate root tokens in the input
+sentence. The following kinds of tokens are identified as predicate
+roots:
+
+-   Governor of subjects (*nsubj, csubj, nsubjpass, csubjpass*), objects
+    (*dobj, iobj*), or adverbial clausal modifiers (*advcl*).
+
+-   Clausal modifiers: dependents of *acl*, or *advcl*.
+
+-   (Open) clausal complements: dependents of *ccomp*, or *xcomp*.
+
+-   Conjuncts of other predicate root token (*conj*).
+
+Argument root identification
+----------------------------
+
+Given a predicate root token, PredPatt identifies the following tokens
+as its argument root tokens.
+
+-   Nominal subjects (*nsubj, nsubjpass*), or objects (*dobj, iobj*) of
+    the predpatt root token.
+
+-   Nominal modifier (*nmod*) of the predicate root token.
+
+-   Nominal modifier (*nmod*) of an adverb (*advmod*) which modifies the
+    predicate root token.
+
+Argument resolution
+-------------------
+
+At this stage, PredPatt extracts additional argument root tokens for the
+predicate in special cases:
+
+-   An open clausal complement (the dependent of *xcomp*) is viewed as
+    part of the predicate it complements.[1] Then all argument root
+    tokens of the open clausal complement are extracted as the argument
+    root of the predicate it complements.
+
+    [1]: [Open clausal complements](http://universaldependencies.org/u/dep/xcomp.html) (*xcomp*) is a predicative or clausal complement without its own subject, which means it can’t be an independent predicate.
+
+
+-   In relative clauses, PredPatt borrows an argument for adjectival
+    clausal modifiers (the dependent of *acl*) from the token they
+    modify (the governor of *acl*).
+
+-   PredPatt extracts a conjunct token of other argument root token as
+    an argument root.
+
+Predicate phrase extraction
+---------------------------
+
+At this stage, PredPatt recursively extracts tokens from the subtree of
+the predicate root token, then adds them to the predicate phrase, or
+stops extraction if one of the following situations is satisfied:
+
+-   The current token is an argument root token of the predicate.
+
+-   The current token is another predicate root token.
+
+-   The current token is a dependent of an *dep* relation.
+
+Argument phrases extraction
+---------------------------
+
+At this stage, PredPatt recursively extracts tokens from the subtree of
+the argument root token, then adds them to the argument phrase, or stops
+extraction if one of the following situations is satisfied:
+
+-   The current token is an argument root token of the predicate.
+
+-   The current token is another predicate root token.
+
+-   The current token is a dependent of the *dep* relation.
+
+-   The current token is a dependent of coordinating conjunction (*cc*).
+
+-   The current token is a dependent of the *case* relation (this token
+    will be added to the predicate phrase).
+
+Option: simplification
+----------------------
+
+-   Remove a non-core argument, e.g., a nominal modifiers
+
+-   Remove an argument of other type from the predpatt.
+
+-   Remove an adverbial modifiers
+
+-   Remove auxiliary in the predicate phrase.
+
+Special predicate extraction
+----------------------------
+
+Besides normal predicate extraction, PredPatt extracts modifiers, such as
+the dependent of *amod*, *appos*, or *nmod:poss*, as a predicate and
+treats the noun it modifies as an argument of the predicate.
+
+
+<!--
 ## Rules Description
 
 At a high level PredPatt operates in the following stages
@@ -254,3 +359,4 @@ token.
 
 
 ## TODO: ``aux,neg`` distributing rules in conjunction.
+-->

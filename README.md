@@ -1,3 +1,54 @@
+PredPatt: Predicate-Argument Extraction from Universal Dependencies
+===================================================================
+
+We present PredPatt, a framework of extensible, interpretable, language-neutral
+predicate-argument extraction patterns. PredPatt bridges the deep syntax of the
+Universal Dependency project to an initial shallow semantic layer: this can form
+the basis for future layering of semantic annotations atop
+[Universal Dependency](http://universaldependencies.org/) treebanks, and
+separately can be considered a linguistically well-founded component of a
+"Universal IE" mechanism.
+
+<!--
+We consider these dual-uses through manual evaluation of output based on
+automatically generated parses in English, and on gold treebanks in Chinese,
+English, Hebrew, Hindi, and Spanish.
+-->
+
+PredPatt is part of a wider initiative on
+[decompositional semantics](http://decomp.net) at Johns Hopkins University. To
+that end, it has been used to bootstrap semantic annotations in our recent EMNLP
+2016 paper ([White et al., 2016](doc/references.md)).
+
+
+> PredPatt extracts predicates and arguments from text .
+
+    ?a extracts ?b from ?c
+        ?a: PredPatt
+        ?b: predicates
+        ?c: text
+    ?a extracts ?b from ?c
+        ?a: PredPatt
+        ?b: arguments
+        ?c: text
+
+
+## Table of contents
+
+* [Get started](doc/get-started.md)
+* [Motivation](doc/intro-and-motivation.md)
+* Sample output:
+  - Documentation tests: [English](doc/DOCTEST.md)
+  - UD Bank: [English](test/data.100.fine.all.ud), [Portuguese](test/pt.dev.conllu.expect), and [Spanish](test/es.dev.conllu.expect).
+  - Selected examples: [Chinese](doc/chinese.md), [Portuguese](doc/portuguese.md), [Spanish](doc/spanish.md)
+* How PredPatt works: [high-level overview](doc/high-level-overview.md), [detailed list of rules](doc/RULES.md)
+* [Evaluation](doc/evaluation.md)
+* [Related work](doc/related-work.md)
+* [References](doc/references.md)
+
+
+
+<!--
 ## PredPatt: Predicate-Argument Extraction from Universal Dependencies
 
 PredPatt is a framework of extensible, interpretable, language-neutral
@@ -25,48 +76,9 @@ See [doctests](doc/DOCTEST.md) for sample output (as well as,
 UDBank in [English](test/data.100.fine.all.ud.expect),
 [Spanish](test/es.dev.conllu.expect), and
 [Portuguese](test/pt.dev.conllu.expect).
+-->
 
-
-### Installation
-
-    $ git clone https://github.com/hltcoe/PredPatt.git
-    $ cd PredPatt
-    $ python setup.py develop
-
-### Usage
-
-PredPatt supports many input formats: raw text (English only; via Berekely parser), CoNLLu
-data formats and Concretely annotated corpora.
-
-Fire up the interactive web demo locally.
-
-    $ python bin/server.py
-
-Command-line usage (see ``--help`` for other usage)
-
-    $ python -m predpatt test/en-ud-dev.conllu
-
-Example [programmatic usage](doc/using_predpatt.py)
-
-```python
->>> from predpatt import PredPatt
->>> pp = PredPatt.from_sentence('Chris loves silly dogs and clever cats .')
->>> print pp.pprint()
-```
-```
-?a loves ?b	[loves-root,c,c,n1,n2,n2,u]
-        ?a: Chris	[Chris-nsubj,g1(nsubj)]
-        ?b: silly dogs	[dogs-dobj,g1(dobj),o1,o5,o6]
-    ?a loves ?b	[loves-root,c,c,n1,n2,n2,u]
-        ?a: Chris	[Chris-nsubj,g1(nsubj)]
-        ?b: clever cats	[cats-conj,m,o1]
-    ?a is/are silly	[silly-amod,e]
-        ?a: dogs	[dogs-dobj,i,o3,o5,o6]
-    ?a is/are clever	[clever-amod,e]
-        ?a: cats	[cats-conj,i,o3]
-```
-
-### Citation
+## Citation
 
 If you use PredPatt please cite it as follows.
 
