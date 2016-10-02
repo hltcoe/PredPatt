@@ -12,6 +12,8 @@ Here we provide a high-level overview of the process and examples.
 3. Predicate and argument phrase extraction
 4. Optional Post-processing
 
+<img width="500px" src="figure1.png"/>
+
 **UD Parse** A universal dependency (UD) parse, is a set of labeled pairs of the
 form `relation(dependent,governor)`. The UD parse also includes a sequence of
 Universal POS tags. An example of a UD parse is given in Figure 1.

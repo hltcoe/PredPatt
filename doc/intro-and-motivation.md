@@ -1,5 +1,5 @@
-Introduction and Motivation
-===========================
+Motivation
+==========
 
 The Stanford Dependencies have become a widely adopted syntactic representation,
 lately forming the basis of the

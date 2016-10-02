@@ -39,7 +39,7 @@ that end, it has been used to bootstrap semantic annotations in our recent EMNLP
 * [Motivation](doc/intro-and-motivation.md)
 * Sample output:
   - Documentation tests: [English](doc/DOCTEST.md)
-  - UD Bank: [English](test/data.100.fine.all.ud), [Portuguese](test/pt.dev.conllu.expect), and [Spanish](test/es.dev.conllu.expect).
+  - UD Bank: [English](test/data.100.fine.all.ud.expect), [Portuguese](test/pt.dev.conllu.expect), and [Spanish](test/es.dev.conllu.expect).
   - Selected examples: [Chinese](doc/chinese.md), [Portuguese](doc/portuguese.md), [Spanish](doc/spanish.md)
 * How PredPatt works: [high-level overview](doc/high-level-overview.md), [detailed list of rules](doc/RULES.md)
 * [Evaluation](doc/evaluation.md)

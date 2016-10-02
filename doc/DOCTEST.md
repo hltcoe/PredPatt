@@ -1,4 +1,4 @@
-# PredPatt
+# PredPatt documentation tests
 > PredPatt extracts knowledge from text .
 
     ?a extracts ?b from ?c
