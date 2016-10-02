@@ -19,7 +19,7 @@ Command-line usage (see ``--help`` for other usage)
 
     $ python -m predpatt test/en-ud-dev.conllu
 
-Example [programmatic usage](doc/using_predpatt.py)
+Example [programmatic usage](using_predpatt.py)
 
 ```python
 >>> from predpatt import PredPatt
