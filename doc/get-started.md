@@ -9,7 +9,7 @@
 ## Usage
 
 PredPatt supports many input formats: raw text (English only; via Berekely parser), CoNLLu
-data formats and Concretely annotated corpora.
+data formats and [Concretely annotated corpora](https://github.com/hltcoe/concrete-docs/blob/master/GETTING_STARTED.md).
 
 Fire up the interactive web demo locally.
 
