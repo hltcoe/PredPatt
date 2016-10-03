@@ -38,3 +38,16 @@ Example [programmatic usage](using_predpatt.py)
     ?a is/are clever	[clever-amod,e]
         ?a: cats	[cats-conj,i,o3]
 ```
+
+Notes:
+
+ - The first time you call `PredPatt.from_sentence`, the Berkeley parser will be
+   downloaded. So it might take a little while and you'll need an internet
+   connection. It will store the parser and it's grammar in `~/.PredPatt`.
+
+- The parser is generally slow to parse the first sentence and significantly
+  faster on subsequent ones because it lazily loads the parsing model, etc.
+
+- There is a caching layer on top of the parser, which caches sentences under
+  `~/.PredPatt`. To bypass the caching layer, invoke `from_sentence` with the
+  `cacheable=False` option.
