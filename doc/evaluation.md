@@ -23,7 +23,7 @@ Large-scale English evaluation with noisy parses
 ------------------------------------------------
 
 We sampled 1000 sentences uniformly at random from Concretely Annotated Gigaword
-([Ferraro et al., 2014]()), which provides constituency parses from Stanford
+([Ferraro et al., 2014](references.md)), which provides constituency parses from Stanford
 CoreNLP. We converted these parses to Universal Dependencies using the
 PyStanfordDependencies tool. We focus on English because it is one of the only
 UD languages that has highly accurate automatic parsers. Instances were judged
