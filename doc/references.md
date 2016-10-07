@@ -59,7 +59,7 @@ References
   Open knowledge extraction through compositional language processing.
   In Symposium on Semantics in Systems for Text Processing (STEP).
 
-* Aaron Steven White, Drew Reisinger, Keisuke Sakaguchi, Tim Vieira, Sheng Zhang, Kyle Rawlins, and Benjamin Van Durme. 2016.
+* Aaron Steven White, Drew Reisinger, Keisuke Sakaguchi, Tim Vieira, Sheng Zhang, Rachel Rudinger, Kyle Rawlins, and Benjamin Van Durme. 2016.
   Universal Decompositional Semantics on Universal Dependencies.
   In EMNLP.
 
