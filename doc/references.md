@@ -47,6 +47,10 @@ References
 * Drew Reisinger, Rachel Rudinger, Francis Ferraro, Craig Harman, Kyle Rawlins, and Benjamin Van Durme. 2015.
   Semantic proto-roles. In TACL, volume 3.
 
+* Rachel Rudinger and Benjamin Van Durme. 2014.
+  Is the Stanford Dependency Representation Semantic?
+  ACL Workshop on EVENTS.
+
 * Lenhart K. Schubert. 2002.
   Can we derive general world knowledge from texts?
   In International Conference on Human Language Technology Research.
