@@ -65,5 +65,5 @@ from ongoing improvements by the community in syntactic parsing, as well as to
 enable linguistically well-motivated compositional analysis. These goals
 likewise motivated the KNEXT effort ([Schubert, 2002](references.md); [Van Durme & Schubert, 2008](references.md)), a transformation
 process that was English-specific, applied to constituency parses to derive
-shallow logical forms. A similar approach was explored in [Rudinger & Van Durme, 2014](references.md) with the goal of understanding the extent to which the Stanford dependency *syntax* representation is a *semantic* representation.
+shallow logical forms. A similar approach was explored in [Rudinger & Van Durme (2014)](references.md) with the goal of understanding the extent to which the Stanford dependency *syntax* representation is a *semantic* representation.
 
