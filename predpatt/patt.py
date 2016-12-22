@@ -169,6 +169,21 @@ class Predicate(object):
     def phrase(self):
         return self._format_predicate(argument_names(self.arguments))
 
+    def is_broken(self):
+        # empty predicate phrase
+        if len(self.tokens) == 0:
+            return True
+
+        # empty argument phrase
+        for arg in self.arguments:
+            if len(arg.tokens) == 0:
+                return True
+
+        if self.type == 'poss':
+            # incorrect number of arguments
+            if len(self.arguments) != 2:
+                return True
+
     def _format_predicate(self, name, C=no_color):
         ret = []
         args = self.arguments
@@ -384,6 +399,7 @@ class PredPatt(object):
                         p.rules.append(R.en_relcl_dummy_arg_filter())
 
         self._cleanup()
+        self._remove_broken_predicates()
 
     def identify_predicate_roots(self):
         "Predicate root identification."
@@ -933,6 +949,16 @@ class PredPatt(object):
         if orig_len != len(tokens):
             thing.rules.append(R.u())
         thing.tokens = tokens
+
+    def _remove_broken_predicates(self):
+        """Remove broken predicates.
+        """
+        instances = []
+        for p in self.instances:
+            if p.is_broken():
+                continue
+            instances.append(p)
+        self.instances = instances
 
     @staticmethod
     def subtree(s, follow = lambda _: True):
