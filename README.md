@@ -85,7 +85,7 @@ If you use PredPatt please cite it as follows.
     @inproceedings{white2016universal,
        title  = {Universal Decompositional Semantics on Universal Dependencies},
        author = {Aaron Steven White and Drew Reisinger and Keisuke Sakaguchi and Tim Vieira
-                 and Sheng Zhang and Rachel Rudinger and Kyle Rawlins and Benjamin {Van Durme}}
+                 and Sheng Zhang and Rachel Rudinger and Kyle Rawlins and Benjamin {Van Durme}},
        booktitle = {{EMNLP}},
        year   = {2016}
     }
