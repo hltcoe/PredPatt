@@ -8,7 +8,7 @@
 
 ## Usage
 
-PredPatt supports many input formats: raw text (English only; via Berkely parser), CoNLLu
+PredPatt supports many input formats: raw text (English only; via Berkeley parser), CoNLLu
 data formats and [Concretely annotated corpora](https://github.com/hltcoe/concrete-docs/blob/master/GETTING_STARTED.md).
 
 Fire up the interactive web demo locally.
