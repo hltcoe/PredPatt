@@ -1,4 +1,4 @@
-# PredPatt documentation tests
+# PredPatt
 > PredPatt extracts knowledge from text .
 
     ?a extracts ?b from ?c
@@ -252,9 +252,9 @@ be(Chris, Pat's sibling)``?
 
     ?a may stand up
         ?a: Chris
-    ?a may jump up
+    ?a jump up
         ?a: Chris
-    ?a may sing ?b
+    ?a sing ?b
         ?a: Chris
         ?b: the National Anthem
 
@@ -262,7 +262,7 @@ be(Chris, Pat's sibling)``?
 
     ?a did not stand up
         ?a: Chris
-    ?a did not jump up
+    ?a not jump up
         ?a: Chris
 
 > Chris bought and sold stocks .
@@ -292,7 +292,7 @@ only function words (that, which).
         ?a: The plant
         ?b: Chris
     ?a is on fire
-        ?a: The plant
+        ?a: The plant , that Chris owns
 
 > The plant , which is owned by Chris , is on fire .
 
@@ -300,7 +300,7 @@ only function words (that, which).
         ?a: The plant
         ?b: Chris
     ?a is on fire
-        ?a: The plant
+        ?a: The plant , which is owned by Chris
 
 > A form of asbestos used to make Kent cigarette filters causes cancer .
 
@@ -308,7 +308,7 @@ only function words (that, which).
         ?a: A form of asbestos
         ?b: Kent cigarette filters
     ?a causes ?b
-        ?a: A form of asbestos
+        ?a: A form of asbestos used to make Kent cigarette filters
         ?b: cancer
 
 ### relative clause with an embedded ditransitive
@@ -319,7 +319,7 @@ only function words (that, which).
         ?b: Chris
         ?c: Pat
     ?a is on fire
-        ?a: The book
+        ?a: The book , which Chris gave to Pat
 
 > Pat , who Chris gave the book to , is on fire .
 
@@ -328,32 +328,7 @@ only function words (that, which).
         ?b: Chris
         ?c: the book
     ?a is on fire
-        ?a: Pat
-
-## acl and advcl
-
-> Chris thanked Pat for donating money .
-<!--tags=
-Chris/NOUN thanked/VERB Pat/NOUN for/ADP donating/VERB money/NOUN ./.
--->
-<!--parse=
-nsubj(Chris/0, thanked/1)
-root(thanked/1, ROOT/-1)
-dobj(Pat/2, thanked/1)
-mark(for/3, donating/4)
-advcl(donating/4, thanked/1)
-dobj(money/5, donating/4)
-acl(donating/4, Pat/2)
-punct(./6, thanked/1)
--->
-
-    ?a thanked ?b
-        ?a: Chris
-        ?b: Pat
-    ?a donating ?b
-        ?a: Pat
-        ?b: money
-
+        ?a: Pat , who Chris gave the book to
 
 ## Pied-piping
 > The house , in which Chris grew up , is on fire .
@@ -362,7 +337,7 @@ punct(./6, thanked/1)
         ?a: The house
         ?b: Chris
     ?a is on fire
-        ?a: The house
+        ?a: The house , in which Chris grew up
 
 # Drew's examples
 ### Dependents of ccomp are predicates
@@ -405,7 +380,7 @@ eat is a predicate
         ?a: The man
         ?b: the mall
     ?a ate ?b
-        ?a: The man
+        ?a: The man who wants to go to the mall
         ?b: a banana
 
 > The man has his own car and wants to go to the mall .
@@ -430,7 +405,7 @@ eat is a predicate
         ?a: The man
         ?b: the mall
     ?a ate ?b
-        ?a: The man
+        ?a: The man who wants to go to the mall
         ?b: a banana
 
 > The man who wants to eat a banana went to the mall  .
@@ -439,7 +414,7 @@ eat is a predicate
         ?a: The man
         ?b: a banana
     ?a went to ?b
-        ?a: The man
+        ?a: The man who wants to eat a banana
         ?b: the mall
 
 > The man wants to go to the mall and has his own car .
@@ -469,7 +444,7 @@ TODO: filter out amod cases like the one above (look for things like nmod)
         ?a: The apple
         ?b: the man
     ?a was rotten
-        ?a: The apple
+        ?a: The apple that the man ate
 
 > The apple is red .
 
@@ -733,7 +708,7 @@ SOMETHING := she loved dogs``
         ?a: a town
     ?a took ?b
         ?a: she
-        ?b: the midnight train
+        ?b: the midnight train going anywhere
     ?a going anywhere
         ?a: the midnight train
 
@@ -763,10 +738,9 @@ don't seem to handle them yet.
         ?a: The company
         ?b: Chris
     ?a was under contract with ?b to make ?c
-        ?a: The company
+        ?a: The company , which is owned by Chris
         ?b: Pat
         ?c: toys
-
 
 Declarative context sentences
 
@@ -774,7 +748,7 @@ Declarative context sentences
 
     ?a expressed ?b
         ?a: We
-        ?b: our hope
+        ?b: our hope that someday the world will know peace
     ?a poss ?b
         ?a: our
         ?b: hope
