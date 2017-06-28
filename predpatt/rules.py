@@ -48,6 +48,12 @@ class b(PredicateRootRule):
 class c(PredicateRootRule):
     "Extract a predicate token from the governor of the relations {nsubj, nsubjpass, dobj, iobj, ccomp, xcomp, advcl}."
     rule_type = 'predicate_root'
+    def __init__(self, e):
+        super(c, self).__init__()
+        self.e = e
+
+    def __repr__(self):
+        return "add_root(%s)_for_%s_from_(%s)" % (self.e.gov, self.e.rel, self.e.dep)
 
 class d(PredicateRootRule):
     "Extract a predicate token from the dependent of apposition."
@@ -104,34 +110,40 @@ class k(ArgumentRootRule):
 class pred_conj_borrow_aux_neg(PredConjRule):
     "Borrow aux and neg tokens from conjoined predicate's name."
     def __init__(self, friend, borrowed_token):
+        super(pred_conj_borrow_aux_neg, self).__init__()
         self.friend = friend
         self.borrowed_token = borrowed_token
-        super(pred_conj_borrow_aux_neg, self).__init__()
 
 class pred_conj_borrow_tokens_xcomp(PredConjRule):
     "Borrow tokens from xcomp in a conjunction or predicates."
     def __init__(self, friend, borrowed_token):
+        super(pred_conj_borrow_tokens_xcomp, self).__init__()
         self.friend = friend
         self.borrowed_token = borrowed_token
-        super(pred_conj_borrow_tokens_xcomp, self).__init__()
 
 class cut_borrow_other(ArgumentResolution):
-    def __init__(self, friend, borrowed):
+    def __init__(self, borrowed, friend):
+        super(cut_borrow_other, self).__init__()
         self.friend = friend
         self.borrowed = borrowed
-        super(cut_borrow_other, self).__init__()
 
 class cut_borrow_subj(ArgumentResolution):
-    def __init__(self, friend, borrowed):
-        self.friend = friend
-        self.borrowed = borrowed
+    def __init__(self, subj, friend):
         super(cut_borrow_subj, self).__init__()
+        self.friend = friend
+        self.subj = subj
+
+    def __repr__(self):
+        return 'cut_borrow_subj(%s)_from(%s)' % (self.subj.root, self.friend.root)
 
 class cut_borrow_obj(ArgumentResolution):
-    def __init__(self, friend, borrowed):
-        self.friend = friend
-        self.borrowed = borrowed
+    def __init__(self, obj, friend):
         super(cut_borrow_obj, self).__init__()
+        self.friend = friend
+        self.obj = obj
+
+    def __repr__(self):
+        return 'cut_borrow_obj(%s)_from(%s)' % (self.obj.root, self.friend.root)
 
 
 class borrow_subj(ArgumentResolution):
@@ -143,15 +155,33 @@ class borrow_subj(ArgumentResolution):
     #
     # if gov_rel==advcl and not event.has_subj() then borrow from governor.
 
-    def __init__(self, friend, event, i):
+    def __init__(self, subj, friend):
         super(borrow_subj, self).__init__()
-        self.event = event
+        self.subj = subj
         self.friend = friend
-        self.i = i
     def __repr__(self):
-        return 'borrow-subj(%s,%s,%s)' % (self.event.root, self.friend.root, self.event.root.gov_rel)
+        return 'borrow_subj(%s)_from(%s)' % (self.subj.root, self.friend.root)
 #        return 'borrow_subj(%s,%s,%s,%s)' % (self.i, self.event.root, self.friend.root, self.event.root.gov_rel)
 #        return 'borrow_subj(%s,%s)' % (self.friend, self.friend.subj())
+
+class borrow_obj(ArgumentResolution):
+    "Borrow subject from governor in (conj, xcomp of conj root, and advcl)."
+
+    # if gov_rel=='conj' and missing a subject, try to borrow the subject from
+    # the other event. Still no subject. Try looking at xcomp of conjunction
+    # root.
+    #
+    # if gov_rel==advcl and not event.has_subj() then borrow from governor.
+
+    def __init__(self, obj, friend):
+        super(borrow_obj, self).__init__()
+        self.obj = obj
+        self.friend = friend
+    def __repr__(self):
+        return 'borrow_obj(%s)_from(%s)' % (self.obj.root, self.friend.root)
+
+class share_argument(ArgumentResolution):
+    "Create an argument sharing tokens with another argument."
 
 #___________________________
 # Relative clause
@@ -207,20 +237,98 @@ class n5(PredPhraseRule):
 class ArgPhraseRule(Rule):
     type = 'arg_phrase'
 
-class o1(ArgPhraseRule):
+class clean_arg_token(ArgPhraseRule):
     "Extract a token from the subtree of the argument root token, and add it to the argument phrase."
-class o2(ArgPhraseRule):
+    def __init__(self, x):
+        super(clean_arg_token, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "clean_arg_token(%s)" %(self.x)
+
+class move_case_token_to_pred(ArgPhraseRule):
     "Extract a case token from the subtree of the argument root token."
-class o3(ArgPhraseRule):
+    def __init__(self, x):
+        super(move_case_token_to_pred, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "move_case_token(%s)_to_pred" %(self.x)
+
+class predicate_has(ArgPhraseRule):
     "Drop a token, which is a predicate root token, from the subtree of the argument root token."
-class o4(ArgPhraseRule):
-    "Drop a token, which is the dependent of the relations set {acl, acl:relcl, appos, ccomp, dep} , from the subtree of the argument root token."
-class o5(ArgPhraseRule):
+    def __init__(self, x):
+        super(predicate_has, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "predicate_has(%s)" %(self.x)
+
+class drop_appos(ArgPhraseRule):
+    def __init__(self, x):
+        super(drop_appos, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "drop_appos(%s)" %(self.x)
+
+class drop_unknown(ArgPhraseRule):
+    def __init__(self, x):
+        super(drop_unknown, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "drop_unknown(%s)" %(self.x)
+
+class drop_cc(ArgPhraseRule):
     "Drop the argument's cc (coordinating conjunction) from the subtree of the argument root token."
-class o6(ArgPhraseRule):
+    def __init__(self, x):
+        super(drop_cc, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "drop_cc(%s)" %(self.x)
+
+class drop_conj(ArgPhraseRule):
     "Drop the argument's conjuct from the subtree of the argument root token."
-class o7(ArgPhraseRule):
-    "Drop the argument's case phrase."
+    def __init__(self, x):
+        super(drop_conj, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "drop_conj(%s)" %(self.x)
+
+class special_arg_drop_direct_dep(ArgPhraseRule):
+    def __init__(self, x):
+        super(special_arg_drop_direct_dep, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "special_arg_drop_direct_dep(%s)" %(self.x)
+
+class embedded_advcl(ArgPhraseRule):
+    def __init__(self, x):
+        super(embedded_advcl, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "drop_embedded_advcl(%s)" %(self.x)
+
+class embedded_ccomp(ArgPhraseRule):
+    def __init__(self, x):
+        super(embedded_ccomp, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "drop_embedded_ccomp(%s)" %(self.x)
+
+class embedded_unknown(ArgPhraseRule):
+    def __init__(self, x):
+        super(embedded_unknown, self).__init__()
+        self.x = x
+
+    def __repr__(self):
+        return "drop_embedded_unknown(%s)" %(self.x)
 
 
 #________________________________

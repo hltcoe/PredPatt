@@ -14,16 +14,22 @@ from predpatt.UDParse import DepTriple
 #from predpatt import filters
 from predpatt import rules as R
 from predpatt.UDParse import UDParse
+from predpatt.util.ud import dep_v1
+from predpatt.util.ud import dep_v2
+from predpatt.util.ud import postag
 
 no_color = lambda x,_: x
 
-SUBJ = {'nsubj', 'csubj', 'nsubjpass', 'csubjpass'}
-OBJ = {'dobj', 'iobj'}
+(NORMAL, POSS, APPOS, AMOD) = ("normal", "poss", "appos", "amod")
 
-def gov_looks_like_predicate(e):
+def gov_looks_like_predicate(e, ud):
     # if e.gov "looks like" a predicate because it has potential arguments
-    return e.rel in {'nsubj', 'nsubjpass', 'csubj', 'csubjpass',
-                     'dobj', 'iobj', 'ccomp', 'xcomp', 'advcl'}
+    if e.gov.tag in {"VERB"} and e.rel in {
+            ud.nmod, ud.nmod_npmod, ud.obl, ud.obl_npmod}:
+        return True
+    return e.rel in {ud.nsubj, ud.nsubjpass, ud.csubj, ud.csubjpass,
+                     ud.dobj, ud.iobj,
+                     ud.ccomp, ud.xcomp, ud.advcl}
 
 
 def argument_names(args):
@@ -52,6 +58,8 @@ def sort_by_position(x):
 
 class Token(object):
 
+    ud = dep_v1
+
     def __init__(self, position, text, tag):
         self.position = position
         self.text = text
@@ -59,6 +67,7 @@ class Token(object):
         self.dependents = None
         self.gov = None
         self.gov_rel = None
+        self.ud = Token.ud
 
     def __repr__(self):
         return '%s/%s' % (self.text, self.position)
@@ -66,29 +75,41 @@ class Token(object):
     @property
     def isword(self):
         "Check if the token is not punctuation."
-        return self.tag != '.'
+        return self.tag != postag.PUNCT
 
     def argument_like(self):
         "Does this token look like the root of an argument?"
-        return (self.gov_rel in
-                {'nmod', 'nmod:npmod', 'nmod:tmod',
-                 'nsubj', 'csubj', 'csubjpass', 'dobj', 'iobj'})
+        return (self.gov_rel in self.ud.ARG_LIKE)
 
     def hard_to_find_arguments(self):
-        """Is this potentially the root of an easy predicate, which will have an
+        """This func is only called when one of its dependents is an easy
+        predicate. Here, we're checking:
+        Is this potentially the root of an easy predicate, which will have an
         argment?
 
         """
-        return self.gov_rel in {'dep', 'conj', 'acl', 'acl:relcl', 'advcl'}
+        # amod:
+        # There is nothing wrong with a negotiation,
+        # but nothing helpful about generating one that is just for show .
+        #        ^      ^              ^
+        #        --amod--       (a easy predicate, dependent of "helpful" which is hard_to_find_arguments)
+        for e in self.dependents:
+            if e.rel in self.ud.SUBJ or e.rel in self.ud.OBJ:
+                return False
+        return self.gov_rel in self.ud.HARD_TO_FIND_ARGS
 
 
 class Argument(object):
+
+    ud = dep_v1
 
     def __init__(self, root, rules):
         self.root = root
         self.rules = rules
         self.position = root.position
+        self.ud = Argument.ud
         self.tokens = []
+        self.share = False
 
     def __repr__(self):
         return 'Argument(%s)' % self.root
@@ -98,8 +119,18 @@ class Argument(object):
         x.tokens = self.tokens[:]
         return x
 
+    def reference(self):
+        x = Argument(self.root, self.rules[:])
+        x.tokens = self.tokens
+        x.share = True
+        return x
+
+    def is_reference(self):
+        return self.share
+
     def isclausal(self):
-        return self.root.gov_rel in {'ccomp', 'csubj', 'csubjpass', 'xcomp'}
+        return self.root.gov_rel in {self.ud.ccomp, self.ud.csubj,
+                                     self.ud.csubjpass, self.ud.xcomp}
 
     def phrase(self):
         return ' '.join(x.text for x in self.tokens)
@@ -108,19 +139,22 @@ class Argument(object):
         "Argument => list of the heads of the conjunctions within it."
         coords = [self]
         # don't consider the conjuncts of ccomp, csubj and amod
-        if self.root.gov_rel not in {'ccomp', 'csubj'}:
+        if self.root.gov_rel not in {self.ud.ccomp, self.ud.csubj}:
             for e in self.root.dependents:
-                if e.rel == 'conj':
+                if e.rel == self.ud.conj:
                     coords.append(Argument(e.dep, [R.m()]))
         return sort_by_position(coords)
 
 
 class Predicate(object):
 
-    def __init__(self, root, rules, type_='normal'):
+    ud = dep_v1
+
+    def __init__(self, root, rules, type_= NORMAL):
         self.root = root
         self.rules = rules
         self.position = root.position
+        self.ud = Predicate.ud
         self.arguments = []
         self.type = type_
         self.tokens = []
@@ -129,8 +163,10 @@ class Predicate(object):
         return 'Predicate(%s)' % self.root
 
     def copy(self):
+        """Only copy the complex predicate. The arguments are shared
+        among each other."""
         x = Predicate(self.root, self.rules[:])
-        x.arguments = [arg.copy() for arg in self.arguments]
+        x.arguments = [arg.reference() for arg in self.arguments]
         x.type = self.type
         x.tokens = self.tokens[:]
         return x
@@ -147,24 +183,32 @@ class Predicate(object):
         return 'pred.%s.%s.%s' % (self.type, self.position,
                                   '.'.join(str(a.position) for a in self.arguments))
 
+    def has_token(self, token):
+        return any(t.position == token.position for t in self.tokens)
+
     def has_subj(self):
-        return any(arg.root.gov_rel in SUBJ for arg in self.arguments)
+        return any(arg.root.gov_rel in self.ud.SUBJ for arg in self.arguments)
 
     def subj(self):
         for arg in self.arguments:
-            if arg.root.gov_rel in SUBJ:
-                return arg.copy()
+            if arg.root.gov_rel in self.ud.SUBJ:
+                return arg
 
     def has_obj(self):
-        return any(arg.root.gov_rel in OBJ for arg in self.arguments)
+        return any(arg.root.gov_rel in self.ud.OBJ for arg in self.arguments)
 
     def obj(self):
         for arg in self.arguments:
-            if arg.root.gov_rel in OBJ:
-                return arg.copy()
+            if arg.root.gov_rel in self.ud.OBJ:
+                return arg
 
-    def has_borrow_subj(self):
-        return any(isinstance(r, R.borrow_subj) for arg in self.arguments for r in arg.rules)
+    def share_subj(self, other):
+        subj = self.subj()
+        other_subj = other.subj()
+        return subj and other_subj and subj.position == other_subj.position
+
+    def has_borrowed_arg(self):
+        return any(arg.share for arg in self.arguments for r in arg.rules)
 
     def phrase(self):
         return self._format_predicate(argument_names(self.arguments))
@@ -179,7 +223,7 @@ class Predicate(object):
             if len(arg.tokens) == 0:
                 return True
 
-        if self.type == 'poss':
+        if self.type == POSS:
             # incorrect number of arguments
             if len(self.arguments) != 2:
                 return True
@@ -188,10 +232,10 @@ class Predicate(object):
         ret = []
         args = self.arguments
 
-        if self.type == 'poss':
-            return ' '.join([name[self.arguments[0]], C('poss', 'yellow'), name[self.arguments[1]]])
+        if self.type == POSS:
+            return ' '.join([name[self.arguments[0]], C(POSS, 'yellow'), name[self.arguments[1]]])
 
-        if self.type in {'amod', 'appos'}:
+        if self.type in {AMOD, APPOS}:
             # Special handling for `amod` and `appos` because the target
             # relation `is/are` deviates from the original word order.
             arg0 = None
@@ -214,8 +258,8 @@ class Predicate(object):
         for i, y in enumerate(sort_by_position(self.tokens + args)):
             if isinstance(y, Argument):
                 ret.append(name[y])
-                if (self.root.gov_rel == 'xcomp' and
-                    self.root.tag not in {'VERB', 'ADJ', 'JJ'} and
+                if (self.root.gov_rel == self.ud.xcomp and
+                    self.root.tag not in {postag.VERB, postag.ADJ} and
                     i == 0):
                     ret.append(C('is/are', 'yellow'))
             else:
@@ -236,7 +280,8 @@ class Predicate(object):
                           'magenta')))
         # Format arguments
         for arg in self.arguments:
-            if (arg.isclausal() and arg.root.gov in self.tokens and self.type == 'normal'):
+            if (arg.isclausal() and arg.root.gov in self.tokens and
+                    self.type == NORMAL):
                 s = C('SOMETHING', 'yellow') + ' := ' + arg.phrase()
             else:
                 s = C(arg.phrase(), 'green')
@@ -260,8 +305,9 @@ class PredPattOpts:
                  resolve_amod=True,
                  resolve_conj=True,
                  resolve_poss=True,
-                 en_relcl_dummy_arg_filter=True,
-                 big_args=False):
+                 borrow_arg_for_relcl=True,
+                 big_args=False,
+                 ud="v1"):
         self.simple = simple
         self.cut = cut
         self.resolve_relcl = resolve_relcl
@@ -270,7 +316,8 @@ class PredPattOpts:
         self.resolve_poss = resolve_poss
         self.resolve_conj = resolve_conj
         self.big_args = big_args
-        self.en_relcl_dummy_arg_filter = en_relcl_dummy_arg_filter
+        self.borrow_arg_for_relcl = borrow_arg_for_relcl
+        self.ud = ud
 
 
 def convert_parse(parse):
@@ -297,6 +344,10 @@ class PredPatt(object):
 
     def __init__(self, parse, opts=None):
         self.options = opts or PredPattOpts()   # use defaults
+        self.ud = dep_v1 if self.options.ud == "v1" else dep_v2
+        Token.ud = self.ud
+        Argument.ud = self.ud
+        Predicate.ud = self.ud
         parse = convert_parse(parse)
         self._parse = parse
         self.edges = parse.triples
@@ -352,10 +403,9 @@ class PredPatt(object):
 
         # extract predicate and argument phrases
         for p in events:
-
             self._pred_phrase_extract(p)
             for arg in p.arguments:
-                if arg.tokens == []:
+                if not arg.is_reference() and arg.tokens == []:
                     self._arg_phrase_extract(p, arg)
 
             if self.options.simple:
@@ -363,33 +413,14 @@ class PredPatt(object):
                 p.arguments = [arg for arg in p.arguments
                                if self._simple_arg(p, arg)]
 
-            # Special cases for predicate conjunctions.
-            if p.root.gov_rel == 'conj':
-                # pull aux and neg from governing predicate.
-                g = self.event_dict.get(p.root.gov)
-                if g is not None:
-                    for d in g.root.dependents:
-                        if d.rel in {'aux', 'neg'}:
-                            p.tokens.append(d.dep)
-                            p.rules.append(R.pred_conj_borrow_aux_neg(g, d))
-
-                # Post-processing of predicate name for predicate conjunctions
-                # involving xcomp.
-                if p.root.gov.gov_rel == 'xcomp':
-                    g = self._get_top_xcomp(p)
-                    if g is not None:
-                        for y in g.tokens:
-                            if (y != p.root.gov
-                                and (y.gov != p.root.gov or y.gov_rel != 'advmod')
-                                and y.gov_rel != 'case'):
-
-                                p.tokens.append(y)
-                                p.rules.append(R.pred_conj_borrow_tokens_xcomp(g, y))
+            if p.root.gov_rel == self.ud.conj:
+                # Special cases for predicate conjunctions.
+                self._conjunction_resolution(p)
 
             if len(p.tokens):
                 self.instances.extend(self.expand_coord(p))
 
-        if self.options.resolve_relcl and self.options.en_relcl_dummy_arg_filter:
+        if self.options.resolve_relcl and self.options.borrow_arg_for_relcl:
             for p in self.instances:
                 # TODO: this should probably live with other argument filter logic.
                 if any(isinstance(r, R.pred_resolve_relcl) for r in p.rules):
@@ -406,7 +437,7 @@ class PredPatt(object):
 
         roots = {}
 
-        def nominate(root, rule, type_ = 'normal'):
+        def nominate(root, rule, type_ = NORMAL):
             if root not in roots:
                 roots[root] = Predicate(root, [rule], type_=type_)
             else:
@@ -420,12 +451,12 @@ class PredPatt(object):
                 continue
 
             if self.options.resolve_appos:
-                if e.rel == 'appos':
-                    nominate(e.dep, R.d(), 'appos')
+                if e.rel == self.ud.appos:
+                    nominate(e.dep, R.d(), APPOS)
 
             if self.options.resolve_poss:
-                if e.rel == 'nmod:poss':
-                    nominate(e.dep, R.v(), 'poss')
+                if e.rel == self.ud.nmod_poss:
+                    nominate(e.dep, R.v(), POSS)
 
             if self.options.resolve_amod:
                 # If resolve amod flag is enabled, then the dependent of an amod
@@ -435,29 +466,30 @@ class PredPatt(object):
                 # TODO: 'JJ' is not a universal tag. Why do we support it?
                 #assert e.dep.tag != 'JJ'
                 #if e.rel == 'amod' and e.dep.tag in {'JJ', 'ADJ'} and e.gov.tag not in {'JJ', 'ADJ'}:
-                if e.rel == 'amod' and e.dep.tag == 'ADJ' and e.gov.tag != 'ADJ':
-                    nominate(e.dep, R.e(), 'amod')
+                if e.rel == self.ud.amod and e.dep.tag == postag.ADJ and e.gov.tag != postag.ADJ:
+                    nominate(e.dep, R.e(), AMOD)
 
             # Avoid 'dep' arcs, they are normally parse errors.
             # Note: we allow amod, poss, and appos predicates, even with a dep arc.
-            if e.gov.gov_rel == 'dep':
+            if e.gov.gov_rel == self.ud.dep:
                 continue
 
             # If it has a clausal subject or complement its a predicate.
-            if e.rel in {'ccomp', 'csubj', 'csubjpass'}:
+            if e.rel in {self.ud.ccomp, self.ud.csubj, self.ud.csubjpass}:
                 nominate(e.dep, R.a1())
 
             if self.options.resolve_relcl:
                 # Dependent of clausal modifier is a predicate.
-                if e.rel in {'advcl', 'acl:relcl', 'acl'}:
+                if e.rel in {self.ud.advcl, self.ud.acl, self.ud.aclrelcl}:
                     nominate(e.dep, R.b())
 
-            if e.rel == 'xcomp':
+            if e.rel == self.ud.xcomp:
                 # Dependent of an xcomp is a predicate
                 nominate(e.dep, R.a2())
 
-            if gov_looks_like_predicate(e):
-                if e.rel == 'ccomp' and e.gov.argument_like():
+            if gov_looks_like_predicate(e, self.ud):
+                # Look into e.gov
+                if e.rel == self.ud.ccomp and e.gov.argument_like():
                     # In this case, e.gov looks more like an argument than a predicate
                     #
                     # For example, declarative context sentences
@@ -467,23 +499,35 @@ class PredPatt(object):
                     #                    gov ------------ ccomp --------- dep
                     #
                     pass
-                elif e.gov.gov_rel == 'xcomp':
+                elif e.gov.gov_rel == self.ud.xcomp:
                     # TODO: I don't think we need this case.
                     if e.gov.gov is not None and not e.gov.gov.hard_to_find_arguments():
-                        nominate(e.gov, R.c())
+                        nominate(e.gov, R.c(e))
                 else:
                     if not e.gov.hard_to_find_arguments():
-                        nominate(e.gov, R.c())
+                        nominate(e.gov, R.c(e))
 
         # Add all conjoined predicates
         q = roots.values()
         while q:
             gov = q.pop()
             for e in gov.root.dependents:
-                if e.rel == 'conj' and e.dep.isword:
+                if e.rel == self.ud.conj and self.qualified_conjoined_predicate(e.gov, e.dep):
                     q.append(nominate(e.dep, R.f()))
 
         return sort_by_position(roots.values())
+
+    def qualified_conjoined_predicate(self, gov, dep):
+        "Check if the conjunction (dep) of a predicate (gov) is another predicate."
+        if not dep.isword:
+            return False
+        if gov.tag in {postag.VERB}:
+            # Conjoined predicates should have the same tag as the root.
+            # For example,
+            # There is nothing wrong with a negotiation, but nothing helpful .
+            #       ^---------------conj-----------------------^
+            return gov.tag == dep.tag
+        return True
 
     def argument_extract(self, predicate):
         "Argument identification for predicate."
@@ -492,7 +536,7 @@ class PredPatt(object):
         for e in predicate.root.dependents:
 
             # Most basic arguments
-            if e.rel in {'nsubj', 'nsubjpass', 'dobj', 'iobj'}:
+            if e.rel in {self.ud.nsubj, self.ud.nsubjpass, self.ud.dobj, self.ud.iobj}:
                 arguments.append(Argument(e.dep, [R.g1(e)]))
 
             # Add 'nmod' deps as long as the predicate type amod.
@@ -500,7 +544,8 @@ class PredPatt(object):
             # 'two --> (nmod) --> Zapotec --> (amod) --> Indians'
             # here 'Zapotec' becomes a event token due to amod
             #
-            if e.rel.startswith('nmod') and predicate.type != 'amod':
+            if ((e.rel.startswith(self.ud.nmod) or e.rel.startswith(self.ud.obl))
+                    and predicate.type != AMOD):
                 arguments.append(Argument(e.dep, [R.h1()]))
 
             # Extract argument token from adverbial phrase.
@@ -510,9 +555,9 @@ class PredPatt(object):
             #
             # [Investors] turned away from [the stock market]
             #
-            if e.rel == 'advmod':
+            if e.rel == self.ud.advmod:
                 for tr in e.dep.dependents:
-                    if tr.rel.startswith('nmod'):
+                    if tr.rel.startswith(self.ud.nmod) or tr.rel in {self.ud.obl}:
                         arguments.append(Argument(tr.dep, [R.h2()]))
 
             # Include ccomp for completion of predpatt
@@ -520,19 +565,19 @@ class PredPatt(object):
             # said <-- (ccomp) <-- refused
             #
             # p.s. amod event token is excluded.
-            if e.rel in {'ccomp', 'csubj', 'csubjpass'}:
+            if e.rel in {self.ud.ccomp, self.ud.csubj, self.ud.csubjpass}:
                 arguments.append(Argument(e.dep, [R.k()]))
 
-            if self.options.cut and e.rel == 'xcomp':
+            if self.options.cut and e.rel == self.ud.xcomp:
                 arguments.append(Argument(e.dep, [R.k()]))
 
-        if predicate.type == 'amod':
+        if predicate.type == AMOD:
             arguments.append(Argument(predicate.root.gov, [R.i()]))
 
-        if predicate.type == 'appos':
+        if predicate.type == APPOS:
             arguments.append(Argument(predicate.root.gov, [R.j()]))
 
-        if predicate.type == 'poss':
+        if predicate.type == POSS:
             arguments.append(Argument(predicate.root.gov, [R.w1()]))
             arguments.append(Argument(predicate.root, [R.w2()]))
 
@@ -542,23 +587,23 @@ class PredPatt(object):
     # id phase, instead of doing it as post-processing.
     def _simple_arg(self, pred, arg):
         "Filter out some arguments to simplify pattern."
-        if pred.type == 'poss':
+        if pred.type == POSS:
             return True
-        if (pred.root.gov_rel in {'amod', 'appos', 'acl', 'acl:relcl'}
+        if (pred.root.gov_rel in self.ud.ADJ_LIKE_MODS
             and pred.root.gov == arg.root):
             # keep the post-added argument, which neither directly nor
             # indirectly depends on the predicate root. Say, the governor
             # of amod, appos and acl.
             return True
-        if arg.root.gov_rel in SUBJ:
+        if arg.root.gov_rel in self.ud.SUBJ:
             # All subjects are core arguments, even "borrowed" one.
             return True
-        if arg.root.gov_rel in {'nmod', 'nmod:npmod', 'nmod:tmod'}:
+        if arg.root.gov_rel in self.ud.NMODS:
             # remove the argument which is a nominal modifier.
             # this condition check must be in front of the following one.
             pred.rules.append(R.p1())
             return False
-        if arg.root.gov == pred.root or arg.root.gov.gov_rel == 'xcomp':
+        if arg.root.gov == pred.root or arg.root.gov.gov_rel == self.ud.xcomp:
             # keep argument directly depending on pred root token,
             # except argument is the dependent of 'xcomp' rel.
             return True
@@ -575,9 +620,8 @@ class PredPatt(object):
         the structure of arg2coord_arg_dict:
             {arg_root: {coord_arg_root1:coord1, coord_arg_root2:coord2}}
         """
-
         # Don't expand amod
-        if not self.options.resolve_conj or predicate.type == 'amod':
+        if not self.options.resolve_conj or predicate.type == AMOD:
             predicate.arguments = [arg for arg in predicate.arguments if arg.tokens]
             if not predicate.arguments:
                 return []
@@ -586,22 +630,22 @@ class PredPatt(object):
         # Cleanup (strip before we take conjunctions)
         self._strip(predicate)
         for arg in predicate.arguments:
-            self._strip(arg)
+            if not arg.is_reference():
+                self._strip(arg)
 
         aaa = []
         for arg in predicate.arguments:
-            if not arg.tokens:
+            if not arg.share and not arg.tokens:
                 continue
             C = []
             for c in arg.coords():
-                if not c.tokens:
+                if not c.is_reference() and not c.tokens:
                     # Extract argument phrase (if we haven't already). This
                     # happens because are haven't processed the subrees of the
                     # 'conj' node in the argument until now.
                     self._arg_phrase_extract(predicate, c)
                 C.append(c)
             aaa = [C] + aaa
-
         expanded = itertools.product(*aaa)
 
         instances = []
@@ -612,18 +656,61 @@ class PredPatt(object):
             instances.append(predicate.copy())
         return instances
 
+    def _conjunction_resolution(self, p):
+        "Conjuntion resolution"
+
+        # pull aux and neg from governing predicate.
+        g = self.event_dict.get(p.root.gov)
+        if g is not None and p.share_subj(g):
+            # Only applied when p and g share subj. For example,
+            # He did make mistakes, but that was okay .
+            #         ^                           ^
+            #         -----------conj--------------
+            # No need to add "did" to "okay" in this case.
+            for d in g.root.dependents:
+                if d.rel in {self.ud.neg}: # {ud.aux, ud.neg}:
+                    p.tokens.append(d.dep)
+                    p.rules.append(R.pred_conj_borrow_aux_neg(g, d))
+
+        # Post-processing of predicate name for predicate conjunctions
+        # involving xcomp.
+        if not self.options.cut:
+            # Not applied to the cut mode, because in the cut mode xcomp
+            # is recognized as a independent predicate. For example,
+            # They start firing and shooting .
+            #        ^     ^           ^
+            #        |     |----conj---|
+            #        -xcomp-
+            # cut == True:
+            #    (They, start, SOMETHING := firing and shooting)
+            #    (They, firing)
+            #    (They, shooting)
+            # cut == False:
+            #    (They, start firing)
+            #    (They, start shooting)
+            if p.root.gov.gov_rel == self.ud.xcomp:
+                g = self._get_top_xcomp(p)
+                if g is not None:
+                    for y in g.tokens:
+                        if (y != p.root.gov
+                            and (y.gov != p.root.gov or y.gov_rel != self.ud.advmod)
+                            and y.gov_rel != self.ud.case):
+
+                            p.tokens.append(y)
+                            p.rules.append(R.pred_conj_borrow_tokens_xcomp(g, y))
+
     def _argument_resolution(self, events):
         "Argument resolution."
 
         for p in list(events):
-            if p.root.gov_rel == 'xcomp':
+            if p.root.gov_rel == self.ud.xcomp:
                 if not self.options.cut:
                     # Merge the arguments of xcomp to its gov. (Unlike ccomp, an open
                     # clausal complement (xcomp) shares its arguments with its gov.)
                     g = self._get_top_xcomp(p)
                     if g is not None:
                         # Extend the arguments of event's governor
-                        args = [arg.copy() for arg in p.arguments]
+                        args = [arg for arg in p.arguments]
                         g.rules.append(R.l())
                         g.arguments.extend(args)
                         # copy arg rules of `event` to its gov's rule tracker.
@@ -637,48 +724,58 @@ class PredPatt(object):
             # Add an argument to predicate inside relative clause. The
             # missing argument is rooted at the governor of the `acl`
             # depedency relation (type acl) pointing here.
-            if self.options.resolve_relcl and p.root.gov_rel.startswith('acl'):
+            if (self.options.resolve_relcl and self.options.borrow_arg_for_relcl
+                    and p.root.gov_rel.startswith(self.ud.acl)):
                 new = Argument(p.root.gov, [R.arg_resolve_relcl()])
                 p.rules.append(R.pred_resolve_relcl())
                 p.arguments.append(new)
 
-            if p.root.gov_rel == 'conj' and not p.has_subj():
+            if p.root.gov_rel == self.ud.conj:
                 g = self.event_dict.get(p.root.gov)
                 if g is not None:
-                    if g.has_subj():
-                        # If an event governed by a conjunction is missing a
-                        # subject, try borrowing the subject from the other
-                        # event.
-                        new_arg = g.subj().copy()
-                        new_arg.rules.append(R.borrow_subj(g, p, 3))
-                        p.arguments.append(new_arg)
-
-                    else:
-                        # Try borrowing the subject from g's xcomp (if any)
-                        g = self._get_top_xcomp(g)
-                        if g is not None and g.has_subj():
-                            new_arg = g.subj().copy()
+                    if not p.has_subj():
+                        if g.has_subj():
+                            # If an event governed by a conjunction is missing a
+                            # subject, try borrowing the subject from the other
+                            # event.
+                            new_arg = g.subj().reference()
+                            new_arg.rules.append(R.borrow_subj(new_arg, g))
                             p.arguments.append(new_arg)
-                            new_arg.rules.append(R.borrow_subj(g, p, 4))
 
-            if p.root.gov_rel == 'advcl' and not p.has_subj():
+                        else:
+                            # Try borrowing the subject from g's xcomp (if any)
+                            g_ = self._get_top_xcomp(g)
+                            if g_ is not None and g_.has_subj():
+                                new_arg = g_.subj().reference()
+                                new_arg.rules.append(R.borrow_subj(new_arg, g_))
+                                p.arguments.append(new_arg)
+                    if len(p.arguments) == 0 and g.has_obj():
+                            # If an event governed by a conjunction is missing an
+                            # argument, try borrowing the subject from the other
+                            # event.
+                            new_arg = g.obj().reference()
+                            new_arg.rules.append(R.borrow_obj(new_arg, g))
+                            p.arguments.append(new_arg)
+
+
+            if p.root.gov_rel == self.ud.advcl and not p.has_subj():
                 g = self.event_dict.get(p.root.gov)
                 if g is not None and g.has_subj():
-                    new_arg = g.subj().copy()
-                    new_arg.rules.append(R.borrow_subj(g, p, 6))
+                    new_arg = g.subj().reference()
+                    new_arg.rules.append(R.borrow_subj(new_arg, g))
                     p.arguments.append(new_arg)
 
-            if p.root.gov_rel == 'conj':
+            if p.root.gov_rel == self.ud.conj:
                 g = self.event_dict.get(p.root.gov)
                 if g is not None:
                     # Coordinated appositional modifers share the same subj.
-                    if p.root.gov_rel == 'amod':
+                    if p.root.gov_rel == self.ud.amod:
                         p.arguments.append(Argument(g.root.gov, [R.o()]))
-                    elif p.root.gov_rel == 'appos':
+                    elif p.root.gov_rel == self.ud.appos:
                         p.arguments.append(Argument(g.root.gov, [R.p()]))
 
         for p in sort_by_position(events):
-            if p.root.gov_rel == 'xcomp':
+            if p.root.gov_rel == self.ud.xcomp:
                 if self.options.cut:
                     for g in self.parents(p):
                         # Subject of an xcomp is most likely to come from the
@@ -688,8 +785,8 @@ class PredPatt(object):
                             # "I like you to finish this work"
                             #      ^   ^       ^
                             #      g  g.obj    p
-                            new_arg = g.obj().copy()
-                            new_arg.rules.append(R.cut_borrow_obj(g, g.obj()))
+                            new_arg = g.obj().reference()
+                            new_arg.rules.append(R.cut_borrow_obj(new_arg, g))
                             p.arguments.append(new_arg)
                             break
 
@@ -697,16 +794,16 @@ class PredPatt(object):
                             # "I  'd   like to finish this work"
                             #  ^         ^       ^
                             #  g.subj    g       p
-                            new_arg = g.subj().copy()
-                            new_arg.rules.append(R.cut_borrow_subj(g, g.subj()))
+                            new_arg = g.subj().reference()
+                            new_arg.rules.append(R.cut_borrow_subj(new_arg, g))
                             p.arguments.append(new_arg)
                             break
 
-                        elif g.root.gov_rel in {'amod', 'acl', 'acl:relcl'}:
+                        elif g.root.gov_rel in self.ud.ADJ_LIKE_MODS:
                             # PredPatt recognizes structures which are shown to be accurate .
                             #                         ^                  ^      ^
                             #                       g.subj               g      p
-                            new_arg = Argument(g.root.gov, [R.cut_borrow_other(g, g.root.gov)])
+                            new_arg = Argument(g.root.gov, [R.cut_borrow_other(g.root.gov, g)])
                             p.arguments.append(new_arg)
                             break
 
@@ -715,22 +812,24 @@ class PredPatt(object):
             # Note: The following rule improves coverage a lot in Spanish and
             # Portuguese. Without it, miss a lot of arguments.
             if (not p.has_subj()
-                and p.type == 'normal'
-                and p.root.gov_rel not in {'csubj', 'csubjpass'}
-                and not p.root.gov_rel.startswith('acl')
+                and p.type == NORMAL
+                and p.root.gov_rel not in {self.ud.csubj, self.ud.csubjpass}
+                and not p.root.gov_rel.startswith(self.ud.acl)
+                and not p.has_borrowed_arg()
             ):
                 g = self.event_dict.get(p.root.gov)
                 if g is not None:
                     if g.has_subj():
-                        new_arg = g.subj().copy()
-                        new_arg.rules.append(R.borrow_subj(g, p, 1))
+                        new_arg = g.subj().reference()
+                        new_arg.rules.append(R.borrow_subj(new_arg, g))
                         p.arguments.append(new_arg)
                     else:
                         # Still no subject. Try looking at xcomp of conjunction root.
                         g = self._get_top_xcomp(p)
                         if g is not None and g.has_subj():
-                            p.arguments.append(g.subj().copy())
-                            p.rules.append(R.borrow_subj(g, p, 2))
+                            new_arg = g.subj().reference()
+                            new_arg.rules.append(R.borrow_subj(new_arg, g))
+                            p.arguments.append(new_arg)
 
         return list(events)
 
@@ -740,6 +839,9 @@ class PredPatt(object):
 
         """
         assert predicate.tokens == []
+        if predicate.type == POSS:
+            predicate.tokens = [predicate.root]
+            return
         predicate.tokens.extend(self.subtree(predicate.root,
                                              lambda e: self.__pred_phrase(predicate, e)))
 
@@ -754,11 +856,11 @@ class PredPatt(object):
                 #       'Elsevier' is the arg phrase, but 'of' shouldn't
                 #       be kept as a case token.
                 #
-                if (predicate.root.gov_rel not in {'amod', 'appos', 'acl', 'acl:relcl'}
+                if (predicate.root.gov_rel not in self.ud.ADJ_LIKE_MODS
                     or predicate.root.gov != arg.root):
                     for e in arg.root.dependents:
-                        if e.rel == 'case':
-                            arg.rules.append(R.o2())
+                        if e.rel == self.ud.case:
+                            arg.rules.append(R.move_case_token_to_pred(e.dep))
                             predicate.tokens.extend(self.subtree(e.dep))
                             predicate.rules.append(R.n6(e.dep))
 
@@ -778,18 +880,17 @@ class PredPatt(object):
             pred.rules.append(R.n2(e.dep))
             return False
 
-        if e.dep in {p.root for p in self.events} and e.rel != 'amod':
+        if e.dep in {p.root for p in self.events} and e.rel != self.ud.amod:
             # pred token shouldn't be other pred root token.
             pred.rules.append(R.n3(e.dep))
             return False
 
-        if e.rel in {'ccomp', 'csubj', 'advcl', 'acl', 'acl:relcl', 'nmod:tmod',
-                     'parataxis', 'appos', 'dep'}:
+        if e.rel in self.ud.PRED_DEPS_TO_DROP:
             # pred token shouldn't be a dependent of any rels above.
             pred.rules.append(R.n4(e.dep))
             return False
 
-        if (e.gov == pred.root or e.gov.gov_rel == 'xcomp') and e.rel in {'cc', 'conj'}:
+        if (e.gov == pred.root or e.gov.gov_rel == self.ud.xcomp) and e.rel in {self.ud.cc, self.ud.conj}:
             # pred token shouldn't take conjuncts of pred
             # root token or xcomp's dependent.
             pred.rules.append(R.n5(e.dep))
@@ -797,10 +898,10 @@ class PredPatt(object):
 
         if self.options.simple:
             # Simple predicates don't have nodes governed by advmod or aux.
-            if e.rel == 'advmod':
+            if e.rel == self.ud.advmod:
                 pred.rules.append(R.q())
                 return False
-            elif e.rel == 'aux':
+            elif e.rel == self.ud.aux:
                 pred.rules.append(R.r())
                 return False
 
@@ -826,58 +927,69 @@ class PredPatt(object):
         if self.options.big_args:
             return True
 
-        if e.dep == pred.root:
-            # arg token shouldn't be the pred root token.
-            arg.rules.append(R.o3())
+        if pred.has_token(e.dep):
+            arg.rules.append(R.predicate_has(e.dep))
             return False
+        # if e.dep == pred.root:
+        #     # arg token shouldn't be the pred root token.
+        #     return False
 
         # Case tokens are added to predicate, not argument.
-        if e.gov == arg.root and e.rel == 'case':
+        if e.gov == arg.root and e.rel == self.ud.case:
             return False
 
         # Don't include relative clauses, appositives, the junk label (dep).
-        if e.rel in {'acl', 'acl:relcl', 'dep', 'appos'}:
-            arg.rules.append(R.o4())
+        # if self.options.resolve_relcl and e.rel in {ud.acl, ud.aclrelcl}:
+        #     arg.rules.append(R.o4())
+        #     return False
+
+        if self.options.resolve_appos and e.rel in {self.ud.appos}:
+            arg.rules.append(R.drop_appos(e.dep))
+            return False
+
+        if e.rel in {self.ud.dep}:
+            arg.rules.append(R.drop_unknown(e.dep))
             return False
 
         # Direct dependents of the predicate root of the follow types shouldn't
         # be added the predicate phrase.
-        if (arg.root == pred.root.gov
-            and e.rel in {'nsubj', 'dobj', 'iobj', 'csubj', 'csubjpass', 'neg',
-                          'aux', 'advcl', 'auxpass', 'ccomp', 'cop', 'mark',
-                          'mwe', 'parataxis'}):
-            arg.rules.append(R.o4())
+        # If the argument root is the gov of the predicate root, then drop
+        # the following direct dependent of the argument root.
+        if (arg.root == pred.root.gov and e.gov == arg.root
+                and e.rel in self.ud.SPECIAL_ARG_DEPS_TO_DROP):
+            arg.rules.append(R.special_arg_drop_direct_dep(e.dep))
             return False
 
         # Don't take embedded advcl for ccomp arguments.
-        if arg.root.gov_rel == 'ccomp' and e.rel == 'advcl':
-            arg.rules.append(R.o4())
-            return False
+        # if arg.root.gov_rel == ud.ccomp and e.rel == ud.advcl:
+        #     arg.rules.append(R.embedded_advcl(e.dep))
+        #     return False
 
         # Don't take embedded ccomps from clausal subjects arguments
-        if arg.root.gov_rel in {'csubj', 'csubjpass'} and e.rel == 'ccomp':
-            arg.rules.append(R.o4())
-            return False
+        # if arg.root.gov_rel in {ud.csubj, ud.csubjpass} and e.rel == ud.ccomp:
+        #     arg.rules.append(R.embedded_ccomp(e.dep))
+        #     return False
 
         # Nonclausal argument types should avoid embedded advcl and ccomp
-        if arg.root.gov_rel not in {'ccomp', 'csubj', 'csubjpass'} and e.rel in {'advcl', 'ccomp'}:
-            arg.rules.append(R.o4())
-            return False
+        # if (arg.root.gov_rel not in {ud.ccomp, ud.csubj, ud.csubjpass}
+        #         and e.rel in {ud.advcl, ud.ccomp}):
+        #     arg.rules.append(R.embedded_unknown(e.dep))
+        #     return False
 
         if self.options.resolve_conj:
 
             # Remove top-level conjunction tokens if work expanding conjunctions.
-            if e.gov == arg.root and e.rel in {'cc', 'cc:preconj'}:
-                arg.rules.append(R.o5())
+            if e.gov == arg.root and e.rel in {self.ud.cc, self.ud.cc_preconj}:
+                arg.rules.append(R.drop_cc(e.dep))
                 return False
 
             # Argument shouldn't include anything from conjunct subtree.
-            if e.gov == arg.root and e.rel == 'conj':
-                arg.rules.append(R.o6())
+            if e.gov == arg.root and e.rel == self.ud.conj:
+                arg.rules.append(R.drop_conj(e.dep))
                 return False
 
         # If non of the filters fired, then we accept the token.
-        arg.rules.append(R.o1())
+        arg.rules.append(R.clean_arg_token(e.dep))
         return True
 
     def _cleanup(self):
@@ -906,7 +1018,6 @@ class PredPatt(object):
 
         tokens = sort_by_position(thing.tokens)
         orig_len = len(tokens)
-        rels = {'mark', 'cc', 'punct'}
 
         protected = set()
         #def protect_open_close(x, i, open_, close):
@@ -931,20 +1042,21 @@ class PredPatt(object):
 
         try:
             # prefix
-            while tokens[0].gov_rel in rels and tokens[0].position not in protected:
+            while tokens[0].gov_rel in self.ud.TRIVIALS and tokens[0].position not in protected:
                 if (isinstance(thing, Argument)
-                    and tokens[0].gov_rel == 'mark'
-                    and tokens[1].tag == 'VERB'):
+                    and tokens[0].gov_rel == self.ud.mark
+                    and tokens[1].tag == postag.VERB):
                     break
                 tokens.pop(0)
             # suffix
-            while tokens[-1].gov_rel in rels and tokens[-1].position not in protected:
+            while tokens[-1].gov_rel in self.ud.TRIVIALS and tokens[-1].position not in protected:
                 tokens.pop()
         except IndexError:
             tokens = []
         # remove repeated punctuation from the middle (happens when we remove an appositive)
         tokens = [tk for i, tk in enumerate(tokens)
-                  if ((tk.gov_rel != 'punct' or (i+1 < len(tokens) and tokens[i+1].gov_rel != 'punct'))
+                  if ((tk.gov_rel != self.ud.punct or
+                       (i+1 < len(tokens) and tokens[i+1].gov_rel != self.ud.punct))
                       or tk.position in protected)]
         if orig_len != len(tokens):
             thing.rules.append(R.u())
@@ -982,7 +1094,7 @@ class PredPatt(object):
         governors return current predicate.
         """
         c = predicate.root.gov
-        while c is not None and c.gov_rel == 'xcomp' and c in self.event_dict:
+        while c is not None and c.gov_rel == self.ud.xcomp and c in self.event_dict:
             c = c.gov
         return self.event_dict.get(c)
 
