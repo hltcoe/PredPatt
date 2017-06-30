@@ -300,11 +300,11 @@ class PredPattOpts:
     def __init__(self,
                  simple=False,
                  cut=False,
-                 resolve_relcl=True,
-                 resolve_appos=True,
-                 resolve_amod=True,
-                 resolve_conj=True,
-                 resolve_poss=True,
+                 resolve_relcl=False,
+                 resolve_appos=False,
+                 resolve_amod=False,
+                 resolve_conj=False,
+                 resolve_poss=False,
                  borrow_arg_for_relcl=True,
                  big_args=False,
                  ud="v1"):
@@ -351,7 +351,7 @@ class PredPatt(object):
         parse = convert_parse(parse)
         self._parse = parse
         self.edges = parse.triples
-        self.token = parse.tokens
+        self.tokens = parse.tokens
         self.instances = []
         self.events = None
         self.event_dict = None  # map from token position to `Predicate`
