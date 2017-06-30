@@ -2,8 +2,19 @@
 Documentation test runner.
 """
 import re, codecs
-from predpatt import PredPatt, Parser
+from predpatt import PredPatt, PredPattOpts, Parser
 from termcolor import colored
+
+ppattopts = PredPattOpts(simple=False,
+                         cut=False,
+                         resolve_relcl=True,
+                         resolve_appos=True,
+                         resolve_amod=True,
+                         resolve_conj=True,
+                         resolve_poss=True,
+                         borrow_arg_for_relcl=True,
+                         big_args=False,
+                         ud="v1")
 
 
 def test():
@@ -39,7 +50,7 @@ def test():
         else:
             parse = parser(s)
 
-        P = PredPatt(parse)
+        P = PredPatt(parse, ppattopts)
         relations = P.pprint(track_rule=True)
         tags = ' '.join('%s/%s' % x for x in zip(parse.tokens, parse.tags))
         parse = parse.pprint(K=4)
