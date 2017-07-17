@@ -35,7 +35,7 @@ that end, it has been used to bootstrap semantic annotations in our recent EMNLP
 
 ## Table of contents
 
-* [Get started](doc/get-started.md)
+* [Get started](doc/get-started.md) (See our new [tutorial](tutorial.ipynb) for programmatic usage.)
 * [Motivation](doc/intro-and-motivation.md)
 * Sample output:
   - Documentation tests: [English](doc/DOCTEST.md)
@@ -82,10 +82,15 @@ UDBank in [English](test/data.100.fine.all.ud.expect),
 
 If you use PredPatt please cite it as follows.
 
-    @inproceedings{white2016universal,
-       title  = {Universal Decompositional Semantics on Universal Dependencies},
-       author = {Aaron Steven White and Drew Reisinger and Keisuke Sakaguchi and Tim Vieira
-                 and Sheng Zhang and Rachel Rudinger and Kyle Rawlins and Benjamin {Van Durme}},
-       booktitle = {{EMNLP}},
-       year   = {2016}
+    @InProceedings{white-EtAl:2016:EMNLP2016,
+        author    = {White, Aaron Steven  and  Reisinger, Drew  and  Sakaguchi, Keisuke  and  Vieira, Tim  and  Zhang, Sheng  and  Rudinger, Rachel  and  Rawlins, Kyle  and  Van Durme, Benjamin},
+        title     = {Universal Decompositional Semantics on Universal Dependencies},
+        booktitle = {Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing},
+        month     = {November},
+        year      = {2016},
+        address   = {Austin, Texas},
+        publisher = {Association for Computational Linguistics},
+        pages     = {1713--1723},
+        url       = {https://aclweb.org/anthology/D16-1177}
     }
+
