@@ -28,7 +28,11 @@ class postag(object):
     SYM = "SYM"
     X = "X"
 
+
 class dep_v1(object):
+    # VERSION
+    VERSION = "1.0"
+
     # subj relations
     nsubj = "nsubj"
     nsubjpass = "nsubjpass"
@@ -116,14 +120,17 @@ class dep_v1(object):
     # These dependents of an argument root shouldn't be included in the
     # argument pharse if the argument root is the gov of the predicate root.
     SPECIAL_ARG_DEPS_TO_DROP = {nsubj, dobj, iobj, csubj, csubjpass, neg,
-                                 aux, advcl, auxpass, ccomp, cop, mark, mwe,
-                                 parataxis}
+                                aux, advcl, auxpass, ccomp, cop, mark, mwe,
+                                parataxis}
 
     # Predicates of these rels are hard to find arguments.
     HARD_TO_FIND_ARGS = {amod, dep, conj, acl, aclrelcl, advcl}
 
 
 class dep_v2(object):
+    # VERSION
+    VERSION = "2.0"
+
     # subj relations
     nsubj = "nsubj"
     nsubjpass = "nsubj:pass"
@@ -189,7 +196,6 @@ class dep_v2(object):
     # unknown dep
     dep = "dep"
 
-
     SUBJ = {nsubj, csubj, nsubjpass, csubjpass}
 
     OBJ = {dobj, iobj}
@@ -212,8 +218,8 @@ class dep_v2(object):
     # These dependents of an argument root shouldn't be included in the
     # argument pharse if the argument root is the gov of the predicate root.
     SPECIAL_ARG_DEPS_TO_DROP = {nsubj, dobj, iobj, csubj, csubjpass, neg,
-                                 aux, advcl, auxpass, ccomp, cop, mark, mwe,
-                                 parataxis}
+                                aux, advcl, auxpass, ccomp, cop, mark, mwe,
+                                parataxis}
 
     # Predicates of these deps are hard to find arguments.
     HARD_TO_FIND_ARGS = {amod, dep, conj, acl, aclrelcl, advcl}

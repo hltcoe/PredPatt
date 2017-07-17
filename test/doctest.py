@@ -14,7 +14,7 @@ ppattopts = PredPattOpts(simple=False,
                          resolve_poss=True,
                          borrow_arg_for_relcl=True,
                          big_args=False,
-                         ud="v1")
+                         ud="1.0")
 
 
 def test():

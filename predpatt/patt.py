@@ -18,9 +18,11 @@ from predpatt.util.ud import dep_v1
 from predpatt.util.ud import dep_v2
 from predpatt.util.ud import postag
 
+
 no_color = lambda x,_: x
 
 (NORMAL, POSS, APPOS, AMOD) = ("normal", "poss", "appos", "amod")
+
 
 def gov_looks_like_predicate(e, ud):
     # if e.gov "looks like" a predicate because it has potential arguments
@@ -58,16 +60,14 @@ def sort_by_position(x):
 
 class Token(object):
 
-    ud = dep_v1
-
-    def __init__(self, position, text, tag):
+    def __init__(self, position, text, tag, ud):
         self.position = position
         self.text = text
         self.tag = tag
         self.dependents = None
         self.gov = None
         self.gov_rel = None
-        self.ud = Token.ud
+        self.ud = ud
 
     def __repr__(self):
         return '%s/%s' % (self.text, self.position)
@@ -101,13 +101,12 @@ class Token(object):
 
 class Argument(object):
 
-    ud = dep_v1
 
-    def __init__(self, root, rules):
+    def __init__(self, root, ud, rules):
         self.root = root
         self.rules = rules
         self.position = root.position
-        self.ud = Argument.ud
+        self.ud = ud
         self.tokens = []
         self.share = False
 
@@ -115,12 +114,12 @@ class Argument(object):
         return 'Argument(%s)' % self.root
 
     def copy(self):
-        x = Argument(self.root, self.rules[:])
+        x = Argument(self.root, self.ud, self.rules[:])
         x.tokens = self.tokens[:]
         return x
 
     def reference(self):
-        x = Argument(self.root, self.rules[:])
+        x = Argument(self.root, self.ud, self.rules[:])
         x.tokens = self.tokens
         x.share = True
         return x
@@ -142,19 +141,17 @@ class Argument(object):
         if self.root.gov_rel not in {self.ud.ccomp, self.ud.csubj}:
             for e in self.root.dependents:
                 if e.rel == self.ud.conj:
-                    coords.append(Argument(e.dep, [R.m()]))
+                    coords.append(Argument(e.dep, self.ud, [R.m()]))
         return sort_by_position(coords)
 
 
 class Predicate(object):
 
-    ud = dep_v1
-
-    def __init__(self, root, rules, type_= NORMAL):
+    def __init__(self, root, ud, rules, type_=NORMAL):
         self.root = root
         self.rules = rules
         self.position = root.position
-        self.ud = Predicate.ud
+        self.ud = ud
         self.arguments = []
         self.type = type_
         self.tokens = []
@@ -165,7 +162,7 @@ class Predicate(object):
     def copy(self):
         """Only copy the complex predicate. The arguments are shared
         among each other."""
-        x = Predicate(self.root, self.rules[:])
+        x = Predicate(self.root, self.ud, self.rules[:])
         x.arguments = [arg.reference() for arg in self.arguments]
         x.type = self.type
         x.tokens = self.tokens[:]
@@ -307,7 +304,7 @@ class PredPattOpts:
                  resolve_poss=False,
                  borrow_arg_for_relcl=True,
                  big_args=False,
-                 ud="v1"):
+                 ud=dep_v1.VERSION):
         self.simple = simple
         self.cut = cut
         self.resolve_relcl = resolve_relcl
@@ -317,14 +314,17 @@ class PredPattOpts:
         self.resolve_conj = resolve_conj
         self.big_args = big_args
         self.borrow_arg_for_relcl = borrow_arg_for_relcl
-        self.ud = ud
+        assert str(ud) in {dep_v1.VERSION, dep_v2.VERSION}, (
+            'the ud version "%s" is not in {"%s", "%s"}' % (
+                str(ud), dep_v1.VERSION, dep_v2.VERSION))
+        self.ud = str(ud)
 
 
-def convert_parse(parse):
+def convert_parse(parse, ud):
     "Convert dependency parse on integers into a dependency parse on `Token`s."
     tokens = []
     for i, w in enumerate(parse.tokens):
-        tokens.append(Token(i, w, parse.tags[i]))
+        tokens.append(Token(i, w, parse.tags[i], ud))
 
     def convert_edge(e):
         return DepTriple(gov=tokens[e.gov], dep=tokens[e.dep], rel=e.rel)
@@ -335,20 +335,18 @@ def convert_parse(parse):
         tokens[i].gov_rel = parse.governor[i].rel if i in parse.governor else 'root'
         tokens[i].dependents = map(convert_edge, parse.dependents[i])
 
-    return UDParse(tokens, parse.tags, map(convert_edge, parse.triples))
+    return UDParse(tokens, parse.tags, map(convert_edge, parse.triples), ud)
 
 
 _PARSER = None
+
 
 class PredPatt(object):
 
     def __init__(self, parse, opts=None):
         self.options = opts or PredPattOpts()   # use defaults
-        self.ud = dep_v1 if self.options.ud == "v1" else dep_v2
-        Token.ud = self.ud
-        Argument.ud = self.ud
-        Predicate.ud = self.ud
-        parse = convert_parse(parse)
+        self.ud = dep_v1 if self.options.ud == dep_v1.VERSION else dep_v2
+        parse = convert_parse(parse, self.ud)
         self._parse = parse
         self.edges = parse.triples
         self.tokens = parse.tokens
@@ -439,7 +437,7 @@ class PredPatt(object):
 
         def nominate(root, rule, type_ = NORMAL):
             if root not in roots:
-                roots[root] = Predicate(root, [rule], type_=type_)
+                roots[root] = Predicate(root, self.ud, [rule], type_=type_)
             else:
                 roots[root].rules.append(rule)
             return roots[root]
@@ -537,7 +535,7 @@ class PredPatt(object):
 
             # Most basic arguments
             if e.rel in {self.ud.nsubj, self.ud.nsubjpass, self.ud.dobj, self.ud.iobj}:
-                arguments.append(Argument(e.dep, [R.g1(e)]))
+                arguments.append(Argument(e.dep, self.ud, [R.g1(e)]))
 
             # Add 'nmod' deps as long as the predicate type amod.
             #
@@ -546,7 +544,7 @@ class PredPatt(object):
             #
             if ((e.rel.startswith(self.ud.nmod) or e.rel.startswith(self.ud.obl))
                     and predicate.type != AMOD):
-                arguments.append(Argument(e.dep, [R.h1()]))
+                arguments.append(Argument(e.dep, self.ud, [R.h1()]))
 
             # Extract argument token from adverbial phrase.
             #
@@ -558,7 +556,7 @@ class PredPatt(object):
             if e.rel == self.ud.advmod:
                 for tr in e.dep.dependents:
                     if tr.rel.startswith(self.ud.nmod) or tr.rel in {self.ud.obl}:
-                        arguments.append(Argument(tr.dep, [R.h2()]))
+                        arguments.append(Argument(tr.dep, self.ud, [R.h2()]))
 
             # Include ccomp for completion of predpatt
             # e.g. 'They refused the offer, the students said.'
@@ -566,20 +564,20 @@ class PredPatt(object):
             #
             # p.s. amod event token is excluded.
             if e.rel in {self.ud.ccomp, self.ud.csubj, self.ud.csubjpass}:
-                arguments.append(Argument(e.dep, [R.k()]))
+                arguments.append(Argument(e.dep, self.ud, [R.k()]))
 
             if self.options.cut and e.rel == self.ud.xcomp:
-                arguments.append(Argument(e.dep, [R.k()]))
+                arguments.append(Argument(e.dep, self.ud, [R.k()]))
 
         if predicate.type == AMOD:
-            arguments.append(Argument(predicate.root.gov, [R.i()]))
+            arguments.append(Argument(predicate.root.gov, self.ud, [R.i()]))
 
         if predicate.type == APPOS:
-            arguments.append(Argument(predicate.root.gov, [R.j()]))
+            arguments.append(Argument(predicate.root.gov, self.ud, [R.j()]))
 
         if predicate.type == POSS:
-            arguments.append(Argument(predicate.root.gov, [R.w1()]))
-            arguments.append(Argument(predicate.root, [R.w2()]))
+            arguments.append(Argument(predicate.root.gov, self.ud, [R.w1()]))
+            arguments.append(Argument(predicate.root, self.ud, [R.w2()]))
 
         return list(arguments)
 
@@ -726,7 +724,7 @@ class PredPatt(object):
             # depedency relation (type acl) pointing here.
             if (self.options.resolve_relcl and self.options.borrow_arg_for_relcl
                     and p.root.gov_rel.startswith(self.ud.acl)):
-                new = Argument(p.root.gov, [R.arg_resolve_relcl()])
+                new = Argument(p.root.gov, self.ud, [R.arg_resolve_relcl()])
                 p.rules.append(R.pred_resolve_relcl())
                 p.arguments.append(new)
 
@@ -770,9 +768,9 @@ class PredPatt(object):
                 if g is not None:
                     # Coordinated appositional modifers share the same subj.
                     if p.root.gov_rel == self.ud.amod:
-                        p.arguments.append(Argument(g.root.gov, [R.o()]))
+                        p.arguments.append(Argument(g.root.gov, self.ud, [R.o()]))
                     elif p.root.gov_rel == self.ud.appos:
-                        p.arguments.append(Argument(g.root.gov, [R.p()]))
+                        p.arguments.append(Argument(g.root.gov, self.ud, [R.p()]))
 
         for p in sort_by_position(events):
             if p.root.gov_rel == self.ud.xcomp:
@@ -803,7 +801,7 @@ class PredPatt(object):
                             # PredPatt recognizes structures which are shown to be accurate .
                             #                         ^                  ^      ^
                             #                       g.subj               g      p
-                            new_arg = Argument(g.root.gov, [R.cut_borrow_other(g.root.gov, g)])
+                            new_arg = Argument(g.root.gov, self.ud, [R.cut_borrow_other(g.root.gov, g)])
                             p.arguments.append(new_arg)
                             break
 
@@ -1106,7 +1104,7 @@ class PredPatt(object):
                 yield self.event_dict[c]
             c = c.gov
 
-    def pprint(self, color=False, track_rule=True):
+    def pprint(self, color=False, track_rule=False):
         "Pretty-print extracted predicate-argument tuples."
         C = colored if color else no_color
         return '\n'.join(p.format(C=C, track_rule=track_rule) for p in self.instances)

@@ -5,6 +5,7 @@ import os
 from collections import namedtuple, defaultdict
 from tabulate import tabulate
 from termcolor import colored
+from predpatt.util.ud import dep_v1
 
 
 class DepTriple(namedtuple('DepTriple', 'rel gov dep')):
@@ -14,7 +15,8 @@ class DepTriple(namedtuple('DepTriple', 'rel gov dep')):
 
 class UDParse:
 
-    def __init__(self, tokens, tags, triples):
+    def __init__(self, tokens, tags, triples, ud=dep_v1):
+        self.ud = dep_v1
         self.tokens = tokens
         self.tags = tags
         self.triples = triples
