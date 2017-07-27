@@ -1,9 +1,16 @@
 """
 Wrapper around the Berkeley parser and the pyStanfordDependency converter.
 """
+
+from __future__ import print_function, unicode_literals
+from past.builtins import basestring
+
 import os
 import shelve
-import cPickle
+try:
+    import cPickle as pickle
+except:
+    import pickle
 import StanfordDependencies
 from subprocess import Popen, PIPE
 from predpatt.UDParse import UDParse, DepTriple
@@ -89,7 +96,8 @@ class Cached(object):
         if self.cache is not None:
             # Serialize arguments using pickle to get a string-valued key
             # (shelve requires string-valued keys).
-            s = cPickle.dumps((args, tuple(sorted(kwargs.items()))))
+            s = pickle.dumps((args, tuple(sorted(kwargs.items()))), protocol=0)
+            s = s.decode()
             if s in self.cache:
                 try:
                     return self.cache[s]
@@ -157,7 +165,7 @@ class Parser(Cached):
 
     def _start_subprocess(self):
         self.process = Popen(['java', '-jar', self.PARSER_JAR, '-gr', self.GRAMMAR],
-                             stdin=PIPE, stdout=PIPE, stderr=PIPE)
+                             stdin=PIPE, stdout=PIPE, stderr=PIPE, encoding='utf-8')
 
     def fresh(self, s, tokenized=False):
         """UD-parse and POS-tag sentence `s`. Returns (UDParse, PTB-parse-string).
@@ -181,6 +189,7 @@ class Parser(Cached):
             #    return self(s)  # retry will restart process
             raise e
         self.process.stdin.write('\n')
+        self.process.stdin.flush()
         out = self.process.stdout.readline()
         return self.to_ud(out)
 
@@ -213,7 +222,7 @@ def main():
     args = q.parse_args()
     p = Parser.get_instance()
     t = p(args.sentence)
-    print t.pprint()
+    print(t.pprint())
     if args.view:
         t.view()
 

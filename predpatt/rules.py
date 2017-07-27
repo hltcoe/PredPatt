@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 class Rule(object):
     def __init__(self):
         pass
@@ -364,4 +366,4 @@ class en_relcl_dummy_arg_filter(EnglishSpecific):
 
 
 if __name__ == '__main__':
-    print a1(), a1().explain()
+    print(a1(), a1().explain())
