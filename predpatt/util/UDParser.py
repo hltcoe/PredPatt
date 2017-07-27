@@ -11,6 +11,7 @@ try:
     import cPickle as pickle
 except:
     import pickle
+import sys
 import StanfordDependencies
 from subprocess import Popen, PIPE
 from predpatt.UDParse import UDParse, DepTriple
@@ -97,7 +98,8 @@ class Cached(object):
             # Serialize arguments using pickle to get a string-valued key
             # (shelve requires string-valued keys).
             s = pickle.dumps((args, tuple(sorted(kwargs.items()))), protocol=0)
-            s = s.decode()
+            if sys.version_info[0] == 3:
+                s = s.decode()
             if s in self.cache:
                 try:
                     return self.cache[s]
@@ -165,7 +167,7 @@ class Parser(Cached):
 
     def _start_subprocess(self):
         self.process = Popen(['java', '-jar', self.PARSER_JAR, '-gr', self.GRAMMAR],
-                             stdin=PIPE, stdout=PIPE, stderr=PIPE, encoding='utf-8')
+                             stdin=PIPE, stdout=PIPE, stderr=PIPE)
 
     def fresh(self, s, tokenized=False):
         """UD-parse and POS-tag sentence `s`. Returns (UDParse, PTB-parse-string).
@@ -182,15 +184,17 @@ class Parser(Cached):
         s = s.strip()
         assert '\n' not in s, "No newline characters allowed %r" % s
         try:
-            self.process.stdin.write(s)
+            self.process.stdin.write(s.encode('utf-8'))
         except IOError as e:
             #if e.errno == 32:          # broken pipe
             #    self.process = None
             #    return self(s)  # retry will restart process
             raise e
-        self.process.stdin.write('\n')
+        self.process.stdin.write(b'\n')
         self.process.stdin.flush()
         out = self.process.stdout.readline()
+        if sys.version_info[0] == 3:
+            out = out.decode()
         return self.to_ud(out)
 
     def __del__(self):

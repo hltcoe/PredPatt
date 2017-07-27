@@ -58,8 +58,6 @@ def load_conllu(filename):
                 continue
             assert len(line) == 10, line
             lines.append(line)
-            print('lines')
-            print(lines)
         [_, tokens, _, tags, _, _, gov, gov_rel, _, _] = list(zip(*lines))
         triples = [DepTriple(rel, int(gov)-1, dep) for dep, (rel, gov) in enumerate(zip(gov_rel, gov))]
         parse = UDParse(list(tokens), tags, triples)
