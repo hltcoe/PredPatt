@@ -10,5 +10,6 @@ setup(name='predpatt',
                         'bottle',
                         'tabulate',
                         'PyStanfordDependencies',
-                        'jpype1']
+                        'jpype1',
+                        'future']
 )

@@ -1,6 +1,9 @@
 """
 Documentation test runner.
 """
+
+from __future__ import print_function
+
 import re, codecs
 from predpatt import PredPatt, PredPattOpts, Parser
 from termcolor import colored
@@ -78,30 +81,30 @@ def test():
             #print colored('pass', 'green')
             passed += 1
         else:
-            print
-            print colored('> ' + s, 'yellow')
-            print colored('fail', 'red')
-            print 'expected:'
+            print()
+            print(colored('> ' + s, 'yellow'))
+            print(colored('fail', 'red'))
+            print('expected:')
             for line in expected.split('\n'):
-                print '   ', colored(line, 'blue')
-            print 'got:'
+                print('   ', colored(line, 'blue'))
+            print('got:')
             for line in got.split('\n'):
-                print '   ', line
-            print
-            print colored(tags, 'magenta')
-            print
-            print colored(parse, 'magenta')
+                print('   ', line)
+            print()
+            print(colored(tags, 'magenta'))
+            print()
+            print(colored(parse, 'magenta'))
             failed += 1
 
     msg = '[doctest] %.f%% (%s/%s) passed' % (passed * 100.0 / (passed+failed), passed, passed+failed)
     if failed == 0:
-        print msg
+        print(msg)
     else:
-        print
-        print msg
-        print
+        print()
+        print(msg)
+        print()
         if blank:
-            print 'blank:', blank
+            print('blank:', blank)
 
 
 if __name__ == '__main__':

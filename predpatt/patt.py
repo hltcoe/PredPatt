@@ -7,6 +7,7 @@ https://universaldependencies.github.io/docs/u/dep/index.html
 
 """
 from __future__ import unicode_literals
+from builtins import chr, str
 
 import itertools
 from termcolor import colored
@@ -51,7 +52,7 @@ def argument_names(args):
     name = {}
     for i, arg in enumerate(args):
         c = i // 26 if i >= 26 else ''
-        name[arg] = '?%s%s' % (unichr(97+(i % 26)), c)
+        name[arg] = '?%s%s' % (chr(97+(i % 26)), c)
     return name
 
 def sort_by_position(x):
@@ -269,7 +270,7 @@ class Predicate(object):
         # Format predicate
         rule = ''
         if track_rule:
-            rule = ',%s' % ','.join(sorted(map(unicode, self.rules)))
+            rule = ',%s' % ','.join(sorted(map(str, self.rules)))
         lines.append('%s%s%s'
                      % (indent, self._format_predicate(name, C=C),
                         C('%s[%s-%s%s]' % (indent, self.root.text,
@@ -284,7 +285,7 @@ class Predicate(object):
                 s = C(arg.phrase(), 'green')
             rule = ''
             if track_rule:
-                rule = ',%s' % ','.join(sorted(map(unicode, arg.rules)))
+                rule = ',%s' % ','.join(sorted(map(str, arg.rules)))
             lines.append('%s%s: %s%s'
                          % (indent*2, name[arg], s,
                             C('%s[%s-%s%s]' % (indent, arg.root.text,
@@ -333,9 +334,9 @@ def convert_parse(parse, ud):
         tokens[i].gov = (None if i not in parse.governor or parse.governor[i].gov == -1
                          else tokens[parse.governor[i].gov])
         tokens[i].gov_rel = parse.governor[i].rel if i in parse.governor else 'root'
-        tokens[i].dependents = map(convert_edge, parse.dependents[i])
+        tokens[i].dependents = [convert_edge(e) for e in parse.dependents[i]]
 
-    return UDParse(tokens, parse.tags, map(convert_edge, parse.triples), ud)
+    return UDParse(tokens, parse.tags, [convert_edge(e) for e in parse.triples], ud)
 
 
 _PARSER = None
@@ -506,7 +507,7 @@ class PredPatt(object):
                         nominate(e.gov, R.c(e))
 
         # Add all conjoined predicates
-        q = roots.values()
+        q = list(roots.values())
         while q:
             gov = q.pop()
             for e in gov.root.dependents:
