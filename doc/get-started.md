@@ -2,6 +2,12 @@
 
 ## Installation
 
+The most straight forward way to install `PredPatt` is via `pip:
+
+    $ pip install git+https://github.com/hltcoe/PredPatt.git
+
+Alternatively, one can install from source:
+
     $ git clone https://github.com/hltcoe/PredPatt.git
     $ cd PredPatt
     $ python setup.py develop
@@ -27,16 +33,9 @@ Example [programmatic usage](using_predpatt.py)
 >>> print pp.pprint()
 ```
 ```
-?a loves ?b	[loves-root,c,c,n1,n2,n2,u]
-        ?a: Chris	[Chris-nsubj,g1(nsubj)]
-        ?b: silly dogs	[dogs-dobj,g1(dobj),o1,o5,o6]
-    ?a loves ?b	[loves-root,c,c,n1,n2,n2,u]
-        ?a: Chris	[Chris-nsubj,g1(nsubj)]
-        ?b: clever cats	[cats-conj,m,o1]
-    ?a is/are silly	[silly-amod,e]
-        ?a: dogs	[dogs-dobj,i,o3,o5,o6]
-    ?a is/are clever	[clever-amod,e]
-        ?a: cats	[cats-conj,i,o3]
+	?a loves ?b	[loves-root]
+		?a: Chris	[Chris-nsubj]
+		?b: silly dogs and clever cats	[dogs-dobj]
 ```
 
 Notes:
@@ -51,3 +50,6 @@ Notes:
 - There is a caching layer on top of the parser, which caches sentences under
   `~/.PredPatt`. To bypass the caching layer, invoke `from_sentence` with the
   `cacheable=False` option.
+
+- There are a substantial number of options for a variety of syntactic
+  phenomena. For more information see the [tutorial](tutorial.ipynb). 
