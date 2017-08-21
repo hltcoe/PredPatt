@@ -30,6 +30,9 @@ Usage
 -----
 
 ```
+import json
+import requests #Assumes this is installed
+
 headers = {'Content-Type': 'application/json'}
 data = {'text': "John brought the pizza to Loren."
 }
@@ -45,7 +48,12 @@ The final output will look something like:
 ```
 {u'conll': u'1\tJohn\t-\tPROPN\tNNP\t-\t2\tnsubj\t-\t-\n2\tbrought\t-\tVERB\tVBD\t-\t0\troot\t-\t-\n3\tthe\t-\tDET\tDT\t-\t4\tdet\t-\t-\n4\tpizza\t-\tNOUN\tNN\t-\t2\tobj\t-\t-\n5\tto\t-\tADP\tIN\t-\t6\tcase\t-\t-\n6\tLoren\t-\tPROPN\tNNP\t-\t4\tnmod\t-\t-\n7\t.\t-\tPUNCT\t.\t-\t2\tpunct\t-\t-\n',
  u'original': u'John brought the pizza to Loren.',
- u'predpatt': u'\t?a brought ?b\t[brought-root]\n\t\t?a: John\t[John-nsubj]\n\t\t?b: the pizza to Loren\t[pizza-obj]'}
+ u'predpatt': {u'arg_deps': {u'0': [[u'brought', 1, u'nsubj', u'John', 0]],
+   u'3': [[u'pizza', 3, u'det', u'the', 2],
+    [u'brought', 1, u'obj', u'pizza', 3],
+    [u'Loren', 5, u'case', u'to', 4],
+    [u'pizza', 3, u'nmod', u'Loren', 5]]},
+  u'predicate_deps': [[None, None, u'root', u'brought', 1]]}}
 ```
 
 As shown above, the keys in the output dictionary are:
