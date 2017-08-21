@@ -1,4 +1,0 @@
-Flask
-Flask-RESTful
-tornado
-git+https://github.com/hltcoe/PredPatt.git
