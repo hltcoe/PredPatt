@@ -52,11 +52,10 @@ As shown above, the keys in the output dictionary are:
 
 * `conll`: The CoNLL-U formatted parse returned by SyntaxNet
 * `original`: The original text sent to the API
-* `predpatt`: The PredPatt `pprint` output
-
-Notes
------
-
-*Important:* Due to the use of a REST API, for now the returned data from
-PredPatt is the formatted prettyprint string. Future iterations of the API will
-hopefully return a data blob and/or a concrete object.
+* `predpatt`: A nested JSON object containing `predicate_deps` and `arg_deps`.
+ The `predicate_deps` field contains the dependency fragments for the exracted
+ predicates. The fragments are of the form `(governor_text, governor_position,
+ relation, token_text, token_position)`. The `arg_deps` field is formatted as
+ a dictionary with keys of integers representing the argument location, and
+ values as the extracted argument fragments. The format is the same as with the
+ `predicate_deps` field.
