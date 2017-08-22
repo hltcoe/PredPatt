@@ -44,7 +44,7 @@ def load_model(base_dir, master_spec_name, checkpoint_name):
         #sess.run(tf.global_variables_initializer())
         #sess.run('save/restore_all', {'save/Const:0': os.path.join(base_dir, checkpoint_name)})
         builder.saver.restore(sess, os.path.join(base_dir, checkpoint_name))
-        
+
     def annotate_sentence(sentence):
         with graph.as_default():
             return sess.run([annotator['annotations'], annotator['traces']],
@@ -88,6 +88,42 @@ def parse_to_conll(parse_tree):
 
     return out_str
 
+
+def get_ud_fragments(pp):
+    """
+    Extract PP fragments from a UD parse.
+
+    Format of fragments is (governor_text, governor_position, relation,
+    token_text, token_position)
+    """
+    for predicate in pp.instances:
+        # Get dep parses for the predicate.
+        pred_deps = []
+        for token in predicate.tokens:
+            # (head, relation, dependent)
+            if token.gov:
+                dep = (token.gov.text, token.gov.position, token.gov_rel,
+                       token.text, token.position)
+            else:
+                dep = (None, None, token.gov_rel, token.text, token.position)
+            pred_deps.append(dep)
+
+        # Get dep parses for the arguments.
+        arg2deps = {}
+        for argument in predicate.arguments:
+            arg_deps = []
+            for token in argument.tokens:
+                if token.gov:
+                    dep = (token.gov.text, token.gov.position, token.gov_rel,
+                           token.text, token.position)
+                else:
+                    dep = (None, None, token.gov_rel, token.text,
+                           token.position)
+                arg_deps.append(dep)
+            arg2deps[argument.position] = arg_deps
+    return pred_deps, arg2deps
+
+
 path = '/opt/tensorflow/syntaxnet/examples/dragnn/data'
 SEGMENTER_MODEL = load_model(os.path.join(path, "en/segmenter"),
                              "spec.textproto", "checkpoint")
@@ -116,8 +152,12 @@ def parse(text):
                         resolve_poss=resolve_poss,
                         ud=ud)
     ppatt = PredPatt(conll_pp, opts=opts)
+    predicate_deps, arg_deps = get_ud_fragments(ppatt)
 
     #NOTE:
     #This returns the pretty print formatted string from PredPatt. This is done
-    #largely as a place holder for JSON compatability within the REST API. 
-    return {'predpatt': ppatt.pprint(), 'conll': conll_parsed, 'original': text}
+    #largely as a place holder for JSON compatability within the REST API.
+    return {'predpatt': {'predicate_deps': predicate_deps,
+                         'arg_deps': arg_deps},
+            'conll': conll_parsed,
+            'original': text}
