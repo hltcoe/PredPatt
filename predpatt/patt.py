@@ -27,7 +27,7 @@ no_color = lambda x,_: x
 
 def gov_looks_like_predicate(e, ud):
     # if e.gov "looks like" a predicate because it has potential arguments
-    if e.gov.tag in {"VERB"} and e.rel in {
+    if e.gov.tag in {postag.VERB} and e.rel in {
             ud.nmod, ud.nmod_npmod, ud.obl, ud.obl_npmod}:
         return True
     return e.rel in {ud.nsubj, ud.nsubjpass, ud.csubj, ud.csubjpass,
@@ -268,14 +268,15 @@ class Predicate(object):
         lines = []
         name = argument_names(self.arguments)
         # Format predicate
-        rule = ''
+        verbose = ''
         if track_rule:
             rule = ',%s' % ','.join(sorted(map(str, self.rules)))
+            verbose = C('%s[%s-%s%s]' % (indent, self.root.text,
+                                         self.root.gov_rel, rule),
+                        'magenta')
         lines.append('%s%s%s'
-                     % (indent, self._format_predicate(name, C=C),
-                        C('%s[%s-%s%s]' % (indent, self.root.text,
-                                           self.root.gov_rel, rule),
-                          'magenta')))
+                     % (indent, self._format_predicate(name, C=C), verbose))
+
         # Format arguments
         for arg in self.arguments:
             if (arg.isclausal() and arg.root.gov in self.tokens and
@@ -286,11 +287,11 @@ class Predicate(object):
             rule = ''
             if track_rule:
                 rule = ',%s' % ','.join(sorted(map(str, arg.rules)))
+                verbose = C('%s[%s-%s%s]' % (indent, arg.root.text,
+                                             arg.root.gov_rel, rule),
+                            'magenta')
             lines.append('%s%s: %s%s'
-                         % (indent*2, name[arg], s,
-                            C('%s[%s-%s%s]' % (indent, arg.root.text,
-                                               arg.root.gov_rel, rule),
-                              'magenta')))
+                         % (indent*2, name[arg], s, verbose))
         return '\n'.join(lines)
 
 

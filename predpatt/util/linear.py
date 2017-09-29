@@ -7,7 +7,11 @@ sys.setdefaultencoding('utf8')
 import re
 
 
-from predpatt.patt import Predicate, Argument, Token
+from predpatt.patt import Predicate, Argument, Token, NORMAL, POSS
+from predpatt.util.ud import dep_v1
+from predpatt.util.ud import dep_v2
+from predpatt.util.ud import postag
+
 
 # Regrex
 RE_ARG_ENC = re.compile("\^\(\( | \)\)\$")
@@ -34,46 +38,53 @@ class LinearizedPPOpts:
     def __init__(self, recursive=True,
                  distinguish_header=True,
                  only_head=False,
-                 ignore_content=False):
+                 ):
         self.recursive = recursive
         self.distinguish_header = distinguish_header
         self.only_head = only_head
-        self.ignore_content = ignore_content
 
 
 def sort_by_position(x):
     return list(sorted(x, key=lambda y: y.position))
 
-def is_dep_of_pred(t):
-    if t.gov_rel in {"nsubj", "nsubjpass", "dobj", "iobj",
-                     "csubj", "csubjpass", "ccomp", "xcomp",
-                     "nmod", "advcl", "advmod", "neg"}:
+
+def is_dep_of_pred(t, ud=dep_v1):
+    if t.gov_rel in {ud.nsubj, ud.nsubjpass, ud.dobj, ud.iobj,
+                     ud.csubj, ud.csubjpass, ud.ccomp, ud.xcomp,
+                     ud.nmod, ud.advcl, ud.advmod, ud.neg}:
         return True
 
-def important_pred_tokens(p):
+
+def important_pred_tokens(p, ud=dep_v1):
     ret = [p.root]
     for x in p.tokens:
         # direct denpendents of the predicate
         if x.gov and x.gov.position == p.root.position:
-            if x.gov_rel in {'neg'}:
+            if x.gov_rel in {ud.neg}:
                 ret.append(x)
     return sort_by_position(ret)
 
-def likely_to_be_pred(pred):
+
+def likely_to_be_pred(pred, ud=dep_v1):
     if len(pred.arguments) == 0:
         return False
-    if pred.root.tag in ('VERB', 'ADJ'):
+    if pred.root.tag in {postag.VERB, postag.ADJ}:
         return True
-    if pred.root.gov_rel in ('appos',):
+    if pred.root.gov_rel in {ud.appos}:
         return True
     for t in pred.tokens:
-        if t.gov_rel == 'cop':
+        if t.gov_rel == ud.cop:
             return True
 
 
 def build_pred_dep(pp):
     """ Build dependencies between predicates. """
     root_to_preds = {p.root.position:p for p in pp.instances}
+
+    for p in pp.instances:
+        if not hasattr(p, "children"):
+            p.children = []
+
     id_to_root_preds = {}
     for p in pp.instances:
         # only keep predicates with high confidence
@@ -116,7 +127,7 @@ def get_prediates(pp, only_head=False):
         return ret
 
 
-def linearize(pp, opt=LinearizedPPOpts()):
+def linearize(pp, opt=LinearizedPPOpts(), ud=dep_v1):
     """
     Here we define the way to represent the predpatt ouptut in a linearized
     form:
@@ -141,25 +152,25 @@ def linearize(pp, opt=LinearizedPPOpts()):
     ret = []
     roots = build_pred_dep(pp)
     for root in roots:
-        repr_root = flatten_and_enclose_pred(root, opt)
+        repr_root = flatten_and_enclose_pred(root, opt, ud)
         ret.append(repr_root)
     return " ".join(ret)
 
 
-def flatten_and_enclose_pred(pred, opt):
-    repr_y, is_argument = flatten_pred(pred, opt)
+def flatten_and_enclose_pred(pred, opt, ud):
+    repr_y, is_argument = flatten_pred(pred, opt, ud)
     enc = PRED_ENC
     if is_argument:
         enc = ARGPRED_ENC
     return '%s %s %s' % (enc[0], repr_y, enc[1])
 
 
-def flatten_pred(pred, opt):
+def flatten_pred(pred, opt, ud):
     ret = []
     args = pred.arguments
     child_preds = pred.children
 
-    if pred.type == 'poss':
+    if pred.type == POSS:
         arg_i = 0
         # Only take the first two arguments into account.
         for y in sort_by_position(args[:2] + child_preds):
@@ -167,20 +178,18 @@ def flatten_pred(pred, opt):
                 arg_i += 1
                 if arg_i == 1:
                     # Generate the special ``poss'' predicate with label.
-                    poss = 'poss' + (PRED_HEADER if opt.distinguish_header
+                    poss = POSS + (PRED_HEADER if opt.distinguish_header
                                      else PRED_SUF)
-                    if opt.ignore_content:
-                        poss = "PRED"
                     ret += [phrase_and_enclose_arg(y, opt), poss]
                 else:
                     ret += [phrase_and_enclose_arg(y, opt)]
             else:
                 if opt.recursive:
-                    repr_y = flatten_and_enclose_pred(y, opt)
+                    repr_y = flatten_and_enclose_pred(y, opt, ud)
                     ret.append(repr_y)
         return ' '.join(ret), False
 
-    if pred.type in {'amod', 'appos'}:
+    if pred.type in {ud.amod, ud.appos}:
         # Special handling for `amod` and `appos` because the target
         # relation `is/are` deviates from the original word order.
         arg0 = None
@@ -192,8 +201,6 @@ def flatten_pred(pred, opt):
                 other_args.append(arg)
         relation = 'is/are' + (PRED_HEADER if opt.distinguish_header
                                else PRED_SUF)
-        if opt.ignore_content:
-            relation = "PRED"
         if arg0 is not None:
             ret = [phrase_and_enclose_arg(arg0, opt), relation]
             args = other_args
@@ -206,8 +213,6 @@ def flatten_pred(pred, opt):
     items = pred.tokens + args + child_preds
     if opt.only_head:
         items = important_pred_tokens(pred) + args + child_preds
-    if opt.ignore_content:
-        items = [pred.root] + args + child_preds
 
     for i, y in enumerate(sort_by_position(items)):
         if isinstance(y, Argument):
@@ -220,32 +225,25 @@ def flatten_pred(pred, opt):
                 # predicate viewed as an argument of the predicate under
                 # processing.
                 ret.append(SOMETHING)
+                ret.append(phrase_and_enclose_arg(y, opt))
             else:
                 ret.append(phrase_and_enclose_arg(y, opt))
-            # if (pred.root.gov_rel == 'xcomp' and
-            #     pred.root.tag not in {'VERB', 'ADJ', 'JJ'} and
-            #     i == 0):
-            #     ret.append('is/are:p_h' if distinguish_header else 'is/are:p')
         elif isinstance(y, Predicate):
             if opt.recursive:
-                repr_y = flatten_and_enclose_pred(y, opt)
+                repr_y = flatten_and_enclose_pred(y, opt, ud)
                 ret.append(repr_y)
         else:
-            if opt.ignore_content:
-                ret.append("PRED")
-            elif opt.distinguish_header and y.position == pred.root.position:
-                ret.append(y.text.decode('utf8') + PRED_HEADER)
+            if opt.distinguish_header and y.position == pred.root.position:
+                ret.append(y.text + PRED_HEADER)
             else:
-                ret.append(y.text.decode('utf8') + PRED_SUF)
+                ret.append(y.text + PRED_SUF)
     return ' '.join(ret), is_dep_of_pred(pred.root)
 
 
 def phrase_and_enclose_arg(arg, opt):
-    if opt.ignore_content:
-        return "ARG"
     repr_arg = ''
     if opt.only_head:
-        root_text = arg.root.text.decode('utf8')
+        root_text = arg.root.text
         if opt.distinguish_header:
             repr_arg = root_text + ARG_HEADER
         else:
@@ -254,9 +252,9 @@ def phrase_and_enclose_arg(arg, opt):
         ret = []
         for x in arg.tokens:
             if opt.distinguish_header and x.position == arg.root.position:
-                ret.append(x.text.decode('utf8') + ARG_HEADER)
+                ret.append(x.text + ARG_HEADER)
             else:
-                ret.append(x.text.decode('utf8') + ARG_SUF)
+                ret.append(x.text + ARG_SUF)
         repr_arg = ' '.join(ret)
     return "%s %s %s" % (ARG_ENC[0], repr_arg, ARG_ENC[1])
 
@@ -295,23 +293,17 @@ def linear_to_string(tokens):
     return ret
 
 
-def get_something(idx, tokens):
-    root = Token(idx, "SOMETHING", None)
+def get_something(something_idx, tokens_iter):
+    for idx, t in tokens_iter:
+        if t  == ARG_ENC[0]:
+            argument = construct_arg_from_flat(tokens_iter)
+            argument.type = SOMETHING
+            return argument
+    root = Token(something_idx, "SOMETHING", None)
     arg = Argument(root, [])
     arg.tokens = [root]
-    # Get details for SOMETHING.
-    if idx + 2 < len(tokens) and tokens[idx + 1] in {PRED_ENC[0], ARGPRED_ENC[0]}:
-        tokens_iter = enumerate(tokens[idx + 2:])
-        start_token = tokens[idx + 1]
-        embedded_tokens = collect_embebdded_tokens(tokens_iter, start_token)
-        # embedded_tokens = pprint(" ".join(embedded_tokens)).split()
-        embedded_tokens = linear_to_string(embedded_tokens)
-        if len(embedded_tokens):
-            arg.tokens.append(Token(idx + 1, ":=", None))
-            for i, t in enumerate(embedded_tokens, 2):
-                arg_t = Token(idx + i, t, None)
-                arg.tokens.append(arg_t)
     return arg
+
 
 def is_argument_finished(t, current_argument):
     if current_argument.position != -1:
@@ -322,6 +314,7 @@ def is_argument_finished(t, current_argument):
         if t.endswith(ARG_SUF) or t.endswith(ARG_HEADER):
             return False
     return True
+
 
 def construct_arg_from_flat(tokens_iter):
     empty_token = Token(-1, None, None)
@@ -373,11 +366,8 @@ def construct_pred_from_flat(tokens):
             # Recursively construct sub-level predicates.
             preds = construct_pred_from_flat(embedded)
             ret += preds
-            # if t == "(:a":
-            #     # Add a special argument.
-            #     current_predicate.arguments.append(something(idx))
         elif t == SOMETHING:
-            current_predicate.arguments.append(get_something(idx, tokens))
+            current_predicate.arguments.append(get_something(idx, tokens_iter))
         elif t.endswith(PRED_SUF) or t.endswith(PRED_HEADER):
             # add predicate token
             text, _ = t.rsplit(PRED_SUF, 1)
@@ -390,6 +380,7 @@ def construct_pred_from_flat(tokens):
         else:
             continue
     return ret
+
 
 def check_recoverability(tokens):
     def encloses_allowed():
@@ -421,8 +412,10 @@ def check_recoverability(tokens):
                 return False, tokens
     return encloses_matched(), tokens
 
+
 def pprint_preds(preds):
     return [format_pred(p) for p in preds]
+
 
 def argument_names(args):
     """Give arguments alpha-numeric names.
@@ -444,20 +437,22 @@ def argument_names(args):
         name[arg] = '?%s%s' % (unichr(97+(i % 26)), c)
     return name
 
+
 def format_pred(pred, indent="\t"):
     lines = []
     name = argument_names(pred.arguments)
     # Format predicate
-    lines.append('%s%s%s'
-                 % (indent, _format_predicate(pred, name),
-                    ('%s[%s]' % (indent, pred.root.text))))
+    lines.append('%s%s'
+                 % (indent, _format_predicate(pred, name)))
     # Format arguments
     for arg in pred.arguments:
         s = arg.phrase()
-        lines.append('%s%s: %s%s'
-                     % (indent*2, name[arg], s,
-                        ('%s[%s]' % (indent, arg.root.text))))
+        if hasattr(arg, "type") and arg.type == SOMETHING:
+            s = "SOMETHING := " + s
+        lines.append('%s%s: %s'
+                     % (indent*2, name[arg], s))
     return '\n'.join(lines)
+
 
 def _format_predicate(pred, name):
     ret = []
@@ -471,13 +466,17 @@ def _format_predicate(pred, name):
             ret.append(y.text)
     return ' '.join(ret)
 
+
 def pprint(s):
     return re.sub(RE_ARG_RIGHT_ENC, ")",
                   re.sub(RE_ARG_LEFT_ENC, "(",
                          re.sub(RE_PRED_LEFT_ENC, "[",
                                 re.sub(RE_PRED_RIGHT_ENC, "]", s))))
 
-def test(pp, flat_s):
+
+def test(data):
+    from predpatt import PredPatt, load_conllu
+
     def fail(g, t):
         if len(g) != len(t):
             return True
@@ -486,17 +485,24 @@ def test(pp, flat_s):
                 if i not in t:
                     return True
     no_color = lambda x,_: x
-    gold_preds = [p.format(C=no_color, track_rule=False)
-             for p in pp.instances if likely_to_be_pred(p)]
-    test_preds = pprint_preds(construct_pred_from_flat(flat_s.split()))
-    return not fail(gold_preds, test_preds), gold_preds, test_preds
+    count, failed = 0, 0
+    ret = ""
+    for sent_id, ud_parse in load_conllu(data):
+        count += 1
+        pp = PredPatt(ud_parse)
+        sent = ' '.join(t.text for t in pp.tokens)
+        linearized_pp = linearize(pp)
+        gold_preds = [predicate.format(C=no_color, track_rule=False)
+                for predicate in pp.instances if likely_to_be_pred(predicate)]
+        test_preds = pprint_preds(construct_pred_from_flat(linearized_pp.split()))
+        if fail(gold_preds, test_preds):
+            failed += 1
+            ret += ("Sent: %s\nLinearized PredPatt:\n\t%s\nGold:\n%s\nYours:\n%s\n\n"
+                    %(sent, linearized_pp, "\n".join(gold_preds), "\n".join(test_preds)))
+    print (ret)
+    print ("You have test %d instances, and %d failed the test." %(count, failed))
 
 
 if __name__ == "__main__":
     # Test the recovering function.
-    import sys
-    reload(sys)
-    sys.setdefaultencoding('utf8')
-    line = open(sys.argv[1]).read()
-    print line
-    print "\n".join(pprint_preds(construct_pred_from_flat(line.split())))
+    test(sys.argv[1])
