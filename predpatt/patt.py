@@ -61,7 +61,7 @@ def sort_by_position(x):
 
 class Token(object):
 
-    def __init__(self, position, text, tag, ud):
+    def __init__(self, position, text, tag, ud=dep_v1):
         self.position = position
         self.text = text
         self.tag = tag
@@ -103,7 +103,7 @@ class Token(object):
 class Argument(object):
 
 
-    def __init__(self, root, ud, rules):
+    def __init__(self, root, ud=dep_v1, rules=[]):
         self.root = root
         self.rules = rules
         self.position = root.position
@@ -148,7 +148,7 @@ class Argument(object):
 
 class Predicate(object):
 
-    def __init__(self, root, ud, rules, type_=NORMAL):
+    def __init__(self, root, ud=dep_v1, rules=[], type_=NORMAL):
         self.root = root
         self.rules = rules
         self.position = root.position
