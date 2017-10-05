@@ -20,6 +20,10 @@ PredPatt is part of a wider initiative on
 that end, it has been used to bootstrap semantic annotations in our recent EMNLP
 2016 paper ([White et al., 2016](doc/references.md)).
 
+PredPatt shows the best precision and recall when compared with several prominent 
+Open IE tools on a large benchmark
+([Zhang et al., 2017](http://www.cs.jhu.edu/~s.zhang/assets/pdf/iwcs17.pdf)).
+
 
 > PredPatt extracts predicates and arguments from text .
 
@@ -81,6 +85,15 @@ UDBank in [English](test/data.100.fine.all.ud.expect),
 ## Citation
 
 If you use PredPatt please cite it as follows.
+
+    @InProceedings{zhang-EtAl:2017:IWCS,
+        author = {Zhang, Sheng and Rudinger, Rachel and Van Durme, Ben },
+        title = {An Evaluation of PredPatt and Open IE via Stage 1 Semantic Role Labeling},
+        booktitle = {Proceedings of the 12th International Conference on Computational Semantics (IWCS)},
+        month = {September},
+        year = {2017},
+        address = {Montpellier, France}
+    }
 
     @InProceedings{white-EtAl:2016:EMNLP2016,
         author    = {White, Aaron Steven  and  Reisinger, Drew  and  Sakaguchi, Keisuke  and  Vieira, Tim  and  Zhang, Sheng  and  Rudinger, Rachel  and  Rawlins, Kyle  and  Van Durme, Benjamin},
