@@ -107,3 +107,6 @@ If you use PredPatt please cite it as follows.
         url       = {https://aclweb.org/anthology/D16-1177}
     }
 
+## License
+
+[BSD](LICENSE)
