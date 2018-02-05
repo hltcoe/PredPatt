@@ -306,6 +306,7 @@ class PredPattOpts:
                  resolve_poss=False,
                  borrow_arg_for_relcl=True,
                  big_args=False,
+                 strip=True,
                  ud=dep_v1.VERSION):
         self.simple = simple
         self.cut = cut
@@ -315,6 +316,7 @@ class PredPattOpts:
         self.resolve_poss = resolve_poss
         self.resolve_conj = resolve_conj
         self.big_args = big_args
+        self.strip = strip
         self.borrow_arg_for_relcl = borrow_arg_for_relcl
         assert str(ud) in {dep_v1.VERSION, dep_v2.VERSION}, (
             'the ud version "%s" is not in {"%s", "%s"}' % (
@@ -1017,6 +1019,10 @@ class PredPatt(object):
             return
 
         tokens = sort_by_position(thing.tokens)
+
+        if self.options.strip == False:
+            thing.tokens = tokens
+            return
         orig_len = len(tokens)
 
         protected = set()
