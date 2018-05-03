@@ -87,8 +87,8 @@ UDBank in [English](test/data.100.fine.all.ud.expect),
 If you use PredPatt please cite it as follows.
 
     @InProceedings{zhang-EtAl:2017:IWCS,
-        author = {Zhang, Sheng and Rudinger, Rachel and Van Durme, Ben },
-        title = {An Evaluation of PredPatt and Open IE via Stage 1 Semantic Role Labeling},
+        author = {Zhang, Sheng and Rudinger, Rachel and {Van Durme}, Ben },
+        title = {{An Evaluation of PredPatt and Open IE via Stage 1 Semantic Role Labeling}},
         booktitle = {Proceedings of the 12th International Conference on Computational Semantics (IWCS)},
         month = {September},
         year = {2017},
@@ -96,8 +96,8 @@ If you use PredPatt please cite it as follows.
     }
 
     @InProceedings{white-EtAl:2016:EMNLP2016,
-        author    = {White, Aaron Steven  and  Reisinger, Drew  and  Sakaguchi, Keisuke  and  Vieira, Tim  and  Zhang, Sheng  and  Rudinger, Rachel  and  Rawlins, Kyle  and  Van Durme, Benjamin},
-        title     = {Universal Decompositional Semantics on Universal Dependencies},
+        author    = {White, Aaron Steven  and  Reisinger, Drew  and  Sakaguchi, Keisuke  and  Vieira, Tim  and  Zhang, Sheng  and  Rudinger, Rachel  and  Rawlins, Kyle  and  {Van Durme}, Benjamin},
+        title     = {{Universal Decompositional Semantics on Universal Dependencies}},
         booktitle = {Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing},
         month     = {November},
         year      = {2016},
