@@ -44,11 +44,22 @@ def isPredVerb(pred):
 
 
 def isNotCopula(pred):
+    """
+        Checks if any of the dependents of pred are copula verbs.
+        UD annotates copula verbs only when the nonverbal predicate
+        is the head of the clause.
+
+        Input: Predicate object
+        Output: bool
+    """
     copula_verbs = ['be', 'am', 'is', 'are', 'was', 'were', 'being', 'been']
-    if pred.root.gov_rel == u'cop':
+
+    pred_deps_rel = [p.rel for p in pred.root.dependents]
+    pred_deps_txt = [p.dep.text for p in pred.root.dependents]
+    if u'cop' in pred_deps_rel:
         return False
     # just in case for parsing error (from Stanford Parser)
-    if pred.root.text in copula_verbs:
+    if set(pred_deps_txt).intersection(set(copula_verbs)):
         return False
     else:
         filter_rules = getattr(pred, 'rules', [])
