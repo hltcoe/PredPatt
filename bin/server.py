@@ -38,7 +38,7 @@ def main():
 
     pp_opts = PredPattOpts()
     for k, v in sorted(PredPattOpts().__dict__.iteritems()):
-        v = int(request.GET.get(k, v))   # all options are true/false for now.
+        v = int(float(request.GET.get(k, v)))   # all options are true/false for now.
         setattr(pp_opts, k, v)
 
     if sentence:
