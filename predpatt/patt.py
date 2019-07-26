@@ -393,7 +393,6 @@ class PredPatt(object):
         # Create a map from token position to Predicate. This map is used when
         # events need to reference other events.
         self.event_dict = {p.root: p for p in events}
-
         # Extract heads of arguments
         for e in events:
             e.arguments = self.argument_extract(e)
@@ -704,6 +703,24 @@ class PredPatt(object):
     def _argument_resolution(self, events):
         "Argument resolution."
 
+        """
+        NB: Elias <estenge2@jhu.edu> changed this to exclude prevent, dissuade, and reproach
+        This fix is for object control not working with ditransitive verbs that have a 
+        non-infinitival complement, e.g. prevent, dissuade, reproach. 
+        For example, ``I_i persuaded him_j [PRO_j to leave]'' is 
+        being parsed correctly (PRO indexed with the object, i.e. object control)
+        BUT ``I_i prevented him_j [PRO_j from leaving]'' is being incorrectly parsed as 
+        ``I_i prevented him_j [PRO_i from leaving]'' i.e. it is being parsed as subjected 
+        control when in fact it is object control. The only verbs where there is ditransitive 
+        object control and the proposition is NOT ``to'' that I can think of are ``prevent'' (from),
+        ``disuade'' (from), 
+        """
+        
+        
+        exclude = ["prevent", "prevents", "prevented", "preventing",
+                  "dissuade", "dissuades", "dissuaded", "dissuading",
+                  "reproach", "reproaches", "reproached", "reproaching"]
+
         for p in list(events):
             if p.root.gov_rel == self.ud.xcomp:
                 if not self.options.cut:
@@ -759,13 +776,18 @@ class PredPatt(object):
                             new_arg.rules.append(R.borrow_obj(new_arg, g))
                             p.arguments.append(new_arg)
 
+            """
+            NB these are heavily lexicalized exceptions (added by Elias <estenge2@jhu.edu>) to deal with object control problems
+            """
+            from_for = any([x[2].text in ['from', 'for'] and x[0] == 'mark' for x in  p.root.dependents])
 
-            if p.root.gov_rel == self.ud.advcl and not p.has_subj():
+            if p.root.gov_rel == self.ud.advcl and not p.has_subj() and not from_for: 
                 g = self.event_dict.get(p.root.gov)
                 if g is not None and g.has_subj():
                     new_arg = g.subj().reference()
                     new_arg.rules.append(R.borrow_subj(new_arg, g))
                     p.arguments.append(new_arg)
+
 
             if p.root.gov_rel == self.ud.conj:
                 g = self.event_dict.get(p.root.gov)
@@ -811,6 +833,18 @@ class PredPatt(object):
 
         for p in sort_by_position(events):
 
+            if (p.root.gov_rel == self.ud.advcl 
+                    and not p.has_subj()
+                    and any ([x[2].text in ['from', 'for'] 
+                                    and x[0] == "mark" 
+                                    for x in  p.root.dependents])
+                ):
+                g = self.event_dict.get(p.root.gov)
+                # set to the OBJECT not SUBJECT
+                if g is not None and g.has_obj():
+                    new_arg = g.obj().reference()
+                    new_arg.rules.append(R.borrow_subj(new_arg, g))
+                    p.arguments.append(new_arg)
             # Note: The following rule improves coverage a lot in Spanish and
             # Portuguese. Without it, miss a lot of arguments.
             if (not p.has_subj()
@@ -818,11 +852,13 @@ class PredPatt(object):
                 and p.root.gov_rel not in {self.ud.csubj, self.ud.csubjpass}
                 and not p.root.gov_rel.startswith(self.ud.acl)
                 and not p.has_borrowed_arg()
+                #and p.root.gov.text not in exclude
             ):
                 g = self.event_dict.get(p.root.gov)
                 if g is not None:
                     if g.has_subj():
                         new_arg = g.subj().reference()
+                        #print("inside 847 if for p = {}".format(p))
                         new_arg.rules.append(R.borrow_subj(new_arg, g))
                         p.arguments.append(new_arg)
                     else:
